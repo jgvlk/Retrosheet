@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="JVLK-MBP-VM01"
   DTS:CreatorName="JVLK-MBP-VM01\jonat"
-  DTS:DTSID="{0C86476E-CB9A-4A9C-8AF8-37E9337FEC14}"
+  DTS:DTSID="{DB4A5352-2832-4001-8F46-53E93F86AFEB}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.132"
   DTS:LocaleID="1033"
-  DTS:ObjectName="LoadSupplementalData"
+  DTS:ObjectName="02_LoadSupplementalData"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{152640C4-550C-410B-A4CA-2A2296BD4942}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{792E9E14-F3F4-405E-9658-E651AA380927}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1271,33 +1271,8 @@
             </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Load Raw Data\Truncate Tables"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{977FB89C-D8F4-4191-9520-FC9293F85FCF}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Truncate Tables"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{E03933CE-BB09-4EEF-A98B-49AE794A47E7}"
-              SQLTask:SqlStatementSource="USE [Retrosheet]&#xA;&#xA;TRUNCATE TABLE [raw].[PlayerMaster]&#xA;TRUNCATE TABLE [raw].[ParkMaster]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Load Raw Data.PrecedenceConstraints[Constraint]"
-          DTS:CreationName=""
-          DTS:DTSID="{0E8B2B23-00EB-4FA4-8DC0-2B3917D641AF}"
-          DTS:From="Package\Load Raw Data\Truncate Tables"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint"
-          DTS:To="Package\Load Raw Data\PlayerMaster" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Load Raw Data.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
@@ -1320,44 +1295,18 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="144,42"
-          Id="Package\Load Raw Data\PlayerMaster"
-          TopLeft="12.5,107.5" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="135,42"
           Id="Package\Load Raw Data\ParkMaster"
-          TopLeft="17,209.5" />
+          TopLeft="10,107.5" />
         <NodeLayout
-          Size="158,42"
-          Id="Package\Load Raw Data\Truncate Tables"
+          Size="144,42"
+          Id="Package\Load Raw Data\PlayerMaster"
           TopLeft="5.50000000000001,5.5" />
         <EdgeLayout
-          Id="Package\Load Raw Data.PrecedenceConstraints[Constraint]"
-          TopLeft="84.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Load Raw Data.PrecedenceConstraints[Constraint 1]"
-          TopLeft="84.5,149.5">
+          TopLeft="77.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1380,76 +1329,26 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="169,306"
-          Size="178,349"
+          PanelSize="155,204"
+          Size="155,248"
           Id="Package\Load Raw Data"
           TopLeft="221,142" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Load Raw Data\PlayerMaster">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Load Raw Data\PlayerMaster\Flat File Source"
-          TopLeft="316,234" />
-        <NodeLayout
-          Size="177,42"
-          Id="Package\Load Raw Data\PlayerMaster\OLE DB Destination"
-          TopLeft="458,397" />
-        <EdgeLayout
-          Id="Package\Load Raw Data\PlayerMaster.Paths[Flat File Source Output]"
-          TopLeft="394,276">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="152.5,121"
-              Start="0,0"
-              End="152.5,113.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,56.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,56.5"
-                    Point2="0,60.5"
-                    Point3="4,60.5" />
-                  <mssgle:LineSegment
-                    End="148.5,60.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="148.5,60.5"
-                    Point2="152.5,60.5"
-                    Point3="152.5,64.5" />
-                  <mssgle:LineSegment
-                    End="152.5,113.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
     design-time-name="Package\Load Raw Data\ParkMaster">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="156,42"
-          Id="Package\Load Raw Data\ParkMaster\Flat File Source"
-          TopLeft="410,210" />
-        <NodeLayout
           Size="177,42"
           Id="Package\Load Raw Data\ParkMaster\OLE DB Destination"
           TopLeft="558,352" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Load Raw Data\ParkMaster\Flat File Source"
+          TopLeft="410,210" />
         <EdgeLayout
           Id="Package\Load Raw Data\ParkMaster.Paths[Flat File Source Output]"
           TopLeft="488,252">
@@ -1488,7 +1387,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Raw Data\PlayerMaster\OLE DB Destination">
+    design-time-name="Package\Load Raw Data\ParkMaster\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1500,8 +1399,58 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Raw Data\PlayerMaster">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Load Raw Data\PlayerMaster\OLE DB Destination"
+          TopLeft="458,397" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Load Raw Data\PlayerMaster\Flat File Source"
+          TopLeft="316,234" />
+        <EdgeLayout
+          Id="Package\Load Raw Data\PlayerMaster.Paths[Flat File Source Output]"
+          TopLeft="394,276">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="152.5,121"
+              Start="0,0"
+              End="152.5,113.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,56.5"
+                    Point2="0,60.5"
+                    Point3="4,60.5" />
+                  <mssgle:LineSegment
+                    End="148.5,60.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="148.5,60.5"
+                    Point2="152.5,60.5"
+                    Point3="152.5,64.5" />
+                  <mssgle:LineSegment
+                    End="152.5,113.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Raw Data\ParkMaster\OLE DB Destination">
+    design-time-name="Package\Load Raw Data\PlayerMaster\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

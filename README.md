@@ -1,7 +1,7 @@
 # Retrosheet
 
 
-# Setup
+## Setup
 1. Initial directories to create
     - "C:\Data\mlb\Retrosheet" (root directory)
     - "C:\Data\mlb\Retrosheet\data\current" (holds most recent data downloaded from https://www.retrosheet.org/events/)
