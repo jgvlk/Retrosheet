@@ -31,11 +31,11 @@ try {
     $eventFilesAllStar = @("allas.zip")
     $eventFilesPostSeason = @("allpost.zip")
     $discrepancyFiles = @("1900sdis.zip","1910sdis.zip","1920sdis.zip","1930sdis.zip","1940sdis.zip","1950sdis.zip","1960sdis.zip","1970sdis.zip")
-    $zips = $eventFilesRegSeason += $boxFilesRegSeason += $eventFilesAllStar += $eventFilesPostSeason += $discrepancyFiles
+    # $zips = $eventFilesRegSeason += $boxFilesRegSeason += $eventFilesAllStar += $eventFilesPostSeason += $discrepancyFiles
     
     ### REDUCE DATA VOLUME FOR DEBUGGING ###
     ### \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/ ###
-    # $zips = @("2020seve.zip")
+    $zips = @("2020seve.zip")
     
     
     
@@ -83,7 +83,7 @@ try {
         }
         else {
     
-            Remove-Item -Path $outDir -ItemType directory
+            Remove-Item -Path $outDir -Recurse -Force
     
         }
 
@@ -95,7 +95,7 @@ try {
         }
         else {
     
-            Remove-Item -Path $metadataDir -ItemType directory
+            Remove-Item -Path $metadataDir -Recurse -Force
             New-Item -Path $metadataDir -ItemType directory
     
         }
@@ -108,7 +108,7 @@ try {
         }
         else {
     
-            Remove-Item -Path $supplementalDir -ItemType directory
+            Remove-Item -Path $supplementalDir -Recurse -Force
             New-Item -Path $supplementalDir -ItemType directory
     
         }

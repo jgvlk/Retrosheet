@@ -1,0 +1,22 @@
+﻿CREATE TABLE [dbo].[ParkMaster]
+(
+	[ParkID] UNIQUEIDENTIFIER NOT NULL
+	,[RetroParkID] CHAR(5) NOT NULL
+	,[Name] VARCHAR(50) NULL
+	,[AKA] VARCHAR(50) NULL
+	,[City] VARCHAR(25) NULL
+	,[State] CHAR(2) NULL
+	,[Start] VARCHAR(500) NULL
+	,[End] VARCHAR(500) NULL
+	,[League] VARCHAR(500) NULL
+	,[Notes] VARCHAR(500) NULL
+	,CONSTRAINT [pk_ParkMaster] PRIMARY KEY NONCLUSTERED ([ParkID])
+)
+GO
+
+ALTER TABLE [dbo].[ParkMaster] ADD CONSTRAINT [df_ParkMaster_ParkID] DEFAULT NEWID() FOR [ParkID]
+GO
+
+ALTER TABLE [dbo].[ParkMaster] ADD CONSTRAINT [ak_ParkMaster_RetroParkID] UNIQUE ([RetroParkID])
+GO
+

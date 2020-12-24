@@ -1,0 +1,106 @@
+﻿CREATE TABLE [dbo].[Event]
+(
+	[EventID] UNIQUEIDENTIFIER NOT NULL
+	,[RetroGameID] CHAR(12) NOT NULL
+	,[VisitingTeam] NVARCHAR(500) NULL
+	,[Inning] NVARCHAR(500) NULL
+	,[BattingTeam] NVARCHAR(500) NULL
+	,[Outs] NVARCHAR(500) NULL
+	,[Balls] NVARCHAR(500) NULL
+	,[Strikes] NVARCHAR(500) NULL
+	,[PitchSequence] NVARCHAR(500) NULL
+	,[VisScore] NVARCHAR(500) NULL
+	,[HomeScore] NVARCHAR(500) NULL
+	,[Batter] NVARCHAR(500) NULL
+	,[BatterHand] NVARCHAR(500) NULL
+	,[ResBatter] NVARCHAR(500) NULL
+	,[ResBatterHand] NVARCHAR(500) NULL
+	,[Pitcher] NVARCHAR(500) NULL
+	,[PitcherHand] NVARCHAR(500) NULL
+	,[ResPitcher] NVARCHAR(500) NULL
+	,[ResPitcherHand] NVARCHAR(500) NULL
+	,[Catcher] NVARCHAR(500) NULL
+	,[FirstBase] NVARCHAR(500) NULL
+	,[SecondBase] NVARCHAR(500) NULL
+	,[ThirdBase] NVARCHAR(500) NULL
+	,[Shortstop] NVARCHAR(500) NULL
+	,[LeftField] NVARCHAR(500) NULL
+	,[CenterField] NVARCHAR(500) NULL
+	,[RightField] NVARCHAR(500) NULL
+	,[FirstRunner] NVARCHAR(500) NULL
+	,[SecondRunner] NVARCHAR(500) NULL
+	,[ThirdRunner] NVARCHAR(500) NULL
+	,[EventText] NVARCHAR(500) NULL
+	,[LeadoffFlag] NVARCHAR(500) NULL
+	,[PinchHitFlag] NVARCHAR(500) NULL
+	,[DefensivePosition] NVARCHAR(500) NULL
+	,[LineupPosition] NVARCHAR(500) NULL
+	,[EventType] NVARCHAR(500) NULL
+	,[BatterEventFlag] NVARCHAR(500) NULL
+	,[ABFlag] NVARCHAR(500) NULL
+	,[HitBalue] NVARCHAR(500) NULL
+	,[SHFlag] NVARCHAR(500) NULL
+	,[SFFlag] NVARCHAR(500) NULL
+	,[OutsOnPlay] NVARCHAR(500) NULL
+	,[DoublePlayFlag] NVARCHAR(500) NULL
+	,[TriplePlayFlag] NVARCHAR(500) NULL
+	,[RBIOnPlay] NVARCHAR(500) NULL
+	,[WildPitchFlag] NVARCHAR(500) NULL
+	,[PassedBallFlag] NVARCHAR(500) NULL
+	,[FieldedBy] NVARCHAR(500) NULL
+	,[BattedBallType] NVARCHAR(500) NULL
+	,[BuntFlag] NVARCHAR(500) NULL
+	,[FoulFlag] NVARCHAR(500) NULL
+	,[HitLocation] NVARCHAR(500) NULL
+	,[NumErrors] NVARCHAR(500) NULL
+	,[ErrorPlayer1] NVARCHAR(500) NULL
+	,[ErrorType1] NVARCHAR(500) NULL
+	,[ErrorPlayer2] NVARCHAR(500) NULL
+	,[ErrorType2] NVARCHAR(500) NULL
+	,[ErrorPlayer3] NVARCHAR(500) NULL
+	,[ErrorType3] NVARCHAR(500) NULL
+	,[BatterDest] NVARCHAR(500) NULL
+	,[RunnerOn1stDest] NVARCHAR(500) NULL
+	,[RunnerOn2ndDest] NVARCHAR(500) NULL
+	,[RunnerOn3rdDest] NVARCHAR(500) NULL
+	,[PlayOnBatter] NVARCHAR(500) NULL
+	,[PlayOnRunnerOn1st] NVARCHAR(500) NULL
+	,[PlayOnRunnerOn2nd] NVARCHAR(500) NULL
+	,[PlayOnRunnerOn3rd] NVARCHAR(500) NULL
+	,[SBForRunnerOn1stFlag] NVARCHAR(500) NULL
+	,[SBForRunnerOn2ndFlag] NVARCHAR(500) NULL
+	,[SBForRunnerOn3rdFlag] NVARCHAR(500) NULL
+	,[CSForRunnerOn1stFlag] NVARCHAR(500) NULL
+	,[CSForRunnerOn2ndFlag] NVARCHAR(500) NULL
+	,[CSForRunnerOn3rdFlag] NVARCHAR(500) NULL
+	,[POForRunnerOn1stFlag] NVARCHAR(500) NULL
+	,[POForRunnerOn2ndFlag] NVARCHAR(500) NULL
+	,[POForRunnerOn3rdFlag] NVARCHAR(500) NULL
+	,[ResponsiblePitcherForRunnerOn1st] NVARCHAR(500) NULL
+	,[ResponsiblePitcherForRunnerOn2nd] NVARCHAR(500) NULL
+	,[ResponsiblePitcherForRunnerOn3rd] NVARCHAR(500) NULL
+	,[NewGameFlag] NVARCHAR(500) NULL
+	,[EndGameFlag] NVARCHAR(500) NULL
+	,[PinchRunnerOn1st] NVARCHAR(500) NULL
+	,[PinchRunnerOn2nd] NVARCHAR(500) NULL
+	,[PinchRunnerOn3rd] NVARCHAR(500) NULL
+	,[RunnerRemovedForPinchRunnerOn1st] NVARCHAR(500) NULL
+	,[RunnerRemovedForPinchRunnerOn1st2nd] NVARCHAR(500) NULL
+	,[RunnerRemovedForPinchRunnerOn1st3rd] NVARCHAR(500) NULL
+	,[BatterRemovedForPinchHitter] NVARCHAR(500) NULL
+	,[PositionOfBatterRemovedForPinchHitter] NVARCHAR(500) NULL
+	,[FielderWithFirstPutout] NVARCHAR(500) NULL
+	,[FielderWithSecondPutout] NVARCHAR(500) NULL
+	,[FielderWithThirdPutout] NVARCHAR(500) NULL
+	,[FielderWithFirstAssist] NVARCHAR(500) NULL
+	,[FielderWithSecondAssist] NVARCHAR(500) NULL
+	,[FielderWithThirdAssist] NVARCHAR(500) NULL
+	,[FielderWithFourthAssist] NVARCHAR(500) NULL
+	,[FielderWithFifthAssist] NVARCHAR(500) NULL
+	,[EventNum] NVARCHAR(500) NULL
+)
+GO
+
+ALTER TABLE [dbo].[Event] ADD CONSTRAINT [df_Event_EventID] DEFAULT NEWID() FOR [EventID]
+GO
+

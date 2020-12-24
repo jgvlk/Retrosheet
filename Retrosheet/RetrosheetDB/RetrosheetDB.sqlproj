@@ -62,14 +62,28 @@
     <Folder Include="db\raw" />
     <Folder Include="db\raw\Tables" />
     <Folder Include="pub" />
+    <Folder Include="db\dbo\Tables" />
+    <Folder Include="db\aud" />
+    <Folder Include="db\raw\Indexes" />
+    <Folder Include="db\dbo\Indexes" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="db\raw\raw.sql" />
     <Build Include="db\raw\Tables\raw.PlayerMaster.sql" />
     <Build Include="db\raw\Tables\raw.ParkMaster.sql" />
     <Build Include="db\raw\Tables\raw.Event.sql" />
+    <Build Include="db\raw\Tables\raw.Game.sql" />
+    <Build Include="db\dbo\Tables\dbo.Event.sql" />
+    <Build Include="db\dbo\Tables\dbo.Game.sql" />
+    <Build Include="db\dbo\Tables\dbo.ParkMaster.sql" />
+    <Build Include="db\dbo\Tables\dbo.PlayerMaster.sql" />
+    <Build Include="db\aud\aud.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixc_ParkMaster_RetroParkID.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixc_PlayerMaster_RetroPlayerID.sql" />
+    <Build Include="db\raw\Indexes\raw.ixc_ParkMaster_RetroParkID.sql" />
+    <Build Include="db\raw\Indexes\raw.ixc_PlayerMaster_RetroPlayerID.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="pub\JVLK-MBP-VM01-MSSQLDEV.publish.xml" />
+    <None Include="Retrosheet.publish.xml" />
   </ItemGroup>
 </Project>
