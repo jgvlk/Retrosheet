@@ -8,7 +8,7 @@
 	,[Outs] INT NULL
 	,[Balls] INT NULL
 	,[Strikes] INT NULL
-	,[PitchSequence] VARCHAR(25) NULL
+	,[PitchSequence] VARCHAR(MAX) NULL
 	,[VisScore] INT NULL
 	,[HomeScore] INT NULL
 	,[Batter] UNIQUEIDENTIFIER NULL
@@ -30,7 +30,7 @@
 	,[FirstRunner] UNIQUEIDENTIFIER NULL
 	,[SecondRunner] UNIQUEIDENTIFIER NULL
 	,[ThirdRunner]UNIQUEIDENTIFIER NULL
-	,[EventText] VARCHAR(50) NULL
+	,[EventText] VARCHAR(MAX) NULL
 	,[LeadoffFlag] BIT NULL
 	,[PinchHitFlag] BIT NULL
 	,[DefensivePosition] INT NULL
@@ -51,7 +51,7 @@
 	,[BattedBallType] CHAR(1) NULL
 	,[BuntFlag] BIT NULL
 	,[FoulFlag] BIT NULL
-	,[HitLocation] VARCHAR(4) NULL
+	,[HitLocation] VARCHAR(10) NULL
 	,[NumErrors] INT NULL
 	,[ErrorPlayer1] INT NULL
 	,[ErrorType1] CHAR(1) NULL
@@ -63,10 +63,10 @@
 	,[RunnerOn1stDest] INT NULL
 	,[RunnerOn2ndDest] INT NULL
 	,[RunnerOn3rdDest] INT NULL
-	,[PlayOnBatter] VARCHAR(10) NULL
-	,[PlayOnRunnerOn1st] VARCHAR(10) NULL
-	,[PlayOnRunnerOn2nd] VARCHAR(10) NULL
-	,[PlayOnRunnerOn3rd] VARCHAR(10) NULL
+	,[PlayOnBatter] VARCHAR(50) NULL
+	,[PlayOnRunnerOn1st] VARCHAR(50) NULL
+	,[PlayOnRunnerOn2nd] VARCHAR(50) NULL
+	,[PlayOnRunnerOn3rd] VARCHAR(50) NULL
 	,[SBForRunnerOn1stFlag] BIT NULL
 	,[SBForRunnerOn2ndFlag] BIT NULL
 	,[SBForRunnerOn3rdFlag] BIT NULL

@@ -21,7 +21,7 @@ try {
     $today = (Get-Date)
     $dataDir = "$($rootdir)\data\run"
     $extractDir = "$($rootdir)\data\extracts"
-    $outDir = "$($rootdir)\data\processed\$($today.Year)-$($today.Month)-$($today.Day)"
+    $outDir = "$($rootdir)\data\processed\$($today.Year)-$($today.Month)-$($today.Day)@$($today.Hour).$($today.Minute).$($today.Second)"
     $downloadsDir = "$($rootdir)\data\downloads"
     # $logsDir = "$($rootdir)\logs"
     
@@ -31,11 +31,11 @@ try {
     $eventFilesAllStar = @("allas.zip")
     $eventFilesPostSeason = @("allpost.zip")
     $discrepancyFiles = @("1900sdis.zip","1910sdis.zip","1920sdis.zip","1930sdis.zip","1940sdis.zip","1950sdis.zip","1960sdis.zip","1970sdis.zip")
-    # $zips = $eventFilesRegSeason += $boxFilesRegSeason += $eventFilesAllStar += $eventFilesPostSeason += $discrepancyFiles
+    $zips = $eventFilesRegSeason += $boxFilesRegSeason += $eventFilesAllStar += $eventFilesPostSeason += $discrepancyFiles
     
     ### REDUCE DATA VOLUME FOR DEBUGGING ###
     ### \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/ ###
-    $zips = @("2020seve.zip")
+    # $zips = @("2020seve.zip")
     
     
     

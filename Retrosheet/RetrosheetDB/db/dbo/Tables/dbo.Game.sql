@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[Game]
 (
 	[GameID] UNIQUEIDENTIFIER NOT NULL
-	,[RetroGameID] CHAR(12) NOT NULL
-	,[ParkID] UNIQUEIDENTIFIER NOT NULL
+	,[RetroGameID] CHAR(12) NULL
+	,[ParkID] UNIQUEIDENTIFIER NULL
 	,[Date] DATE NULL
 	,[GameNumber] INT NULL
 	,[DayOfWeek] VARCHAR(10) NULL
@@ -92,8 +92,8 @@ GO
 ALTER TABLE [dbo].[Game] ADD CONSTRAINT [df_Game_GameID] DEFAULT NEWID() FOR [GameID]
 GO
 
-ALTER TABLE [dbo].[Game] ADD CONSTRAINT [ak_Game_RetroGameID] UNIQUE ([RetroGameID])
-GO
+--ALTER TABLE [dbo].[Game] ADD CONSTRAINT [ak_Game_RetroGameID] UNIQUE ([RetroGameID])
+--GO
 
 ALTER TABLE [dbo].[Game] ADD CONSTRAINT [fk_Game_ParkMaster] FOREIGN KEY ([ParkID]) REFERENCES [dbo].[ParkMaster]([ParkID])
 GO

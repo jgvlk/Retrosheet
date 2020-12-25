@@ -23,11 +23,17 @@ try {
 
     Write-Host "||MSG" $(Get-Date) "|| CLEANING UP"
 
+    $dataDirEvent = "$($dataDir)/event"
+    $datadirGame = "$($dataDir)/game"
 
-    Get-ChildItem $dataDir |
-    ForEach-Object {
-        Remove-Item "$($dataDir)\$($_)" -Recurse -Force
-    }
+    Remove-Item $dataDirEvent -Recurse -Force
+    Remove-Item $datadirGame -Recurse -Force
+
+
+    # Get-ChildItem $dataDir |
+    # ForEach-Object {
+    #     Remove-Item "$($dataDir)\$($_)" -Recurse -Force
+    # }
     
     Remove-Item $downloadsDir -Recurse -Force
     Remove-Item $extractDir -Recurse -Force

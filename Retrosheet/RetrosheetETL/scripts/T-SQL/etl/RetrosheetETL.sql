@@ -804,7 +804,7 @@ SELECT
 	,e.[Outs] -- INT
 	,e.[Balls] -- INT
 	,e.[Strikes] -- INT
-	,e.[PitchSequence] -- VARCHAR(25)
+	,e.[PitchSequence] -- VARCHAR(MAX)
 	,e.[VisScore] -- INT
 	,e.[HomeScore] -- INT
 	,[Batter] = b.[PlayerID] -- UNIQUEIDENTIFIER
@@ -826,7 +826,7 @@ SELECT
 	,[FirstRunner] = fr.[PlayerID] -- UNIQUEIDENTIFIER
 	,[SecondRunner] = sr.[PlayerID] -- UNIQUEIDENTIFIER
 	,[ThirdRunner] = tr.[PlayerID] -- UNIQUEIDENTIFIER
-	,e.[EventText] -- VARCHAR(50)
+	,e.[EventText] -- VARCHAR(MAX)
 	,[LeadoffFlag] = CASE WHEN e.[LeadoffFlag] = 'T' THEN 1 ELSE 0 END -- BIT
 	,[PinchHitFlag] = CASE WHEN e.[PinchHitFlag] = 'T' THEN 1 ELSE 0 END -- BIT
 	,e.[DefensivePosition] -- INT
@@ -859,10 +859,10 @@ SELECT
 	,e.[RunnerOn1stDest] -- INT
 	,e.[RunnerOn2ndDest] -- INT
 	,e.[RunnerOn3rdDest] -- INT
-	,e.[PlayOnBatter] -- VARCHAR(10)
-	,e.[PlayOnRunnerOn1st] -- VARCHAR(10)
-	,e.[PlayOnRunnerOn2nd] -- VARCHAR(10)
-	,e.[PlayOnRunnerOn3rd] -- VARCHAR(10)
+	,e.[PlayOnBatter] -- VARCHAR(50)
+	,e.[PlayOnRunnerOn1st] -- VARCHAR(50)
+	,e.[PlayOnRunnerOn2nd] -- VARCHAR(50)
+	,e.[PlayOnRunnerOn3rd] -- VARCHAR(50)
 	,[SBForRunnerOn1stFlag] = CASE WHEN e.[SBForRunnerOn1stFlag] = 'T' THEN 1 ELSE 0 END -- BIT
 	,[SBForRunnerOn2ndFlag] = CASE WHEN e.[SBForRunnerOn2ndFlag] = 'T' THEN 1 ELSE 0 END -- BIT
 	,[SBForRunnerOn3rdFlag] = CASE WHEN e.[SBForRunnerOn3rdFlag] = 'T' THEN 1 ELSE 0 END -- BIT
