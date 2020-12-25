@@ -55,6 +55,8 @@ union all
 select cast(substring(GameID,4,4) as nvarchar) + '-' + cast(substring(GameID,8,2) as nvarchar) + '-' + cast(substring(GameID,10,2) as nvarchar), [RunnerRemovedForPinchRunnerOn1st2nd]		  , '[RunnerRemovedForPinchRunnerOn1st2nd]'	 from raw.Event where [RunnerRemovedForPinchRunnerOn1st2nd]		not in (select * from #person)
 union all
 select cast(substring(GameID,4,4) as nvarchar) + '-' + cast(substring(GameID,8,2) as nvarchar) + '-' + cast(substring(GameID,10,2) as nvarchar), [RunnerRemovedForPinchRunnerOn1st3rd]		  , '[RunnerRemovedForPinchRunnerOn1st3rd]'	 from raw.Event where [RunnerRemovedForPinchRunnerOn1st3rd]		not in (select * from #person)
+union all
+select cast(substring(GameID,4,4) as nvarchar) + '-' + cast(substring(GameID,8,2) as nvarchar) + '-' + cast(substring(GameID,10,2) as nvarchar), [BatterRemovedForPinchHitter]		  , '[BatterRemovedForPinchHitter]'	 from raw.Event where [BatterRemovedForPinchHitter]		not in (select * from #person)
 go
 
 select distinct * into aud.MissingPlayers_EventData from #MissingPlayers_EventData

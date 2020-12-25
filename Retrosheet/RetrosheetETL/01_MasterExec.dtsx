@@ -7,14 +7,46 @@
   DTS:CreatorName="JVLK-MBP-VM01\jonat"
   DTS:DTSID="{AEAD5884-F6D5-4565-A52C-1BDE50AA4DC1}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LastModifiedProductVersion="15.0.2000.149"
   DTS:LocaleID="1033"
   DTS:ObjectName="01_MasterExec"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{102F447D-BAB8-448B-BF9A-F2A318568E21}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{FE6D04A4-666D-49AF-A011-99F2564163F0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AddFKs.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{9321790F-91F7-47E4-A1D7-FD506455BE7D}"
+      DTS:ObjectName="AddFKs.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\T-SQL\etl\AddFKs.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DropFKs.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{C11A77CD-D331-46BC-80AD-A52831601D6B}"
+      DTS:ObjectName="DropFKs.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\T-SQL\etl\DropFKs.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TruncateTables.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{B15ED418-097F-4F3D-8EAB-E47611D60EDD}"
+      DTS:ObjectName="TruncateTables.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\T-SQL\etl\TruncateTables.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:LogProviders>
     <DTS:LogProvider
       DTS:ConfigString="RetrosheetDB"
@@ -305,6 +337,24 @@
         DTS:FilterKind="0" />
       <DTS:Executables>
         <DTS:Executable
+          DTS:refId="Package\Master Execution Container\Add FKs"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2C7ADF1D-08E4-4E3C-8E9E-CE9AD2BDD69F}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Add FKs"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E03933CE-BB09-4EEF-A98B-49AE794A47E7}"
+              SQLTask:SqlStmtSourceType="FileConnection"
+              SQLTask:SqlStatementSource="AddFKs.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Master Execution Container\Cleanup"
           DTS:CreationName="Microsoft.ExecuteProcess"
           DTS:Description="Execute Process Task"
@@ -342,6 +392,24 @@
               Executable="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
               Arguments="C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\Processor.ps1"
               WorkingDirectory="C:\Data\mlb\Retrosheet\data\run" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Master Execution Container\Drop FKs"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{0C617C92-609E-45D5-A535-555F103255CC}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Drop FKs"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E03933CE-BB09-4EEF-A98B-49AE794A47E7}"
+              SQLTask:SqlStmtSourceType="FileConnection"
+              SQLTask:SqlStatementSource="DropFKs.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -398,7 +466,8 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{E03933CE-BB09-4EEF-A98B-49AE794A47E7}"
-              SQLTask:SqlStatementSource="USE [Retrosheet]&#xA;&#xA;TRUNCATE TABLE [raw].[PlayerMaster]&#xA;TRUNCATE TABLE [raw].[ParkMaster]&#xA;TRUNCATE TABLE [raw].[Game]&#xA;TRUNCATE TABLE [raw].[Event]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStmtSourceType="FileConnection"
+              SQLTask:SqlStatementSource="TruncateTables.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -435,6 +504,22 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 3"
           DTS:To="Package\Master Execution Container\Cleanup" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Master Execution Container.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{433C8A08-3CC7-4A30-A8E2-8EF9A9007117}"
+          DTS:From="Package\Master Execution Container\Drop FKs"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Master Execution Container\Truncate Tables" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Master Execution Container.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{8D69E419-6AB0-43B1-87E1-B8B1A6301CB0}"
+          DTS:From="Package\Master Execution Container\Cleanup"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\Master Execution Container\Add FKs" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -451,11 +536,119 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="120,42"
+          Id="Package\Master Execution Container\Cleanup"
+          TopLeft="63.0000000000001,515.5" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Master Execution Container\Download &amp; Extract Raw Data"
+          TopLeft="10,209.5" />
+        <NodeLayout
+          Size="235,42"
+          Id="Package\Master Execution Container\Run 02_LoadSupplementalData"
+          TopLeft="5.50000000000004,311.5" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Master Execution Container\Run 03_LoadGameEventData"
+          TopLeft="10.0000000000001,413.5" />
+        <NodeLayout
           Size="158,42"
           Id="Package\Master Execution Container\Truncate Tables"
-          TopLeft="44,5.5" />
+          TopLeft="44,107.5" />
         <EdgeLayout
           Id="Package\Master Execution Container.PrecedenceConstraints[Constraint]"
+          TopLeft="123,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="123,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="123,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="123,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="125,42"
+          Id="Package\Master Execution Container\Drop FKs"
+          TopLeft="60.5,5.5" />
+        <EdgeLayout
+          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 4]"
           TopLeft="123,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -477,68 +670,12 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="226,42"
-          Id="Package\Master Execution Container\Download &amp; Extract Raw Data"
-          TopLeft="10,107.5" />
+          Size="121,42"
+          Id="Package\Master Execution Container\Add FKs"
+          TopLeft="62.5000000000001,617.5" />
         <EdgeLayout
-          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="123,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="235,42"
-          Id="Package\Master Execution Container\Run 02_LoadSupplementalData"
-          TopLeft="5.50000000000003,209.5" />
-        <EdgeLayout
-          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 2]"
-          TopLeft="123,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="226,42"
-          Id="Package\Master Execution Container\Run 03_LoadGameEventData"
-          TopLeft="10,311.5" />
-        <NodeLayout
-          Size="120,42"
-          Id="Package\Master Execution Container\Cleanup"
-          TopLeft="63,413.5" />
-        <EdgeLayout
-          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 3]"
-          TopLeft="123,353.5">
+          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 5]"
+          TopLeft="123,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -561,8 +698,8 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="246,510"
-          Size="246,554"
+          PanelSize="246,714"
+          Size="246,758"
           Id="Package\Master Execution Container"
           TopLeft="100,47" />
       </GraphLayout>

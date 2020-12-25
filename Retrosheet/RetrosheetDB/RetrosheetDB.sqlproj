@@ -84,6 +84,6 @@
     <Build Include="db\raw\Indexes\raw.ixc_PlayerMaster_RetroPlayerID.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Retrosheet.publish.xml" />
+    <None Include="pub\Retrosheet.publish.xml" />
   </ItemGroup>
 </Project>

@@ -19,11 +19,29 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
-        <FileNode Name="SQLQuery1.sql">
+        <FileNode Name="AddFKs.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLDEV:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>(local)\MSSQLDEV</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>SQLQuery1.sql</FullPath>
+          <FullPath>AddFKs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DropFKs.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLDEV:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLDEV</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DropFKs.sql</FullPath>
+        </FileNode>
+        <FileNode Name="RetrosheetETL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLDEV:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLDEV</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>RetrosheetETL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TruncateTables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLDEV:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\MSSQLDEV</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>TruncateTables.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
