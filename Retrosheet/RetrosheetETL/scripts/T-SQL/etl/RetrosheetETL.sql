@@ -94,7 +94,6 @@ SELECT
 	,[FirstBaseUmpire] =
 		CASE
 			WHEN [FirstBaseUmpire] = 'broot001' THEN UPPER('broot101')
-			WHEN ( SELECT [raw].[udf_GetIntFromFieldValue]([FirstBaseUmpire]) ) = '' THEN NULL
 			ELSE UPPER([FirstBaseUmpire])
 		END
 	,[SecondBaseUmpire] =
@@ -105,7 +104,6 @@ SELECT
 	,[ThirdBaseUmpire] =
 		CASE
 			WHEN [ThirdBaseUmpire] = 'broot001' THEN UPPER('broot101')
-			WHEN ( SELECT [raw].[udf_GetIntFromFieldValue]([ThirdBaseUmpire]) ) = '' THEN NULL
 			ELSE UPPER([ThirdBaseUmpire])
 		END
 	,[LeftFieldUmpire] =
@@ -161,7 +159,6 @@ SELECT
 	,[VisitorBatter1] =
 		CASE
 			WHEN [VisitorBatter1] = 'broot001' THEN UPPER('broot101')
-			WHEN ( SELECT [raw].[udf_GetIntFromFieldValue]([VisitorBatter1]) ) = '' THEN NULL
 			ELSE UPPER([VisitorBatter1])
 		END
 	,[VisitorPosition1]
@@ -180,7 +177,6 @@ SELECT
 	,[VisitorBatter4] =
 		CASE
 			WHEN [VisitorBatter4] = 'broot001' THEN UPPER('broot101')
-			WHEN ( SELECT [raw].[udf_GetIntFromFieldValue]([VisitorBatter4]) ) = '' THEN NULL
 			ELSE UPPER([VisitorBatter4])
 		END
 	,[VisitorPosition4]
@@ -223,7 +219,6 @@ SELECT
 	,[HomeBatter2] =
 		CASE
 			WHEN [HomeBatter2] = 'broot001' THEN UPPER('broot101')
-			WHEN ( SELECT [raw].[udf_GetIntFromFieldValue]([HomeBatter2]) ) = '' THEN NULL
 			ELSE UPPER([HomeBatter2])
 		END
 	,[HomePosition2]
@@ -248,7 +243,6 @@ SELECT
 	,[HomeBatter6] =
 		CASE
 			WHEN [HomeBatter6] = 'broot001' THEN UPPER('broot101')
-			WHEN ( SELECT [raw].[udf_GetIntFromFieldValue]([HomeBatter6]) ) = '' THEN NULL
 			ELSE UPPER([HomeBatter6])
 		END
 	,[HomePosition6]
@@ -261,7 +255,6 @@ SELECT
 	,[HomeBatter8] =
 		CASE
 			WHEN [HomeBatter8] = 'broot001' THEN UPPER('broot101')
-			WHEN ( SELECT [raw].[udf_GetIntFromFieldValue]([HomeBatter8]) ) = '' THEN NULL
 			ELSE UPPER([HomeBatter8])
 		END
 	,[HomePosition8]

@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">JVLK-MBP-VM01</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAckKNFLICe0i1PXsuoLlBJgAAAAACAAAAAAAQZgAAAAEAACAAAAAg+EjuACJlDcsrN0HVcjlayQNKeh8eFSD4QmTj5P9PUgAAAAAOgAAAAAIAACAAAACwArSsrketz5Ae8dOzF1WSAe3sxE8c6iipzg60X2Y4CZAAAADJVD9UcwBeK4blBRIq67BysxDQkV1NcHzUbNP13/bdqYW0lPD5u8az+PQqwpQrp9578wq67+Fk6ydMnaRpd4+MqXMAzEbGmXpnB4dh+YpFmiGfBziDhdQekgknLvotyJGvauNCbSiXRRhAiEsaCW9QiczZBN0vaE2XbvIXXXZuh0Fb/TOjKcU17B/g+xioU6lAAAAAAOOf37t7xrZjN54GhkxWDcaEWzpInsU0C5JcRVtuG6DDosnJp4BsSQvB5X3P+gUDWuKnBdPXmTsvHcskBQIYDQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAckKNFLICe0i1PXsuoLlBJgAAAAACAAAAAAAQZgAAAAEAACAAAACQ++8wnsFZXJIX0au/XU6Y1EJlLbCYqVcgY5wE7h+NjgAAAAAOgAAAAAIAACAAAAAuCdevceD5GHejOnek+HArhfGLf69d8yfcSWWHcjTf0ZAAAADntgxbICg5YJuBWEWyO4pc2XXq2dzcbbv17HETKrjmcF5sFFxeBERjjKyjzmyivHCBpwNEwKZBfDBXCH6AbfHAytNX7kjOwwixXUVE4Q6TiQm3yzsEwtDejJCagfdFsZ2Kgj0jxCauYVH6Z9z2mjePBpEC63ds9qLYQzg8a0w7SYhTuIfKBDRHTuU3+ivuh0NAAAAARVNavblO1pmjwQbxFllcPg1yhnC8+qBX/DLzzTsD4Q6PuS5EvlSYxvjd5CVltQr7SF7plHnkD9PUn7lHQqfrNA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -165,10 +165,10 @@
                 <SSIS:Property SSIS:Name="Name">01_MasterExec</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">16</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">17</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{FE6D04A4-666D-49AF-A011-99F2564163F0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{471C404A-DFB5-48E2-A80E-E5B82D89B649}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -232,6 +232,36 @@
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Value">C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\T-SQL\etl\DropFKs.sql</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.RetrosheetETL.sql.ConnectByProxy">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.RetrosheetETL.sql.ConnectionString">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\T-SQL\etl\RetrosheetETL.sql</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -445,8 +475,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -642,8 +670,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -685,10 +711,10 @@
                 <SSIS:Property SSIS:Name="Name">03_LoadGameEventData</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">9</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{57EC998B-0216-4929-916A-EB03B6342908}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{73990395-C7A7-4C2A-8A48-9E34DF2419DD}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
