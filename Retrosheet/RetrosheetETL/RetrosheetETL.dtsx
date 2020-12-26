@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="JVLK-MBP-VM01"
   DTS:CreatorName="JVLK-MBP-VM01\jonat"
-  DTS:DTSID="{AEAD5884-F6D5-4565-A52C-1BDE50AA4DC1}"
+  DTS:DTSID="{85136F6A-B9B9-4436-9C91-74B03A9F7293}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.149"
   DTS:LocaleID="1033"
-  DTS:ObjectName="01_MasterExec"
+  DTS:ObjectName="RetrosheetETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{49696B63-C0E4-4F70-9D3F-1E3CA6820252}">
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{EE4EC3A8-22BB-4F94-B5D5-45FBA25B6E4E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -34,6 +34,125 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\T-SQL\etl\DropFKs.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{8BDCF892-2728-49E7-80B7-D6A9FF72E7A5}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Data\mlb\Retrosheet\data\supplemental\current_name.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CurrentFranchiseID"
+              DTS:DTSID="{5E2DA2CE-0906-42B8-857F-3EB668A3CF04}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FranchiseID"
+              DTS:DTSID="{C5EF8336-600E-4D8F-BDA0-3FEE26083274}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="League"
+              DTS:DTSID="{FADBEFBF-0EB5-4F44-A80B-D4FCA9D8E974}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Division"
+              DTS:DTSID="{6CA02DA9-E9EF-4217-8756-946822FEAE9C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LocationName"
+              DTS:DTSID="{60880C5B-D4FC-4674-8E66-DB2046B40872}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Nickname"
+              DTS:DTSID="{63DD54FA-E7C1-4CD9-99F0-60DC54D79F38}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AltNicknames"
+              DTS:DTSID="{51FB675B-B309-4DEA-9BE5-FE14E0E4C687}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Start"
+              DTS:DTSID="{B5FAEC84-9D49-45DE-A039-C069688E23B0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="End"
+              DTS:DTSID="{F8E3A8F3-801A-43AB-B2A8-7A41EC394165}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="City"
+              DTS:DTSID="{988F0F72-11DD-4792-BC86-60AFA8881261}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="State"
+              DTS:DTSID="{94BB85DE-7504-4BC0-96A0-3E94AA4681AB}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -1911,6 +2030,80 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TeamMaster_raw]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{D52D36C1-7040-4A46-8E49-8FDA289C41F4}"
+      DTS:ObjectName="TeamMaster_raw">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Data\mlb\Retrosheet\data\supplemental\team_id.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TeamAbbr"
+              DTS:DTSID="{A04B96C7-F157-4EC1-B426-13696BA44AC2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="League"
+              DTS:DTSID="{2B225ED4-0BE9-4F0E-A2F8-5B354B9CD675}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="City"
+              DTS:DTSID="{CFC2177E-9DEA-4FEE-9AD7-31565681E5BC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Nickname"
+              DTS:DTSID="{8EDF79D4-BEB6-47D5-9738-6BE432911C44}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Start"
+              DTS:DTSID="{9DAEB7E3-7CF3-4CC9-B806-A26FDA47E88F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="End"
+              DTS:DTSID="{8A6D10AE-4B6B-42B2-92FF-C299F1DD8C5E}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[TruncateTables.sql]"
       DTS:CreationName="FILE"
       DTS:DTSID="{B15ED418-097F-4F3D-8EAB-E47611D60EDD}"
@@ -1960,7 +2153,7 @@
     DTS:LoggingMode="1">
     <DTS:Property
       DTS:DataType="8"
-      DTS:Name="EventFilter">14,7,OnError,19,OnExecStatusChanged,13,OnInformation,13,OnPostExecute,14,OnPostValidate,12,OnPreExecute,13,OnPreValidate,10,OnProgress,13,OnQueryCancel,12,OnTaskFailed,22,OnVariableValueChanged,9,OnWarning,10,Diagnostic,12,DiagnosticEx</DTS:Property>
+      DTS:Name="EventFilter">5,7,OnError,13,OnInformation,10,OnProgress,12,OnTaskFailed,9,OnWarning</DTS:Property>
     <DTS:Property
       DTS:EventName="Diagnostic"
       DTS:Name="ColumnFilter">
@@ -2229,7 +2422,8 @@
       DTS:ObjectName="Master Execution Container">
       <DTS:Variables />
       <DTS:LoggingOptions
-        DTS:FilterKind="0" />
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1" />
       <DTS:Executables>
         <DTS:Executable
           DTS:refId="Package\Master Execution Container\Add FKs"
@@ -2242,6 +2436,8 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{E03933CE-BB09-4EEF-A98B-49AE794A47E7}"
@@ -2300,6 +2496,8 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{E03933CE-BB09-4EEF-A98B-49AE794A47E7}"
@@ -2318,6 +2516,8 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{E03933CE-BB09-4EEF-A98B-49AE794A47E7}"
@@ -2334,6 +2534,8 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Load Process Retrosheet Data">
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:Executables>
             <DTS:Executable
               DTS:refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Event File"
@@ -2363,6 +2565,8 @@
                 </DTS:ObjectData>
               </DTS:ForEachEnumerator>
               <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
               <DTS:Executables>
                 <DTS:Executable
                   DTS:refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Event File\Load Raw Event Data"
@@ -2374,6 +2578,8 @@
                   DTS:ObjectName="Load Raw Event Data"
                   DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
                   <DTS:Variables />
+                  <DTS:LoggingOptions
+                    DTS:FilterKind="0" />
                   <DTS:ObjectData>
                     <pipeline
                       version="1">
@@ -6280,6 +6486,8 @@
                 </DTS:ObjectData>
               </DTS:ForEachEnumerator>
               <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
               <DTS:Executables>
                 <DTS:Executable
                   DTS:refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Game File\Load Raw Game Data"
@@ -6291,6 +6499,8 @@
                   DTS:ObjectName="Load Raw Game Data"
                   DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
                   <DTS:Variables />
+                  <DTS:LoggingOptions
+                    DTS:FilterKind="0" />
                   <DTS:ObjectData>
                     <pipeline
                       version="1">
@@ -9724,7 +9934,664 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Load Raw Data">
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Data Flow Task"
+              DTS:DTSID="{1A694A5C-9DA7-4216-ADC8-CAD962F34439}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="CurrentNameMaster"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source"
+                      componentClassID="Microsoft.FlatFileSource"
+                      contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                      description="Flat File Source"
+                      localeId="1033"
+                      name="Flat File Source"
+                      usesDispositions="true"
+                      version="1">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Specifies whether zero-length columns are treated as null."
+                          name="RetainNulls">true</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                          name="FileNameColumnName"></property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Connections[FlatFileConnection]"
+                          connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                          connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                          name="FlatFileConnection" />
+                      </connections>
+                      <outputs>
+                        <output
+                          refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output]"
+                          name="Flat File Source Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[CurrentFranchiseID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CurrentFranchiseID]"
+                              length="500"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[CurrentFranchiseID]"
+                              name="CurrentFranchiseID"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[FranchiseID]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[FranchiseID]"
+                              length="500"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[FranchiseID]"
+                              name="FranchiseID"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[League]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[League]"
+                              length="500"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[League]"
+                              name="League"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Division]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Division]"
+                              length="500"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Division]"
+                              name="Division"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[LocationName]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[LocationName]"
+                              length="500"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[LocationName]"
+                              name="LocationName"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Nickname]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Nickname]"
+                              length="500"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Nickname]"
+                              name="Nickname"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[AltNicknames]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[AltNicknames]"
+                              length="500"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[AltNicknames]"
+                              name="AltNicknames"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Start]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Start]"
+                              length="500"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Start]"
+                              name="Start"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[End]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[End]"
+                              length="500"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[End]"
+                              name="End"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[City]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[City]"
+                              length="500"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[City]"
+                              name="City"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[State]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[State]"
+                              length="500"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[State]"
+                              name="State"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                          </outputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CurrentFranchiseID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="CurrentFranchiseID" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[FranchiseID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="FranchiseID" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[League]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="League" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Division]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="Division" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[LocationName]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="LocationName" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Nickname]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="Nickname" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[AltNicknames]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="AltNicknames" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Start]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="Start" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[End]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="End" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[City]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="City" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[State]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="State" />
+                          </externalMetadataColumns>
+                        </output>
+                        <output
+                          refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Error Output]"
+                          isErrorOut="true"
+                          name="Flat File Source Error Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                              codePage="1252"
+                              dataType="text"
+                              description="Flat File Source Error Output Column"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                              name="Flat File Source Error Output Column" />
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination"
+                      componentClassID="Microsoft.OLEDBDestination"
+                      contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                      description="OLE DB Destination"
+                      name="OLE DB Destination"
+                      usesDispositions="true"
+                      version="4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset">[raw].[CurrentNameMaster]</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">3</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepIdentity">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepNulls">true</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                          name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                          name="FastLoadMaxInsertCommitSize">2147483647</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Connections[OleDbConnection]"
+                          connectionManagerID="{E03933CE-BB09-4EEF-A98B-49AE794A47E7}:external"
+                          connectionManagerRefId="Project.ConnectionManagers[RetrosheetDB]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                          errorOrTruncationOperation="Insert"
+                          errorRowDisposition="FailComponent"
+                          hasSideEffects="true"
+                          name="OLE DB Destination Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CurrentFranchiseID]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="500"
+                              cachedName="CurrentFranchiseID"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrentFranchiseID]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[CurrentFranchiseID]" />
+                            <inputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FranchiseID]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="500"
+                              cachedName="FranchiseID"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FranchiseID]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[FranchiseID]" />
+                            <inputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[League]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="500"
+                              cachedName="League"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[League]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[League]" />
+                            <inputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Division]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="500"
+                              cachedName="Division"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Division]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Division]" />
+                            <inputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LocationName]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="500"
+                              cachedName="LocationName"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationName]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[LocationName]" />
+                            <inputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nickname]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="500"
+                              cachedName="Nickname"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nickname]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Nickname]" />
+                            <inputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Start]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="500"
+                              cachedName="Start"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Start]" />
+                            <inputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[End]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="500"
+                              cachedName="End"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[End]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[End]" />
+                            <inputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[City]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="500"
+                              cachedName="City"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[City]" />
+                            <inputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[State]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="500"
+                              cachedName="State"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[State]" />
+                            <inputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AltNicknames]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="500"
+                              cachedName="AltNicknames"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AltNickname]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[AltNicknames]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrentFranchiseID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="CurrentFranchiseID" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FranchiseID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="FranchiseID" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[League]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="League" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Division]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="Division" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationName]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="LocationName" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nickname]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="Nickname" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AltNickname]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="AltNickname" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="Start" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[End]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="End" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="City" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="State" />
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="OLE DB Destination Error Output"
+                          synchronousInputId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster.Paths[Flat File Source Output]"
+                      endId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      name="Flat File Source Output"
+                      startId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
             <DTS:Executable
               DTS:refId="Package\Master Execution Container\Load Raw Data\ParkMaster"
               DTS:CreationName="Microsoft.Pipeline"
@@ -9735,6 +10602,8 @@
               DTS:ObjectName="ParkMaster"
               DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
               <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
               <DTS:ObjectData>
                 <pipeline
                   version="1">
@@ -10306,6 +11175,8 @@
               DTS:ObjectName="PlayerMaster"
               DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
               <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
               <DTS:ObjectData>
                 <pipeline
                   version="1">
@@ -10783,8 +11654,461 @@
                 </pipeline>
               </DTS:ObjectData>
             </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Master Execution Container\Load Raw Data\TeamMaster"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Data Flow Task"
+              DTS:DTSID="{D7D3CA4D-986A-4D45-B4AF-73EFD13092E8}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="TeamMaster"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source"
+                      componentClassID="Microsoft.FlatFileSource"
+                      contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                      description="Flat File Source"
+                      localeId="1033"
+                      name="Flat File Source"
+                      usesDispositions="true"
+                      version="1">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Specifies whether zero-length columns are treated as null."
+                          name="RetainNulls">true</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                          name="FileNameColumnName"></property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Connections[FlatFileConnection]"
+                          connectionManagerID="Package.ConnectionManagers[TeamMaster_raw]"
+                          connectionManagerRefId="Package.ConnectionManagers[TeamMaster_raw]"
+                          name="FlatFileConnection" />
+                      </connections>
+                      <outputs>
+                        <output
+                          refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output]"
+                          name="Flat File Source Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].Columns[TeamAbbr]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[TeamAbbr]"
+                              length="500"
+                              lineageId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].Columns[TeamAbbr]"
+                              name="TeamAbbr"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].Columns[League]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[League]"
+                              length="500"
+                              lineageId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].Columns[League]"
+                              name="League"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].Columns[City]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[City]"
+                              length="500"
+                              lineageId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].Columns[City]"
+                              name="City"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Nickname]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Nickname]"
+                              length="500"
+                              lineageId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Nickname]"
+                              name="Nickname"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Start]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Start]"
+                              length="500"
+                              lineageId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Start]"
+                              name="Start"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].Columns[End]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[End]"
+                              length="500"
+                              lineageId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].Columns[End]"
+                              name="End"
+                              truncationRowDisposition="FailComponent">
+                              <properties>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                                  name="FastParse">false</property>
+                                <property
+                                  dataType="System.Boolean"
+                                  description="Indicates whether the data is in binary format."
+                                  name="UseBinaryFormat">false</property>
+                              </properties>
+                            </outputColumn>
+                          </outputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[TeamAbbr]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="TeamAbbr" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[League]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="League" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[City]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="City" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Nickname]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="Nickname" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Start]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="Start" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[End]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="End" />
+                          </externalMetadataColumns>
+                        </output>
+                        <output
+                          refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Error Output]"
+                          isErrorOut="true"
+                          name="Flat File Source Error Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                              codePage="1252"
+                              dataType="text"
+                              description="Flat File Source Error Output Column"
+                              lineageId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                              name="Flat File Source Error Output Column" />
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination"
+                      componentClassID="Microsoft.OLEDBDestination"
+                      contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                      description="OLE DB Destination"
+                      name="OLE DB Destination"
+                      usesDispositions="true"
+                      version="4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset">[raw].[TeamMaster]</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">3</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepIdentity">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepNulls">true</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                          name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                          name="FastLoadMaxInsertCommitSize">2147483647</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Connections[OleDbConnection]"
+                          connectionManagerID="{E03933CE-BB09-4EEF-A98B-49AE794A47E7}:external"
+                          connectionManagerRefId="Project.ConnectionManagers[RetrosheetDB]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                          errorOrTruncationOperation="Insert"
+                          errorRowDisposition="FailComponent"
+                          hasSideEffects="true"
+                          name="OLE DB Destination Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[League]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="500"
+                              cachedName="League"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[League]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].Columns[League]" />
+                            <inputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[City]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="500"
+                              cachedName="City"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].Columns[City]" />
+                            <inputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nickname]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="500"
+                              cachedName="Nickname"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nickname]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Nickname]" />
+                            <inputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Start]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="500"
+                              cachedName="Start"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Start]" />
+                            <inputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[End]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="500"
+                              cachedName="End"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[End]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].Columns[End]" />
+                            <inputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TeamAbbr]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="500"
+                              cachedName="TeamAbbr"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TeamID]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output].Columns[TeamAbbr]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TeamID]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="TeamID" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[League]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="League" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="City" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nickname]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="Nickname" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="Start" />
+                            <externalMetadataColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[End]"
+                              codePage="1252"
+                              dataType="str"
+                              length="500"
+                              name="End" />
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="OLE DB Destination Error Output"
+                          synchronousInputId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\Master Execution Container\Load Raw Data\TeamMaster.Paths[Flat File Source Output]"
+                      endId="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      name="Flat File Source Output"
+                      startId="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source.Outputs[Flat File Source Output]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
           </DTS:Executables>
           <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Master Execution Container\Load Raw Data.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{F69F1305-4C1B-45C8-8032-4E135BFFE6E1}"
+              DTS:From="Package\Master Execution Container\Load Raw Data\ParkMaster"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\Master Execution Container\Load Raw Data\TeamMaster" />
             <DTS:PrecedenceConstraint
               DTS:refId="Package\Master Execution Container\Load Raw Data.PrecedenceConstraints[Constraint 1]"
               DTS:CreationName=""
@@ -10793,6 +12117,14 @@
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint 1"
               DTS:To="Package\Master Execution Container\Load Raw Data\ParkMaster" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Master Execution Container\Load Raw Data.PrecedenceConstraints[Constraint 2]"
+              DTS:CreationName=""
+              DTS:DTSID="{5A121B2E-1122-4190-AB7D-F88F00A486DC}"
+              DTS:From="Package\Master Execution Container\Load Raw Data\TeamMaster"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 2"
+              DTS:To="Package\Master Execution Container\Load Raw Data\CurrentNameMaster" />
           </DTS:PrecedenceConstraints>
         </DTS:Executable>
         <DTS:Executable
@@ -10891,11 +12223,11 @@
         <NodeLayout
           Size="121,42"
           Id="Package\Master Execution Container\Add FKs"
-          TopLeft="178,1133.5" />
+          TopLeft="178,1337.5" />
         <NodeLayout
           Size="120,42"
           Id="Package\Master Execution Container\Cleanup"
-          TopLeft="178.5,1031.5" />
+          TopLeft="178.5,1235.5" />
         <NodeLayout
           Size="226,42"
           Id="Package\Master Execution Container\Download &amp; Extract Raw Data"
@@ -10907,7 +12239,125 @@
         <NodeLayout
           Size="161,42"
           Id="Package\Master Execution Container\Load dbo Tables"
-          TopLeft="158,929.5" />
+          TopLeft="158,1133.5" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Event File\Load Raw Event Data"
+          TopLeft="5.5,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="197,103"
+          Size="197,146"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Event File"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Game File\Load Raw Game Data"
+          TopLeft="5.5,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="198,103"
+          Size="198,146"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Game File"
+          TopLeft="263,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="466,207"
+          Size="466,250"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data"
+          TopLeft="5.50000000000014,823.5" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Master Execution Container\Load Raw Data\ParkMaster"
+          TopLeft="27.5,107.5" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Master Execution Container\Load Raw Data\PlayerMaster"
+          TopLeft="23,5.5" />
+        <EdgeLayout
+          Id="Package\Master Execution Container\Load Raw Data.PrecedenceConstraints[Constraint 1]"
+          TopLeft="95,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Master Execution Container\Load Raw Data\CurrentNameMaster"
+          TopLeft="5.50000000000003,311.5" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Master Execution Container\Load Raw Data\TeamMaster"
+          TopLeft="24.5,209.5" />
+        <EdgeLayout
+          Id="Package\Master Execution Container\Load Raw Data.PrecedenceConstraints[Constraint]"
+          TopLeft="95,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Master Execution Container\Load Raw Data.PrecedenceConstraints[Constraint 2]"
+          TopLeft="95,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="190,408"
+          Size="190,452"
+          Id="Package\Master Execution Container\Load Raw Data"
+          TopLeft="143.5,311.5" />
         <NodeLayout
           Size="158,42"
           Id="Package\Master Execution Container\Truncate Tables"
@@ -10915,6 +12365,72 @@
         <EdgeLayout
           Id="Package\Master Execution Container.PrecedenceConstraints[Constraint]"
           TopLeft="238.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="238.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="238.5,763.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="238.5,1073.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10958,7 +12474,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 5]"
-          TopLeft="238.5,1073.5">
+          TopLeft="238.5,1277.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10980,37 +12496,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 6]"
-          TopLeft="238.5,971.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="135,42"
-          Id="Package\Master Execution Container\Load Raw Data\ParkMaster"
-          TopLeft="10,107.5" />
-        <NodeLayout
-          Size="144,42"
-          Id="Package\Master Execution Container\Load Raw Data\PlayerMaster"
-          TopLeft="5.50000000000001,5.5" />
-        <EdgeLayout
-          Id="Package\Master Execution Container\Load Raw Data.PrecedenceConstraints[Constraint 1]"
-          TopLeft="77.5,47.5">
+          TopLeft="238.5,1175.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11033,115 +12519,113 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="155,204"
-          Size="155,248"
-          Id="Package\Master Execution Container\Load Raw Data"
-          TopLeft="161,311.5" />
-        <EdgeLayout
-          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="238.5,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="186,42"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Event File\Load Raw Event Data"
-          TopLeft="5.5,5.5" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="197,102"
-          Size="197,146"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Event File"
-          TopLeft="5.5,5.5" />
-        <NodeLayout
-          Size="187,42"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Game File\Load Raw Game Data"
-          TopLeft="5.5,5.5" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="198,102"
-          Size="198,146"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Game File"
-          TopLeft="263,5.5" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="466,206"
-          Size="466,250"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data"
-          TopLeft="5.50000000000011,619.5" />
-        <EdgeLayout
-          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 2]"
-          TopLeft="238.5,559.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 3]"
-          TopLeft="238.5,869.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="477,1230"
-          Size="477,1274"
+          PanelSize="477,1434"
+          Size="477,1478"
           Id="Package\Master Execution Container"
           TopLeft="100,47" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Event File\Load Raw Event Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Event File\Load Raw Event Data\Flat File Source"
+          TopLeft="128,94" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Event File\Load Raw Event Data\OLE DB Destination"
+          TopLeft="245,236" />
+        <EdgeLayout
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Event File\Load Raw Event Data.Paths[Flat File Source Output]"
+          TopLeft="206,136">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="127.5,100"
+              Start="0,0"
+              End="127.5,92.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46"
+                    Point2="0,50"
+                    Point3="4,50" />
+                  <mssgle:LineSegment
+                    End="123.5,50" />
+                  <mssgle:CubicBezierSegment
+                    Point1="123.5,50"
+                    Point2="127.5,50"
+                    Point3="127.5,54" />
+                  <mssgle:LineSegment
+                    End="127.5,92.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Game File\Load Raw Game Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Game File\Load Raw Game Data\Flat File Source"
+          TopLeft="135.5,134.5" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Game File\Load Raw Game Data\OLE DB Destination"
+          TopLeft="316,298" />
+        <EdgeLayout
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Game File\Load Raw Game Data.Paths[Flat File Source Output]"
+          TopLeft="213.5,176.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="191,121.5"
+              Start="0,0"
+              End="191,114">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,56.75"
+                    Point2="0,60.75"
+                    Point3="4,60.75" />
+                  <mssgle:LineSegment
+                    End="187,60.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="187,60.75"
+                    Point2="191,60.75"
+                    Point3="191,64.75" />
+                  <mssgle:LineSegment
+                    End="191,114" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <TaskHost
     design-time-name="Package\Master Execution Container\Load Raw Data\ParkMaster">
     <LayoutInfo>
@@ -11247,44 +12731,44 @@
     </LayoutInfo>
   </TaskHost>
   <TaskHost
-    design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Event File\Load Raw Event Data">
+    design-time-name="Package\Master Execution Container\Load Raw Data\CurrentNameMaster">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="156,42"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Event File\Load Raw Event Data\Flat File Source"
-          TopLeft="128,94" />
+          Id="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source"
+          TopLeft="318,123" />
         <NodeLayout
           Size="177,42"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Event File\Load Raw Event Data\OLE DB Destination"
-          TopLeft="245,236" />
+          Id="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination"
+          TopLeft="410,346" />
         <EdgeLayout
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Event File\Load Raw Event Data.Paths[Flat File Source Output]"
-          TopLeft="206,136">
+          Id="Package\Master Execution Container\Load Raw Data\CurrentNameMaster.Paths[Flat File Source Output]"
+          TopLeft="396,165">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="127.5,100"
+              EndConnector="102.5,181"
               Start="0,0"
-              End="127.5,92.5">
+              End="102.5,173.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,46" />
+                    End="0,86.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,46"
-                    Point2="0,50"
-                    Point3="4,50" />
+                    Point1="0,86.5"
+                    Point2="0,90.5"
+                    Point3="4,90.5" />
                   <mssgle:LineSegment
-                    End="123.5,50" />
+                    End="98.5,90.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="123.5,50"
-                    Point2="127.5,50"
-                    Point3="127.5,54" />
+                    Point1="98.5,90.5"
+                    Point2="102.5,90.5"
+                    Point3="102.5,94.5" />
                   <mssgle:LineSegment
-                    End="127.5,92.5" />
+                    End="102.5,173.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11297,44 +12781,44 @@
     </LayoutInfo>
   </TaskHost>
   <TaskHost
-    design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Game File\Load Raw Game Data">
+    design-time-name="Package\Master Execution Container\Load Raw Data\TeamMaster">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="156,42"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Game File\Load Raw Game Data\Flat File Source"
-          TopLeft="135.5,134.5" />
+          Id="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source"
+          TopLeft="299,131" />
         <NodeLayout
           Size="177,42"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Game File\Load Raw Game Data\OLE DB Destination"
-          TopLeft="316,298" />
+          Id="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination"
+          TopLeft="502,347" />
         <EdgeLayout
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Game File\Load Raw Game Data.Paths[Flat File Source Output]"
-          TopLeft="213.5,176.5">
+          Id="Package\Master Execution Container\Load Raw Data\TeamMaster.Paths[Flat File Source Output]"
+          TopLeft="377,173">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="191,121.5"
+              EndConnector="213.5,174"
               Start="0,0"
-              End="191,114">
+              End="213.5,166.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,56.75" />
+                    End="0,83" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,56.75"
-                    Point2="0,60.75"
-                    Point3="4,60.75" />
+                    Point1="0,83"
+                    Point2="0,87"
+                    Point3="4,87" />
                   <mssgle:LineSegment
-                    End="187,60.75" />
+                    End="209.5,87" />
                   <mssgle:CubicBezierSegment
-                    Point1="187,60.75"
-                    Point2="191,60.75"
-                    Point3="191,64.75" />
+                    Point1="209.5,87"
+                    Point2="213.5,87"
+                    Point3="213.5,91" />
                   <mssgle:LineSegment
-                    End="191,114" />
+                    End="213.5,166.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11346,5 +12830,31 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

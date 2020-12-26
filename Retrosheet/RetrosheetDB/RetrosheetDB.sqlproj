@@ -82,6 +82,8 @@
     <Build Include="db\dbo\Indexes\dbo.ixc_PlayerMaster_RetroPlayerID.sql" />
     <Build Include="db\raw\Indexes\raw.ixc_ParkMaster_RetroParkID.sql" />
     <Build Include="db\raw\Indexes\raw.ixc_PlayerMaster_RetroPlayerID.sql" />
+    <Build Include="db\raw\Tables\raw.TeamMaster.sql" />
+    <Build Include="db\raw\Tables\raw.CurrentNameMaster.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="pub\Retrosheet.publish.xml" />

@@ -97,6 +97,7 @@
 	,[FielderWithThirdAssist] INT NULL
 	,[FielderWithFourthAssist] INT NULL
 	,[FielderWithFifthAssist] INT NULL
+	,CONSTRAINT [pk_Event] PRIMARY KEY NONCLUSTERED ([EventID])
 )
 GO
 

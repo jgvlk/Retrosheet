@@ -5,11 +5,11 @@ for i in os.listdir(r'C:\Data\mlb\Retrosheet\data\run'):
     raw_files.append(i)
 
 event_files = []
-for i in os.listdir(r'C:\Data\mlb\Retrosheet\data\processed\2020-12-25\event'):
+for i in os.listdir(r'C:\Data\mlb\Retrosheet\data\processed\2020-12-25@16.30.10\event'):
     event_files.append(i)
 
 game_files = []
-for i in os.listdir(r'C:\Data\mlb\Retrosheet\data\processed\2020-12-25\game'):
+for i in os.listdir(r'C:\Data\mlb\Retrosheet\data\processed\2020-12-25@16.30.10\game'):
     game_files.append(i)
 
 
