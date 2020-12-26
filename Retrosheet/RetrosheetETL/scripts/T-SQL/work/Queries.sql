@@ -24,5 +24,10 @@ SELECT COUNT(*) FROM [dbo].[Game] -- 81631
 SELECT COUNT(*) FROM [dbo].[Event] -- 6485082
 
 
-SELECT * FROM [dbo].[Game] WHERE [HomeTeam] = 'CHC' AND YEAR([Date]) = 2016
+SELECT DISTINCT [HomeTeam] FROM [dbo].[Game] ORDER BY [HomeTeam]
+SELECT * FROM [dbo].[Game] WHERE [HomeTeam] = 'CHN' AND YEAR([Date]) = 2016
+SELECT pm.*
+FROM [dbo].[Game] g
+JOIN [dbo].[PlayerMaster] pm ON g.[VisitorStartingPitcher] = pm.[PlayerID]
+WHERE [VisitingTeam] = 'CHN' AND YEAR([Date]) = 2016
 
