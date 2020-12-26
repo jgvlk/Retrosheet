@@ -19,12 +19,6 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
-        <FileNode Name="BackupDB.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLDEV:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>(local)\MSSQLDEV</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>BackupDB.sql</FullPath>
-        </FileNode>
         <FileNode Name="MissingPlayers_EventData.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLDEV:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>(local)\MSSQLDEV</AssociatedConnSrvName>

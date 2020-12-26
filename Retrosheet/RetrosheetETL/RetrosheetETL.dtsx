@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="RetrosheetETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="33"
-  DTS:VersionGUID="{D134D64B-7EC3-440B-94B5-14AE9D564690}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{A0D919BD-E139-406E-80E6-D47CF9D817CE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2429,6 +2429,7 @@
           DTS:refId="Package\Master Execution Container\Add FKs"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{2C7ADF1D-08E4-4E3C-8E9E-CE9AD2BDD69F}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -2449,6 +2450,7 @@
           DTS:refId="Package\Master Execution Container\Cleanup"
           DTS:CreationName="Microsoft.ExecuteProcess"
           DTS:Description="Execute Process Task"
+          DTS:Disabled="True"
           DTS:DTSID="{BAF525D9-A031-49C0-AC3F-1607DDA4250C}"
           DTS:ExecutableType="Microsoft.ExecuteProcess"
           DTS:LocaleID="-1"
@@ -2509,6 +2511,7 @@
           DTS:refId="Package\Master Execution Container\Load dbo Tables"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{F509ADA5-9517-41C5-B3BB-08AA35B51BF2}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -12354,7 +12357,7 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="172,408"
+          PanelSize="172,409"
           Size="172,452"
           Id="Package\Master Execution Container\Load Raw Data"
           TopLeft="152.5,311.5" />
@@ -12519,7 +12522,7 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="477,1434"
+          PanelSize="477,1435"
           Size="477,1478"
           Id="Package\Master Execution Container"
           TopLeft="100,47" />
