@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="RetrosheetETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="30"
-  DTS:VersionGUID="{EE4EC3A8-22BB-4F94-B5D5-45FBA25B6E4E}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{D134D64B-7EC3-440B-94B5-14AE9D564690}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -37,10 +37,10 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:refId="Package.ConnectionManagers[FranchiseMaster_raw]"
       DTS:CreationName="FLATFILE"
       DTS:DTSID="{8BDCF892-2728-49E7-80B7-D6A9FF72E7A5}"
-      DTS:ObjectName="Flat File Connection Manager">
+      DTS:ObjectName="FranchiseMaster_raw">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -59,7 +59,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="CurrentFranchiseID"
-              DTS:DTSID="{5E2DA2CE-0906-42B8-857F-3EB668A3CF04}"
+              DTS:DTSID="{0BE80902-AD3A-4D94-9857-1C5719BCC6BA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -68,7 +68,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="FranchiseID"
-              DTS:DTSID="{C5EF8336-600E-4D8F-BDA0-3FEE26083274}"
+              DTS:DTSID="{EB28FC75-BC55-4D20-9433-2895CEC93D92}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -77,7 +77,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="League"
-              DTS:DTSID="{FADBEFBF-0EB5-4F44-A80B-D4FCA9D8E974}"
+              DTS:DTSID="{3FA96A7B-D4F7-40CE-BA05-52169F048AEB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -86,7 +86,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Division"
-              DTS:DTSID="{6CA02DA9-E9EF-4217-8756-946822FEAE9C}"
+              DTS:DTSID="{19FFF121-0E38-41FB-B916-A85A98EBA229}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -95,7 +95,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="LocationName"
-              DTS:DTSID="{60880C5B-D4FC-4674-8E66-DB2046B40872}"
+              DTS:DTSID="{2FDE7390-BE8D-4B96-9023-A3259D4ADB4A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -104,7 +104,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Nickname"
-              DTS:DTSID="{63DD54FA-E7C1-4CD9-99F0-60DC54D79F38}"
+              DTS:DTSID="{DDF7030E-901F-4B3D-B7A4-CFF29C2E257C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -113,7 +113,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="AltNicknames"
-              DTS:DTSID="{51FB675B-B309-4DEA-9BE5-FE14E0E4C687}"
+              DTS:DTSID="{18F8423A-D9C8-4CE3-A912-E24BBDCDF46E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -122,7 +122,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Start"
-              DTS:DTSID="{B5FAEC84-9D49-45DE-A039-C069688E23B0}"
+              DTS:DTSID="{998BEACD-0BA4-4557-95CF-2E03B39673EB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -131,7 +131,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="End"
-              DTS:DTSID="{F8E3A8F3-801A-43AB-B2A8-7A41EC394165}"
+              DTS:DTSID="{B44DCD94-4BF8-4716-8CD6-9CE8DE0ED2FC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -140,7 +140,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="City"
-              DTS:DTSID="{988F0F72-11DD-4792-BC86-60AFA8881261}"
+              DTS:DTSID="{0AD4E85A-1582-469E-A1AD-F0886280D07A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -149,7 +149,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="State"
-              DTS:DTSID="{94BB85DE-7504-4BC0-96A0-3E94AA4681AB}"
+              DTS:DTSID="{213DA77F-0D22-4A80-A0CB-F525EE0BE55E}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -9938,13 +9938,13 @@
             DTS:FilterKind="0" />
           <DTS:Executables>
             <DTS:Executable
-              DTS:refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster"
+              DTS:refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster"
               DTS:CreationName="Microsoft.Pipeline"
               DTS:Description="Data Flow Task"
               DTS:DTSID="{1A694A5C-9DA7-4216-ADC8-CAD962F34439}"
               DTS:ExecutableType="Microsoft.Pipeline"
               DTS:LocaleID="-1"
-              DTS:ObjectName="CurrentNameMaster"
+              DTS:ObjectName="FranchiseMaster"
               DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
               <DTS:Variables />
               <DTS:ObjectData>
@@ -9952,7 +9952,7 @@
                   version="1">
                   <components>
                     <component
-                      refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source"
+                      refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source"
                       componentClassID="Microsoft.FlatFileSource"
                       contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
                       description="Flat File Source"
@@ -9972,25 +9972,25 @@
                       </properties>
                       <connections>
                         <connection
-                          refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Connections[FlatFileConnection]"
-                          connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
-                          connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                          refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Connections[FlatFileConnection]"
+                          connectionManagerID="Package.ConnectionManagers[FranchiseMaster_raw]"
+                          connectionManagerRefId="Package.ConnectionManagers[FranchiseMaster_raw]"
                           name="FlatFileConnection" />
                       </connections>
                       <outputs>
                         <output
-                          refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output]"
+                          refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output]"
                           name="Flat File Source Output">
                           <outputColumns>
                             <outputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[CurrentFranchiseID]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[CurrentFranchiseID]"
                               codePage="1252"
                               dataType="str"
                               errorOrTruncationOperation="Conversion"
                               errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CurrentFranchiseID]"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CurrentFranchiseID]"
                               length="500"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[CurrentFranchiseID]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[CurrentFranchiseID]"
                               name="CurrentFranchiseID"
                               truncationRowDisposition="FailComponent">
                               <properties>
@@ -10005,14 +10005,14 @@
                               </properties>
                             </outputColumn>
                             <outputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[FranchiseID]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[FranchiseID]"
                               codePage="1252"
                               dataType="str"
                               errorOrTruncationOperation="Conversion"
                               errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[FranchiseID]"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[FranchiseID]"
                               length="500"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[FranchiseID]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[FranchiseID]"
                               name="FranchiseID"
                               truncationRowDisposition="FailComponent">
                               <properties>
@@ -10027,14 +10027,14 @@
                               </properties>
                             </outputColumn>
                             <outputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[League]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[League]"
                               codePage="1252"
                               dataType="str"
                               errorOrTruncationOperation="Conversion"
                               errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[League]"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[League]"
                               length="500"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[League]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[League]"
                               name="League"
                               truncationRowDisposition="FailComponent">
                               <properties>
@@ -10049,14 +10049,14 @@
                               </properties>
                             </outputColumn>
                             <outputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Division]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Division]"
                               codePage="1252"
                               dataType="str"
                               errorOrTruncationOperation="Conversion"
                               errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Division]"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Division]"
                               length="500"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Division]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Division]"
                               name="Division"
                               truncationRowDisposition="FailComponent">
                               <properties>
@@ -10071,14 +10071,14 @@
                               </properties>
                             </outputColumn>
                             <outputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[LocationName]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[LocationName]"
                               codePage="1252"
                               dataType="str"
                               errorOrTruncationOperation="Conversion"
                               errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[LocationName]"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[LocationName]"
                               length="500"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[LocationName]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[LocationName]"
                               name="LocationName"
                               truncationRowDisposition="FailComponent">
                               <properties>
@@ -10093,14 +10093,14 @@
                               </properties>
                             </outputColumn>
                             <outputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Nickname]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Nickname]"
                               codePage="1252"
                               dataType="str"
                               errorOrTruncationOperation="Conversion"
                               errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Nickname]"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Nickname]"
                               length="500"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Nickname]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Nickname]"
                               name="Nickname"
                               truncationRowDisposition="FailComponent">
                               <properties>
@@ -10115,14 +10115,14 @@
                               </properties>
                             </outputColumn>
                             <outputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[AltNicknames]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[AltNicknames]"
                               codePage="1252"
                               dataType="str"
                               errorOrTruncationOperation="Conversion"
                               errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[AltNicknames]"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[AltNicknames]"
                               length="500"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[AltNicknames]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[AltNicknames]"
                               name="AltNicknames"
                               truncationRowDisposition="FailComponent">
                               <properties>
@@ -10137,14 +10137,14 @@
                               </properties>
                             </outputColumn>
                             <outputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Start]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Start]"
                               codePage="1252"
                               dataType="str"
                               errorOrTruncationOperation="Conversion"
                               errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Start]"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Start]"
                               length="500"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Start]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Start]"
                               name="Start"
                               truncationRowDisposition="FailComponent">
                               <properties>
@@ -10159,14 +10159,14 @@
                               </properties>
                             </outputColumn>
                             <outputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[End]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[End]"
                               codePage="1252"
                               dataType="str"
                               errorOrTruncationOperation="Conversion"
                               errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[End]"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[End]"
                               length="500"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[End]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[End]"
                               name="End"
                               truncationRowDisposition="FailComponent">
                               <properties>
@@ -10181,14 +10181,14 @@
                               </properties>
                             </outputColumn>
                             <outputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[City]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[City]"
                               codePage="1252"
                               dataType="str"
                               errorOrTruncationOperation="Conversion"
                               errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[City]"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[City]"
                               length="500"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[City]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[City]"
                               name="City"
                               truncationRowDisposition="FailComponent">
                               <properties>
@@ -10203,14 +10203,14 @@
                               </properties>
                             </outputColumn>
                             <outputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[State]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[State]"
                               codePage="1252"
                               dataType="str"
                               errorOrTruncationOperation="Conversion"
                               errorRowDisposition="FailComponent"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[State]"
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[State]"
                               length="500"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[State]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[State]"
                               name="State"
                               truncationRowDisposition="FailComponent">
                               <properties>
@@ -10228,67 +10228,67 @@
                           <externalMetadataColumns
                             isUsed="True">
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CurrentFranchiseID]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CurrentFranchiseID]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="CurrentFranchiseID" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[FranchiseID]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[FranchiseID]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="FranchiseID" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[League]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[League]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="League" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Division]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Division]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="Division" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[LocationName]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[LocationName]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="LocationName" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Nickname]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Nickname]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="Nickname" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[AltNicknames]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[AltNicknames]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="AltNicknames" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Start]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Start]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="Start" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[End]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[End]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="End" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[City]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[City]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="City" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[State]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[State]"
                               codePage="1252"
                               dataType="str"
                               length="500"
@@ -10296,27 +10296,27 @@
                           </externalMetadataColumns>
                         </output>
                         <output
-                          refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Error Output]"
+                          refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Error Output]"
                           isErrorOut="true"
                           name="Flat File Source Error Output">
                           <outputColumns>
                             <outputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                               codePage="1252"
                               dataType="text"
                               description="Flat File Source Error Output Column"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                               name="Flat File Source Error Output Column" />
                             <outputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                               dataType="i4"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                               name="ErrorCode"
                               specialFlags="1" />
                             <outputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                               dataType="i4"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                               name="ErrorColumn"
                               specialFlags="2" />
                           </outputColumns>
@@ -10325,7 +10325,7 @@
                       </outputs>
                     </component>
                     <component
-                      refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination"
+                      refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination"
                       componentClassID="Microsoft.OLEDBDestination"
                       contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
                       description="OLE DB Destination"
@@ -10340,7 +10340,7 @@
                         <property
                           dataType="System.String"
                           description="Specifies the name of the database object used to open a rowset."
-                          name="OpenRowset">[raw].[CurrentNameMaster]</property>
+                          name="OpenRowset">[raw].[FranchiseMaster]</property>
                         <property
                           dataType="System.String"
                           description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -10382,7 +10382,7 @@
                       </properties>
                       <connections>
                         <connection
-                          refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Connections[OleDbConnection]"
+                          refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Connections[OleDbConnection]"
                           connectionManagerID="{E03933CE-BB09-4EEF-A98B-49AE794A47E7}:external"
                           connectionManagerRefId="Project.ConnectionManagers[RetrosheetDB]"
                           description="The OLE DB runtime connection used to access the database."
@@ -10390,165 +10390,165 @@
                       </connections>
                       <inputs>
                         <input
-                          refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                          refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input]"
                           errorOrTruncationOperation="Insert"
                           errorRowDisposition="FailComponent"
                           hasSideEffects="true"
                           name="OLE DB Destination Input">
                           <inputColumns>
                             <inputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CurrentFranchiseID]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CurrentFranchiseID]"
                               cachedCodepage="1252"
                               cachedDataType="str"
                               cachedLength="500"
                               cachedName="CurrentFranchiseID"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrentFranchiseID]"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[CurrentFranchiseID]" />
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrentFranchiseID]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[CurrentFranchiseID]" />
                             <inputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FranchiseID]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FranchiseID]"
                               cachedCodepage="1252"
                               cachedDataType="str"
                               cachedLength="500"
                               cachedName="FranchiseID"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FranchiseID]"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[FranchiseID]" />
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FranchiseID]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[FranchiseID]" />
                             <inputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[League]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[League]"
                               cachedCodepage="1252"
                               cachedDataType="str"
                               cachedLength="500"
                               cachedName="League"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[League]"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[League]" />
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[League]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[League]" />
                             <inputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Division]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Division]"
                               cachedCodepage="1252"
                               cachedDataType="str"
                               cachedLength="500"
                               cachedName="Division"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Division]"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Division]" />
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Division]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Division]" />
                             <inputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LocationName]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LocationName]"
                               cachedCodepage="1252"
                               cachedDataType="str"
                               cachedLength="500"
                               cachedName="LocationName"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationName]"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[LocationName]" />
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationName]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[LocationName]" />
                             <inputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nickname]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nickname]"
                               cachedCodepage="1252"
                               cachedDataType="str"
                               cachedLength="500"
                               cachedName="Nickname"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nickname]"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Nickname]" />
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nickname]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Nickname]" />
                             <inputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Start]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Start]"
                               cachedCodepage="1252"
                               cachedDataType="str"
                               cachedLength="500"
                               cachedName="Start"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start]"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Start]" />
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[Start]" />
                             <inputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[End]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[End]"
                               cachedCodepage="1252"
                               cachedDataType="str"
                               cachedLength="500"
                               cachedName="End"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[End]"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[End]" />
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[End]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[End]" />
                             <inputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[City]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[City]"
                               cachedCodepage="1252"
                               cachedDataType="str"
                               cachedLength="500"
                               cachedName="City"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[City]" />
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[City]" />
                             <inputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[State]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[State]"
                               cachedCodepage="1252"
                               cachedDataType="str"
                               cachedLength="500"
                               cachedName="State"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[State]" />
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[State]" />
                             <inputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AltNicknames]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AltNicknames]"
                               cachedCodepage="1252"
                               cachedDataType="str"
                               cachedLength="500"
                               cachedName="AltNicknames"
-                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AltNickname]"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output].Columns[AltNicknames]" />
+                              externalMetadataColumnId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AltNickname]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output].Columns[AltNicknames]" />
                           </inputColumns>
                           <externalMetadataColumns
                             isUsed="True">
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrentFranchiseID]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CurrentFranchiseID]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="CurrentFranchiseID" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FranchiseID]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FranchiseID]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="FranchiseID" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[League]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[League]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="League" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Division]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Division]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="Division" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationName]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationName]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="LocationName" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nickname]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nickname]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="Nickname" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AltNickname]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AltNickname]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="AltNickname" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="Start" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[End]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[End]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="End" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
                               codePage="1252"
                               dataType="str"
                               length="500"
                               name="City" />
                             <externalMetadataColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
                               codePage="1252"
                               dataType="str"
                               length="500"
@@ -10558,22 +10558,22 @@
                       </inputs>
                       <outputs>
                         <output
-                          refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                          refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
                           exclusionGroup="1"
                           isErrorOut="true"
                           name="OLE DB Destination Error Output"
-                          synchronousInputId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                          synchronousInputId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input]">
                           <outputColumns>
                             <outputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                               dataType="i4"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                               name="ErrorCode"
                               specialFlags="1" />
                             <outputColumn
-                              refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                               dataType="i4"
-                              lineageId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              lineageId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                               name="ErrorColumn"
                               specialFlags="2" />
                           </outputColumns>
@@ -10584,10 +10584,10 @@
                   </components>
                   <paths>
                     <path
-                      refId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster.Paths[Flat File Source Output]"
-                      endId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      refId="Package\Master Execution Container\Load Raw Data\FranchiseMaster.Paths[Flat File Source Output]"
+                      endId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination.Inputs[OLE DB Destination Input]"
                       name="Flat File Source Output"
-                      startId="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source.Outputs[Flat File Source Output]" />
+                      startId="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source.Outputs[Flat File Source Output]" />
                   </paths>
                 </pipeline>
               </DTS:ObjectData>
@@ -12124,7 +12124,7 @@
               DTS:From="Package\Master Execution Container\Load Raw Data\TeamMaster"
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint 2"
-              DTS:To="Package\Master Execution Container\Load Raw Data\CurrentNameMaster" />
+              DTS:To="Package\Master Execution Container\Load Raw Data\FranchiseMaster" />
           </DTS:PrecedenceConstraints>
         </DTS:Executable>
         <DTS:Executable
@@ -12270,16 +12270,24 @@
           Id="Package\Master Execution Container\Load Process Retrosheet Data"
           TopLeft="5.50000000000014,823.5" />
         <NodeLayout
+          Size="161,42"
+          Id="Package\Master Execution Container\Load Raw Data\FranchiseMaster"
+          TopLeft="5.50000000000003,311.5" />
+        <NodeLayout
           Size="135,42"
           Id="Package\Master Execution Container\Load Raw Data\ParkMaster"
-          TopLeft="27.5,107.5" />
+          TopLeft="18.5,107.5" />
         <NodeLayout
           Size="144,42"
           Id="Package\Master Execution Container\Load Raw Data\PlayerMaster"
-          TopLeft="23,5.5" />
+          TopLeft="14,5.5" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Master Execution Container\Load Raw Data\TeamMaster"
+          TopLeft="15.5,209.5" />
         <EdgeLayout
-          Id="Package\Master Execution Container\Load Raw Data.PrecedenceConstraints[Constraint 1]"
-          TopLeft="95,47.5">
+          Id="Package\Master Execution Container\Load Raw Data.PrecedenceConstraints[Constraint]"
+          TopLeft="86,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -12299,17 +12307,9 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="179,42"
-          Id="Package\Master Execution Container\Load Raw Data\CurrentNameMaster"
-          TopLeft="5.50000000000003,311.5" />
-        <NodeLayout
-          Size="141,42"
-          Id="Package\Master Execution Container\Load Raw Data\TeamMaster"
-          TopLeft="24.5,209.5" />
         <EdgeLayout
-          Id="Package\Master Execution Container\Load Raw Data.PrecedenceConstraints[Constraint]"
-          TopLeft="95,149.5">
+          Id="Package\Master Execution Container\Load Raw Data.PrecedenceConstraints[Constraint 1]"
+          TopLeft="86,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -12331,7 +12331,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Master Execution Container\Load Raw Data.PrecedenceConstraints[Constraint 2]"
-          TopLeft="95,251.5">
+          TopLeft="86,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -12354,10 +12354,10 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="190,408"
-          Size="190,452"
+          PanelSize="172,408"
+          Size="172,452"
           Id="Package\Master Execution Container\Load Raw Data"
-          TopLeft="143.5,311.5" />
+          TopLeft="152.5,311.5" />
         <NodeLayout
           Size="158,42"
           Id="Package\Master Execution Container\Truncate Tables"
@@ -12530,7 +12530,7 @@
     design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Event File\Load Raw Event Data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="156,42"
           Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Event File\Load Raw Event Data\Flat File Source"
@@ -12570,7 +12570,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -12580,7 +12582,7 @@
     design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Game File\Load Raw Game Data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="156,42"
           Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Game File\Load Raw Game Data\Flat File Source"
@@ -12620,25 +12622,90 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <TaskHost
+    design-time-name="Package\Master Execution Container\Load Raw Data\FranchiseMaster">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination"
+          TopLeft="410,346" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Master Execution Container\Load Raw Data\FranchiseMaster\Flat File Source"
+          TopLeft="318,123" />
+        <EdgeLayout
+          Id="Package\Master Execution Container\Load Raw Data\FranchiseMaster.Paths[Flat File Source Output]"
+          TopLeft="396,165">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="102.5,181"
+              Start="0,0"
+              End="102.5,173.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,86.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,86.5"
+                    Point2="0,90.5"
+                    Point3="4,90.5" />
+                  <mssgle:LineSegment
+                    End="98.5,90.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="98.5,90.5"
+                    Point2="102.5,90.5"
+                    Point3="102.5,94.5" />
+                  <mssgle:LineSegment
+                    End="102.5,173.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Master Execution Container\Load Raw Data\ParkMaster">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="156,42"
-          Id="Package\Master Execution Container\Load Raw Data\ParkMaster\Flat File Source"
-          TopLeft="410,210" />
-        <NodeLayout
           Size="177,42"
           Id="Package\Master Execution Container\Load Raw Data\ParkMaster\OLE DB Destination"
           TopLeft="558,352" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Master Execution Container\Load Raw Data\ParkMaster\Flat File Source"
+          TopLeft="410,210" />
         <EdgeLayout
           Id="Package\Master Execution Container\Load Raw Data\ParkMaster.Paths[Flat File Source Output]"
           TopLeft="488,252">
@@ -12684,13 +12751,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="156,42"
-          Id="Package\Master Execution Container\Load Raw Data\PlayerMaster\Flat File Source"
-          TopLeft="316,234" />
-        <NodeLayout
           Size="177,42"
           Id="Package\Master Execution Container\Load Raw Data\PlayerMaster\OLE DB Destination"
           TopLeft="458,397" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Master Execution Container\Load Raw Data\PlayerMaster\Flat File Source"
+          TopLeft="316,234" />
         <EdgeLayout
           Id="Package\Master Execution Container\Load Raw Data\PlayerMaster.Paths[Flat File Source Output]"
           TopLeft="394,276">
@@ -12725,56 +12792,6 @@
             <mssgm:EdgeLabel
               BoundingBox="0,0,0,0"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
-    design-time-name="Package\Master Execution Container\Load Raw Data\CurrentNameMaster">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\Flat File Source"
-          TopLeft="318,123" />
-        <NodeLayout
-          Size="177,42"
-          Id="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination"
-          TopLeft="410,346" />
-        <EdgeLayout
-          Id="Package\Master Execution Container\Load Raw Data\CurrentNameMaster.Paths[Flat File Source Output]"
-          TopLeft="396,165">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="102.5,181"
-              Start="0,0"
-              End="102.5,173.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,86.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,86.5"
-                    Point2="0,90.5"
-                    Point3="4,90.5" />
-                  <mssgle:LineSegment
-                    End="98.5,90.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="98.5,90.5"
-                    Point2="102.5,90.5"
-                    Point3="102.5,94.5" />
-                  <mssgle:LineSegment
-                    End="102.5,173.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -12832,19 +12849,6 @@
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Master Execution Container\Load Raw Data\TeamMaster\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Master Execution Container\Load Raw Data\CurrentNameMaster\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

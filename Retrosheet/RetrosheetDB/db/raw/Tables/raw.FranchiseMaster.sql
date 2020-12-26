@@ -1,4 +1,4 @@
-﻿CREATE TABLE [raw].[CurrentNameMaster]
+﻿CREATE TABLE [raw].[FranchiseMaster]
 (
 	[CurrentFranchiseID] VARCHAR(500) NULL
 	,[FranchiseID] VARCHAR(500) NULL

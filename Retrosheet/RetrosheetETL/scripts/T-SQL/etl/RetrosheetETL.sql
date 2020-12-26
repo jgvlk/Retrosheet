@@ -62,6 +62,68 @@ GO
 
 
 
+/* Franchise Master */
+
+INSERT INTO [dbo].[FranchiseMaster]
+(
+	[CurrentRetroFranchiseID]
+	,[RetroFranchiseID]
+	,[League]
+	,[Division]
+	,[LocationName]
+	,[Nickname]
+	,[AltNickname]
+	,[Start]
+	,[End]
+	,[City]
+	,[State]
+)
+SELECT
+	[CurrentRetroFranchiseID] = [CurrentFranchiseID]
+	,[RetroFranchiseID] = [FranchiseID]
+	,[League]
+	,[Division]
+	,[LocationName]
+	,[Nickname]
+	,[AltNickname]
+	,[Start]
+	,[End]
+	,[City]
+	,[State]
+FROM
+	[raw].[FranchiseMaster]
+GO
+
+
+
+
+
+/* TeamMaster */
+
+INSERT INTO [dbo].[TeamMaster]
+(
+	[RetroTeamID]
+	,[League]
+	,[City]
+	,[Nickname]
+	,[Start]
+	,[End]
+)
+SELECT
+	[RetroTeamID] = [TeamID]
+	,[League]
+	,[City]
+	,[Nickname]
+	,[Start]
+	,[End]
+FROM
+	[raw].[TeamMaster]
+GO
+
+
+
+
+
 /* Game */
 
 -- Clean [RetroPlayerID]
