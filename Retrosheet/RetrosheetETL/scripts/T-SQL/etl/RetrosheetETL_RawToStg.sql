@@ -4,8 +4,6 @@ GO
 
 /* Game */
 
-select distinct BattingTeam from raw.Event
-
 INSERT INTO [stg].[Game]
 (
 	[RetroGameID]
