@@ -1,24 +1,24 @@
 ﻿CREATE TABLE [stg].[Game]
 (
 	[StgGameID] UNIQUEIDENTIFIER NOT NULL
-	,[RetroGameID] CHAR(12) NULL
-	,[ParkID] CHAR(5) NULL
+	,[RetroGameID] VARCHAR(25) NULL
+	,[ParkID] VARCHAR(25) NULL
 	,[Date] DATE NULL
 	,[GameNumber] INT NULL
-	,[DayOfWeek] VARCHAR(10) NULL
-	,[StartTime] VARCHAR(5) NULL
+	,[DayOfWeek] VARCHAR(25) NULL
+	,[StartTime] VARCHAR(25) NULL
 	,[DHUsedFlag] BIT NULL
-	,[DayNightFlag] CHAR(1) NULL
-	,[VisitingTeam] CHAR(3) NULL
-	,[HomeTeam] CHAR(3) NULL
-	,[VisitorStartingPitcher] CHAR(8) NULL
-	,[HomeStartingPitcher] CHAR(8) NULL
-	,[HomePlateUmpire] CHAR(8) NULL
-	,[FirstBaseUmpire] CHAR(8) NULL
-	,[SecondBaseUmpire] CHAR(8) NULL
-	,[ThirdBaseUmpire] CHAR(8) NULL
-	,[LeftFieldUmpire] CHAR(8) NULL
-	,[RightFieldUmpire] CHAR(8) NULL
+	,[DayNightFlag] VARCHAR(25) NULL
+	,[VisitingTeam] VARCHAR(25) NULL
+	,[HomeTeam] VARCHAR(25) NULL
+	,[VisitorStartingPitcher] VARCHAR(25) NULL
+	,[HomeStartingPitcher] VARCHAR(25) NULL
+	,[HomePlateUmpire] VARCHAR(25) NULL
+	,[FirstBaseUmpire] VARCHAR(25) NULL
+	,[SecondBaseUmpire] VARCHAR(25) NULL
+	,[ThirdBaseUmpire] VARCHAR(25) NULL
+	,[LeftFieldUmpire] VARCHAR(25) NULL
+	,[RightFieldUmpire] VARCHAR(25) NULL
 	,[Attendance] INT NULL
 	,[PSScorer] NVARCHAR(500) NULL
 	,[Translator] NVARCHAR(500) NULL
@@ -43,49 +43,49 @@
 	,[HomeErrors] INT NULL
 	,[VisitorLeftOnBase] INT NULL
 	,[HomeLeftOnBase] INT NULL
-	,[WinningPitcher] CHAR(8) NULL
-	,[LosingPitcher] CHAR(8) NULL
-	,[SaveFor] CHAR(8) NULL
+	,[WinningPitcher] VARCHAR(25) NULL
+	,[LosingPitcher] VARCHAR(25) NULL
+	,[SaveFor] VARCHAR(25) NULL
 	,[GWRBI] VARCHAR(25) NULL
-	,[VisitorBatter1] CHAR(8) NULL
+	,[VisitorBatter1] VARCHAR(25) NULL
 	,[VisitorPosition1] INT
-	,[VisitorBatter2] CHAR(8) NULL
+	,[VisitorBatter2] VARCHAR(25) NULL
 	,[VisitorPosition2] INT
-	,[VisitorBatter3] CHAR(8) NULL
+	,[VisitorBatter3] VARCHAR(25) NULL
 	,[VisitorPosition3] INT
-	,[VisitorBatter4] CHAR(8) NULL
+	,[VisitorBatter4] VARCHAR(25) NULL
 	,[VisitorPosition4] INT
-	,[VisitorBatter5] CHAR(8) NULL
+	,[VisitorBatter5] VARCHAR(25) NULL
 	,[VisitorPosition5] INT
-	,[VisitorBatter6] CHAR(8) NULL
+	,[VisitorBatter6] VARCHAR(25) NULL
 	,[VisitorPosition6] INT
-	,[VisitorBatter7] CHAR(8) NULL
+	,[VisitorBatter7] VARCHAR(25) NULL
 	,[VisitorPosition7] INT
-	,[VisitorBatter8] CHAR(8) NULL
+	,[VisitorBatter8] VARCHAR(25) NULL
 	,[VisitorPosition8] INT
-	,[VisitorBatter9] CHAR(8) NULL
+	,[VisitorBatter9] VARCHAR(25) NULL
 	,[VisitorPosition9] INT
-	,[HomeBatter1] CHAR(8) NULL
+	,[HomeBatter1] VARCHAR(25) NULL
 	,[HomePosition1] INT
-	,[HomeBatter2] CHAR(8) NULL
+	,[HomeBatter2] VARCHAR(25) NULL
 	,[HomePosition2] INT
-	,[HomeBatter3] CHAR(8) NULL
+	,[HomeBatter3] VARCHAR(25) NULL
 	,[HomePosition3] INT
 	,[HomeBatter4] CHAR(8) NULL
 	,[HomePosition4] INT
-	,[HomeBatter5] CHAR(8) NULL
+	,[HomeBatter5] VARCHAR(25) NULL
 	,[HomePosition5] INT
-	,[HomeBatter6] CHAR(8) NULL
+	,[HomeBatter6] VARCHAR(25) NULL
 	,[HomePosition6] INT
-	,[HomeBatter7] CHAR(8) NULL
+	,[HomeBatter7] VARCHAR(25) NULL
 	,[HomePosition7] INT
-	,[HomeBatter8] CHAR(8) NULL
+	,[HomeBatter8] VARCHAR(25) NULL
 	,[HomePosition8] INT
-	,[HomeBatter9] CHAR(8) NULL
+	,[HomeBatter9] VARCHAR(25) NULL
 	,[HomePosition9] INT
-	,[VisitingFinisher] CHAR(8) NULL
-	,[HomeFinisher] CHAR(8) NULL
-	,[OfficialScorer] CHAR(8) NULL
+	,[VisitingFinisher] VARCHAR(25) NULL
+	,[HomeFinisher] VARCHAR(25) NULL
+	,[OfficialScorer] VARCHAR(25) NULL
 	,CONSTRAINT [pk_Game] PRIMARY KEY NONCLUSTERED ([StgGameID])
 )
 GO

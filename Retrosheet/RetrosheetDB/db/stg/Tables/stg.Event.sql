@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [stg].[Event]
 (
 	[StgEventID] UNIQUEIDENTIFIER NOT NULL
-	,[RetroGameID] CHAR(12) NOT NULL
+	,[RetroGameID] VARCHAR(25) NOT NULL
 	,[EventNum] INT NULL
 	,[Inning] INT NULL
 	,[BattingTeam] BIT NULL
@@ -11,25 +11,25 @@
 	,[PitchSequence] VARCHAR(MAX) NULL
 	,[VisScore] INT NULL
 	,[HomeScore] INT NULL
-	,[Batter] CHAR(8) NULL
-	,[BatterHand] CHAR(1) NULL
-	,[ResBatter] CHAR(8) NULL
-	,[ResBatterHand] CHAR(1) NULL
-	,[Pitcher] CHAR(8) NULL
-	,[PitcherHand] CHAR(1) NULL
-	,[ResPitcher] CHAR(8) NULL
-	,[ResPitcherHand] CHAR(1) NULL
-	,[Catcher] CHAR(8) NULL
-	,[FirstBase] CHAR(8) NULL
-	,[SecondBase] CHAR(8) NULL
-	,[ThirdBase] CHAR(8) NULL
-	,[Shortstop] CHAR(8) NULL
-	,[LeftField] CHAR(8) NULL
-	,[CenterField] CHAR(8) NULL
-	,[RightField] CHAR(8) NULL
-	,[FirstRunner] CHAR(8) NULL
-	,[SecondRunner] CHAR(8) NULL
-	,[ThirdRunner] CHAR(8) NULL
+	,[Batter] VARCHAR(25) NULL
+	,[BatterHand] VARCHAR(25) NULL
+	,[ResBatter] VARCHAR(25) NULL
+	,[ResBatterHand] VARCHAR(25) NULL
+	,[Pitcher] VARCHAR(25) NULL
+	,[PitcherHand] VARCHAR(25) NULL
+	,[ResPitcher] VARCHAR(25) NULL
+	,[ResPitcherHand] VARCHAR(25) NULL
+	,[Catcher] VARCHAR(25) NULL
+	,[FirstBase] VARCHAR(25) NULL
+	,[SecondBase] VARCHAR(25) NULL
+	,[ThirdBase] VARCHAR(25) NULL
+	,[Shortstop] VARCHAR(25) NULL
+	,[LeftField] VARCHAR(25) NULL
+	,[CenterField] VARCHAR(25) NULL
+	,[RightField] VARCHAR(25) NULL
+	,[FirstRunner] VARCHAR(25) NULL
+	,[SecondRunner]VARCHAR(25) NULL
+	,[ThirdRunner] VARCHAR(25) NULL
 	,[EventText] VARCHAR(MAX) NULL
 	,[LeadoffFlag] BIT NULL
 	,[PinchHitFlag] BIT NULL
@@ -48,25 +48,25 @@
 	,[WildPitchFlag] BIT NULL
 	,[PassedBallFlag] BIT NULL
 	,[FieldedBy] BIT NULL
-	,[BattedBallType] CHAR(1) NULL
+	,[BattedBallType] VARCHAR(25) NULL
 	,[BuntFlag] BIT NULL
 	,[FoulFlag] BIT NULL
-	,[HitLocation] VARCHAR(10) NULL
+	,[HitLocation] VARCHAR(25) NULL
 	,[NumErrors] INT NULL
 	,[ErrorPlayer1] INT NULL
-	,[ErrorType1] CHAR(1) NULL
+	,[ErrorType1] VARCHAR(25) NULL
 	,[ErrorPlayer2] INT NULL
-	,[ErrorType2] CHAR(1) NULL
+	,[ErrorType2] VARCHAR(25) NULL
 	,[ErrorPlayer3] INT NULL
-	,[ErrorType3] CHAR(1) NULL
+	,[ErrorType3] VARCHAR(25) NULL
 	,[BatterDest] INT NULL
 	,[RunnerOn1stDest] INT NULL
 	,[RunnerOn2ndDest] INT NULL
 	,[RunnerOn3rdDest] INT NULL
-	,[PlayOnBatter] VARCHAR(50) NULL
-	,[PlayOnRunnerOn1st] VARCHAR(50) NULL
-	,[PlayOnRunnerOn2nd] VARCHAR(50) NULL
-	,[PlayOnRunnerOn3rd] VARCHAR(50) NULL
+	,[PlayOnBatter] VARCHAR(100) NULL
+	,[PlayOnRunnerOn1st] VARCHAR(100) NULL
+	,[PlayOnRunnerOn2nd] VARCHAR(100) NULL
+	,[PlayOnRunnerOn3rd] VARCHAR(100) NULL
 	,[SBForRunnerOn1stFlag] BIT NULL
 	,[SBForRunnerOn2ndFlag] BIT NULL
 	,[SBForRunnerOn3rdFlag] BIT NULL
@@ -76,18 +76,18 @@
 	,[POForRunnerOn1stFlag] BIT NULL
 	,[POForRunnerOn2ndFlag] BIT NULL
 	,[POForRunnerOn3rdFlag] BIT NULL
-	,[ResponsiblePitcherForRunnerOn1st] CHAR(8) NULL
-	,[ResponsiblePitcherForRunnerOn2nd] CHAR(8) NULL
-	,[ResponsiblePitcherForRunnerOn3rd] CHAR(8) NULL
+	,[ResponsiblePitcherForRunnerOn1st] VARCHAR(25) NULL
+	,[ResponsiblePitcherForRunnerOn2nd] VARCHAR(25) NULL
+	,[ResponsiblePitcherForRunnerOn3rd] VARCHAR(25) NULL
 	,[NewGameFlag] BIT NULL
 	,[EndGameFlag] BIT NULL
 	,[PinchRunnerOn1st] BIT NULL
 	,[PinchRunnerOn2nd] BIT NULL
 	,[PinchRunnerOn3rd] BIT NULL
-	,[RunnerRemovedForPinchRunnerOn1st] CHAR(8) NULL
-	,[RunnerRemovedForPinchRunnerOn1st2nd] CHAR(8) NULL
-	,[RunnerRemovedForPinchRunnerOn1st3rd] CHAR(8) NULL
-	,[BatterRemovedForPinchHitter] CHAR(8) NULL
+	,[RunnerRemovedForPinchRunnerOn1st] VARCHAR(25) NULL
+	,[RunnerRemovedForPinchRunnerOn1st2nd] VARCHAR(25) NULL
+	,[RunnerRemovedForPinchRunnerOn1st3rd] VARCHAR(25) NULL
+	,[BatterRemovedForPinchHitter] VARCHAR(25) NULL
 	,[PositionOfBatterRemovedForPinchHitter] INT NULL
 	,[FielderWithFirstPutout] INT NULL
 	,[FielderWithSecondPutout] INT NULL

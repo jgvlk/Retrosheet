@@ -13,6 +13,13 @@ TRUNCATE TABLE [raw].[Event]
 GO
 
 
+-- [stg]
+
+TRUNCATE TABLE [stg].[Game]
+TRUNCATE TABLE [stg].[Event]
+GO
+
+
 -- [dbo]
 
 TRUNCATE TABLE [dbo].[PlayerMaster]

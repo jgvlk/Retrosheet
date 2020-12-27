@@ -9,6 +9,9 @@ SELECT TOP 1000 * FROM [raw].[FranchiseMaster]
 SELECT TOP 1000 * FROM [raw].[Game]
 SELECT TOP 1000 * FROM [raw].[Event]
 
+SELECT TOP 1000 * FROM [stg].[Game]
+SELECT TOP 1000 * FROM [stg].[Event]
+
 SELECT TOP 1000 * FROM [dbo].[PlayerMaster]
 SELECT TOP 1000 * FROM [dbo].[ParkMaster]
 SELECT TOP 1000 * FROM [dbo].[TeamMaster]
@@ -24,12 +27,15 @@ SELECT COUNT(*) FROM [raw].[FranchiseMaster] -- 123
 SELECT COUNT(*) FROM [raw].[Game] -- 175648
 SELECT COUNT(*) FROM [raw].[Event] -- 13929772
 
+SELECT COUNT(*) FROM [stg].[Game] -- 175648
+SELECT COUNT(*) FROM [stg].[Event] -- 
+
 SELECT COUNT(*) FROM [dbo].[PlayerMaster] -- 21284
 SELECT COUNT(*) FROM [dbo].[ParkMaster] -- 256
-SELECT COUNT(*) FROM [DBO].[TeamMaster] -- 149
-SELECT COUNT(*) FROM [DBO].[FranchiseMaster] -- 123
-SELECT COUNT(*) FROM [dbo].[Game] -- 81631
-SELECT COUNT(*) FROM [dbo].[Event] -- 6485082
+SELECT COUNT(*) FROM [dbo].[TeamMaster] -- 149
+SELECT COUNT(*) FROM [dbo].[FranchiseMaster] -- 123
+SELECT COUNT(*) FROM [dbo].[Game]
+SELECT COUNT(*) FROM [dbo].[Event]
 
 
 
