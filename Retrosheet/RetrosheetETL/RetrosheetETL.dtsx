@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="RetrosheetETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{A0D919BD-E139-406E-80E6-D47CF9D817CE}">
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{F918AC25-09A5-4987-A118-7E5502E7DA0D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2429,7 +2429,6 @@
           DTS:refId="Package\Master Execution Container\Add FKs"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:Disabled="True"
           DTS:DTSID="{2C7ADF1D-08E4-4E3C-8E9E-CE9AD2BDD69F}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -2450,7 +2449,6 @@
           DTS:refId="Package\Master Execution Container\Cleanup"
           DTS:CreationName="Microsoft.ExecuteProcess"
           DTS:Description="Execute Process Task"
-          DTS:Disabled="True"
           DTS:DTSID="{BAF525D9-A031-49C0-AC3F-1607DDA4250C}"
           DTS:ExecutableType="Microsoft.ExecuteProcess"
           DTS:LocaleID="-1"
@@ -2463,27 +2461,7 @@
           <DTS:ObjectData>
             <ExecuteProcessData
               Executable="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
-              Arguments="C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\Cleanup.ps1"
-              WorkingDirectory="C:\Data\mlb\Retrosheet\data\run" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Master Execution Container\Download &amp; Extract Raw Data"
-          DTS:CreationName="Microsoft.ExecuteProcess"
-          DTS:Description="Execute Process Task"
-          DTS:DTSID="{195AC741-6560-470D-AE49-6FFC79B3CA4F}"
-          DTS:ExecutableType="Microsoft.ExecuteProcess"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Download &amp; Extract Raw Data"
-          DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:LoggingOptions
-            DTS:FilterKind="0" />
-          <DTS:ObjectData>
-            <ExecuteProcessData
-              Executable="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
-              Arguments="C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\Processor.ps1"
+              Arguments="C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\Cleaner.ps1"
               WorkingDirectory="C:\Data\mlb\Retrosheet\data\run" />
           </DTS:ObjectData>
         </DTS:Executable>
@@ -2531,6 +2509,7 @@
         <DTS:Executable
           DTS:refId="Package\Master Execution Container\Load Process Retrosheet Data"
           DTS:CreationName="STOCK:SEQUENCE"
+          DTS:DelayValidation="True"
           DTS:Description="Sequence Container"
           DTS:DTSID="{2b2e9dbe-eca8-46bd-a1e2-717e0b524632}"
           DTS:ExecutableType="STOCK:SEQUENCE"
@@ -6455,8 +6434,8 @@
               <DTS:ForEachVariableMappings>
                 <DTS:ForEachVariableMapping
                   DTS:CreationName=""
-                  DTS:DTSID="{ca62eae9-bd6d-4464-a5f2-4f6f80d8475f}"
-                  DTS:ObjectName="{DA3E926E-95D2-4F2D-A9FD-49AD080ABA05}"
+                  DTS:DTSID="{152946A7-441D-463C-A914-405FF07F8008}"
+                  DTS:ObjectName="{152946A7-441D-463C-A914-405FF07F8008}"
                   DTS:ValueIndex="0"
                   DTS:VariableName="User::CurrentEventFile" />
               </DTS:ForEachVariableMappings>
@@ -12131,6 +12110,26 @@
           </DTS:PrecedenceConstraints>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\Master Execution Container\Process Raw Data"
+          DTS:CreationName="Microsoft.ExecuteProcess"
+          DTS:Description="Execute Process Task"
+          DTS:DTSID="{195AC741-6560-470D-AE49-6FFC79B3CA4F}"
+          DTS:ExecutableType="Microsoft.ExecuteProcess"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Process Raw Data"
+          DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ExecuteProcessData
+              Executable="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
+              Arguments="C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\Processor.ps1"
+              WorkingDirectory="C:\Data\mlb\Retrosheet\data\run" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Master Execution Container\Truncate Tables"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -12159,12 +12158,12 @@
           DTS:From="Package\Master Execution Container\Truncate Tables"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:To="Package\Master Execution Container\Download &amp; Extract Raw Data" />
+          DTS:To="Package\Master Execution Container\Process Raw Data" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Master Execution Container.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
           DTS:DTSID="{5910829B-A70D-4D6D-AB3A-1A2A0EBB8E47}"
-          DTS:From="Package\Master Execution Container\Download &amp; Extract Raw Data"
+          DTS:From="Package\Master Execution Container\Process Raw Data"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
           DTS:To="Package\Master Execution Container\Load Raw Data" />
@@ -12232,9 +12231,9 @@
           Id="Package\Master Execution Container\Cleanup"
           TopLeft="178.5,1235.5" />
         <NodeLayout
-          Size="226,42"
-          Id="Package\Master Execution Container\Download &amp; Extract Raw Data"
-          TopLeft="125.5,209.5" />
+          Size="170,42"
+          Id="Package\Master Execution Container\Process Raw Data"
+          TopLeft="153.5,209.5" />
         <NodeLayout
           Size="125,42"
           Id="Package\Master Execution Container\Drop FKs"
@@ -12522,7 +12521,7 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="477,1435"
+          PanelSize="477,1434"
           Size="477,1478"
           Id="Package\Master Execution Container"
           TopLeft="100,47" />
@@ -12581,6 +12580,19 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Event File\Load Raw Event Data\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Game File\Load Raw Game Data">
     <LayoutInfo>
@@ -12637,7 +12649,7 @@
     design-time-name="Package\Master Execution Container\Load Raw Data\FranchiseMaster">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="177,42"
           Id="Package\Master Execution Container\Load Raw Data\FranchiseMaster\OLE DB Destination"
@@ -12677,7 +12689,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -12804,7 +12818,7 @@
     design-time-name="Package\Master Execution Container\Load Raw Data\TeamMaster">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="156,42"
           Id="Package\Master Execution Container\Load Raw Data\TeamMaster\Flat File Source"
@@ -12844,7 +12858,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

@@ -9,8 +9,8 @@ param (
 
 
 $dataDir = "$($rootdir)\data\run"
-$extractDir = "$($rootdir)\data\extracts"
-$downloadsDir = "$($rootdir)\data\downloads"
+# $extractDir = "$($rootdir)\data\extracts"
+# $downloadsDir = "$($rootdir)\data\downloads"
 
 
 
@@ -34,8 +34,8 @@ try {
     #     Remove-Item "$($dataDir)\$($_)" -Recurse -Force
     # }
 
-    Remove-Item $downloadsDir -Recurse -Force
-    Remove-Item $extractDir -Recurse -Force
+    # Remove-Item $downloadsDir -Recurse -Force
+    # Remove-Item $extractDir -Recurse -Force
 
 }
 catch {

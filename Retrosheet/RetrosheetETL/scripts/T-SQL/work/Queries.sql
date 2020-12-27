@@ -21,8 +21,8 @@ SELECT COUNT(*) FROM [raw].[PlayerMaster] -- 21284
 SELECT COUNT(*) FROM [raw].[ParkMaster] -- 256
 SELECT COUNT(*) FROM [raw].[TeamMaster] -- 149
 SELECT COUNT(*) FROM [raw].[FranchiseMaster] -- 123
-SELECT COUNT(*) FROM [raw].[Game] -- 81631
-SELECT COUNT(*) FROM [raw].[Event] -- 6485082
+SELECT COUNT(*) FROM [raw].[Game] -- 175648
+SELECT COUNT(*) FROM [raw].[Event] -- 13929772
 
 SELECT COUNT(*) FROM [dbo].[PlayerMaster] -- 21284
 SELECT COUNT(*) FROM [dbo].[ParkMaster] -- 256
