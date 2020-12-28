@@ -66,6 +66,8 @@
     <Folder Include="db\aud" />
     <Folder Include="db\raw\Indexes" />
     <Folder Include="db\dbo\Indexes" />
+    <Folder Include="db\stg" />
+    <Folder Include="db\stg\Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="db\raw\raw.sql" />
@@ -86,6 +88,9 @@
     <Build Include="db\raw\Tables\raw.FranchiseMaster.sql" />
     <Build Include="db\dbo\Tables\dbo.FranchiseMaster.sql" />
     <Build Include="db\dbo\Tables\dbo.TeamMaster.sql" />
+    <Build Include="db\stg\stg.sql" />
+    <Build Include="db\stg\Tables\stg.Event.sql" />
+    <Build Include="db\stg\Tables\stg.Game.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="pub\Retrosheet.publish.xml" />
