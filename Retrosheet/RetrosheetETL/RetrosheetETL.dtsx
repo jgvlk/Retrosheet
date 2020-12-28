@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="RetrosheetETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="43"
-  DTS:VersionGUID="{F39C8892-19F8-4283-9511-F78D017E134C}">
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{FB3C0FA2-6FA5-465C-9F05-AF1F10BAF3E5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -6507,6 +6507,80 @@
                       version="1">
                       <components>
                         <component
+                          refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Derived Column"
+                          componentClassID="Microsoft.DerivedColumn"
+                          contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                          description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                          name="Derived Column"
+                          usesDispositions="true">
+                          <inputs>
+                            <input
+                              refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Derived Column.Inputs[Derived Column Input]"
+                              description="Input to the Derived Column Transformation"
+                              name="Derived Column Input">
+                              <externalMetadataColumns />
+                            </input>
+                          </inputs>
+                          <outputs>
+                            <output
+                              refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Output]"
+                              description="Default Output of the Derived Column Transformation"
+                              exclusionGroup="1"
+                              name="Derived Column Output"
+                              synchronousInputId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Derived Column.Inputs[Derived Column Input]">
+                              <outputColumns>
+                                <outputColumn
+                                  refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Output].Columns[GameType]"
+                                  dataType="wstr"
+                                  errorOrTruncationOperation="Computation"
+                                  errorRowDisposition="FailComponent"
+                                  length="2"
+                                  lineageId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Output].Columns[GameType]"
+                                  name="GameType"
+                                  truncationRowDisposition="FailComponent">
+                                  <properties>
+                                    <property
+                                      containsID="true"
+                                      dataType="System.String"
+                                      description="Derived Column Expression"
+                                      name="Expression">"as"</property>
+                                    <property
+                                      containsID="true"
+                                      dataType="System.String"
+                                      description="Derived Column Friendly Expression"
+                                      expressionType="Notify"
+                                      name="FriendlyExpression">"as"</property>
+                                  </properties>
+                                </outputColumn>
+                              </outputColumns>
+                              <externalMetadataColumns />
+                            </output>
+                            <output
+                              refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Error Output]"
+                              description="Error Output of the Derived Column Transformation"
+                              exclusionGroup="1"
+                              isErrorOut="true"
+                              name="Derived Column Error Output"
+                              synchronousInputId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Derived Column.Inputs[Derived Column Input]">
+                              <outputColumns>
+                                <outputColumn
+                                  refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                                  dataType="i4"
+                                  lineageId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                                  name="ErrorCode"
+                                  specialFlags="1" />
+                                <outputColumn
+                                  refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                                  dataType="i4"
+                                  lineageId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                                  name="ErrorColumn"
+                                  specialFlags="2" />
+                              </outputColumns>
+                              <externalMetadataColumns />
+                            </output>
+                          </outputs>
+                        </component>
+                        <component
                           refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Flat File Source"
                           componentClassID="Microsoft.FlatFileSource"
                           contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -9447,6 +9521,13 @@
                                   cachedName="Column 84"
                                   externalMetadataColumnId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OfficialScorer]"
                                   lineageId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Flat File Source.Outputs[Flat File Source Output].Columns[Column 84]" />
+                                <inputColumn
+                                  refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[GameType]"
+                                  cachedDataType="wstr"
+                                  cachedLength="2"
+                                  cachedName="GameType"
+                                  externalMetadataColumnId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GameType]"
+                                  lineageId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Output].Columns[GameType]" />
                               </inputColumns>
                               <externalMetadataColumns
                                 isUsed="True">
@@ -9875,6 +9956,11 @@
                                   dataType="wstr"
                                   length="500"
                                   name="OfficialScorer" />
+                                <externalMetadataColumn
+                                  refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GameType]"
+                                  dataType="wstr"
+                                  length="500"
+                                  name="GameType" />
                               </externalMetadataColumns>
                             </input>
                           </inputs>
@@ -9906,8 +9992,13 @@
                       </components>
                       <paths>
                         <path
-                          refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data.Paths[Flat File Source Output]"
+                          refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data.Paths[Derived Column Output]"
                           endId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                          name="Derived Column Output"
+                          startId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Output]" />
+                        <path
+                          refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data.Paths[Flat File Source Output]"
+                          endId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Derived Column.Inputs[Derived Column Input]"
                           name="Flat File Source Output"
                           startId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Flat File Source.Outputs[Flat File Source Output]" />
                       </paths>
@@ -9918,8 +10009,8 @@
               <DTS:ForEachVariableMappings>
                 <DTS:ForEachVariableMapping
                   DTS:CreationName=""
-                  DTS:DTSID="{4763117A-7299-42A0-A74A-BD911AA9CA44}"
-                  DTS:ObjectName="{4763117A-7299-42A0-A74A-BD911AA9CA44}"
+                  DTS:DTSID="{1BC4B326-DD22-4BD2-ACBA-FCEE170B0BDF}"
+                  DTS:ObjectName="{1BC4B326-DD22-4BD2-ACBA-FCEE170B0BDF}"
                   DTS:ValueIndex="0"
                   DTS:VariableName="User::CurrentGameFile" />
               </DTS:ForEachVariableMappings>
@@ -13893,6 +13984,80 @@
                       version="1">
                       <components>
                         <component
+                          refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Derived Column"
+                          componentClassID="Microsoft.DerivedColumn"
+                          contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                          description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                          name="Derived Column"
+                          usesDispositions="true">
+                          <inputs>
+                            <input
+                              refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Derived Column.Inputs[Derived Column Input]"
+                              description="Input to the Derived Column Transformation"
+                              name="Derived Column Input">
+                              <externalMetadataColumns />
+                            </input>
+                          </inputs>
+                          <outputs>
+                            <output
+                              refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Output]"
+                              description="Default Output of the Derived Column Transformation"
+                              exclusionGroup="1"
+                              name="Derived Column Output"
+                              synchronousInputId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Derived Column.Inputs[Derived Column Input]">
+                              <outputColumns>
+                                <outputColumn
+                                  refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Output].Columns[GameType]"
+                                  dataType="wstr"
+                                  errorOrTruncationOperation="Computation"
+                                  errorRowDisposition="FailComponent"
+                                  length="4"
+                                  lineageId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Output].Columns[GameType]"
+                                  name="GameType"
+                                  truncationRowDisposition="FailComponent">
+                                  <properties>
+                                    <property
+                                      containsID="true"
+                                      dataType="System.String"
+                                      description="Derived Column Expression"
+                                      name="Expression">"post"</property>
+                                    <property
+                                      containsID="true"
+                                      dataType="System.String"
+                                      description="Derived Column Friendly Expression"
+                                      expressionType="Notify"
+                                      name="FriendlyExpression">"post"</property>
+                                  </properties>
+                                </outputColumn>
+                              </outputColumns>
+                              <externalMetadataColumns />
+                            </output>
+                            <output
+                              refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Error Output]"
+                              description="Error Output of the Derived Column Transformation"
+                              exclusionGroup="1"
+                              isErrorOut="true"
+                              name="Derived Column Error Output"
+                              synchronousInputId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Derived Column.Inputs[Derived Column Input]">
+                              <outputColumns>
+                                <outputColumn
+                                  refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                                  dataType="i4"
+                                  lineageId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                                  name="ErrorCode"
+                                  specialFlags="1" />
+                                <outputColumn
+                                  refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                                  dataType="i4"
+                                  lineageId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                                  name="ErrorColumn"
+                                  specialFlags="2" />
+                              </outputColumns>
+                              <externalMetadataColumns />
+                            </output>
+                          </outputs>
+                        </component>
+                        <component
                           refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Flat File Source"
                           componentClassID="Microsoft.FlatFileSource"
                           contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -17261,6 +17426,11 @@
                                   dataType="wstr"
                                   length="500"
                                   name="OfficialScorer" />
+                                <externalMetadataColumn
+                                  refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GameType]"
+                                  dataType="wstr"
+                                  length="500"
+                                  name="GameType" />
                               </externalMetadataColumns>
                             </input>
                           </inputs>
@@ -17292,8 +17462,13 @@
                       </components>
                       <paths>
                         <path
-                          refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data.Paths[Flat File Source Output]"
+                          refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data.Paths[Derived Column Output]"
                           endId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                          name="Derived Column Output"
+                          startId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Output]" />
+                        <path
+                          refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data.Paths[Flat File Source Output]"
+                          endId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Derived Column.Inputs[Derived Column Input]"
                           name="Flat File Source Output"
                           startId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Flat File Source.Outputs[Flat File Source Output]" />
                       </paths>
@@ -17304,8 +17479,8 @@
               <DTS:ForEachVariableMappings>
                 <DTS:ForEachVariableMapping
                   DTS:CreationName=""
-                  DTS:DTSID="{0AE14E04-BBA6-4762-A57E-18D96B50E587}"
-                  DTS:ObjectName="{0AE14E04-BBA6-4762-A57E-18D96B50E587}"
+                  DTS:DTSID="{EC0823CC-85D6-464B-BE4F-4DD66D6A44C5}"
+                  DTS:ObjectName="{EC0823CC-85D6-464B-BE4F-4DD66D6A44C5}"
                   DTS:ValueIndex="0"
                   DTS:VariableName="User::CurrentGameFile" />
               </DTS:ForEachVariableMappings>
@@ -21279,6 +21454,80 @@
                       version="1">
                       <components>
                         <component
+                          refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Derived Column"
+                          componentClassID="Microsoft.DerivedColumn"
+                          contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                          description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                          name="Derived Column"
+                          usesDispositions="true">
+                          <inputs>
+                            <input
+                              refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Derived Column.Inputs[Derived Column Input]"
+                              description="Input to the Derived Column Transformation"
+                              name="Derived Column Input">
+                              <externalMetadataColumns />
+                            </input>
+                          </inputs>
+                          <outputs>
+                            <output
+                              refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Output]"
+                              description="Default Output of the Derived Column Transformation"
+                              exclusionGroup="1"
+                              name="Derived Column Output"
+                              synchronousInputId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Derived Column.Inputs[Derived Column Input]">
+                              <outputColumns>
+                                <outputColumn
+                                  refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Output].Columns[GameType]"
+                                  dataType="wstr"
+                                  errorOrTruncationOperation="Computation"
+                                  errorRowDisposition="FailComponent"
+                                  length="3"
+                                  lineageId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Output].Columns[GameType]"
+                                  name="GameType"
+                                  truncationRowDisposition="FailComponent">
+                                  <properties>
+                                    <property
+                                      containsID="true"
+                                      dataType="System.String"
+                                      description="Derived Column Expression"
+                                      name="Expression">"reg"</property>
+                                    <property
+                                      containsID="true"
+                                      dataType="System.String"
+                                      description="Derived Column Friendly Expression"
+                                      expressionType="Notify"
+                                      name="FriendlyExpression">"reg"</property>
+                                  </properties>
+                                </outputColumn>
+                              </outputColumns>
+                              <externalMetadataColumns />
+                            </output>
+                            <output
+                              refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Error Output]"
+                              description="Error Output of the Derived Column Transformation"
+                              exclusionGroup="1"
+                              isErrorOut="true"
+                              name="Derived Column Error Output"
+                              synchronousInputId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Derived Column.Inputs[Derived Column Input]">
+                              <outputColumns>
+                                <outputColumn
+                                  refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                                  dataType="i4"
+                                  lineageId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                                  name="ErrorCode"
+                                  specialFlags="1" />
+                                <outputColumn
+                                  refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                                  dataType="i4"
+                                  lineageId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                                  name="ErrorColumn"
+                                  specialFlags="2" />
+                              </outputColumns>
+                              <externalMetadataColumns />
+                            </output>
+                          </outputs>
+                        </component>
+                        <component
                           refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Flat File Source"
                           componentClassID="Microsoft.FlatFileSource"
                           contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -24219,6 +24468,13 @@
                                   cachedName="Column 84"
                                   externalMetadataColumnId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OfficialScorer]"
                                   lineageId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Flat File Source.Outputs[Flat File Source Output].Columns[Column 84]" />
+                                <inputColumn
+                                  refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[GameType]"
+                                  cachedDataType="wstr"
+                                  cachedLength="3"
+                                  cachedName="GameType"
+                                  externalMetadataColumnId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GameType]"
+                                  lineageId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Output].Columns[GameType]" />
                               </inputColumns>
                               <externalMetadataColumns
                                 isUsed="True">
@@ -24647,6 +24903,11 @@
                                   dataType="wstr"
                                   length="500"
                                   name="OfficialScorer" />
+                                <externalMetadataColumn
+                                  refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GameType]"
+                                  dataType="wstr"
+                                  length="500"
+                                  name="GameType" />
                               </externalMetadataColumns>
                             </input>
                           </inputs>
@@ -24678,8 +24939,13 @@
                       </components>
                       <paths>
                         <path
-                          refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data.Paths[Flat File Source Output]"
+                          refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data.Paths[Derived Column Output]"
                           endId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                          name="Derived Column Output"
+                          startId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Derived Column.Outputs[Derived Column Output]" />
+                        <path
+                          refId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data.Paths[Flat File Source Output]"
+                          endId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Derived Column.Inputs[Derived Column Input]"
                           name="Flat File Source Output"
                           startId="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Flat File Source.Outputs[Flat File Source Output]" />
                       </paths>
@@ -24690,8 +24956,8 @@
               <DTS:ForEachVariableMappings>
                 <DTS:ForEachVariableMapping
                   DTS:CreationName=""
-                  DTS:DTSID="{33640A9B-53B3-4D74-93D1-63466E158CB2}"
-                  DTS:ObjectName="{33640A9B-53B3-4D74-93D1-63466E158CB2}"
+                  DTS:DTSID="{1CA37006-BC2C-44DA-98CE-3AC4A407AE93}"
+                  DTS:ObjectName="{1CA37006-BC2C-44DA-98CE-3AC4A407AE93}"
                   DTS:ValueIndex="0"
                   DTS:VariableName="User::CurrentGameFile" />
               </DTS:ForEachVariableMappings>
@@ -27065,6 +27331,10 @@
           Id="Package\Master Execution Container\Cleanup"
           TopLeft="179,1749.5" />
         <NodeLayout
+          Size="152,42"
+          Id="Package\Master Execution Container\Create 'run' Dir"
+          TopLeft="163,209.5" />
+        <NodeLayout
           Size="125,42"
           Id="Package\Master Execution Container\Drop FKs"
           TopLeft="176.5,5.5" />
@@ -27074,12 +27344,56 @@
           TopLeft="158.5,1647.5" />
         <NodeLayout
           Size="186,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Event File\Load Raw Event Data"
+          TopLeft="5.5,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="197,103"
+          Size="197,146"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Event File"
+          TopLeft="5.50000000000006,417.5" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data"
+          TopLeft="5.5,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="198,103"
+          Size="198,146"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File"
+          TopLeft="263,417.5" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Event File\Load Raw Event Data"
+          TopLeft="5.5,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="197,103"
+          Size="197,146"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Event File"
+          TopLeft="5.5,211.5" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data"
+          TopLeft="5.5,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="198,103"
+          Size="198,146"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File"
+          TopLeft="263,211.5" />
+        <NodeLayout
+          Size="186,42"
           Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Event File\Load Raw Event Data"
           TopLeft="5.5,5.5" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="197,102"
+          PanelSize="197,103"
           Size="197,146"
           Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Event File"
           TopLeft="5.5,5.5" />
@@ -27090,21 +27404,10 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="198,102"
+          PanelSize="198,103"
           Size="198,146"
           Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File"
           TopLeft="263,5.5" />
-        <NodeLayout
-          Size="186,42"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Event File\Load Raw Event Data"
-          TopLeft="5.5,5.5" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="197,102"
-          Size="197,146"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Event File"
-          TopLeft="5.5,211.5" />
         <EdgeLayout
           Id="Package\Master Execution Container\Load Process Retrosheet Data.PrecedenceConstraints[Constraint]"
           TopLeft="104,151.5">
@@ -27127,17 +27430,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="186,42"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Event File\Load Raw Event Data"
-          TopLeft="5.5,5.5" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="197,102"
-          Size="197,146"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Event File"
-          TopLeft="5.50000000000006,417.5" />
         <EdgeLayout
           Id="Package\Master Execution Container\Load Process Retrosheet Data.PrecedenceConstraints[Constraint 1]"
           TopLeft="104,357.5">
@@ -27160,28 +27452,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="187,42"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data"
-          TopLeft="5.5,5.5" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="198,102"
-          Size="198,146"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File"
-          TopLeft="263,211.5" />
-        <NodeLayout
-          Size="187,42"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data"
-          TopLeft="5.5,5.5" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="198,102"
-          Size="198,146"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File"
-          TopLeft="263,417.5" />
         <EdgeLayout
           Id="Package\Master Execution Container\Load Process Retrosheet Data.PrecedenceConstraints[Constraint 2]"
           TopLeft="362,151.5">
@@ -27229,10 +27499,10 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="467,618"
+          PanelSize="467,619"
           Size="467,662"
           Id="Package\Master Execution Container\Load Process Retrosheet Data"
-          TopLeft="5.50000000000017,925.5" />
+          TopLeft="5.50000000000017,926.5" />
         <NodeLayout
           Size="161,42"
           Id="Package\Master Execution Container\Load Raw Data\FranchiseMaster"
@@ -27331,6 +27601,28 @@
           Id="Package\Master Execution Container\Truncate Tables"
           TopLeft="160,107.5" />
         <EdgeLayout
+          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint]"
+          TopLeft="239,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 1]"
           TopLeft="239,353.5">
           <EdgeLayout.Curve>
@@ -27358,14 +27650,14 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,61"
               Start="0,0"
-              End="0,52.5">
+              End="0,53.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,53.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -27376,18 +27668,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 3]"
-          TopLeft="239,1587.5">
+          TopLeft="239,1588.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59"
               Start="0,0"
-              End="0,52.5">
+              End="0,51.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,51.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -27462,32 +27754,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="152,42"
-          Id="Package\Master Execution Container\Create 'run' Dir"
-          TopLeft="163,209.5" />
-        <EdgeLayout
-          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint]"
-          TopLeft="239,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 7]"
           TopLeft="239,251.5">
@@ -27513,13 +27779,306 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="478,1948"
+          PanelSize="478,1949"
           Size="478,1992"
           Id="Package\Master Execution Container"
           TopLeft="100,47" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Event File\Load Raw Event Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Event File\Load Raw Event Data\Flat File Source"
+          TopLeft="128,94" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Event File\Load Raw Event Data\OLE DB Destination"
+          TopLeft="245,236" />
+        <EdgeLayout
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Event File\Load Raw Event Data.Paths[Flat File Source Output]"
+          TopLeft="206,136">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="127.5,100"
+              Start="0,0"
+              End="127.5,92.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46"
+                    Point2="0,50"
+                    Point3="4,50" />
+                  <mssgle:LineSegment
+                    End="123.5,50" />
+                  <mssgle:CubicBezierSegment
+                    Point1="123.5,50"
+                    Point2="127.5,50"
+                    Point3="127.5,54" />
+                  <mssgle:LineSegment
+                    End="127.5,92.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Flat File Source"
+          TopLeft="135.5,134.5" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\OLE DB Destination"
+          TopLeft="316,298" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Derived Column"
+          TopLeft="221,218" />
+        <EdgeLayout
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data.Paths[Flat File Source Output]"
+          TopLeft="213.5,176.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="86.5,41.5"
+              Start="0,0"
+              End="86.5,34">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.75"
+                    Point2="0,20.75"
+                    Point3="4,20.75" />
+                  <mssgle:LineSegment
+                    End="82.5,20.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="82.5,20.75"
+                    Point2="86.5,20.75"
+                    Point3="86.5,24.75" />
+                  <mssgle:LineSegment
+                    End="86.5,34" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data.Paths[Derived Column Output]"
+          TopLeft="300,260">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="104.5,38"
+              Start="0,0"
+              End="104.5,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15"
+                    Point2="0,19"
+                    Point3="4,19" />
+                  <mssgle:LineSegment
+                    End="100.5,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="100.5,19"
+                    Point2="104.5,19"
+                    Point3="104.5,23" />
+                  <mssgle:LineSegment
+                    End="104.5,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Event File\Load Raw Event Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Event File\Load Raw Event Data\Flat File Source"
+          TopLeft="128,94" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Event File\Load Raw Event Data\OLE DB Destination"
+          TopLeft="245,236" />
+        <EdgeLayout
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Event File\Load Raw Event Data.Paths[Flat File Source Output]"
+          TopLeft="206,136">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="127.5,100"
+              Start="0,0"
+              End="127.5,92.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46"
+                    Point2="0,50"
+                    Point3="4,50" />
+                  <mssgle:LineSegment
+                    End="123.5,50" />
+                  <mssgle:CubicBezierSegment
+                    Point1="123.5,50"
+                    Point2="127.5,50"
+                    Point3="127.5,54" />
+                  <mssgle:LineSegment
+                    End="127.5,92.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Flat File Source"
+          TopLeft="135.5,134.5" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\OLE DB Destination"
+          TopLeft="316,298" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Derived Column"
+          TopLeft="215,221" />
+        <EdgeLayout
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data.Paths[Flat File Source Output]"
+          TopLeft="213.5,176.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="80.5,44.5"
+              Start="0,0"
+              End="80.5,37">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.25"
+                    Point2="0,22.25"
+                    Point3="4,22.25" />
+                  <mssgle:LineSegment
+                    End="76.5,22.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="76.5,22.25"
+                    Point2="80.5,22.25"
+                    Point3="80.5,26.25" />
+                  <mssgle:LineSegment
+                    End="80.5,37" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data.Paths[Derived Column Output]"
+          TopLeft="294,263">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110.5,35"
+              Start="0,0"
+              End="110.5,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5"
+                    Point2="0,17.5"
+                    Point3="4,17.5" />
+                  <mssgle:LineSegment
+                    End="106.5,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="106.5,17.5"
+                    Point2="110.5,17.5"
+                    Point3="110.5,21.5" />
+                  <mssgle:LineSegment
+                    End="110.5,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <TaskHost
     design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Event File\Load Raw Event Data">
     <LayoutInfo>
@@ -27589,7 +28148,7 @@
     design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="156,42"
           Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Flat File Source"
@@ -27598,45 +28157,94 @@
           Size="177,42"
           Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\OLE DB Destination"
           TopLeft="316,298" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\Derived Column"
+          TopLeft="202,213" />
         <EdgeLayout
           Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data.Paths[Flat File Source Output]"
           TopLeft="213.5,176.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="191,121.5"
+              EndConnector="67.5,36.5"
               Start="0,0"
-              End="191,114">
+              End="67.5,29">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,56.75" />
+                    End="0,14.25" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,56.75"
-                    Point2="0,60.75"
-                    Point3="4,60.75" />
+                    Point1="0,14.25"
+                    Point2="0,18.25"
+                    Point3="4,18.25" />
                   <mssgle:LineSegment
-                    End="187,60.75" />
+                    End="63.5,18.25" />
                   <mssgle:CubicBezierSegment
-                    Point1="187,60.75"
-                    Point2="191,60.75"
-                    Point3="191,64.75" />
+                    Point1="63.5,18.25"
+                    Point2="67.5,18.25"
+                    Point3="67.5,22.25" />
                   <mssgle:LineSegment
-                    End="191,114" />
+                    End="67.5,29" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data.Paths[Derived Column Output]"
+          TopLeft="281,255">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="123.5,43"
+              Start="0,0"
+              End="123.5,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.5"
+                    Point2="0,21.5"
+                    Point3="4,21.5" />
+                  <mssgle:LineSegment
+                    End="119.5,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="119.5,21.5"
+                    Point2="123.5,21.5"
+                    Point3="123.5,25.5" />
+                  <mssgle:LineSegment
+                    End="123.5,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Regular Season Game File\Load Raw Game Data\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Master Execution Container\Load Raw Data\FranchiseMaster">
     <LayoutInfo>
@@ -27871,211 +28479,5 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Event File\Load Raw Event Data">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Event File\Load Raw Event Data\Flat File Source"
-          TopLeft="128,94" />
-        <NodeLayout
-          Size="177,42"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Event File\Load Raw Event Data\OLE DB Destination"
-          TopLeft="245,236" />
-        <EdgeLayout
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Event File\Load Raw Event Data.Paths[Flat File Source Output]"
-          TopLeft="206,136">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="127.5,100"
-              Start="0,0"
-              End="127.5,92.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,46"
-                    Point2="0,50"
-                    Point3="4,50" />
-                  <mssgle:LineSegment
-                    End="123.5,50" />
-                  <mssgle:CubicBezierSegment
-                    Point1="123.5,50"
-                    Point2="127.5,50"
-                    Point3="127.5,54" />
-                  <mssgle:LineSegment
-                    End="127.5,92.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
-    design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Event File\Load Raw Event Data">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Event File\Load Raw Event Data\Flat File Source"
-          TopLeft="128,94" />
-        <NodeLayout
-          Size="177,42"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Event File\Load Raw Event Data\OLE DB Destination"
-          TopLeft="245,236" />
-        <EdgeLayout
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Event File\Load Raw Event Data.Paths[Flat File Source Output]"
-          TopLeft="206,136">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="127.5,100"
-              Start="0,0"
-              End="127.5,92.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,46"
-                    Point2="0,50"
-                    Point3="4,50" />
-                  <mssgle:LineSegment
-                    End="123.5,50" />
-                  <mssgle:CubicBezierSegment
-                    Point1="123.5,50"
-                    Point2="127.5,50"
-                    Point3="127.5,54" />
-                  <mssgle:LineSegment
-                    End="127.5,92.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
-    design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\Flat File Source"
-          TopLeft="135.5,134.5" />
-        <NodeLayout
-          Size="177,42"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data\OLE DB Destination"
-          TopLeft="316,298" />
-        <EdgeLayout
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach Postseason Game File\Load Raw Game Data.Paths[Flat File Source Output]"
-          TopLeft="213.5,176.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="191,121.5"
-              Start="0,0"
-              End="191,114">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,56.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,56.75"
-                    Point2="0,60.75"
-                    Point3="4,60.75" />
-                  <mssgle:LineSegment
-                    End="187,60.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="187,60.75"
-                    Point2="191,60.75"
-                    Point3="191,64.75" />
-                  <mssgle:LineSegment
-                    End="191,114" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
-    design-time-name="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\Flat File Source"
-          TopLeft="135.5,134.5" />
-        <NodeLayout
-          Size="177,42"
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data\OLE DB Destination"
-          TopLeft="316,298" />
-        <EdgeLayout
-          Id="Package\Master Execution Container\Load Process Retrosheet Data\Foreach All-Star Game File\Load Raw Game Data.Paths[Flat File Source Output]"
-          TopLeft="213.5,176.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="191,121.5"
-              Start="0,0"
-              End="191,114">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,56.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,56.75"
-                    Point2="0,60.75"
-                    Point3="4,60.75" />
-                  <mssgle:LineSegment
-                    End="187,60.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="187,60.75"
-                    Point2="191,60.75"
-                    Point3="191,64.75" />
-                  <mssgle:LineSegment
-                    End="191,114" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
