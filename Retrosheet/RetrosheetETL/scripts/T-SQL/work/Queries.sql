@@ -12,10 +12,10 @@ SELECT TOP 1000 * FROM [raw].[Event]
 SELECT TOP 1000 * FROM [stg].[Game]
 SELECT TOP 1000 * FROM [stg].[Event]
 
-SELECT TOP 1000 * FROM [dbo].[PlayerMaster]
-SELECT TOP 1000 * FROM [dbo].[ParkMaster]
-SELECT TOP 1000 * FROM [dbo].[TeamMaster]
-SELECT TOP 1000 * FROM [dbo].[FranchiseMaster]
+SELECT * FROM [dbo].[PlayerMaster]
+SELECT * FROM [dbo].[ParkMaster]
+SELECT * FROM [dbo].[TeamMaster]
+SELECT * FROM [dbo].[FranchiseMaster]
 SELECT TOP 1000 * FROM [dbo].[Game]
 SELECT TOP 1000 * FROM [dbo].[Event]
 
@@ -41,12 +41,104 @@ SELECT COUNT(*) FROM [dbo].[Event]
 
 
 
--- General queries
+-- QUERIES
 
-SELECT DISTINCT [HomeTeam] FROM [dbo].[Game] ORDER BY [HomeTeam]
-SELECT * FROM [dbo].[Game] WHERE [HomeTeam] = 'CHN' AND YEAR([Date]) = 2016
-SELECT pm.*
-FROM [dbo].[Game] g
-JOIN [dbo].[PlayerMaster] pm ON g.[VisitorStartingPitcher] = pm.[PlayerID]
-WHERE [VisitingTeam] = 'CHN' AND YEAR([Date]) = 2016
+SELECT * FROM [dbo].[TeamMaster] WHERE [City] = 'Chicago'
+SELECT * FROM [dbo].[FranchiseMaster] WHERE [LocationName] = 'Chicago'
+SELECT DISTINCT [HomeTeam] FROM [stg].[Game] ORDER BY [HomeTeam]
+
+
+
+
+
+-- SAMPLE DATA
+
+-- Cubs 2016 Game data
+SELECT
+    *
+
+    INTO
+        #Game_CHN_2016
+    FROM
+        [stg].[Game]
+    WHERE
+        ( [HomeTeam] = 'CHN' OR [VisitingTeam] = 'CHN' ) AND
+        YEAR([Date]) = 2016
+    ORDER BY
+        [Date]
+
+
+-- Cubs 2016 Event data
+SELECT
+    e.*
+
+    FROM
+        [stg].[Event] e
+        JOIN #Game_CHN_2016 g ON e.[RetroGameID] = g.[RetroGameID]
+    ORDER BY
+        g.[Date]
+        ,e.[EventNum]
+
+
+-- Cubs pitcher wins
+IF EXISTS ( SELECT OBJECT_ID('tempdb.dbo.#PitcherWins1') )
+    DROP TABLE #PitcherWins1
+
+SELECT
+    g.[Date]
+    ,g.[WinningPitcher]
+    ,g.[LosingPitcher]
+    ,g.[HomeTeam]
+    ,g.[VisitingTeam]
+    ,g.[HomeFinalScore]
+    ,g.[VisitorFinalScore]
+    ,CASE
+        WHEN [HomeTeam] = 'CHN' AND [HomeFinalScore] > [VisitorFinalScore] THEN 'W'
+        WHEN [HomeTeam] = 'CHN' AND [HomeFinalScore] < [VisitorFinalScore] THEN 'L'
+        WHEN [VisitingTeam] = 'CHN' AND [HomeFinalScore] < [VisitorFinalScore] THEN 'W'
+        WHEN [VisitingTeam] = 'CHN' AND [HomeFinalScore] > [VisitorFinalScore] THEN 'L'
+    END AS [CHNResult]
+    INTO
+        #PitcherWins1
+    FROM
+        #Game_CHN_2016 g
+
+
+SELECT
+    pm.[FirstName]
+    ,pm.[LastName]
+    ,SUM(pw2.[Win]) AS [Win]
+    ,SUM(pw2.[Loss]) AS [Loss]
+
+    FROM (
+
+        SELECT
+            pw1.*
+            ,CASE WHEN pw1.[CHNResult] = 'W' THEN 1 ELSE 0 END AS [Win]
+            ,CASE WHEN pw1.[CHNResult] = 'L' THEN 1 ELSE 0 END AS [Loss]
+
+            FROM (
+
+                SELECT
+                    *
+                    ,CASE
+                        WHEN [CHNResult] = 'W' THEN [WinningPitcher]
+                        WHEN [CHNResult] = 'L' THEN [LosingPitcher]
+                        ELSE NULL
+                    END AS [CubsPitcherOfRecord]
+
+                    FROM
+                        #PitcherWins1
+
+            ) pw1
+            
+        ) pw2
+        LEFT JOIN [dbo].[PlayerMaster] pm ON pw2.[CubsPitcherOfRecord] = pm.[RetroPlayerID]
+
+
+    GROUP BY
+        pm.[FirstName]
+        ,pm.[LastName]
+    ORDER BY
+        [Win] DESC
 

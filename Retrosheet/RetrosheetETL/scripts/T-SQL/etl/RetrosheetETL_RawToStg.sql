@@ -95,7 +95,7 @@ INSERT INTO [stg].[Game]
 SELECT
 	[RetroGameID] = [GameID]
 	,[ParkID] = [GameSite]
-	,[Date]
+	,[Date] = SUBSTRING([GameID], 4, 4) + '-' + SUBSTRING([GameID], 8, 2) + '-' + SUBSTRING([GameID], 10, 2)
 	,[GameNumber]
 	,[DayOfWeek]
 	,[StartTime] =
