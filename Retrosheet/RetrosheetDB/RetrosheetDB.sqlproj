@@ -61,7 +61,6 @@
     <Folder Include="db\dbo" />
     <Folder Include="db\raw" />
     <Folder Include="db\raw\Tables" />
-    <Folder Include="pub" />
     <Folder Include="db\dbo\Tables" />
     <Folder Include="db\aud" />
     <Folder Include="db\raw\Indexes" />
@@ -73,8 +72,7 @@
     <Build Include="db\raw\raw.sql" />
     <Build Include="db\raw\Tables\raw.PlayerMaster.sql" />
     <Build Include="db\raw\Tables\raw.ParkMaster.sql" />
-    <Build Include="db\raw\Tables\raw.EventPost.sql" />
-    <Build Include="db\raw\Tables\raw.GameReg.sql" />
+    <Build Include="db\raw\Tables\raw.Game.sql" />
     <Build Include="db\dbo\Tables\dbo.Event.sql" />
     <Build Include="db\dbo\Tables\dbo.Game.sql" />
     <Build Include="db\dbo\Tables\dbo.ParkMaster.sql" />
@@ -91,12 +89,6 @@
     <Build Include="db\stg\stg.sql" />
     <Build Include="db\stg\Tables\stg.Event.sql" />
     <Build Include="db\stg\Tables\stg.Game.sql" />
-    <Build Include="db\raw\Tables\raw.EventAllStar.sql" />
-    <Build Include="db\raw\Tables\raw.EventReg.sql" />
-    <Build Include="db\raw\Tables\raw.GamePost.sql" />
-    <Build Include="db\raw\Tables\raw.GameAllStar.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="pub\Retrosheet.publish.xml" />
+    <Build Include="db\raw\Tables\raw.Event.sql" />
   </ItemGroup>
 </Project>

@@ -86,6 +86,7 @@
 	,[VisitingFinisher] VARCHAR(25) NULL
 	,[HomeFinisher] VARCHAR(25) NULL
 	,[OfficialScorer] VARCHAR(25) NULL
+	,[GameType] VARCHAR(5) NULL
 	,CONSTRAINT [pk_Game] PRIMARY KEY NONCLUSTERED ([StgGameID])
 )
 GO

@@ -85,6 +85,7 @@
 	,[VisitingFinisher] NVARCHAR(500) NULL
 	,[HomeFinisher] NVARCHAR(500) NULL
 	,[OfficialScorer] NVARCHAR(500) NULL
+	,[GameType] NVARCHAR(500) NULL
 )
 GO
 

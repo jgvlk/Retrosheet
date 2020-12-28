@@ -150,3 +150,9 @@ SELECT
     ORDER BY
         [Win] DESC
 
+
+
+
+
+SELECT * FROM #Game_CHN_2016 ORDER BY [Date]
+
