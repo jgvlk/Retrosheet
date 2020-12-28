@@ -54,6 +54,9 @@ SELECT DISTINCT [HomeTeam] FROM [stg].[Game] ORDER BY [HomeTeam]
 -- SAMPLE DATA
 
 -- Cubs 2016 Game data
+IF ( SELECT OBJECT_ID('tempdb.dbo.#Game_CHN_2016') ) IS NOT NULL
+    DROP TABLE #Game_CHN_2016
+
 SELECT
     *
 
@@ -69,10 +72,15 @@ SELECT
 
 
 -- Cubs 2016 Event data
+IF ( SELECT OBJECT_ID('tempdb.dbo.#Event_CHN_2016') ) IS NOT NULL
+    DROP TABLE #Event_CHN_2016
+
 SELECT
     e.*
 
-    FROM
+    INTO
+		#Event_CHN_2016
+	FROM
         [stg].[Event] e
         JOIN #Game_CHN_2016 g ON e.[RetroGameID] = g.[RetroGameID]
     ORDER BY
@@ -81,7 +89,7 @@ SELECT
 
 
 -- Cubs pitcher wins
-IF EXISTS ( SELECT OBJECT_ID('tempdb.dbo.#PitcherWins1') )
+IF ( SELECT OBJECT_ID('tempdb.dbo.#PitcherWins1') ) IS NOT NULL
     DROP TABLE #PitcherWins1
 
 SELECT
