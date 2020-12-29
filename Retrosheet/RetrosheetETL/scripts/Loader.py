@@ -70,7 +70,6 @@ for i in reg_games_dir.iterdir():
 
 df_reg_games['GameType'] = 'reg'
 df_reg_games.to_sql(name='Game', con=conn, schema='raw', if_exists='append', index=False, dtype={col_name: mssql.NVARCHAR(500) for col_name in df_reg_games})
-db.session.commit()
 
 
 print('loading postseason data')
@@ -82,7 +81,6 @@ for i in post_games_dir.iterdir():
 
 df_post_games['GameType'] = 'post'
 df_post_games.to_sql(name='Game', con=conn, schema='raw', if_exists='append', index=False, dtype={col_name: mssql.NVARCHAR(500) for col_name in df_post_games})
-db.session.commit()
 
 
 print('loading all-star data')
@@ -94,9 +92,9 @@ for i in as_games_dir.iterdir():
 
 df_as_games['GameType'] = 'as'
 df_as_games.to_sql(name='Game', con=conn, schema='raw', if_exists='append', index=False, dtype={col_name: mssql.NVARCHAR(500) for col_name in df_as_games})
+
+
 db.session.commit()
-
-
 print('end')
 print(datetime.now())
 
