@@ -104,8 +104,12 @@ df_all_games.append(df_reg_games)
 df_all_games.append(df_post_games)
 df_all_games.append(df_as_games)
 
+df_all_games = df_all_games.drop_duplicates()
 
-df_as_games.to_sql(name='Game', con=conn, schema='raw', if_exists='append', index=False, dtype={col_name: mssql.NVARCHAR(500) for col_name in df_as_games})
+
+print('writing to db')
+print(datetime.now())
+df_all_games.to_sql(name='Game', con=conn, schema='raw', if_exists='append', index=False, dtype={col_name: mssql.NVARCHAR(500) for col_name in df_as_games})
 db.session.commit()
 db.session.close()
 
