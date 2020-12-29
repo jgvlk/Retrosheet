@@ -1,9 +1,37 @@
 from datetime import datetime
 import pandas as pd
 from pathlib import Path
+from sqlalchemy import create_engine, event
+from sqlalchemy.dialects import mssql
+from sqlalchemy.orm import sessionmaker
+from urllib.parse import quote_plus
 
 
 print('||MSG', datetime.now(), '|| STARTING RAW DATA LOAD')
+
+
+# Create DB session
+db_conn_str = r'DRIVER={SQL Server};SERVER=.\MSSQLDEV;DATABASE=Retrosheet;TRUSTED_CONNECTION=Yes;'
+db_conn_str = quote_plus(db_conn_str)
+
+engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % db_conn_str)
+
+Session = sessionmaker(bind=engine)
+
+class SessionManager(object):
+    def __init__(self):
+        self.session = Session()
+        self.engine = engine
+
+db = SessionManager()
+conn = db.session.connection()
+_engine = db.engine
+
+
+@event.listens_for(_engine, 'before_cursor_execute')
+def receive_before_cursor_execute(conn, cursor, statement, params, context, executemany):
+    if executemany:
+        cursor.fast_executemany = True
 
 
 # Setup directories
@@ -71,8 +99,9 @@ df_all_games = df_all_games.append(df_as_games)
 df_all_games = df_all_games.drop_duplicates()
 
 
-print('||MSG', datetime.now(), '|| WRITING RAW GAME DATA TO MASTER CSV')
-df_all_games.to_csv(games_out_file, index=False)
+print('||MSG', datetime.now(), '|| WRITING RAW GAME DATA TO [Retrosheet] DB')
+df_all_games.to_sql(name='Game', con=conn, schema='raw', if_exists='append', index=False, dtype={col_name: mssql.NVARCHAR(500) for col_name in df_as_games})
+db.session.commit()
 
 
 del df_reg_games
@@ -81,7 +110,7 @@ del df_as_games
 del df_all_games
 
 
-print('||MSG', datetime.now(), '|| GAME DATA LOADED TO', games_out_file)
+print('||MSG', datetime.now(), '|| EVENT DATA LOADED TO [Retrosheet] DB')
 
 
 # Load raw EVENT data
@@ -113,8 +142,9 @@ df_all_events = df_all_events.append(df_as_events)
 df_all_events = df_all_events.drop_duplicates()
 
 
-print('||MSG', datetime.now(), '|| WRITING RAW EVENT DATA TO MASTER CSV')
-df_all_events.to_csv(events_out_file, index=False)
+print('||MSG', datetime.now(), '|| WRITING RAW EVENT DATA TO [Retrosheet] DB')
+df_all_games.to_sql(name='Game', con=conn, schema='raw', if_exists='append', index=False, dtype={col_name: mssql.NVARCHAR(500) for col_name in df_as_games})
+db.session.commit()
 
 
 del df_reg_events
@@ -123,5 +153,8 @@ del df_as_events
 del df_all_events
 
 
-print('||MSG', datetime.now(), '|| EVENT DATA LOADED TO', games_out_file)
+print('||MSG', datetime.now(), '|| EVENT DATA LOADED TO [Retrosheet] DB')
+
+
+db.session.close()
 

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="RetrosheetETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="57"
-  DTS:VersionGUID="{EFF264BA-0424-4DBB-8031-25138F7319BD}">
+  DTS:VersionBuild="59"
+  DTS:VersionGUID="{D5D32CAB-7AD8-4812-A293-C6329FDE7AFD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -37043,7 +37043,7 @@
           <DTS:ObjectData>
             <ExecuteProcessData
               Executable="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
-              Arguments="C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\Processor.ps1"
+              Arguments="C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\PowerShell\Processor.ps1"
               WorkingDirectory="C:\Data\mlb\Retrosheet\data\run" />
           </DTS:ObjectData>
         </DTS:Executable>
