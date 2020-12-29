@@ -48,6 +48,10 @@ SELECT * FROM [dbo].[FranchiseMaster] WHERE [LocationName] = 'Chicago'
 SELECT DISTINCT [HomeTeam] FROM [stg].[Game] ORDER BY [HomeTeam]
 
 
+select count(*) from raw.Game
+select count(distinct gameid) from raw.Game
+
+
 
 
 
