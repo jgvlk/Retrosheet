@@ -68,9 +68,8 @@ for i in reg_games_dir.iterdir():
     game_file = i
     df_reg_games = df_reg_games.append(pd.read_csv(game_file, encoding='utf-16', names=game_cols))
 
-df_reg_games['GameType'] = 'reg'
-df_reg_games.to_sql(name='Game', con=conn, schema='raw', if_exists='append', index=False, dtype={col_name: mssql.NVARCHAR(500) for col_name in df_reg_games})
-db.session.commit()
+# df_reg_games['GameType'] = 'reg'
+# df_reg_games.to_sql(name='Game', con=conn, schema='raw', if_exists='append', index=False, dtype={col_name: mssql.NVARCHAR(500) for col_name in df_reg_games})
 
 
 print('loading postseason data')
@@ -80,9 +79,8 @@ for i in post_games_dir.iterdir():
     game_file = i
     df_post_games = df_post_games.append(pd.read_csv(game_file, encoding='utf-16', names=game_cols))
 
-df_post_games['GameType'] = 'post'
-df_post_games.to_sql(name='Game', con=conn, schema='raw', if_exists='append', index=False, dtype={col_name: mssql.NVARCHAR(500) for col_name in df_post_games})
-db.session.commit()
+# df_post_games['GameType'] = 'post'
+# df_post_games.to_sql(name='Game', con=conn, schema='raw', if_exists='append', index=False, dtype={col_name: mssql.NVARCHAR(500) for col_name in df_post_games})
 
 
 print('loading all-star data')
@@ -92,9 +90,24 @@ for i in as_games_dir.iterdir():
     game_file = i
     df_as_games = df_as_games.append(pd.read_csv(game_file, encoding='utf-16', names=game_cols))
 
+# df_as_games['GameType'] = 'as'
+# df_as_games.to_sql(name='Game', con=conn, schema='raw', if_exists='append', index=False, dtype={col_name: mssql.NVARCHAR(500) for col_name in df_as_games})
+
+
+df_reg_games['GameType'] = 'reg'
+df_post_games['GameType'] = 'post'
 df_as_games['GameType'] = 'as'
+
+
+df_all_games = pd.DataFrame()
+df_all_games.append(df_reg_games)
+df_all_games.append(df_post_games)
+df_all_games.append(df_as_games)
+
+
 df_as_games.to_sql(name='Game', con=conn, schema='raw', if_exists='append', index=False, dtype={col_name: mssql.NVARCHAR(500) for col_name in df_as_games})
 db.session.commit()
+db.session.close()
 
 
 print('end')
