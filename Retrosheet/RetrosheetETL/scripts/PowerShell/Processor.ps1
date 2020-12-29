@@ -348,6 +348,12 @@ try {
 
     }
 
+
+    Write-Host "||MSG" $endTime "|| WRITING DATA TO MASTER .csv FILES TO PREP FOR LOAD TO [Retrosheet] DB"
+
+    Invoke-Command -ScriptBlock {C:\ProgramData\Miniconda3\envs\py38-mldev\python.exe C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\Python\Loader.py}
+
+
     $endTime = (Get-Date)
     $runTimeH = ($endTime - $startTime).Hours
     $runTimeM = ($endTime - $startTime).Minutes
