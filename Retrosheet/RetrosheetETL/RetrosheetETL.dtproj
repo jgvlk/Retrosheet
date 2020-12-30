@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">JVLK-MBP-VM01</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAckKNFLICe0i1PXsuoLlBJgAAAAACAAAAAAAQZgAAAAEAACAAAADbVupD7J1Gz/CK326AlOS95p1I/nlBGtDwOl20ArORYQAAAAAOgAAAAAIAACAAAACWZAP2cJhrXlyabSN+x2rD5Ck6uLjB/yRZ1JIAVvRj3pAAAABegTwlODNcZw4S0Wx4WFFK3gYrej+ppGcCqKd/wqo9iG1NVb645QW6VdbyIySXeZ9PfCgQAvJ0HFQQQzWT2v8hK3WvGuSB7g/6oGqrQgRajWIY0LfyVyB/WQWoR1OEBNtHzY1IVInNZiG8zYmNQEzMT7D1WK+t7Y+VjPmPnAu3VMZHJF9R0BR5+/dxCy/H/uZAAAAAcBodidNqpbCVcv8S4z2Ns+sgreUcYDkZqpneJ5ga/ZpkLabGOE9zK1ZaBzUTcoBOT0DQnRPyjOXlwlCieQXEfw==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAckKNFLICe0i1PXsuoLlBJgAAAAACAAAAAAAQZgAAAAEAACAAAABihmLU4ngUn8u6wbzDdslHRxxvYym9yckA2lXHiDDWBQAAAAAOgAAAAAIAACAAAABragbvHusUBPVvtx8QkkT8vwl9jwXz56YLZrPxOjCNJZAAAAB52tjgaAlJVBJy6JwH5XLdbal4V/7wlsJhev8Hubc2wsMh7xSV59CPng9mMjGuTiMspk5kzjRflQ3zgqjPKvGkSXiiCfK1SCSpP+zdwl97tWC9ZwHEFbRMOGM8mT1TPM5zf+eYVu3SMEbSvdQp8vTVe4Eydd2ZUimyAcT2msNlLI0H5syErhOI2JFN8KxVNXBAAAAAlj2eB5OUIwCg+6An4N+ucOYuIr/yDPfCIiZ3gBmiji02hRp+pF1gJr/iCd9QYKRmswA0r/qqTnSSCLMj7mQgUA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -163,10 +163,10 @@
                 <SSIS:Property SSIS:Name="Name">RetrosheetETL</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">56</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">64</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{2965C87D-C28D-4008-A8FC-37D4BC0BDE36}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{EABC89B4-FD43-4628-9B35-0A5F19D57D73}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1578,7 +1578,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.RetrosheetETL.sql.ConnectByProxy">
+                <SSIS:Parameter SSIS:Name="CM.RetrosheetETL_RawToDbo.sql.ConnectByProxy">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -1593,7 +1593,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.RetrosheetETL.sql.ConnectionString">
+                <SSIS:Parameter SSIS:Name="CM.RetrosheetETL_RawToDbo.sql.ConnectionString">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -1604,7 +1604,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\T-SQL\etl\RetrosheetETL.sql</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\T-SQL\etl\RetrosheetETL_RawToDbo.sql</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>

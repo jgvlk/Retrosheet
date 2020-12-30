@@ -91,6 +91,7 @@ INSERT INTO [stg].[Game]
 	,[VisitingFinisher]
 	,[HomeFinisher]
 	,[OfficialScorer]
+	,[GameType]
 )
 SELECT
 	[RetroGameID] = [GameID]
@@ -311,6 +312,7 @@ SELECT
 			WHEN [OfficialScorer] = 'broot001' THEN UPPER('broot101')
 			ELSE UPPER([OfficialScorer])
 		END
+	,[GameType]
 FROM
 	[raw].[Game]
 	-- LEFT JOIN [dbo].[ParkMaster] pk ON g.[GameSite] = pk.[RetroParkID]
@@ -663,6 +665,5 @@ FROM
 	--LEFT JOIN [dbo].[PlayerMaster] rrpro12 ON e.[RunnerRemovedForPinchRunnerOn1st2nd] = rrpro12.[RetroPlayerID]
 	--LEFT JOIN [dbo].[PlayerMaster] rrpro13 ON e.[RunnerRemovedForPinchRunnerOn1st3rd] = rrpro13.[RetroPlayerID]
 	--LEFT JOIN [dbo].[PlayerMaster] brph ON e.[BatterRemovedForPinchHitter] = brph.[RetroPlayerID]
-
 GO
 

@@ -9,6 +9,8 @@ param (
 
 
 $dataDir = "$($rootdir)\data\run"
+$metadataDir = "$($rootDir)\data\metadata"
+$supplementalDir = "$($rootDir)\data\supplemental"
 # $extractDir = "$($rootdir)\data\extracts"
 # $downloadsDir = "$($rootdir)\data\downloads"
 
@@ -23,11 +25,15 @@ try {
 
     Write-Host "||MSG" $(Get-Date) "|| CLEANING UP"
 
-    $dataDirEvent = "$($dataDir)/event"
-    $datadirGame = "$($dataDir)/game"
+    Remove-Item $datadir -Recurse -Force
+    Remove-Item $metadataDir -Recurse -Force
+    Remove-Item $supplementalDir -Recurse -Force
 
-    Remove-Item $dataDirEvent -Recurse -Force
-    Remove-Item $datadirGame -Recurse -Force
+    # $dataDirEvent = "$($dataDir)/event"
+    # $datadirGame = "$($dataDir)/game"
+
+    # Remove-Item $dataDirEvent -Recurse -Force
+    # Remove-Item $datadirGame -Recurse -Force
 
     # Get-ChildItem $dataDir |
     # ForEach-Object {

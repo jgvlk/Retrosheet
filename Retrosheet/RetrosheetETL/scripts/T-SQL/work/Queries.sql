@@ -48,10 +48,6 @@ SELECT * FROM [dbo].[FranchiseMaster] WHERE [LocationName] = 'Chicago'
 SELECT DISTINCT [HomeTeam] FROM [stg].[Game] ORDER BY [HomeTeam]
 
 
-select count(*) from raw.Game
-select count(distinct gameid) from raw.Game
-
-
 
 
 
@@ -81,6 +77,7 @@ IF ( SELECT OBJECT_ID('tempdb.dbo.#Event_CHN_2016') ) IS NOT NULL
 
 SELECT
     e.*
+	,g.[GameType]
 
     INTO
 		#Event_CHN_2016
@@ -97,7 +94,8 @@ IF ( SELECT OBJECT_ID('tempdb.dbo.#PitcherWins1') ) IS NOT NULL
     DROP TABLE #PitcherWins1
 
 SELECT
-    g.[Date]
+    g.[GameType]
+	,g.[Date]
     ,g.[WinningPitcher]
     ,g.[LosingPitcher]
     ,g.[HomeTeam]
@@ -117,7 +115,8 @@ SELECT
 
 
 SELECT
-    pm.[FirstName]
+    pw2.[GameType]
+	,pm.[FirstName]
     ,pm.[LastName]
     ,SUM(pw2.[Win]) AS [Win]
     ,SUM(pw2.[Loss]) AS [Loss]
@@ -149,10 +148,12 @@ SELECT
 
 
     GROUP BY
-        pm.[FirstName]
+        pw2.[GameType]
+		,pm.[FirstName]
         ,pm.[LastName]
     ORDER BY
-        [Win] DESC
+		[GameType]
+        ,[Win] DESC
 
 
 
