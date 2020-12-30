@@ -63,7 +63,6 @@
     <Folder Include="db\raw\Tables" />
     <Folder Include="db\dbo\Tables" />
     <Folder Include="db\aud" />
-    <Folder Include="db\raw\Indexes" />
     <Folder Include="db\dbo\Indexes" />
     <Folder Include="db\stg" />
     <Folder Include="db\stg\Tables" />
@@ -78,10 +77,7 @@
     <Build Include="db\dbo\Tables\dbo.ParkMaster.sql" />
     <Build Include="db\dbo\Tables\dbo.PlayerMaster.sql" />
     <Build Include="db\aud\aud.sql" />
-    <Build Include="db\dbo\Indexes\dbo.ixc_ParkMaster_RetroParkID.sql" />
-    <Build Include="db\dbo\Indexes\dbo.ixc_PlayerMaster_RetroPlayerID.sql" />
-    <Build Include="db\raw\Indexes\raw.ixc_ParkMaster_RetroParkID.sql" />
-    <Build Include="db\raw\Indexes\raw.ixc_PlayerMaster_RetroPlayerID.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_ParkID.sql" />
     <Build Include="db\raw\Tables\raw.TeamMaster.sql" />
     <Build Include="db\raw\Tables\raw.FranchiseMaster.sql" />
     <Build Include="db\dbo\Tables\dbo.FranchiseMaster.sql" />
@@ -90,8 +86,67 @@
     <Build Include="db\stg\Tables\stg.Event.sql" />
     <Build Include="db\stg\Tables\stg.Game.sql" />
     <Build Include="db\raw\Tables\raw.Event.sql" />
+    <Build Include="db\dbo\Tables\dbo.GameType.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_VisitorStartingPitcher.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_HomeStartingPitcher.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_HomePlateUmpire.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_FirstBaseUmpire.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_SecondBaseUmpire.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_ThirdBaseUmpire.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_LeftFieldUmpire.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_RightFieldUmpire.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_WinningPitcher.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_LosingPitcher.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_SaveFor.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_GWRBI.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_VisitorBatter1.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_VisitorBatter9.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_VisitorBatter2.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_VisitorBatter3.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_VisitorBatter4.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_VisitorBatter5.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_VisitorBatter6.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_VisitorBatter7.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_VisitorBatter8.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_HomeBatter1.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_HomeBatter9.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_HomeBatter2.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_HomeBatter3.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_HomeBatter4.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_HomeBatter5.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_HomeBatter6.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_HomeBatter7.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_HomeBatter8.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_VisitingFinisher.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_HomeFinisher.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Game_OfficialScorer.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_Batter.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_ResBatter.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_Pitcher.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_ResPitcher.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_Catcher.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_FirstBase.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_SecondBase.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_ThirdBase.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_Shortstop.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_LeftField.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_RightField.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_CenterField.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_FirstRunner.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_SecondRunner.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_ThirdRunner.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_ResponsiblePitcherForRunnerOn1st.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_ResponsiblePitcherForRunnerOn2nd.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_ResponsiblePitcherForRunnerOn3rd.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_RunnerRemovedForPinchRunnerOn1st.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_RunnerRemovedForPinchRunnerOn1st2nd.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_RunnerRemovedForPinchRunnerOn1st3rd.sql" />
+    <Build Include="db\dbo\Indexes\dbo.ixnc_Event_BatterRemovedForPinchHitter.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="RetrosheetDB.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="MergeStaticData.PostDeployment1.sql" />
   </ItemGroup>
 </Project>

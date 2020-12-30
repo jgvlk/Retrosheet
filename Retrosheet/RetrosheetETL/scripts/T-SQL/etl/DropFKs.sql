@@ -2,11 +2,6 @@ USE [Retrosheet]
 GO
 
 
--- [raw]
-
-
--- [dbo]
-
 IF OBJECT_ID('[fk_Game_ParkMaster]') IS NOT NULL
 	ALTER TABLE [dbo].[Game] DROP CONSTRAINT [fk_Game_ParkMaster]
 

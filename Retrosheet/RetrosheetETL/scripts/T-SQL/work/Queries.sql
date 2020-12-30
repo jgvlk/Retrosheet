@@ -38,6 +38,16 @@ SELECT COUNT(*) FROM [dbo].[Game]
 SELECT COUNT(*) FROM [dbo].[Event]
 
 
+--DROP TABLE [stg].[Game]
+--DROP TABLE [stg].[Event]
+--DROP TABLE [dbo].[PlayerMaster]
+--DROP TABLE [dbo].[ParkMaster]
+--DROP TABLE [dbo].[TeamMaster]
+--DROP TABLE [dbo].[FranchiseMaster]
+--DROP TABLE [dbo].[Game]
+--DROP TABLE [dbo].[Event]
+
+
 
 
 

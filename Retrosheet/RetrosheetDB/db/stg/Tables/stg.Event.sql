@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [stg].[Event]
 (
-	[StgEventID] UNIQUEIDENTIFIER NOT NULL
+	[StgEventID] BIGINT NOT NULL IDENTITY(1,1)
 	,[RetroGameID] VARCHAR(25) NOT NULL
 	,[EventNum] INT NULL
 	,[Inning] INT NULL
@@ -97,10 +97,7 @@
 	,[FielderWithThirdAssist] INT NULL
 	,[FielderWithFourthAssist] INT NULL
 	,[FielderWithFifthAssist] INT NULL
-	,CONSTRAINT [pk_Event] PRIMARY KEY NONCLUSTERED ([StgEventID])
+	,CONSTRAINT [pk_Event] PRIMARY KEY ([StgEventID])
 )
-GO
-
-ALTER TABLE [stg].[Event] ADD CONSTRAINT [df_Event_StgEventID] DEFAULT NEWID() FOR [StgEventID]
 GO
 

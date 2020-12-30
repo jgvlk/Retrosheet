@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[FranchiseMaster]
 (
-	[FranchiseID] UNIQUEIDENTIFIER NOT NULL
+	[FranchiseID] INT NOT NULL IDENTITY(1,1)
 	,[CurrentRetroFranchiseID] CHAR(3) NOT NULL
 	,[RetroFranchiseID] CHAR(3) NOT NULL
 	,[League] CHAR(2) NOT NULL
@@ -14,8 +14,5 @@
 	,[State] CHAR(2) NOT NULL
 	,CONSTRAINT [pk_FranchiseMaster] PRIMARY KEY ([FranchiseID])
 )
-GO
-
-ALTER TABLE [dbo].[FranchiseMaster] ADD CONSTRAINT [df_FranchiseMaster_FranchiseID] DEFAULT NEWID() FOR [FranchiseID]
 GO
 

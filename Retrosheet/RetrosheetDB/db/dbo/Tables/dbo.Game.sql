@@ -1,8 +1,9 @@
 ﻿CREATE TABLE [dbo].[Game]
 (
-	[GameID] UNIQUEIDENTIFIER NOT NULL
+	[GameID] BIGINT NOT NULL IDENTITY(1,1)
+	,[ParkID] INT NULL
+	,[GameTypeID] INT NOT NULL
 	,[RetroGameID] CHAR(12) NULL
-	,[ParkID] UNIQUEIDENTIFIER NULL
 	,[Date] DATE NULL
 	,[GameNumber] INT NULL
 	,[DayOfWeek] VARCHAR(10) NULL
@@ -11,20 +12,15 @@
 	,[DayNightFlag] CHAR(1) NULL
 	,[VisitingTeam] CHAR(3) NULL
 	,[HomeTeam] CHAR(3) NULL
-	,[VisitorStartingPitcher] UNIQUEIDENTIFIER NULL
-	,[HomeStartingPitcher] UNIQUEIDENTIFIER NULL
-	,[HomePlateUmpire] UNIQUEIDENTIFIER NULL
-	,[FirstBaseUmpire] UNIQUEIDENTIFIER NULL
-	,[SecondBaseUmpire] UNIQUEIDENTIFIER NULL
-	,[ThirdBaseUmpire] UNIQUEIDENTIFIER NULL
-	,[LeftFieldUmpire] UNIQUEIDENTIFIER NULL
-	,[RightFieldUmpire] UNIQUEIDENTIFIER NULL
+	,[VisitorStartingPitcher] INT NULL
+	,[HomeStartingPitcher] INT NULL
+	,[HomePlateUmpire] INT NULL
+	,[FirstBaseUmpire] INT NULL
+	,[SecondBaseUmpire] INT NULL
+	,[ThirdBaseUmpire] INT NULL
+	,[LeftFieldUmpire] INT NULL
+	,[RightFieldUmpire] INT NULL
 	,[Attendance] INT NULL
-	--,[PSScorer] NVARCHAR(500) NULL
-	--,[Translator] NVARCHAR(500) NULL
-	--,[Inputter] NVARCHAR(500) NULL
-	--,[InputTime] NVARCHAR(500) NULL
-	--,[EditTime] NVARCHAR(500) NULL
 	,[HowScored] INT NULL
 	,[PitchesEntered] INT NULL
 	,[Temperature] INT NULL
@@ -43,60 +39,60 @@
 	,[HomeErrors] INT NULL
 	,[VisitorLeftOnBase] INT NULL
 	,[HomeLeftOnBase] INT NULL
-	,[WinningPitcher] UNIQUEIDENTIFIER NULL
-	,[LosingPitcher] UNIQUEIDENTIFIER NULL
-	,[SaveFor] UNIQUEIDENTIFIER NULL
+	,[WinningPitcher] INT NULL
+	,[LosingPitcher] INT NULL
+	,[SaveFor] INT NULL
 	,[GWRBI] VARCHAR(25) NULL
-	,[VisitorBatter1] UNIQUEIDENTIFIER NULL
+	,[VisitorBatter1] INT NULL
 	,[VisitorPosition1] INT
-	,[VisitorBatter2] UNIQUEIDENTIFIER NULL
+	,[VisitorBatter2] INT NULL
 	,[VisitorPosition2] INT
-	,[VisitorBatter3] UNIQUEIDENTIFIER NULL
+	,[VisitorBatter3] INT NULL
 	,[VisitorPosition3] INT
-	,[VisitorBatter4] UNIQUEIDENTIFIER NULL
+	,[VisitorBatter4] INT NULL
 	,[VisitorPosition4] INT
-	,[VisitorBatter5] UNIQUEIDENTIFIER NULL
+	,[VisitorBatter5] INT NULL
 	,[VisitorPosition5] INT
-	,[VisitorBatter6] UNIQUEIDENTIFIER NULL
+	,[VisitorBatter6] INT NULL
 	,[VisitorPosition6] INT
-	,[VisitorBatter7] UNIQUEIDENTIFIER NULL
+	,[VisitorBatter7] INT NULL
 	,[VisitorPosition7] INT
-	,[VisitorBatter8] UNIQUEIDENTIFIER NULL
+	,[VisitorBatter8] INT NULL
 	,[VisitorPosition8] INT
-	,[VisitorBatter9] UNIQUEIDENTIFIER NULL
+	,[VisitorBatter9] INT NULL
 	,[VisitorPosition9] INT
-	,[HomeBatter1] UNIQUEIDENTIFIER NULL
+	,[HomeBatter1] INT NULL
 	,[HomePosition1] INT
-	,[HomeBatter2] UNIQUEIDENTIFIER NULL
+	,[HomeBatter2] INT NULL
 	,[HomePosition2] INT
-	,[HomeBatter3] UNIQUEIDENTIFIER NULL
+	,[HomeBatter3] INT NULL
 	,[HomePosition3] INT
-	,[HomeBatter4] UNIQUEIDENTIFIER NULL
+	,[HomeBatter4] INT NULL
 	,[HomePosition4] INT
-	,[HomeBatter5] UNIQUEIDENTIFIER NULL
+	,[HomeBatter5] INT NULL
 	,[HomePosition5] INT
-	,[HomeBatter6] UNIQUEIDENTIFIER NULL
+	,[HomeBatter6] INT NULL
 	,[HomePosition6] INT
-	,[HomeBatter7] UNIQUEIDENTIFIER NULL
+	,[HomeBatter7] INT NULL
 	,[HomePosition7] INT
-	,[HomeBatter8] UNIQUEIDENTIFIER NULL
+	,[HomeBatter8] INT NULL
 	,[HomePosition8] INT
-	,[HomeBatter9] UNIQUEIDENTIFIER NULL
+	,[HomeBatter9] INT NULL
 	,[HomePosition9] INT
-	,[VisitingFinisher] UNIQUEIDENTIFIER NULL
-	,[HomeFinisher] UNIQUEIDENTIFIER NULL
-	,[OfficialScorer] UNIQUEIDENTIFIER NULL
-	,CONSTRAINT [pk_Game] PRIMARY KEY NONCLUSTERED ([GameID])
+	,[VisitingFinisher] INT NULL
+	,[HomeFinisher] INT NULL
+	,[OfficialScorer] INT NULL
+	,CONSTRAINT [pk_Game] PRIMARY KEY ([GameID])
 )
 GO
 
-ALTER TABLE [dbo].[Game] ADD CONSTRAINT [df_Game_GameID] DEFAULT NEWID() FOR [GameID]
+ALTER TABLE [dbo].[Game] ADD CONSTRAINT [ak_Game_RetroGameID] UNIQUE ([RetroGameID])
 GO
 
---ALTER TABLE [dbo].[Game] ADD CONSTRAINT [ak_Game_RetroGameID] UNIQUE ([RetroGameID])
---GO
-
 ALTER TABLE [dbo].[Game] ADD CONSTRAINT [fk_Game_ParkMaster] FOREIGN KEY ([ParkID]) REFERENCES [dbo].[ParkMaster]([ParkID])
+GO
+
+ALTER TABLE [dbo].[Game] ADD CONSTRAINT [fk_Game_GameTypeID] FOREIGN KEY ([GameTypeID]) REFERENCES [dbo].[GameType]([GameTypeID])
 GO
 
 ALTER TABLE [dbo].[Game] ADD CONSTRAINT [fk_Game_PlayerMaster01] FOREIGN KEY ([VisitorStartingPitcher]) REFERENCES [dbo].[PlayerMaster]([PlayerID])

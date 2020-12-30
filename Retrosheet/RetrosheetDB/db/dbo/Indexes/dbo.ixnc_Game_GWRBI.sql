@@ -1,0 +1,5 @@
+﻿CREATE NONCLUSTERED INDEX [ixnc_Game_GWRBI]
+	ON [dbo].[Game]
+	([GWRBI])
+GO
+

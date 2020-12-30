@@ -2,12 +2,134 @@ USE [Retrosheet]
 GO
 
 
+/* PlayerMaster */
+
+INSERT INTO [stg].[PlayerMaster]
+(
+	[RetroPlayerID]
+	,[FirstName]
+	,[LastName]
+	,[PlayerDebut]
+	,[ManagerDebut]
+	,[CoachDebut]
+	,[UmpDebut]
+)
+SELECT DISTINCT
+	[RetroPlayerID] = UPPER([PlayerID]) -- CHAR(8)
+	,[FirstName] -- VARCHAR(25)
+	,[LastName] -- VARCHAR(25)
+	,[PlayerDebut] -- DATE
+	,[ManagerDebut] -- DATE
+	,[CoachDebut] -- DATE
+	,[UmpDebut] -- DATE
+FROM
+	[raw].[PlayerMaster]
+GO
+
+
+
+
+
+/* ParkMaster */
+
+INSERT INTO [stg].[ParkMaster]
+(
+	[RetroParkID]
+	,[Name]
+	,[AKA]
+	,[City]
+	,[State]
+	,[Start]
+	,[End]
+	,[League]
+	,[Notes]
+)
+SELECT DISTINCT
+	[RetroParkID] = UPPER([ParkID]) -- CHAR(5)
+	,[Name] -- VARCHAR(50)
+	,[AKA] -- VARCHAR(50)
+	,[City] -- VARCHAR(25)
+	,[State] -- CHAR(2)
+	,[Start] -- DATE
+	,[End] -- END
+	,[League] -- VARCHAR(5)
+	,[Notes] -- VARHCAR(100)
+FROM
+	[raw].[ParkMaster]
+GO
+
+
+
+
+
+/* Franchise Master */
+
+INSERT INTO [stg].[FranchiseMaster]
+(
+	[CurrentRetroFranchiseID]
+	,[RetroFranchiseID]
+	,[League]
+	,[Division]
+	,[LocationName]
+	,[Nickname]
+	,[AltNickname]
+	,[Start]
+	,[End]
+	,[City]
+	,[State]
+)
+SELECT DISTINCT
+	[CurrentRetroFranchiseID] = [CurrentFranchiseID]
+	,[RetroFranchiseID] = [FranchiseID]
+	,[League]
+	,[Division]
+	,[LocationName]
+	,[Nickname]
+	,[AltNickname]
+	,[Start]
+	,[End]
+	,[City]
+	,[State]
+FROM
+	[raw].[FranchiseMaster]
+GO
+
+
+
+
+
+/* TeamMaster */
+
+INSERT INTO [stg].[TeamMaster]
+(
+	[RetroTeamID]
+	,[League]
+	,[City]
+	,[Nickname]
+	,[Start]
+	,[End]
+)
+SELECT DISTINCT
+	[RetroTeamID] = [TeamID]
+	,[League]
+	,[City]
+	,[Nickname]
+	,[Start]
+	,[End]
+FROM
+	[raw].[TeamMaster]
+GO
+
+
+
+
+
 /* Game */
 
 INSERT INTO [stg].[Game]
 (
 	[RetroGameID]
-	,[ParkID]
+	,[RetroParkID]
 	,[Date]
 	,[GameNumber]
 	,[DayOfWeek]
@@ -95,7 +217,7 @@ INSERT INTO [stg].[Game]
 )
 SELECT
 	[RetroGameID] = [GameID]
-	,[ParkID] = [GameSite]
+	,[RetroParkID] = [GameSite]
 	,[Date] = SUBSTRING([GameID], 4, 4) + '-' + SUBSTRING([GameID], 8, 2) + '-' + SUBSTRING([GameID], 10, 2)
 	,[GameNumber]
 	,[DayOfWeek]
@@ -348,6 +470,8 @@ FROM
 	-- LEFT JOIN [dbo].[PlayerMaster] vif ON g.[VisitingFinisher] = vif.[RetroPlayerID]
 	-- LEFT JOIN [dbo].[PlayerMaster] hmf ON g.[HomeFinisher] = hmf.[RetroPlayerID]
 	-- LEFT JOIN [dbo].[PlayerMaster] sco ON g.[OfficialScorer] = sco.[RetroPlayerID]
+ORDER BY
+	[Date]
 GO
 
 
@@ -665,5 +789,9 @@ FROM
 	--LEFT JOIN [dbo].[PlayerMaster] rrpro12 ON e.[RunnerRemovedForPinchRunnerOn1st2nd] = rrpro12.[RetroPlayerID]
 	--LEFT JOIN [dbo].[PlayerMaster] rrpro13 ON e.[RunnerRemovedForPinchRunnerOn1st3rd] = rrpro13.[RetroPlayerID]
 	--LEFT JOIN [dbo].[PlayerMaster] brph ON e.[BatterRemovedForPinchHitter] = brph.[RetroPlayerID]
+ORDER BY
+	SUBSTRING([GameID], 4, 4) + '-' + SUBSTRING([GameID], 8, 2) + '-' + SUBSTRING([GameID], 10, 2)
+	,[GameID]
+	,[EventNum]
 GO
 

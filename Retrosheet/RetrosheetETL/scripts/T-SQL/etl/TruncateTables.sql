@@ -15,6 +15,10 @@ GO
 
 -- [stg]
 
+TRUNCATE TABLE [stg].[PlayerMaster]
+TRUNCATE TABLE [stg].[ParkMaster]
+TRUNCATE TABLE [stg].[FranchiseMaster]
+TRUNCATE TABLE [stg].[TeamMaster]
 TRUNCATE TABLE [stg].[Game]
 TRUNCATE TABLE [stg].[Event]
 GO

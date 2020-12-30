@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[TeamMaster]
 (
-	[TeamID] UNIQUEIDENTIFIER NOT NULL
+	[TeamID] INT NOT NULL IDENTITY(1,1)
 	,[RetroTeamID] CHAR(3) NOT NULL
 	,[League] CHAR(2) NOT NULL
 	,[City] VARCHAR(25) NOT NULL
@@ -11,6 +11,6 @@
 )
 GO
 
-ALTER TABLE [dbo].[TeamMaster] ADD CONSTRAINT [df_TeamMaster_TeamID] DEFAULT NEWID() FOR [TeamID]
+ALTER TABLE [dbo].[TeamMaster] ADD CONSTRAINT [ak_TeamMaster_RetroTeamID] UNIQUE ([RetroTeamID])
 GO
 

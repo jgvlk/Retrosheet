@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Event]
 (
-	[EventID] UNIQUEIDENTIFIER NOT NULL
-	,[GameID] UNIQUEIDENTIFIER NOT NULL
+	[EventID] BIGINT NOT NULL IDENTITY(1,1)
+	,[GameID] BIGINT NOT NULL
 	,[EventNum] INT NULL
 	,[Inning] INT NULL
 	,[BattingTeam] BIT NULL
@@ -11,25 +11,25 @@
 	,[PitchSequence] VARCHAR(MAX) NULL
 	,[VisScore] INT NULL
 	,[HomeScore] INT NULL
-	,[Batter] UNIQUEIDENTIFIER NULL
+	,[Batter] INT NULL
 	,[BatterHand] CHAR(1) NULL
-	,[ResBatter] UNIQUEIDENTIFIER NULL
+	,[ResBatter] INT NULL
 	,[ResBatterHand] CHAR(1) NULL
-	,[Pitcher] UNIQUEIDENTIFIER NULL
+	,[Pitcher] INT NULL
 	,[PitcherHand] CHAR(1) NULL
-	,[ResPitcher] UNIQUEIDENTIFIER NULL
+	,[ResPitcher] INT NULL
 	,[ResPitcherHand] CHAR(1) NULL
-	,[Catcher] UNIQUEIDENTIFIER NULL
-	,[FirstBase] UNIQUEIDENTIFIER NULL
-	,[SecondBase] UNIQUEIDENTIFIER NULL
-	,[ThirdBase] UNIQUEIDENTIFIER NULL
-	,[Shortstop] UNIQUEIDENTIFIER NULL
-	,[LeftField] UNIQUEIDENTIFIER NULL
-	,[CenterField] UNIQUEIDENTIFIER NULL
-	,[RightField] UNIQUEIDENTIFIER NULL
-	,[FirstRunner] UNIQUEIDENTIFIER NULL
-	,[SecondRunner] UNIQUEIDENTIFIER NULL
-	,[ThirdRunner] UNIQUEIDENTIFIER NULL
+	,[Catcher] INT NULL
+	,[FirstBase] INT NULL
+	,[SecondBase] INT NULL
+	,[ThirdBase] INT NULL
+	,[Shortstop] INT NULL
+	,[LeftField] INT NULL
+	,[CenterField] INT NULL
+	,[RightField] INT NULL
+	,[FirstRunner] INT NULL
+	,[SecondRunner] INT NULL
+	,[ThirdRunner] INT NULL
 	,[EventText] VARCHAR(MAX) NULL
 	,[LeadoffFlag] BIT NULL
 	,[PinchHitFlag] BIT NULL
@@ -76,18 +76,18 @@
 	,[POForRunnerOn1stFlag] BIT NULL
 	,[POForRunnerOn2ndFlag] BIT NULL
 	,[POForRunnerOn3rdFlag] BIT NULL
-	,[ResponsiblePitcherForRunnerOn1st] UNIQUEIDENTIFIER NULL
-	,[ResponsiblePitcherForRunnerOn2nd] UNIQUEIDENTIFIER NULL
-	,[ResponsiblePitcherForRunnerOn3rd] UNIQUEIDENTIFIER NULL
+	,[ResponsiblePitcherForRunnerOn1st] INT NULL
+	,[ResponsiblePitcherForRunnerOn2nd] INT NULL
+	,[ResponsiblePitcherForRunnerOn3rd] INT NULL
 	,[NewGameFlag] BIT NULL
 	,[EndGameFlag] BIT NULL
 	,[PinchRunnerOn1st] BIT NULL
 	,[PinchRunnerOn2nd] BIT NULL
 	,[PinchRunnerOn3rd] BIT NULL
-	,[RunnerRemovedForPinchRunnerOn1st] UNIQUEIDENTIFIER NULL
-	,[RunnerRemovedForPinchRunnerOn1st2nd] UNIQUEIDENTIFIER NULL
-	,[RunnerRemovedForPinchRunnerOn1st3rd] UNIQUEIDENTIFIER NULL
-	,[BatterRemovedForPinchHitter] UNIQUEIDENTIFIER NULL
+	,[RunnerRemovedForPinchRunnerOn1st] INT NULL
+	,[RunnerRemovedForPinchRunnerOn1st2nd] INT NULL
+	,[RunnerRemovedForPinchRunnerOn1st3rd] INT NULL
+	,[BatterRemovedForPinchHitter] INT NULL
 	,[PositionOfBatterRemovedForPinchHitter] INT NULL
 	,[FielderWithFirstPutout] INT NULL
 	,[FielderWithSecondPutout] INT NULL
@@ -97,11 +97,8 @@
 	,[FielderWithThirdAssist] INT NULL
 	,[FielderWithFourthAssist] INT NULL
 	,[FielderWithFifthAssist] INT NULL
-	,CONSTRAINT [pk_Event] PRIMARY KEY NONCLUSTERED ([EventID])
+	,CONSTRAINT [pk_Event] PRIMARY KEY ([EventID])
 )
-GO
-
-ALTER TABLE [dbo].[Event] ADD CONSTRAINT [df_Event_EventID] DEFAULT NEWID() FOR [EventID]
 GO
 
 ALTER TABLE [dbo].[Event] ADD CONSTRAINT [ak_Event_RetroGameID_EventNum] UNIQUE ([GameID], [EventNum])

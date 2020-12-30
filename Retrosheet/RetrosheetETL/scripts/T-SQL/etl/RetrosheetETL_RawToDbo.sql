@@ -14,7 +14,7 @@ INSERT INTO [dbo].[PlayerMaster]
 	,[CoachDebut]
 	,[UmpDebut]
 )
-SELECT
+SELECT DISTINCT
 	[RetroPlayerID] = UPPER([PlayerID]) -- CHAR(8)
 	,[FirstName] -- VARCHAR(25)
 	,[LastName] -- VARCHAR(25)
@@ -44,7 +44,7 @@ INSERT INTO [dbo].[ParkMaster]
 	,[League]
 	,[Notes]
 )
-SELECT
+SELECT DISTINCT
 	[RetroParkID] = UPPER([ParkID]) -- CHAR(5)
 	,[Name] -- VARCHAR(50)
 	,[AKA] -- VARCHAR(50)
@@ -78,7 +78,7 @@ INSERT INTO [dbo].[FranchiseMaster]
 	,[City]
 	,[State]
 )
-SELECT
+SELECT DISTINCT
 	[CurrentRetroFranchiseID] = [CurrentFranchiseID]
 	,[RetroFranchiseID] = [FranchiseID]
 	,[League]
@@ -109,7 +109,7 @@ INSERT INTO [dbo].[TeamMaster]
 	,[Start]
 	,[End]
 )
-SELECT
+SELECT DISTINCT
 	[RetroTeamID] = [TeamID]
 	,[League]
 	,[City]

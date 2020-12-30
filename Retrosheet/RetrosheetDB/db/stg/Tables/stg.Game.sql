@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [stg].[Game]
 (
-	[StgGameID] UNIQUEIDENTIFIER NOT NULL
+	[StgGameID] BIGINT NOT NULL IDENTITY(1,1)
 	,[RetroGameID] VARCHAR(25) NULL
-	,[ParkID] VARCHAR(25) NULL
+	,[RetroParkID] VARCHAR(25) NULL
 	,[Date] DATE NULL
 	,[GameNumber] INT NULL
 	,[DayOfWeek] VARCHAR(25) NULL
@@ -87,10 +87,7 @@
 	,[HomeFinisher] VARCHAR(25) NULL
 	,[OfficialScorer] VARCHAR(25) NULL
 	,[GameType] VARCHAR(5) NULL
-	,CONSTRAINT [pk_Game] PRIMARY KEY NONCLUSTERED ([StgGameID])
+	,CONSTRAINT [pk_Game] PRIMARY KEY ([StgGameID])
 )
-GO
-
-ALTER TABLE [stg].[Game] ADD CONSTRAINT [df_Game_StgGameID] DEFAULT NEWID() FOR [StgGameID]
 GO
 
