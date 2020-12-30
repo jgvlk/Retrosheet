@@ -91,4 +91,7 @@
     <Build Include="db\stg\Tables\stg.Game.sql" />
     <Build Include="db\raw\Tables\raw.Event.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="RetrosheetDB.publish.xml" />
+  </ItemGroup>
 </Project>
