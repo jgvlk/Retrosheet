@@ -29,20 +29,6 @@ try {
     Remove-Item $metadataDir -Recurse -Force
     Remove-Item $supplementalDir -Recurse -Force
 
-    # $dataDirEvent = "$($dataDir)/event"
-    # $datadirGame = "$($dataDir)/game"
-
-    # Remove-Item $dataDirEvent -Recurse -Force
-    # Remove-Item $datadirGame -Recurse -Force
-
-    # Get-ChildItem $dataDir |
-    # ForEach-Object {
-    #     Remove-Item "$($dataDir)\$($_)" -Recurse -Force
-    # }
-
-    # Remove-Item $downloadsDir -Recurse -Force
-    # Remove-Item $extractDir -Recurse -Force
-
 }
 catch {
 
