@@ -8,7 +8,12 @@
 	,[ManagerDebut] DATE NULL
 	,[CoachDebut] DATE NULL
 	,[UmpDebut] DATE NULL
+	,[RowHash] NVARCHAR(64) NULL
+	,[dCreated] DATETIME NOT NULL
 	,CONSTRAINT [pk_PlayerMaster] PRIMARY KEY ([StgPlayerID])
 )
+GO
+
+ALTER TABLE [stg].[PlayerMaster] ADD CONSTRAINT [df_PlayerMaster_dCreated] DEFAULT GETDATE() FOR [dCreated]
 GO
 

@@ -4,6 +4,7 @@ GO
 
 /* PlayerMaster */
 
+-- Insert Data
 INSERT INTO [stg].[PlayerMaster]
 (
 	[RetroPlayerID]
@@ -29,11 +30,30 @@ ORDER BY
 GO
 
 
+-- Hash Data Rows
+UPDATE plm
+SET [RowHash] = HASHBYTES('SHA2_512', (
+	SELECT
+		[RetroPlayerID]
+		,[FirstName]
+		,[LastName]
+		,[PlayerDebut]
+		,[ManagerDebut]
+		,[CoachDebut]
+		,[UmpDebut]
+	FOR XML RAW
+	) )
+FROM
+	[stg].[PlayerMaster] plm
+GO
+
+
 
 
 
 /* ParkMaster */
 
+-- Insert Data
 INSERT INTO [stg].[ParkMaster]
 (
 	[RetroParkID]
@@ -63,11 +83,32 @@ ORDER BY
 GO
 
 
+-- Hash Data Rows
+UPDATE pkm
+SET [RowHash] = HASHBYTES('SHA2_512', (
+	SELECT
+		[RetroParkID]
+		,[Name]
+		,[AKA]
+		,[City]
+		,[State]
+		,[Start]
+		,[End]
+		,[League]
+		,[Notes]
+	FOR XML RAW
+	) )
+FROM
+	[stg].[ParkMaster] pkm
+GO
+
+
 
 
 
 /* Franchise Master */
 
+-- Insert Data
 INSERT INTO [stg].[FranchiseMaster]
 (
 	[CurrentRetroFranchiseID]
@@ -103,11 +144,35 @@ ORDER BY
 GO
 
 
+-- Hash Data Rows
+UPDATE fm
+SET [RowHash] = HASHBYTES('SHA2_512', (
+	SELECT
+		[CurrentRetroFranchiseID]
+		,[RetroFranchiseID]
+		,[League]
+		,[Division]
+		,[LocationName]
+		,[Nickname]
+		,[AltNickname]
+		,[Start]
+		,[End]
+		,[City]
+		,[State]
+	FOR XML RAW
+	) )
+FROM
+	[stg].[FranchiseMaster] fm
+GO
+
+
+
 
 
 
 /* TeamMaster */
 
+-- Insert Data
 INSERT INTO [stg].[TeamMaster]
 (
 	[RetroTeamID]
@@ -132,11 +197,29 @@ ORDER BY
 GO
 
 
+-- Hash Data Rows
+UPDATE tm
+SET [RowHash] = HASHBYTES('SHA2_512', (
+	SELECT
+		[RetroTeamID]
+		,[League]
+		,[City]
+		,[Nickname]
+		,[Start]
+		,[End]
+	FOR XML RAW
+	) )
+FROM
+	[stg].[TeamMaster] tm
+GO
+
+
 
 
 
 /* Game */
 
+-- Insert Data
 INSERT INTO [stg].[Game]
 (
 	[RetroGameID]
@@ -488,11 +571,110 @@ ORDER BY
 GO
 
 
+-- Hash Data Rows
+UPDATE g
+SET [RowHash] = HASHBYTES('SHA2_512', (
+	SELECT
+		[RetroGameID]
+		,[RetroParkID]
+		,[Date]
+		,[GameNumber]
+		,[DayOfWeek]
+		,[StartTime]
+		,[DHUsedFlag]
+		,[DayNightFlag]
+		,[VisitingTeam]
+		,[HomeTeam]
+		,[VisitorStartingPitcher]
+		,[HomeStartingPitcher]
+		,[HomePlateUmpire]
+		,[FirstBaseUmpire]
+		,[SecondBaseUmpire]
+		,[ThirdBaseUmpire]
+		,[LeftFieldUmpire]
+		,[RightFieldUmpire]
+		,[Attendance]
+		,[PSScorer]
+		,[Translator]
+		,[Inputter]
+		,[InputTime]
+		,[EditTime]
+		,[HowScored]
+		,[PitchesEntered]
+		,[Temperature]
+		,[WindDirection]
+		,[WindSpeed]
+		,[FieldCondition]
+		,[Precipitation]
+		,[Sky]
+		,[TimeOfGame]
+		,[NumberOfInnings]
+		,[VisitorFinalScore]
+		,[HomeFinalScore]
+		,[VisitorHits]
+		,[HomeHits]
+		,[VisitorErrors]
+		,[HomeErrors]
+		,[VisitorLeftOnBase]
+		,[HomeLeftOnBase]
+		,[WinningPitcher]
+		,[LosingPitcher]
+		,[SaveFor]
+		,[GWRBI]
+		,[VisitorBatter1]
+		,[VisitorPosition1]
+		,[VisitorBatter2]
+		,[VisitorPosition2]
+		,[VisitorBatter3]
+		,[VisitorPosition3]
+		,[VisitorBatter4]
+		,[VisitorPosition4]
+		,[VisitorBatter5]
+		,[VisitorPosition5]
+		,[VisitorBatter6]
+		,[VisitorPosition6]
+		,[VisitorBatter7]
+		,[VisitorPosition7]
+		,[VisitorBatter8]
+		,[VisitorPosition8]
+		,[VisitorBatter9]
+		,[VisitorPosition9]
+		,[HomeBatter1]
+		,[HomePosition1]
+		,[HomeBatter2]
+		,[HomePosition2]
+		,[HomeBatter3]
+		,[HomePosition3]
+		,[HomeBatter4]
+		,[HomePosition4]
+		,[HomeBatter5]
+		,[HomePosition5]
+		,[HomeBatter6]
+		,[HomePosition6]
+		,[HomeBatter7]
+		,[HomePosition7]
+		,[HomeBatter8]
+		,[HomePosition8]
+		,[HomeBatter9]
+		,[HomePosition9]
+		,[VisitingFinisher]
+		,[HomeFinisher]
+		,[OfficialScorer]
+		,[GameType]
+	  FOR XML RAW
+	) )
+FROM
+	[stg].[Game] g
+GO
+
+
+
 
 
 
 /* Event */
 
+-- Insert Data
 INSERT INTO [stg].[Event]
 (
 	[RetroGameID]
@@ -806,5 +988,114 @@ ORDER BY
 	SUBSTRING([GameID], 4, 4) + '-' + SUBSTRING([GameID], 8, 2) + '-' + SUBSTRING([GameID], 10, 2)
 	,[GameID]
 	,CONVERT(INT, [EventNum])
+GO
+
+
+-- Hash Data Rows
+UPDATE e
+SET [RowHash] =
+	HASHBYTES('SHA2_512', (
+		SELECT
+			[RetroGameID]
+			,[EventNum]
+			,[Inning]
+			,[BattingTeam]
+			,[Outs]
+			,[Balls]
+			,[Strikes]
+			,[PitchSequence]
+			,[VisScore]
+			,[HomeScore]
+			,[Batter]
+			,[BatterHand]
+			,[ResBatter]
+			,[ResBatterHand]
+			,[Pitcher]
+			,[PitcherHand]
+			,[ResPitcher]
+			,[ResPitcherHand]
+			,[Catcher]
+			,[FirstBase]
+			,[SecondBase]
+			,[ThirdBase]
+			,[Shortstop]
+			,[LeftField]
+			,[CenterField]
+			,[RightField]
+			,[FirstRunner]
+			,[SecondRunner]
+			,[ThirdRunner]
+			,[EventText]
+			,[LeadoffFlag]
+			,[PinchHitFlag]
+			,[DefensivePosition]
+			,[LineupPosition]
+			,[EventType]
+			,[BatterEventFlag]
+			,[ABFlag]
+			,[HitValue]
+			,[SHFlag]
+			,[SFFlag]
+			,[OutsOnPlay]
+			,[DoublePlayFlag]
+			,[TriplePlayFlag]
+			,[RBIOnPlay]
+			,[WildPitchFlag]
+			,[PassedBallFlag]
+			,[FieldedBy]
+			,[BattedBallType]
+			,[BuntFlag]
+			,[FoulFlag]
+			,[HitLocation]
+			,[NumErrors]
+			,[ErrorPlayer1]
+			,[ErrorType1]
+			,[ErrorPlayer2]
+			,[ErrorType2]
+			,[ErrorPlayer3]
+			,[ErrorType3]
+			,[BatterDest]
+			,[RunnerOn1stDest]
+			,[RunnerOn2ndDest]
+			,[RunnerOn3rdDest]
+			,[PlayOnBatter]
+			,[PlayOnRunnerOn1st]
+			,[PlayOnRunnerOn2nd]
+			,[PlayOnRunnerOn3rd]
+			,[SBForRunnerOn1stFlag]
+			,[SBForRunnerOn2ndFlag]
+			,[SBForRunnerOn3rdFlag]
+			,[CSForRunnerOn1stFlag]
+			,[CSForRunnerOn2ndFlag]
+			,[CSForRunnerOn3rdFlag]
+			,[POForRunnerOn1stFlag]
+			,[POForRunnerOn2ndFlag]
+			,[POForRunnerOn3rdFlag]
+			,[ResponsiblePitcherForRunnerOn1st]
+			,[ResponsiblePitcherForRunnerOn2nd]
+			,[ResponsiblePitcherForRunnerOn3rd]
+			,[NewGameFlag]
+			,[EndGameFlag]
+			,[PinchRunnerOn1st]
+			,[PinchRunnerOn2nd]
+			,[PinchRunnerOn3rd]
+			,[RunnerRemovedForPinchRunnerOn1st]
+			,[RunnerRemovedForPinchRunnerOn1st2nd]
+			,[RunnerRemovedForPinchRunnerOn1st3rd]
+			,[BatterRemovedForPinchHitter]
+			,[PositionOfBatterRemovedForPinchHitter]
+			,[FielderWithFirstPutout]
+			,[FielderWithSecondPutout]
+			,[FielderWithThirdPutout]
+			,[FielderWithFirstAssist]
+			,[FielderWithSecondAssist]
+			,[FielderWithThirdAssist]
+			,[FielderWithFourthAssist]
+			,[FielderWithFifthAssist]
+	  FOR XML RAW
+	)
+)
+FROM
+	[stg].[Event] e
 GO
 

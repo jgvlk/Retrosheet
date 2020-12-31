@@ -82,8 +82,16 @@
 	,[VisitingFinisher] INT NULL
 	,[HomeFinisher] INT NULL
 	,[OfficialScorer] INT NULL
+	,[dCreated] DATETIME NOT NULL
+	,[dModified] DATETIME NOT NULL
 	,CONSTRAINT [pk_Game] PRIMARY KEY ([GameID])
 )
+GO
+
+ALTER TABLE [dbo].[Game] ADD CONSTRAINT [df_Game_dCreated] DEFAULT GETDATE() FOR [dCreated]
+GO
+
+ALTER TABLE [dbo].[Game] ADD CONSTRAINT [df_Game_dModified] DEFAULT GETDATE() FOR [dModified]
 GO
 
 ALTER TABLE [dbo].[Game] ADD CONSTRAINT [ak_Game_RetroGameID] UNIQUE ([RetroGameID])

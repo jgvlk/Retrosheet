@@ -97,7 +97,12 @@
 	,[FielderWithThirdAssist] INT NULL
 	,[FielderWithFourthAssist] INT NULL
 	,[FielderWithFifthAssist] INT NULL
+	,[RowHash] NVARCHAR(64) NULL
+	,[dCreated] DATETIME NOT NULL
 	,CONSTRAINT [pk_Event] PRIMARY KEY ([StgEventID])
 )
+GO
+
+ALTER TABLE [stg].[Event] ADD CONSTRAINT [df_Event_dCreated] DEFAULT GETDATE() FOR [dCreated]
 GO
 

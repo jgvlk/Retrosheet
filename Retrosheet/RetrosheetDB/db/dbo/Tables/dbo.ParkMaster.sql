@@ -10,8 +10,16 @@
 	,[End] DATE NULL
 	,[League] CHAR(2) NULL
 	,[Notes] VARCHAR(100) NULL
+	,[dCreated] DATETIME NOT NULL
+	,[dModified] DATETIME NOT NULL
 	,CONSTRAINT [pk_ParkMaster] PRIMARY KEY ([ParkID])
 )
+GO
+
+ALTER TABLE [dbo].[ParkMaster] ADD CONSTRAINT [df_ParkMaster_dCreated] DEFAULT GETDATE() FOR [dCreated]
+GO
+
+ALTER TABLE [dbo].[ParkMaster] ADD CONSTRAINT [df_ParkMaster_dModified] DEFAULT GETDATE() FOR [dModified]
 GO
 
 ALTER TABLE [dbo].[ParkMaster] ADD CONSTRAINT [ak_ParkMaster_RetroParkID] UNIQUE ([RetroParkID])

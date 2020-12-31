@@ -87,7 +87,12 @@
 	,[HomeFinisher] VARCHAR(25) NULL
 	,[OfficialScorer] VARCHAR(25) NULL
 	,[GameType] VARCHAR(5) NULL
+	,[RowHash] NVARCHAR(64) NULL
+	,[dCreated] DATETIME NOT NULL
 	,CONSTRAINT [pk_Game] PRIMARY KEY ([StgGameID])
 )
+GO
+
+ALTER TABLE [stg].[Game] ADD CONSTRAINT [df_Game_dCreated] DEFAULT GETDATE() FOR [dCreated]
 GO
 

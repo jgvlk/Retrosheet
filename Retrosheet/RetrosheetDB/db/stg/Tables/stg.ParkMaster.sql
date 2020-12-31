@@ -10,7 +10,12 @@
 	,[End] DATE NULL
 	,[League] CHAR(2) NULL
 	,[Notes] VARCHAR(100) NULL
+	,[RowHash] NVARCHAR(64) NULL
+	,[dCreated] DATETIME NOT NULL
 	,CONSTRAINT [pk_ParkMaster] PRIMARY KEY ([StgParkID])
 )
+GO
+
+ALTER TABLE [stg].[ParkMaster] ADD CONSTRAINT [df_ParkMaster_dCreated] DEFAULT GETDATE() FOR [dCreated]
 GO
 

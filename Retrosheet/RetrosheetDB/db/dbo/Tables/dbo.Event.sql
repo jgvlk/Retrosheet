@@ -97,8 +97,16 @@
 	,[FielderWithThirdAssist] INT NULL
 	,[FielderWithFourthAssist] INT NULL
 	,[FielderWithFifthAssist] INT NULL
+	,[dCreated] DATETIME NOT NULL
+	,[dModified] DATETIME NOT NULL
 	,CONSTRAINT [pk_Event] PRIMARY KEY ([EventID])
 )
+GO
+
+ALTER TABLE [dbo].[Event] ADD CONSTRAINT [df_Event_dCreated] DEFAULT GETDATE() FOR [dCreated]
+GO
+
+ALTER TABLE [dbo].[Event] ADD CONSTRAINT [df_Event_dModified] DEFAULT GETDATE() FOR [dModified]
 GO
 
 ALTER TABLE [dbo].[Event] ADD CONSTRAINT [ak_Event_RetroGameID_EventNum] UNIQUE ([GameID], [EventNum])

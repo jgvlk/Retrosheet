@@ -7,8 +7,16 @@
 	,[Nickname] VARCHAR(25) NOT NULL
 	,[Start] INT NULL
 	,[End] INT NULL
+	,[dCreated] DATETIME NOT NULL
+	,[dModified] DATETIME NOT NULL
 	,CONSTRAINT [pk_TeamMaster] PRIMARY KEY ([TeamID])
 )
+GO
+
+ALTER TABLE [dbo].[TeamMaster] ADD CONSTRAINT [df_TeamMaster_dCreated] DEFAULT GETDATE() FOR [dCreated]
+GO
+
+ALTER TABLE [dbo].[TeamMaster] ADD CONSTRAINT [df_TeamMaster_dModified] DEFAULT GETDATE() FOR [dModified]
 GO
 
 ALTER TABLE [dbo].[TeamMaster] ADD CONSTRAINT [ak_TeamMaster_RetroTeamID] UNIQUE ([RetroTeamID])
