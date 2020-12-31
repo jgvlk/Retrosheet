@@ -66,6 +66,8 @@
     <Folder Include="db\dbo\Indexes" />
     <Folder Include="db\stg" />
     <Folder Include="db\stg\Tables" />
+    <Folder Include="db\stg\Indexes" />
+    <Folder Include="db\stg\Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="db\raw\raw.sql" />
@@ -142,6 +144,16 @@
     <Build Include="db\dbo\Indexes\dbo.ixnc_Event_RunnerRemovedForPinchRunnerOn1st2nd.sql" />
     <Build Include="db\dbo\Indexes\dbo.ixnc_Event_RunnerRemovedForPinchRunnerOn1st3rd.sql" />
     <Build Include="db\dbo\Indexes\dbo.ixnc_Event_BatterRemovedForPinchHitter.sql" />
+    <Build Include="db\stg\Indexes\stg.ixnc_Game_RetroParkID.sql" />
+    <Build Include="db\stg\Indexes\stg.ixnc_Game_RetroGameID.sql" />
+    <Build Include="db\stg\Indexes\stg.ixnc_Game_Date.sql" />
+    <Build Include="db\stg\Indexes\stg.ixnc_Event_RetroGameID.sql" />
+    <Build Include="db\stg\Tables\stg.FranchiseMaster.sql" />
+    <Build Include="db\stg\Tables\stg.ParkMaster.sql" />
+    <Build Include="db\stg\Tables\stg.PlayerMaster.sql" />
+    <Build Include="db\stg\Tables\stg.TeamMaster.sql" />
+    <Build Include="db\stg\Views\stg.vw_CurrentTeams.sql" />
+    <Build Include="db\stg\Views\stg.vw_CurrentParks.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="RetrosheetDB.publish.xml" />

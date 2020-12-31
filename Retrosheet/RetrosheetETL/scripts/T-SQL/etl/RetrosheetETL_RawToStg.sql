@@ -24,6 +24,8 @@ SELECT DISTINCT
 	,[UmpDebut] -- DATE
 FROM
 	[raw].[PlayerMaster]
+ORDER BY
+	[RetroPlayerID]
 GO
 
 
@@ -56,6 +58,8 @@ SELECT DISTINCT
 	,[Notes] -- VARHCAR(100)
 FROM
 	[raw].[ParkMaster]
+ORDER BY
+	[RetroParkID]
 GO
 
 
@@ -92,6 +96,10 @@ SELECT DISTINCT
 	,[State]
 FROM
 	[raw].[FranchiseMaster]
+ORDER BY
+	[CurrentFranchiseID]
+	,[RetroFranchiseID]
+	,[Start]
 GO
 
 
@@ -118,6 +126,9 @@ SELECT DISTINCT
 	,[End]
 FROM
 	[raw].[TeamMaster]
+ORDER BY
+	[RetroTeamID]
+	,[Start]
 GO
 
 
@@ -472,6 +483,8 @@ FROM
 	-- LEFT JOIN [dbo].[PlayerMaster] sco ON g.[OfficialScorer] = sco.[RetroPlayerID]
 ORDER BY
 	[Date]
+	,[GameID]
+	,CONVERT(INT, [GameNumber])
 GO
 
 
@@ -792,6 +805,6 @@ FROM
 ORDER BY
 	SUBSTRING([GameID], 4, 4) + '-' + SUBSTRING([GameID], 8, 2) + '-' + SUBSTRING([GameID], 10, 2)
 	,[GameID]
-	,[EventNum]
+	,CONVERT(INT, [EventNum])
 GO
 
