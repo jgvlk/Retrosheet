@@ -5,6 +5,9 @@ GO
 IF OBJECT_ID('[fk_Game_ParkMaster]') IS NOT NULL
 	ALTER TABLE [dbo].[Game] DROP CONSTRAINT [fk_Game_ParkMaster]
 
+IF OBJECT_ID('[fk_Game_GameTypeID]') IS NOT NULL
+	ALTER TABLE [dbo].[Game] DROP CONSTRAINT [fk_Game_GameTypeID]
+
 IF OBJECT_ID('[fk_Game_PlayerMaster01]') IS NOT NULL
 	ALTER TABLE [dbo].[Game] DROP CONSTRAINT [fk_Game_PlayerMaster01]
 
@@ -100,6 +103,9 @@ IF OBJECT_ID('[fk_Game_PlayerMaster31]') IS NOT NULL
 
 IF OBJECT_ID('[fk_Game_PlayerMaster32]') IS NOT NULL
 	ALTER TABLE [dbo].[Game] DROP CONSTRAINT [fk_Game_PlayerMaster32]
+
+IF OBJECT_ID('[fk_Game_PlayerMaster33]') IS NOT NULL
+	ALTER TABLE [dbo].[Game] DROP CONSTRAINT [fk_Game_PlayerMaster33]
 
 IF OBJECT_ID('[fk_Event_PlayerMaster01]') IS NOT NULL
 	ALTER TABLE [dbo].[Event] DROP CONSTRAINT [fk_Event_PlayerMaster01]

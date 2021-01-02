@@ -19,6 +19,6 @@ GO
 ALTER TABLE [dbo].[TeamMaster] ADD CONSTRAINT [df_TeamMaster_dModified] DEFAULT GETDATE() FOR [dModified]
 GO
 
-ALTER TABLE [dbo].[TeamMaster] ADD CONSTRAINT [ak_TeamMaster_RetroTeamID] UNIQUE ([RetroTeamID])
+ALTER TABLE [dbo].[TeamMaster] ADD CONSTRAINT [ak_TeamMaster_RetroTeamID] UNIQUE ([RetroTeamID], [League])
 GO
 

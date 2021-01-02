@@ -73,7 +73,7 @@ try:
     for i in reg_games_dir.iterdir():
         game_file = i
         df = pd.read_csv(game_file, encoding='utf-16', names=game_cols)
-        df['GameType'] = 'reg'
+        df['GameType'] = 'Regular Season'
         df.to_sql(name='Game', con=conn, schema='raw', if_exists='append', index=False, dtype={col_name: mssql.VARCHAR(500) for col_name in df})
 
     db.session.flush()
@@ -82,7 +82,7 @@ try:
     for i in post_games_dir.iterdir():
         game_file = i
         df = pd.read_csv(game_file, encoding='utf-16', names=game_cols)
-        df['GameType'] = 'post'
+        df['GameType'] = 'Postseason'
         df.to_sql(name='Game', con=conn, schema='raw', if_exists='append', index=False, dtype={col_name: mssql.VARCHAR(500) for col_name in df})
 
     db.session.flush()
@@ -91,7 +91,7 @@ try:
     for i in as_games_dir.iterdir():
         game_file = i
         df = pd.read_csv(game_file, encoding='utf-16', names=game_cols)
-        df['GameType'] = 'as'
+        df['GameType'] = 'All-Star'
         df.to_sql(name='Game', con=conn, schema='raw', if_exists='append', index=False, dtype={col_name: mssql.VARCHAR(500) for col_name in df})
 
     db.session.flush()

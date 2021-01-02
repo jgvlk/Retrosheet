@@ -42,7 +42,7 @@
 	,[WinningPitcher] INT NULL
 	,[LosingPitcher] INT NULL
 	,[SaveFor] INT NULL
-	,[GWRBI] VARCHAR(25) NULL
+	,[GWRBI] INT NULL
 	,[VisitorBatter1] INT NULL
 	,[VisitorPosition1] INT
 	,[VisitorBatter2] INT NULL
@@ -199,5 +199,6 @@ GO
 ALTER TABLE [dbo].[Game] ADD CONSTRAINT [fk_Game_PlayerMaster32] FOREIGN KEY ([OfficialScorer]) REFERENCES [dbo].[PlayerMaster]([PlayerID])
 GO
 
-
+ALTER TABLE [dbo].[Game] ADD CONSTRAINT [fk_Game_PlayerMaster33] FOREIGN KEY ([GWRBI]) REFERENCES [dbo].[PlayerMaster]([PlayerID])
+GO
 

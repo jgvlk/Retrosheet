@@ -86,7 +86,7 @@
 	,[VisitingFinisher] VARCHAR(25) NULL
 	,[HomeFinisher] VARCHAR(25) NULL
 	,[OfficialScorer] VARCHAR(25) NULL
-	,[GameType] VARCHAR(5) NULL
+	,[GameType] VARCHAR(25) NULL
 	,[RowHash] NVARCHAR(64) NULL
 	,[dCreated] DATETIME NOT NULL
 	,CONSTRAINT [pk_Game] PRIMARY KEY ([StgGameID])

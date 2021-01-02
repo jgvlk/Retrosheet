@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="RetrosheetETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="80"
-  DTS:VersionGUID="{D7093E4E-C54F-4309-8E91-E3681E1E5B53}">
+  DTS:VersionBuild="81"
+  DTS:VersionGUID="{B1595B77-7A31-42C0-9467-1EA0B155B5D3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -768,7 +768,26 @@
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
       DTS:ObjectName="Master Execution Container">
-      <DTS:Variables />
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{9003FE10-746A-4369-8F37-06FB88262F01}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="RC_pr_RetrosheetETL_RawToStg">
+          <DTS:VariableValue
+            DTS:DataType="3">1</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{7BEC186D-4088-4422-B817-BC7DAC781F70}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="RC_pr_RetrosheetETL_StgToDbo">
+          <DTS:VariableValue
+            DTS:DataType="3">1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
       <DTS:LoggingOptions
         DTS:FilterKind="0"
         DTS:LoggingMode="1" />
@@ -3124,15 +3143,20 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{E03933CE-BB09-4EEF-A98B-49AE794A47E7}"
-              SQLTask:SqlStmtSourceType="FileConnection"
-              SQLTask:SqlStatementSource="RetrosheetETL_RawToDbo.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="EXEC ? = [dbo].[pr_RetrosheetETL_RawToStg] 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::RC_pr_RetrosheetETL_RawToStg"
+                SQLTask:ParameterDirection="ReturnValue"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\Master Execution Container\RetrosheetETL_StgToDbo"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:Disabled="True"
           DTS:DTSID="{9bad51ea-3bad-491e-90d3-add006e39adc}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -3145,8 +3169,14 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{E03933CE-BB09-4EEF-A98B-49AE794A47E7}"
-              SQLTask:SqlStmtSourceType="FileConnection"
-              SQLTask:SqlStatementSource="RetrosheetETL_StgToDbo.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="EXEC ? = [dbo].[pr_RetrosheetlETL_StgToDbo] 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::RC_pr_RetrosheetETL_StgToDbo"
+                SQLTask:ParameterDirection="ReturnValue"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -3376,6 +3406,10 @@
           Id="Package\Master Execution Container\RetrosheetETL_RawToStg"
           TopLeft="22.5000000000001,1027.5" />
         <NodeLayout
+          Size="209,42"
+          Id="Package\Master Execution Container\RetrosheetETL_StgToDbo"
+          TopLeft="20.5000000000001,1129.5" />
+        <NodeLayout
           Size="158,42"
           Id="Package\Master Execution Container\Truncate Tables"
           TopLeft="48.5,107.5" />
@@ -3512,8 +3546,8 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 7]"
-          TopLeft="127.5,251.5">
+          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 6]"
+          TopLeft="127.5,1069.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3533,13 +3567,9 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="209,42"
-          Id="Package\Master Execution Container\RetrosheetETL_StgToDbo"
-          TopLeft="20.5000000000001,1129.5" />
         <EdgeLayout
-          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 6]"
-          TopLeft="127.5,1069.5">
+          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 7]"
+          TopLeft="127.5,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3584,7 +3614,7 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="255,1430"
+          PanelSize="255,1431"
           Size="255,1474"
           Id="Package\Master Execution Container"
           TopLeft="100,47" />

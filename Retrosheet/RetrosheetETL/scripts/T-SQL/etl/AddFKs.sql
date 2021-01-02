@@ -5,6 +5,9 @@ GO
 IF OBJECT_ID('[fk_Game_ParkMaster]') IS NULL
 	ALTER TABLE [dbo].[Game] ADD CONSTRAINT [fk_Game_ParkMaster] FOREIGN KEY ([ParkID]) REFERENCES [dbo].[ParkMaster] ([ParkID])
 
+IF OBJECT_ID('[fk_Game_GameTypeID]') IS NULL
+	ALTER TABLE [dbo].[Game] ADD CONSTRAINT [fk_Game_GameTypeID] FOREIGN KEY ([GameTypeID]) REFERENCES [dbo].[GameType]([GameTypeID])
+
 IF OBJECT_ID('[fk_Game_PlayerMaster01]') IS NULL
 	ALTER TABLE [dbo].[Game] ADD CONSTRAINT [fk_Game_PlayerMaster01] FOREIGN KEY ([VisitorStartingPitcher]) REFERENCES [dbo].[PlayerMaster]([PlayerID])
 
@@ -100,6 +103,9 @@ IF OBJECT_ID('[fk_Game_PlayerMaster32]') IS NULL
 
 IF OBJECT_ID('[fk_Game_PlayerMaster32]') IS NULL
 	ALTER TABLE [dbo].[Game] ADD CONSTRAINT [fk_Game_PlayerMaster32] FOREIGN KEY ([OfficialScorer]) REFERENCES [dbo].[PlayerMaster]([PlayerID])
+
+IF OBJECT_ID('[fk_Game_PlayerMaster33]') IS NULL
+	ALTER TABLE [dbo].[Game] ADD CONSTRAINT [fk_Game_PlayerMaster33] FOREIGN KEY ([GWRBI]) REFERENCES [dbo].[PlayerMaster]([PlayerID])
 
 IF OBJECT_ID('[fk_Event_PlayerMaster01]') IS NULL
 	ALTER TABLE [dbo].[Event] ADD CONSTRAINT [fk_Event_PlayerMaster01] FOREIGN KEY ([Batter]) REFERENCES [dbo].[PlayerMaster]([PlayerID])

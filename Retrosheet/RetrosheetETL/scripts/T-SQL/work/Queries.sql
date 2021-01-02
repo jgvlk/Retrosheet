@@ -46,6 +46,7 @@ SELECT COUNT(*) FROM [dbo].[Game]
 SELECT COUNT(*) FROM [dbo].[Event]
 
 
+
 --DROP TABLE [stg].[Game]
 --DROP TABLE [stg].[Event]
 --DROP TABLE [dbo].[PlayerMaster]
@@ -211,9 +212,3 @@ WHERE
 	g2.[GameType] = 'reg'
 GROUP BY
 	t.[CurrentRetroFranchiseID]
-
-
-
-
-
-
