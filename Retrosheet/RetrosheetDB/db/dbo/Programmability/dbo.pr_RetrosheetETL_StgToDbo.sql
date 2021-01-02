@@ -357,7 +357,6 @@ BEGIN
 		ORDER BY
 			g.[Date]
 			,g.[RetroGameID]
-			,CONVERT(INT, g.[GameNumber])
 
 
 
@@ -466,7 +465,7 @@ BEGIN
 			,[FielderWithFifthAssist]
 		)
 		SELECT
-			e.[RetroGameID]
+			g.[GameID]
 			,[EventNum]
 			,[Inning]
 			,[BattingTeam]
@@ -588,9 +587,9 @@ BEGIN
 			LEFT JOIN [dbo].[PlayerMaster] rrpro13 ON e.[RunnerRemovedForPinchRunnerOn1st3rd] = rrpro13.[RetroPlayerID]
 			LEFT JOIN [dbo].[PlayerMaster] brph ON e.[BatterRemovedForPinchHitter] = brph.[RetroPlayerID]
 		ORDER BY
-			SUBSTRING(e.[RetroGameID], 4, 4) + '-' + SUBSTRING(e.[RetroGameID], 8, 2) + '-' + SUBSTRING(e.[RetroGameID], 10, 2)
-			,e.[RetroGameID]
-			,CONVERT(INT, [EventNum])
+			g.[Date]
+			,g.[RetroGameID]
+			,[EventNum]
 
 
 
