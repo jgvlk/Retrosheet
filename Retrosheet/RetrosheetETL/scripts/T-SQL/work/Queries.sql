@@ -60,6 +60,23 @@ SELECT COUNT(*) FROM [dbo].[Event]
 
 
 
+-- ETL PROCS
+
+declare @rc int
+exec @rc = dbo.pr_RetrosheetETL_RawToStg 1
+print @rc
+go
+
+
+declare @rc int
+exec @rc = dbo.pr_RetrosheetETL_StgToDbo 1
+print @rc
+go
+
+
+
+
+
 -- SAMPLE DATA
 
 -- Cubs 2016 Game data
