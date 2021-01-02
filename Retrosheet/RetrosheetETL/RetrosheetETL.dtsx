@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="RetrosheetETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="81"
-  DTS:VersionGUID="{B1595B77-7A31-42C0-9467-1EA0B155B5D3}">
+  DTS:VersionBuild="82"
+  DTS:VersionGUID="{DBBD466F-162A-4673-874E-3FB783D682C0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -459,6 +459,18 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\T-SQL\etl\TruncateTables.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TruncateTables_Raw.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{E79FAA4B-44FE-4C86-B3A1-10A31B66F235}"
+      DTS:ObjectName="TruncateTables_Raw.sql">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::RetrosheetRepoDir] + "\\Retrosheet\\RetrosheetETL\\scripts\\T-SQL\\etl\\TruncateTables_Raw.sql"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\T-SQL\etl\TruncateTables_Raw.sql" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -3180,6 +3192,26 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\Master Execution Container\Truncate raw Tables"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{4371e5f4-0b92-4edb-bc98-468e08e40e5a}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate raw Tables"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E03933CE-BB09-4EEF-A98B-49AE794A47E7}"
+              SQLTask:SqlStmtSourceType="FileConnection"
+              SQLTask:SqlStatementSource="TruncateTables_Raw.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Master Execution Container\Truncate Tables"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -3268,10 +3300,18 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Master Execution Container.PrecedenceConstraints[Constraint 8]"
           DTS:CreationName=""
-          DTS:DTSID="{465E546A-16DB-411F-A11E-77215B148A2B}"
+          DTS:DTSID="{1C878098-3BA8-426F-8149-7DF935B9A42D}"
           DTS:From="Package\Master Execution Container\RetrosheetETL_StgToDbo"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 8"
+          DTS:To="Package\Master Execution Container\Truncate raw Tables" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Master Execution Container.PrecedenceConstraints[Constraint 9]"
+          DTS:CreationName=""
+          DTS:DTSID="{77EDAB81-7008-4A09-B569-574C8BB319E3}"
+          DTS:From="Package\Master Execution Container\Truncate raw Tables"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 9"
           DTS:To="Package\Master Execution Container\Cleanup" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
@@ -3291,11 +3331,11 @@
         <NodeLayout
           Size="121,42"
           Id="Package\Master Execution Container\Add FKs"
-          TopLeft="67.0000000000002,1333.5" />
+          TopLeft="67.0000000000002,1435.5" />
         <NodeLayout
           Size="120,42"
           Id="Package\Master Execution Container\Cleanup"
-          TopLeft="67.5000000000002,1231.5" />
+          TopLeft="67.5000000000002,1333.5" />
         <NodeLayout
           Size="152,42"
           Id="Package\Master Execution Container\Create 'run' Dir"
@@ -3408,7 +3448,7 @@
         <NodeLayout
           Size="209,42"
           Id="Package\Master Execution Container\RetrosheetETL_StgToDbo"
-          TopLeft="20.5000000000001,1129.5" />
+          TopLeft="23.0000000000001,1129.5" />
         <NodeLayout
           Size="158,42"
           Id="Package\Master Execution Container\Truncate Tables"
@@ -3525,7 +3565,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 5]"
-          TopLeft="127.5,1273.5">
+          TopLeft="127.5,1375.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3589,6 +3629,10 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Master Execution Container\Truncate raw Tables"
+          TopLeft="38.0000000000002,1231.5" />
         <EdgeLayout
           Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 8]"
           TopLeft="127.5,1171.5">
@@ -3611,11 +3655,33 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 9]"
+          TopLeft="127.5,1273.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="255,1431"
-          Size="255,1474"
+          PanelSize="255,1532"
+          Size="255,1576"
           Id="Package\Master Execution Container"
           TopLeft="100,47" />
       </GraphLayout>
