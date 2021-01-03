@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="RetrosheetETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="82"
-  DTS:VersionGUID="{DBBD466F-162A-4673-874E-3FB783D682C0}">
+  DTS:VersionBuild="86"
+  DTS:VersionGUID="{8EFCB724-5A4F-4CC6-8CF9-E4243D7D966B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -3155,7 +3155,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{E03933CE-BB09-4EEF-A98B-49AE794A47E7}"
-              SQLTask:SqlStatementSource="EXEC ? = [dbo].[pr_RetrosheetETL_RawToStg] 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="EXEC ? = dbo.pr_RetrosheetETL_RawToStg 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::RC_pr_RetrosheetETL_RawToStg"
@@ -3181,7 +3181,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{E03933CE-BB09-4EEF-A98B-49AE794A47E7}"
-              SQLTask:SqlStatementSource="EXEC ? = [dbo].[pr_RetrosheetlETL_StgToDbo] 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="EXEC ? = dbo.pr_RetrosheetETL_StgToDbo 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::RC_pr_RetrosheetETL_StgToDbo"
@@ -3450,6 +3450,10 @@
           Id="Package\Master Execution Container\RetrosheetETL_StgToDbo"
           TopLeft="23.0000000000001,1129.5" />
         <NodeLayout
+          Size="179,42"
+          Id="Package\Master Execution Container\Truncate raw Tables"
+          TopLeft="38.0000000000002,1231.5" />
+        <NodeLayout
           Size="158,42"
           Id="Package\Master Execution Container\Truncate Tables"
           TopLeft="48.5,107.5" />
@@ -3629,10 +3633,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="179,42"
-          Id="Package\Master Execution Container\Truncate raw Tables"
-          TopLeft="38.0000000000002,1231.5" />
         <EdgeLayout
           Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 8]"
           TopLeft="127.5,1171.5">
@@ -3680,7 +3680,7 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="255,1532"
+          PanelSize="255,1533"
           Size="255,1576"
           Id="Package\Master Execution Container"
           TopLeft="100,47" />
@@ -3691,7 +3691,7 @@
     design-time-name="Package\Master Execution Container\Load Raw Lookup Data\FranchiseMaster">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="177,42"
           Id="Package\Master Execution Container\Load Raw Lookup Data\FranchiseMaster\OLE DB Destination"
@@ -3731,7 +3731,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

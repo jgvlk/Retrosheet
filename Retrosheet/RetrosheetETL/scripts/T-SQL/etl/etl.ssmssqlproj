@@ -31,24 +31,6 @@
           <AssociatedConnUserName />
           <FullPath>DropFKs.sql</FullPath>
         </FileNode>
-        <FileNode Name="RetrosheetETL_RawToDbo.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLDEV:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>(local)\MSSQLDEV</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>RetrosheetETL_RawToDbo.sql</FullPath>
-        </FileNode>
-        <FileNode Name="RetrosheetETL_RawToStg.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLDEV:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>(local)\MSSQLDEV</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>RetrosheetETL_RawToStg.sql</FullPath>
-        </FileNode>
-        <FileNode Name="RetrosheetETL_StgToDbo.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLDEV:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>(local)\MSSQLDEV</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>RetrosheetETL_StgToDbo.sql</FullPath>
-        </FileNode>
         <FileNode Name="TruncateTables.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLDEV:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>(local)\MSSQLDEV</AssociatedConnSrvName>

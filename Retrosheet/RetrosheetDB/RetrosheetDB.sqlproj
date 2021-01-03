@@ -216,7 +216,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="RetrosheetDB.publish.xml" />
-    <None Include="RetrosheetDB_MSSQLEXP.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="MergeStaticData.PostDeployment1.sql" />
