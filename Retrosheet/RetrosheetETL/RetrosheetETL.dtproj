@@ -12,11 +12,11 @@
   <DataSourceViews />
   <DeploymentModelSpecificContent>
     <Manifest>
-      <SSIS:Project SSIS:ProtectionLevel="EncryptSensitiveWithUserKey" xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
+      <SSIS:Project SSIS:ProtectionLevel="EncryptSensitiveWithPassword" xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
         <SSIS:Properties>
           <SSIS:Property SSIS:Name="ID">{6fc8dbe4-7138-4db7-b770-f46d1edfea84}</SSIS:Property>
           <SSIS:Property SSIS:Name="Name">RetrosheetETL</SSIS:Property>
-          <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionComments">
@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">JVLK-MBP-VM01</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAckKNFLICe0i1PXsuoLlBJgAAAAACAAAAAAAQZgAAAAEAACAAAAAIztNIRJByvA64ZG2/NzUvW3oCJf8SBtL/Uylw66HW0wAAAAAOgAAAAAIAACAAAAA/WUe/t1PO2cQfgxRGrMIVFxwHTcC0SmB0cmgDVaQT/5AAAACePFWpmiKOyUEknOPqs14SNke6DKnxoqqSJcownIvGB8DEIgiE57TbldOc/E3YOVJbLZd462DYIEQMnlRMt+GdzE8VVZKRm1m+A9v3QhvnnukRrOC+/eRiKIhfwNgNqrkspvC6eX2RheluMTyyN1bmngOfL5HnKGccHc1DRbuKBpfL10P/WMCzLwJhPm7Cno9AAAAA4o8YiRK0RH0BsvN7MPm6IJ6m85pR2YOysntqYBxLXA9r/cB70I6OXEhBjgp5ZqNYx8PELKO2W+dthzGlX43nzA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1" SSIS:Salt="3aIqRcC+s2E=" SSIS:IV="hu9Ke0tUyXt041FACfdrVQ==" SSIS:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc">qLWENV4WrDeP05nLW1UNb4V/RgJttKNA8idOWOa4FxC7u754Ce0UuPSX3RBwcWJgEUTiywAU4nq2tMRkSTAjMTj/GUFUjKPY46WPeOaaBqHdSFs8xFbjAY29b7usoMY4zT/uiiOcxhXv154f0n/nUR7IKc6mN0Vf1SM3PfMP036951VErWK2ri2BiZVoMAzN</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -163,14 +163,14 @@
                 <SSIS:Property SSIS:Name="Name">RetrosheetETL</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">88</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">96</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{86121F74-5571-4A52-B732-B99775E29546}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D16BACF0-7F8C-4FD3-A8A7-A852DE91A5A9}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">2</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
                 <SSIS:Parameter SSIS:Name="CM.AddFKs.sql.ConnectByProxy">
