@@ -47,6 +47,22 @@ SELECT COUNT(*) FROM [dbo].[Event]
 
 
 
+--drop table [stg].[PlayerMaster] -- 21284
+--drop table [stg].[ParkMaster] -- 256
+--drop table [stg].[TeamMaster] -- 149
+--drop table [stg].[FranchiseMaster] -- 123
+--drop table [stg].[Game] -- 175648
+--drop table [stg].[Event] -- 13929772
+
+--drop table [dbo].[PlayerMaster] -- 21284
+--drop table [dbo].[ParkMaster] -- 256
+--drop table [dbo].[TeamMaster] -- 149
+--drop table [dbo].[FranchiseMaster] -- 123
+--drop table [dbo].[Game]
+--drop table [dbo].[Event]
+
+
+
 --DROP TABLE [stg].[Game]
 --DROP TABLE [stg].[Event]
 --DROP TABLE [dbo].[PlayerMaster]

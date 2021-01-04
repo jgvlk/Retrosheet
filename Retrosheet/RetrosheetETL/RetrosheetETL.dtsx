@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="RetrosheetETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="86"
-  DTS:VersionGUID="{8EFCB724-5A4F-4CC6-8CF9-E4243D7D966B}">
+  DTS:VersionBuild="94"
+  DTS:VersionGUID="{FF89682A-ECE3-422F-BD74-892543B1799D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -808,6 +808,7 @@
           DTS:refId="Package\Master Execution Container\Add FKs"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{2C7ADF1D-08E4-4E3C-8E9E-CE9AD2BDD69F}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -829,6 +830,7 @@
           DTS:CreationName="Microsoft.ExecuteProcess"
           DTS:DelayValidation="True"
           DTS:Description="Execute Process Task"
+          DTS:Disabled="True"
           DTS:DTSID="{BAF525D9-A031-49C0-AC3F-1607DDA4250C}"
           DTS:ExecutableType="Microsoft.ExecuteProcess"
           DTS:LocaleID="-1"
@@ -849,6 +851,7 @@
           DTS:refId="Package\Master Execution Container\Create 'run' Dir"
           DTS:CreationName="Microsoft.ExecuteProcess"
           DTS:Description="Execute Process Task"
+          DTS:Disabled="True"
           DTS:DTSID="{648F8FF8-41F9-48D3-810D-80CA5334392C}"
           DTS:ExecutableType="Microsoft.ExecuteProcess"
           DTS:LocaleID="-1"
@@ -869,6 +872,7 @@
           DTS:refId="Package\Master Execution Container\Drop FKs"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{0C617C92-609E-45D5-A535-555F103255CC}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -890,6 +894,7 @@
           DTS:CreationName="Microsoft.ExecuteProcess"
           DTS:DelayValidation="True"
           DTS:Description="Execute Process Task"
+          DTS:Disabled="True"
           DTS:DTSID="{14C145B6-5C26-48EC-B0C7-3E324A350E8E}"
           DTS:ExecutableType="Microsoft.ExecuteProcess"
           DTS:LocaleID="-1"
@@ -897,6 +902,8 @@
           DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
           <DTS:PropertyExpression
             DTS:Name="Arguments">@[$Project::RetrosheetRepoDir] + "\\Retrosheet\\RetrosheetETL\\scripts\\Python\\Loader.py"</DTS:PropertyExpression>
           <DTS:PropertyExpression
@@ -914,6 +921,7 @@
           DTS:refId="Package\Master Execution Container\Load Raw Lookup Data"
           DTS:CreationName="STOCK:SEQUENCE"
           DTS:Description="Sequence Container"
+          DTS:Disabled="True"
           DTS:DTSID="{d18743ac-7cce-4324-bb6d-4fc8d3c40045}"
           DTS:ExecutableType="STOCK:SEQUENCE"
           DTS:LocaleID="-1"
@@ -3121,6 +3129,7 @@
           DTS:CreationName="Microsoft.ExecuteProcess"
           DTS:DelayValidation="True"
           DTS:Description="Execute Process Task"
+          DTS:Disabled="True"
           DTS:DTSID="{195AC741-6560-470D-AE49-6FFC79B3CA4F}"
           DTS:ExecutableType="Microsoft.ExecuteProcess"
           DTS:LocaleID="-1"
@@ -3195,6 +3204,7 @@
           DTS:refId="Package\Master Execution Container\Truncate raw Tables"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{4371e5f4-0b92-4edb-bc98-468e08e40e5a}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -3215,6 +3225,7 @@
           DTS:refId="Package\Master Execution Container\Truncate Tables"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{6bdffefd-cca8-4f7c-86a4-3f4d940ac4ce}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -3285,6 +3296,8 @@
           DTS:refId="Package\Master Execution Container.PrecedenceConstraints[Constraint 6]"
           DTS:CreationName=""
           DTS:DTSID="{68BD24CB-FFD7-4578-9683-FE911D7543D4}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::RC_pr_RetrosheetETL_RawToStg] == 0"
           DTS:From="Package\Master Execution Container\RetrosheetETL_RawToStg"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 6"
@@ -3301,6 +3314,8 @@
           DTS:refId="Package\Master Execution Container.PrecedenceConstraints[Constraint 8]"
           DTS:CreationName=""
           DTS:DTSID="{1C878098-3BA8-426F-8149-7DF935B9A42D}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::RC_pr_RetrosheetETL_StgToDbo] == 0"
           DTS:From="Package\Master Execution Container\RetrosheetETL_StgToDbo"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 8"
@@ -3327,7 +3342,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="121,42"
           Id="Package\Master Execution Container\Add FKs"
@@ -3608,7 +3623,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-8,18.25,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3652,7 +3669,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-8,18.25,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
