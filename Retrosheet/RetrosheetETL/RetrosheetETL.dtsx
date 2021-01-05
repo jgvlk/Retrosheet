@@ -7,13 +7,13 @@
   DTS:CreatorName="JVLK-MBP-VM01\jonat"
   DTS:DTSID="{85136F6A-B9B9-4436-9C91-74B03A9F7293}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.149"
+  DTS:LastModifiedProductVersion="15.0.2000.150"
   DTS:LocaleID="1033"
   DTS:ObjectName="RetrosheetETL"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="96"
-  DTS:VersionGUID="{D16BACF0-7F8C-4FD3-A8A7-A852DE91A5A9}">
+  DTS:VersionBuild="100"
+  DTS:VersionGUID="{F07EDF0F-0651-4EEE-91C4-D040A23F6E38}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -826,27 +826,6 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Master Execution Container\Cleanup"
-          DTS:CreationName="Microsoft.ExecuteProcess"
-          DTS:DelayValidation="True"
-          DTS:Description="Execute Process Task"
-          DTS:DTSID="{BAF525D9-A031-49C0-AC3F-1607DDA4250C}"
-          DTS:ExecutableType="Microsoft.ExecuteProcess"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Cleanup"
-          DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:LoggingOptions
-            DTS:FilterKind="0" />
-          <DTS:ObjectData>
-            <ExecuteProcessData
-              Executable="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
-              Arguments="C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\PowerShell\Cleaner.ps1"
-              WorkingDirectory="C:\" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
           DTS:refId="Package\Master Execution Container\Create 'run' Dir"
           DTS:CreationName="Microsoft.ExecuteProcess"
           DTS:Description="Execute Process Task"
@@ -884,6 +863,27 @@
               SQLTask:Connection="{E03933CE-BB09-4EEF-A98B-49AE794A47E7}"
               SQLTask:SqlStmtSourceType="FileConnection"
               SQLTask:SqlStatementSource="DropFKs.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Master Execution Container\File System Cleanup"
+          DTS:CreationName="Microsoft.ExecuteProcess"
+          DTS:DelayValidation="True"
+          DTS:Description="Execute Process Task"
+          DTS:DTSID="{BAF525D9-A031-49C0-AC3F-1607DDA4250C}"
+          DTS:ExecutableType="Microsoft.ExecuteProcess"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="File System Cleanup"
+          DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ExecuteProcessData
+              Executable="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
+              Arguments="C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\PowerShell\Cleaner.ps1"
+              WorkingDirectory="C:\" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -3146,52 +3146,36 @@
           DTS:refId="Package\Master Execution Container\RetrosheetETL_RawToStg"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{F509ADA5-9517-41C5-B3BB-08AA35B51BF2}"
+          DTS:DTSID="{A99EF369-C8E4-4143-BF0E-D1CF5EA79A4F}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="RetrosheetETL_RawToStg"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
-          <DTS:LoggingOptions
-            DTS:FilterKind="0" />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{E03933CE-BB09-4EEF-A98B-49AE794A47E7}"
-              SQLTask:SqlStatementSource="EXEC ? = dbo.pr_RetrosheetETL_RawToStg 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="0"
-                SQLTask:DtsVariableName="User::RC_pr_RetrosheetETL_RawToStg"
-                SQLTask:ParameterDirection="ReturnValue"
-                SQLTask:DataType="3"
-                SQLTask:ParameterSize="-1" />
-            </SQLTask:SqlTaskData>
+              SQLTask:SqlStmtSourceType="FileConnection"
+              SQLTask:SqlStatementSource="RetrosheetETL_RawToStg.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\Master Execution Container\RetrosheetETL_StgToDbo"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{9bad51ea-3bad-491e-90d3-add006e39adc}"
+          DTS:DTSID="{A64DC434-D6C8-48B8-B297-C96460EFA03C}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="RetrosheetETL_StgToDbo"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
-          <DTS:LoggingOptions
-            DTS:FilterKind="0" />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{E03933CE-BB09-4EEF-A98B-49AE794A47E7}"
-              SQLTask:SqlStatementSource="EXEC ? = dbo.pr_RetrosheetETL_StgToDbo 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="0"
-                SQLTask:DtsVariableName="User::RC_pr_RetrosheetETL_StgToDbo"
-                SQLTask:ParameterDirection="ReturnValue"
-                SQLTask:DataType="3"
-                SQLTask:ParameterSize="-1" />
-            </SQLTask:SqlTaskData>
+              SQLTask:SqlStmtSourceType="FileConnection"
+              SQLTask:SqlStatementSource="RetrosheetETL_StgToDbo.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -3263,7 +3247,7 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Master Execution Container.PrecedenceConstraints[Constraint 3]"
           DTS:CreationName=""
-          DTS:DTSID="{620888B3-4D8A-4D79-85EE-4C540909C96F}"
+          DTS:DTSID="{80F3A918-6C3B-427A-9E56-745A6B589E73}"
           DTS:From="Package\Master Execution Container\Load Raw Game &amp; Event Data"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 3"
@@ -3279,21 +3263,19 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Master Execution Container.PrecedenceConstraints[Constraint 5]"
           DTS:CreationName=""
-          DTS:DTSID="{8D69E419-6AB0-43B1-87E1-B8B1A6301CB0}"
-          DTS:From="Package\Master Execution Container\Cleanup"
+          DTS:DTSID="{B7A2EFE7-0E15-4567-B81C-BAD6FC31BBCA}"
+          DTS:From="Package\Master Execution Container\Truncate raw Tables"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 5"
-          DTS:To="Package\Master Execution Container\Add FKs" />
+          DTS:To="Package\Master Execution Container\File System Cleanup" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Master Execution Container.PrecedenceConstraints[Constraint 6]"
           DTS:CreationName=""
-          DTS:DTSID="{68BD24CB-FFD7-4578-9683-FE911D7543D4}"
-          DTS:EvalOp="1"
-          DTS:Expression="@[User::RC_pr_RetrosheetETL_RawToStg] == 0"
+          DTS:DTSID="{04EBAC2D-74CF-4014-9375-51EFF2F2D352}"
           DTS:From="Package\Master Execution Container\RetrosheetETL_RawToStg"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 6"
-          DTS:To="Package\Master Execution Container\RetrosheetETL_StgToDbo" />
+          DTS:To="Package\Master Execution Container\Truncate raw Tables" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Master Execution Container.PrecedenceConstraints[Constraint 7]"
           DTS:CreationName=""
@@ -3305,21 +3287,19 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Master Execution Container.PrecedenceConstraints[Constraint 8]"
           DTS:CreationName=""
-          DTS:DTSID="{1C878098-3BA8-426F-8149-7DF935B9A42D}"
-          DTS:EvalOp="1"
-          DTS:Expression="@[User::RC_pr_RetrosheetETL_StgToDbo] == 0"
-          DTS:From="Package\Master Execution Container\RetrosheetETL_StgToDbo"
+          DTS:DTSID="{ADD41070-B8E6-41E7-95DD-692A71A09FF1}"
+          DTS:From="Package\Master Execution Container\File System Cleanup"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 8"
-          DTS:To="Package\Master Execution Container\Truncate raw Tables" />
+          DTS:To="Package\Master Execution Container\RetrosheetETL_StgToDbo" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Master Execution Container.PrecedenceConstraints[Constraint 9]"
           DTS:CreationName=""
-          DTS:DTSID="{77EDAB81-7008-4A09-B569-574C8BB319E3}"
-          DTS:From="Package\Master Execution Container\Truncate raw Tables"
+          DTS:DTSID="{E27B6465-9BAB-4C19-912C-94E4408CEDF2}"
+          DTS:From="Package\Master Execution Container\RetrosheetETL_StgToDbo"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 9"
-          DTS:To="Package\Master Execution Container\Cleanup" />
+          DTS:To="Package\Master Execution Container\Add FKs" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -3334,15 +3314,15 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="121,42"
           Id="Package\Master Execution Container\Add FKs"
           TopLeft="67.0000000000002,1435.5" />
         <NodeLayout
-          Size="120,42"
-          Id="Package\Master Execution Container\Cleanup"
-          TopLeft="67.5000000000002,1333.5" />
+          Size="180,42"
+          Id="Package\Master Execution Container\File System Cleanup"
+          TopLeft="37.5000000000002,1231.5" />
         <NodeLayout
           Size="152,42"
           Id="Package\Master Execution Container\Create 'run' Dir"
@@ -3455,11 +3435,11 @@
         <NodeLayout
           Size="209,42"
           Id="Package\Master Execution Container\RetrosheetETL_StgToDbo"
-          TopLeft="23.0000000000001,1129.5" />
+          TopLeft="23.0000000000002,1333.5" />
         <NodeLayout
           Size="179,42"
           Id="Package\Master Execution Container\Truncate raw Tables"
-          TopLeft="38.0000000000002,1231.5" />
+          TopLeft="38.0000000000001,1129.5" />
         <NodeLayout
           Size="158,42"
           Id="Package\Master Execution Container\Truncate Tables"
@@ -3575,28 +3555,6 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 5]"
-          TopLeft="127.5,1375.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 6]"
           TopLeft="127.5,1069.5">
           <EdgeLayout.Curve>
@@ -3615,9 +3573,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,18.25,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3643,7 +3599,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 8]"
+          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 5]"
           TopLeft="127.5,1171.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -3661,14 +3617,34 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,18.25,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 8]"
+          TopLeft="127.5,1273.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 9]"
-          TopLeft="127.5,1273.5">
+          TopLeft="127.5,1375.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3691,10 +3667,10 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="255,1533"
+          PanelSize="255,1532"
           Size="255,1576"
           Id="Package\Master Execution Container"
-          TopLeft="100,47" />
+          TopLeft="169,47" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
