@@ -12,8 +12,8 @@
   DTS:ObjectName="RetrosheetETL"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="100"
-  DTS:VersionGUID="{F07EDF0F-0651-4EEE-91C4-D040A23F6E38}">
+  DTS:VersionBuild="101"
+  DTS:VersionGUID="{21CF059A-E78E-47CD-BD1D-73D1D65A4281}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -809,6 +809,7 @@
           DTS:refId="Package\Master Execution Container\Add FKs"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{2C7ADF1D-08E4-4E3C-8E9E-CE9AD2BDD69F}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -3164,6 +3165,7 @@
           DTS:refId="Package\Master Execution Container\RetrosheetETL_StgToDbo"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{A64DC434-D6C8-48B8-B297-C96460EFA03C}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -3320,10 +3322,6 @@
           Id="Package\Master Execution Container\Add FKs"
           TopLeft="67.0000000000002,1435.5" />
         <NodeLayout
-          Size="180,42"
-          Id="Package\Master Execution Container\File System Cleanup"
-          TopLeft="37.5000000000002,1231.5" />
-        <NodeLayout
           Size="152,42"
           Id="Package\Master Execution Container\Create 'run' Dir"
           TopLeft="51.5,209.5" />
@@ -3331,6 +3329,10 @@
           Size="125,42"
           Id="Package\Master Execution Container\Drop FKs"
           TopLeft="65,5.5" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Master Execution Container\File System Cleanup"
+          TopLeft="37.5000000000002,1231.5" />
         <NodeLayout
           Size="229,42"
           Id="Package\Master Execution Container\Load Raw Game &amp; Event Data"
@@ -3555,6 +3557,28 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 5]"
+          TopLeft="127.5,1171.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 6]"
           TopLeft="127.5,1069.5">
           <EdgeLayout.Curve>
@@ -3579,28 +3603,6 @@
         <EdgeLayout
           Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 7]"
           TopLeft="127.5,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Master Execution Container.PrecedenceConstraints[Constraint 5]"
-          TopLeft="127.5,1171.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3667,7 +3669,7 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="255,1532"
+          PanelSize="255,1533"
           Size="255,1576"
           Id="Package\Master Execution Container"
           TopLeft="169,47" />

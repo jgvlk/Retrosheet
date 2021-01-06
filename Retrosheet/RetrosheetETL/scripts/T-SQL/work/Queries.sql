@@ -42,41 +42,8 @@ SELECT COUNT(*) FROM [dbo].[PlayerMaster] -- 21284
 SELECT COUNT(*) FROM [dbo].[ParkMaster] -- 256
 SELECT COUNT(*) FROM [dbo].[TeamMaster] -- 149
 SELECT COUNT(*) FROM [dbo].[FranchiseMaster] -- 123
-SELECT COUNT(*) FROM [dbo].[Game]
-SELECT COUNT(*) FROM [dbo].[Event]
-
-
-
---drop table [stg].[PlayerMaster] -- 21284
---drop table [stg].[ParkMaster] -- 256
---drop table [stg].[TeamMaster] -- 149
---drop table [stg].[FranchiseMaster] -- 123
---drop table [stg].[Game] -- 175648
---drop table [stg].[Event] -- 13929772
-
---drop table [dbo].[PlayerMaster] -- 21284
---drop table [dbo].[ParkMaster] -- 256
---drop table [dbo].[TeamMaster] -- 149
---drop table [dbo].[FranchiseMaster] -- 123
---drop table [dbo].[Game]
---drop table [dbo].[Event]
-
-
-
-
-
--- ETL PROCS
-
-declare @rc int
-exec @rc = dbo.pr_RetrosheetETL_RawToStg 1
-print @rc
-go
-
-
-declare @rc int
-exec @rc = dbo.pr_RetrosheetETL_StgToDbo 1
-print @rc
-go
+SELECT COUNT(*) FROM [dbo].[Game] -- 175648
+SELECT COUNT(*) FROM [dbo].[Event] -- 13929772
 
 
 

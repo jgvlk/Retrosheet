@@ -67,7 +67,6 @@
     <Folder Include="db\stg" />
     <Folder Include="db\stg\Tables" />
     <Folder Include="db\stg\Views" />
-    <Folder Include="db\dbo\Programmability" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="db\raw\raw.sql" />
@@ -150,8 +149,6 @@
     <Build Include="db\stg\Tables\stg.TeamMaster.sql" />
     <Build Include="db\stg\Views\stg.vw_CurrentTeams.sql" />
     <Build Include="db\stg\Views\stg.vw_CurrentParks.sql" />
-    <Build Include="db\dbo\Programmability\dbo.pr_RetrosheetETL_RawToStg.sql" />
-    <Build Include="db\dbo\Programmability\dbo.pr_RetrosheetETL_StgToDbo.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="RetrosheetDB.publish.xml" />
