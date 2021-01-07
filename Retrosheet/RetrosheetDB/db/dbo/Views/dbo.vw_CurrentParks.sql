@@ -1,7 +1,7 @@
-﻿CREATE VIEW [stg].[vw_CurrentParks]
+﻿CREATE VIEW [dbo].[vw_CurrentParks]
 AS
 SELECT
-	[StgParkID]
+	[ParkID]
 	,[RetroParkID]
 	,[Name]
 	,[AKA]
@@ -12,7 +12,7 @@ SELECT
 	,[League]
 	,[Notes]
 FROM
-	[stg].[ParkMaster]
+	[dbo].[ParkMaster]
 WHERE
 	[End] IS NULL
 GO

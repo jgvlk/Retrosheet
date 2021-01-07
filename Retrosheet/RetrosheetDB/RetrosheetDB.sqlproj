@@ -66,7 +66,7 @@
     <Folder Include="db\dbo\Indexes" />
     <Folder Include="db\stg" />
     <Folder Include="db\stg\Tables" />
-    <Folder Include="db\stg\Views" />
+    <Folder Include="db\dbo\Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="db\raw\raw.sql" />
@@ -147,8 +147,9 @@
     <Build Include="db\stg\Tables\stg.ParkMaster.sql" />
     <Build Include="db\stg\Tables\stg.PlayerMaster.sql" />
     <Build Include="db\stg\Tables\stg.TeamMaster.sql" />
-    <Build Include="db\stg\Views\stg.vw_CurrentTeams.sql" />
-    <Build Include="db\stg\Views\stg.vw_CurrentParks.sql" />
+    <Build Include="db\dbo\Views\dbo.vw_Game.sql" />
+    <Build Include="db\dbo\Views\dbo.vw_CurrentParks.sql" />
+    <Build Include="db\dbo\Views\dbo.vw_CurrentTeams.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="RetrosheetDB.publish.xml" />

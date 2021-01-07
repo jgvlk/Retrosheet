@@ -1,7 +1,7 @@
-﻿CREATE VIEW [stg].[vw_CurrentTeams]
+﻿CREATE VIEW [dbo].[vw_CurrentTeams]
 AS
 SELECT
-	[StgFranchiseID]
+	[FranchiseID]
 	,[CurrentRetroFranchiseID]
 	,[RetroFranchiseID]
 	,[League]
@@ -14,7 +14,7 @@ SELECT
 	,[City]
 	,[State]
 FROM
-	[stg].[FranchiseMaster]
+	[dbo].[FranchiseMaster]
 WHERE
 	[End] IS NULL
 GO
