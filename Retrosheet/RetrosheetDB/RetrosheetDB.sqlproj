@@ -152,7 +152,7 @@
     <Build Include="db\dbo\Views\dbo.vw_CurrentTeams.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="RetrosheetDB.publish.xml" />
+    <None Include="JVLK-SERVER02.Retrosheet.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="MergeStaticData.PostDeployment1.sql" />
