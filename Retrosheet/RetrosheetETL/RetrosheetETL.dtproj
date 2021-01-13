@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">JVLK-MBP-VM01</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1" SSIS:Salt="qUcZDwKx1U4=" SSIS:IV="3Eo8UYpo9uytpJRw2rG1JA==" SSIS:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc">IedpbYonvGIiumi9//YGOvgmilk23OIguSoSN206kVVr6DPN+Jums4IfdKk3j9nFpL+PG7wjKqRAZewEJl9dGvjA65cXQatZiVZZtaV2s3yf5RkLOWirqWjxiCJ87KOSIPqGC4vwERIRPPI67n4tg8Hs7o4bubkdWNCSLoA65APJToxz4GlqjeAoj+rGCl9m</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1" SSIS:Salt="HaOHrxegc+g=" SSIS:IV="XRDEwNJXUtABKeJhqUkaXQ==" SSIS:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc">aUdo6dddl5ztGxHWdeRouQZPTnEphMGGLwF6kSft8v/dXFK3yBxu9Wn2aGLH7tMjaOiN1IMhOeC8ANhsnrCHYxsbM60yHE7rV01SkRume94PtHu85kEbg/+bLY1x3zsyKXTz380nrhnEmqmVKskvPpHF6G8N/p9wnCqmf+qcvShXRrVSG81ta2gFl6/q2a+X</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -63,7 +63,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=.\MSSQLDEV;Initial Catalog=Retrosheet;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=.;Initial Catalog=Retrosheet;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -137,7 +137,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">.\MSSQLDEV</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">.</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -163,10 +163,10 @@
                 <SSIS:Property SSIS:Name="Name">RetrosheetETL</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">99</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">102</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{5BCA81F2-BF49-4B5A-83FF-88FC1D1A66C2}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{DDB5C1D9-3FB3-41AE-9A8B-4C27F7176FB6}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

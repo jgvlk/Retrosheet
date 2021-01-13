@@ -12,8 +12,8 @@
   DTS:ObjectName="RetrosheetETL"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="102"
-  DTS:VersionGUID="{DDB5C1D9-3FB3-41AE-9A8B-4C27F7176FB6}">
+  DTS:VersionBuild="103"
+  DTS:VersionGUID="{C862DE14-B79E-4D46-B7AD-584127F1395B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -829,6 +829,7 @@
           DTS:refId="Package\Master Execution Container\Create 'run' Dir"
           DTS:CreationName="Microsoft.ExecuteProcess"
           DTS:Description="Execute Process Task"
+          DTS:Disabled="True"
           DTS:DTSID="{648F8FF8-41F9-48D3-810D-80CA5334392C}"
           DTS:ExecutableType="Microsoft.ExecuteProcess"
           DTS:LocaleID="-1"
@@ -849,6 +850,7 @@
           DTS:refId="Package\Master Execution Container\Drop FKs"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{0C617C92-609E-45D5-A535-555F103255CC}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -908,7 +910,7 @@
             DTS:Name="WorkingDirectory">@[$Project::RetrosheetRootDir] + "\\data\\run"</DTS:PropertyExpression>
           <DTS:ObjectData>
             <ExecuteProcessData
-              Executable="C:\ProgramData\Miniconda3\envs\py38-mldev\python.exe"
+              Executable="C:\Users\jonat\.conda\envs\py38-mldev\python.exe"
               Arguments="C:\Users\jonat\source\repos\Retrosheet\Retrosheet\RetrosheetETL\scripts\Python\Loader.py"
               WorkingDirectory="C:\Data\mlb\Retrosheet\data\run" />
           </DTS:ObjectData>
@@ -917,6 +919,7 @@
           DTS:refId="Package\Master Execution Container\Load Raw Lookup Data"
           DTS:CreationName="STOCK:SEQUENCE"
           DTS:Description="Sequence Container"
+          DTS:Disabled="True"
           DTS:DTSID="{d18743ac-7cce-4324-bb6d-4fc8d3c40045}"
           DTS:ExecutableType="STOCK:SEQUENCE"
           DTS:LocaleID="-1"
@@ -3124,6 +3127,7 @@
           DTS:CreationName="Microsoft.ExecuteProcess"
           DTS:DelayValidation="True"
           DTS:Description="Execute Process Task"
+          DTS:Disabled="True"
           DTS:DTSID="{195AC741-6560-470D-AE49-6FFC79B3CA4F}"
           DTS:ExecutableType="Microsoft.ExecuteProcess"
           DTS:LocaleID="-1"
@@ -3202,6 +3206,7 @@
           DTS:refId="Package\Master Execution Container\Truncate Tables"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{6bdffefd-cca8-4f7c-86a4-3f4d940ac4ce}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -3316,31 +3321,31 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="121,42"
+          Size="121.333333333334,42"
           Id="Package\Master Execution Container\Add FKs"
-          TopLeft="67.0000000000002,1435.5" />
+          TopLeft="66.8333333333335,1435.5" />
         <NodeLayout
           Size="152,42"
           Id="Package\Master Execution Container\Create 'run' Dir"
           TopLeft="51.5,209.5" />
         <NodeLayout
-          Size="125,42"
+          Size="125.333333333334,42"
           Id="Package\Master Execution Container\Drop FKs"
-          TopLeft="65,5.5" />
+          TopLeft="64.8333333333333,5.5" />
         <NodeLayout
           Size="180,42"
           Id="Package\Master Execution Container\File System Cleanup"
           TopLeft="37.5000000000002,1231.5" />
         <NodeLayout
-          Size="229,42"
+          Size="229.333333333334,42"
           Id="Package\Master Execution Container\Load Raw Game &amp; Event Data"
-          TopLeft="13.0000000000001,925.5" />
+          TopLeft="12.8333333333334,925.5" />
         <NodeLayout
-          Size="161,42"
+          Size="161.333333333334,42"
           Id="Package\Master Execution Container\Load Raw Lookup Data\FranchiseMaster"
           TopLeft="5.50000000000003,311.5" />
         <NodeLayout
-          Size="135,42"
+          Size="134.666666666667,42"
           Id="Package\Master Execution Container\Load Raw Lookup Data\ParkMaster"
           TopLeft="18.5,107.5" />
         <NodeLayout
@@ -3348,7 +3353,7 @@
           Id="Package\Master Execution Container\Load Raw Lookup Data\PlayerMaster"
           TopLeft="14,5.5" />
         <NodeLayout
-          Size="141,42"
+          Size="141.333333333334,42"
           Id="Package\Master Execution Container\Load Raw Lookup Data\TeamMaster"
           TopLeft="15.5,209.5" />
         <EdgeLayout
@@ -3420,7 +3425,7 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="172,409"
+          PanelSize="172,409.333333333334"
           Size="172,452"
           Id="Package\Master Execution Container\Load Raw Lookup Data"
           TopLeft="41.5000000000001,413.5" />
@@ -3433,13 +3438,13 @@
           Id="Package\Master Execution Container\RetrosheetETL_RawToStg"
           TopLeft="22.5000000000001,1027.5" />
         <NodeLayout
-          Size="209,42"
+          Size="209.333333333334,42"
           Id="Package\Master Execution Container\RetrosheetETL_StgToDbo"
-          TopLeft="23.0000000000002,1333.5" />
+          TopLeft="22.8333333333335,1333.5" />
         <NodeLayout
-          Size="179,42"
+          Size="178.666666666667,42"
           Id="Package\Master Execution Container\Truncate raw Tables"
-          TopLeft="38.0000000000001,1129.5" />
+          TopLeft="38.1666666666668,1129.5" />
         <NodeLayout
           Size="158,42"
           Id="Package\Master Execution Container\Truncate Tables"
@@ -3667,8 +3672,8 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="255,1533"
-          Size="255,1576"
+          PanelSize="254.666666666667,1532.66666666667"
+          Size="254.666666666667,1575.33333333334"
           Id="Package\Master Execution Container"
           TopLeft="169,47" />
       </GraphLayout>
