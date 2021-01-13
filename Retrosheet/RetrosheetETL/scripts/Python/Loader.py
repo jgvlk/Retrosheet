@@ -14,7 +14,7 @@ print('||MSG', datetime.now(), '|| STARTING RAW DATA LOAD')
 try:
 
     # Create DB session
-    db_conn_str = r'DRIVER={SQL Server};SERVER=.\MSSQLDEV;DATABASE=Retrosheet;TRUSTED_CONNECTION=Yes;'
+    db_conn_str = r'DRIVER={SQL Server};SERVER=.;DATABASE=Retrosheet;TRUSTED_CONNECTION=Yes;'
     db_conn_str = quote_plus(db_conn_str)
 
     engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % db_conn_str)

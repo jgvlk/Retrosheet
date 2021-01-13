@@ -5,7 +5,7 @@ param (
 
     [string]$rootDir = "C:\Data\mlb\Retrosheet",
     [string]$repoDir = "C:\Users\jonat\source\repos\Retrosheet",
-    [string]$procFileDir = "Z:\mlb\Retrosheet"
+    [string]$procFileDir = "D:\mlb\Retrosheet"
 
 )
 

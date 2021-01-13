@@ -12,8 +12,8 @@
   DTS:ObjectName="RetrosheetETL"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="101"
-  DTS:VersionGUID="{21CF059A-E78E-47CD-BD1D-73D1D65A4281}">
+  DTS:VersionBuild="102"
+  DTS:VersionGUID="{DDB5C1D9-3FB3-41AE-9A8B-4C27F7176FB6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -809,7 +809,6 @@
           DTS:refId="Package\Master Execution Container\Add FKs"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:Disabled="True"
           DTS:DTSID="{2C7ADF1D-08E4-4E3C-8E9E-CE9AD2BDD69F}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -3165,7 +3164,6 @@
           DTS:refId="Package\Master Execution Container\RetrosheetETL_StgToDbo"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:Disabled="True"
           DTS:DTSID="{A64DC434-D6C8-48B8-B297-C96460EFA03C}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
