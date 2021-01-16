@@ -67,6 +67,8 @@
     <Folder Include="db\stg" />
     <Folder Include="db\stg\Tables" />
     <Folder Include="db\dbo\Views" />
+    <Folder Include="db\dbo\Programmability" />
+    <Folder Include="db\dbo\Programmability\Functions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="db\raw\raw.sql" />
@@ -150,6 +152,7 @@
     <Build Include="db\dbo\Views\dbo.vw_Game.sql" />
     <Build Include="db\dbo\Views\dbo.vw_CurrentParks.sql" />
     <Build Include="db\dbo\Views\dbo.vw_CurrentTeams.sql" />
+    <Build Include="db\dbo\Programmability\Functions\dbo.udf_MLBGameIDConstructor.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="JVLK-SERVER02.Retrosheet.publish.xml" />
