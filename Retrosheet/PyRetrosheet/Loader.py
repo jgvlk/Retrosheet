@@ -3,9 +3,11 @@ from pathlib import Path
 from urllib.parse import quote_plus
 
 import pandas as pd
-from sqlalchemy import create_engine, event
+from pprint import pprint
+from sqlalchemy import event
 from sqlalchemy.dialects import mssql
-from sqlalchemy.orm import sessionmaker
+
+from Retrosheet.PyRetrosheet.ConnManager import SessionManager
 
 
 def load_retro_data():
@@ -138,10 +140,10 @@ def load_retro_data():
             print('|| ERR @', datetime.now(), '|| ERROR MESSAGE:', e)
             print('|| ERR @', datetime.now(), '|| AN ERROR OCCURED WHILE LOADING RAW EVENT DATA TO [Retrosheet]')
 
+        finally:
+            db.session.close()
+
     except Exception as e:
         print('|| ERR @', datetime.now(), '|| ERROR MESSAGE:', e)
         print('|| ERR @', datetime.now(), '|| AN ERROR OCCURED WHILE LOADING RAW GAME AND EVENT DATA TO [Retrosheet]')
-
-    finally:
-        db.session.close()
 
