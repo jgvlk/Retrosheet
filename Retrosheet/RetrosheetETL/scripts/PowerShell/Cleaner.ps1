@@ -11,8 +11,6 @@ param (
 $dataDir = "$($rootdir)\data\run"
 $metadataDir = "$($rootDir)\data\metadata"
 $supplementalDir = "$($rootDir)\data\supplemental"
-# $extractDir = "$($rootdir)\data\extracts"
-# $downloadsDir = "$($rootdir)\data\downloads"
 
 
 
