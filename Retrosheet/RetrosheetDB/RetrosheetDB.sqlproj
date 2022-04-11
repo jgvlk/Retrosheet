@@ -153,6 +153,7 @@
     <Build Include="db\dbo\Views\dbo.vw_CurrentParks.sql" />
     <Build Include="db\dbo\Views\dbo.vw_CurrentTeams.sql" />
     <Build Include="db\dbo\Programmability\Functions\dbo.udf_MLBGameIDConstructor.sql" />
+    <Build Include="db\dbo\Views\dbo.vw_FirstInningRuns.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="JVLK-SERVER02.Retrosheet.publish.xml" />

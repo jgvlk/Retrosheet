@@ -3,13 +3,25 @@
   <Items>
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
       <Items>
-        <ConnectionNode Name="(local)\MSSQLDEV:JVLK-MBP-VM01\jonat">
+        <ConnectionNode Name="(local)\MSSQLDEV:JVLK-SERVER02\jvlk">
           <Created>2020-12-23T16:33:27.6042545-06:00</Created>
           <Type>SQL</Type>
           <Server>(local)\MSSQLDEV</Server>
           <UserName />
           <Authentication>Windows Authentication</Authentication>
           <InitialDB>Retrosheet</InitialDB>
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="JVLK-SERVER02:JVLK-SERVER02\jvlk">
+          <Created>2021-04-21T12:46:52.4376542-05:00</Created>
+          <Type>SQL</Type>
+          <Server>JVLK-SERVER02</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
           <LoginTimeout>30</LoginTimeout>
           <ExecutionTimeout>0</ExecutionTimeout>
           <ConnectionProtocol>NotSpecified</ConnectionProtocol>
@@ -36,6 +48,12 @@
           <AssociatedConnSrvName>(local)\MSSQLDEV</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>Queries.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Queries_FirstInnRuns.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:JVLK-SERVER02:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>JVLK-SERVER02</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Queries_FirstInnRuns.sql</FullPath>
         </FileNode>
         <FileNode Name="Views.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\MSSQLDEV:True</AssociatedConnectionMoniker>
