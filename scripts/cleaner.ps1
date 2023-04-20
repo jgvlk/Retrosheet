@@ -3,7 +3,7 @@
 
 param (
 
-    [string]$rootDir = "C:\Data\mlb\Retrosheet"
+    [string]$rootDir = "C:\Data\Retrosheet"
 
 )
 

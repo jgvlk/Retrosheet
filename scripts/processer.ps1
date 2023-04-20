@@ -1,8 +1,8 @@
 # SET PARAMS & VARS #
 #####################
 param (
-    [string]$rootDir = "C:\Data\mlb\Retrosheet",
-    [string]$procFileDir = "D:\mlb\Retrosheet"
+    [string]$rootDir = "C:\Data\Retrosheet",
+    [string]$procFileDir = "Z:\Retrosheet\processed"
 )
 
 
@@ -61,7 +61,7 @@ try {
     ##############################
     try {
         Write-Host "||MSG" $(Get-Date) "|| COPYING STATIC DATA FROM LOCAL GIT REPO"
-        $staticDataRoot = "C:\Users\jonat\source\repos\SportsBetting\data\retrosheet\data"
+        $staticDataRoot = "C:\Users\jonat\source\repos\Retrosheet\data"
         $staticDataDest = "$($rootDir)\data"
         Get-ChildItem $staticDataRoot |
         ForEach-Object {
