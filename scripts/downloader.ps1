@@ -1,7 +1,7 @@
 # SET PARAMS & VARS #
 #####################
 param (
-    [string]$rootDir = "C:\Data\Retrosheet"
+    [string]$rootDir
 )
 
 
@@ -9,10 +9,10 @@ try {
     Add-Type -AssemblyName System.IO.Compression.FileSystem
 
     $startTime = (Get-Date)
-    Write-Host "||MSG" $startTime "|| STARTING DOWNLOAD"
+    Write-Host "|| MSG" $startTime "|| STARTING DOWNLOAD"
 
-    $extractDir = "$($rootdir)\data\extracts"
-    $downloadsDir = "$($rootdir)\data\downloads"
+    $extractDir = "$($rootdir)\extracts"
+    $downloadsDir = "$($rootdir)\downloads"
     $rootUriEvents = "https://www.retrosheet.org/events/"
     $URIRosters = "https://www.retrosheet.org/"
     $eventFilesRegSeason = @("1910seve.zip","1920seve.zip","1930seve.zip","1940seve.zip","1950seve.zip","1960seve.zip","1970seve.zip","1980seve.zip","1990seve.zip","2000seve.zip","2010seve.zip","2020seve.zip")
@@ -22,10 +22,6 @@ try {
     $discrepancyFiles = @("1900sdis.zip","1910sdis.zip","1920sdis.zip","1930sdis.zip","1940sdis.zip","1950sdis.zip","1960sdis.zip","1970sdis.zip")
     $zips = $eventFilesRegSeason += $boxFilesRegSeason += $eventFilesAllStar += $eventFilesPostSeason += $discrepancyFiles
     $zipsRoster = @("Rosters.zip")
-
-    ### REDUCE DATA VOLUME FOR DEBUGGING ###
-    ### \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/ ###
-    # $zips = @("2020seve.zip")
 
 
     # FILESYSTEM SETUP AND ARCHIVE PREVIOUSLY DOWNLOADED DATA #
@@ -48,7 +44,7 @@ try {
     }
     catch {
         $errMessage = $_.Exception.Message
-        Write-Host "||ERR" $(Get-Date) "|| $errMessage"
+        Write-Host "|| ERR" $(Get-Date) "|| $errMessage"
     }
 
 
@@ -56,7 +52,7 @@ try {
     #################################
 
     try {
-        Write-Host "||MSG" $(Get-Date) "|| DOWNLOADING AND EXTRACTING EVENT DATA TO $extractDir"
+        Write-Host "|| MSG" $(Get-Date) "|| DOWNLOADING AND EXTRACTING EVENT DATA TO $extractDir"
         # Download and extract to $dataDir
         foreach ($zip in $zips) {
             try {
@@ -74,16 +70,16 @@ try {
             }
             catch {
                 $errMessage = $_.Exception.Message
-                Write-Host "||MSG" $(Get-Date) "|| $errMessage"
+                Write-Host "|| MSG" $(Get-Date) "|| $errMessage"
             }
         }
     }
     catch {
         $errMessage = $_.Exception.Message
-        Write-Host "||MSG" $(Get-Date) "|| $errMessage"
+        Write-Host "|| MSG" $(Get-Date) "|| $errMessage"
     }
     try {
-        Write-Host "||MSG" $(Get-Date) "|| DOWNLOADING AND EXTRACTING ROSTER DATA TO $extractDir"
+        Write-Host "|| MSG" $(Get-Date) "|| DOWNLOADING AND EXTRACTING ROSTER DATA TO $extractDir"
         # Dowload and extract to $dataDir
         foreach ($zip in $zipsRoster) {
             try {
@@ -101,13 +97,13 @@ try {
             }
             catch {
                 $errMessage = $_.Exception.Message
-                Write-Host "||MSG" $(Get-Date) "|| $errMessage"
+                Write-Host "|| MSG" $(Get-Date) "|| $errMessage"
             }
         }
     }
     catch {
         $errMessage = $_.Exception.Message
-        Write-Host "||MSG" $(Get-Date) "|| $errMessage"
+        Write-Host "|| MSG" $(Get-Date) "|| $errMessage"
     }
 
     $endTime = (Get-Date)
@@ -115,13 +111,13 @@ try {
     $runTimeM = ($endTime - $startTime).Minutes
     $runTimeS = ($endTime - $startTime).Seconds
     $runTimeMS = ($endTime - $startTime).Milliseconds
-    Write-Host "||MSG" $endTime "|| DOWNLOAD COMPLETED"
-    Write-Host "||MSG" $endTime "|| RUNTIME: $($runTimeH):$($runTimeM):$($runTimeS).$($runTimeMS)"
+    Write-Host "|| MSG" $endTime "|| DOWNLOAD COMPLETED"
+    Write-Host "|| MSG" $endTime "|| RUNTIME: $($runTimeH):$($runTimeM):$($runTimeS).$($runTimeMS)"
 }
 catch {
     $errMessage = $_.Exception.Message
-    Write-Host "||ERR" $(Get-Date) "|| $errMessage"
-    Write-Host "||ERR" $(Get-Date) "|| DOWNLOAD COMPLETED WITH ERRORS"
-    Write-Host "||MSG" $endTime "|| RUNTIME: $($runTimeH):$($runTimeM):$($runTimeS).$($runTimeMS)"
+    Write-Host "|| ERR" $(Get-Date) "|| $errMessage"
+    Write-Host "|| ERR" $(Get-Date) "|| DOWNLOAD COMPLETED WITH ERRORS"
+    Write-Host "|| MSG" $endTime "|| RUNTIME: $($runTimeH):$($runTimeM):$($runTimeS).$($runTimeMS)"
     exit 1
 }

@@ -1,237 +1,178 @@
+from datetime import datetime as dt
+import os
 from pathlib import Path
-from pprint import pprint
 import requests
 import subprocess
 import sys
+import time
 
 import pandas as pd
-from sqlalchemy import text
 
-from db.repository import exec_sql_file
-from db.session_manager import SessionManager
+from db.repository import exec_bulk_insert, exec_sql_file
 
 
-def load_retro_data():
-    root_dir = Path("C:/Data/Retrosheet")
-    data_dir = root_dir / "data"
+class RetrosheetEtl:
+    def __init__(self):
+        self.data_dir = Path("C:/Data/Retrosheet")
+        self.repo_dir = Path("C:/repos/Retrosheet")
 
-    game_cols_file = data_dir / "metadata/game_fields.csv"
-    game_cols_data = pd.read_csv(game_cols_file)
+        self.game_cols_file = self.repo_dir / "data" / "metadata" / "game_fields.csv"
+        self.event_cols_file = self.repo_dir / "data" / "metadata" / "event_fields.csv"
+        self.supp_data_dir = self.repo_dir / "data" / "supplemental"
+        self.reg_games_dir = self.data_dir / "run" / "game" / "reg"
+        self.reg_events_dir = self.data_dir / "run" / "event" / "reg"
+        # self.post_games_dir = data_dir / "run/game/post"
+        # self.as_games_dir = data_dir / "run/game/as"
+        # self.post_events_dir = data_dir / "run/event/post"
+        # self.as_events_dir = data_dir / "run/event/as"
+        self.game_all_path = self.data_dir / "game_all.csv"
+        self.event_all_path = self.data_dir / "event_all.csv"
 
-    event_cols_file = data_dir / "metadata/event_fields.csv"
-    event_cols_data = pd.read_csv(event_cols_file)
+        self.url_biofile = "https://www.retrosheet.org/BIOFILE.TXT"
+        self.url_teamabbr = "https://www.retrosheet.org/TEAMABR.TXT"
+        self.url_parkcodes = "https://www.retrosheet.org/parkcode.txt"
 
-    game_cols = []
-    for i in game_cols_data["ColumnName"]:
-        game_cols.append(i)
+        self.biofile_path = self.supp_data_dir / "bio_file.csv"
+        self.teamabbr_path = self.supp_data_dir / "team_abbr.csv"
+        self.parkcodes_path = self.supp_data_dir / "park_code.csv"
+        self.franchise_path = self.supp_data_dir / "current_name.csv"
 
-    event_cols = []
-    for i in event_cols_data["ColumnName"]:
-        event_cols.append(i)
+        self.downloader_script_path = self.repo_dir / "scripts" / "downloader.ps1"
+        self.processer_script_path = self.repo_dir / "scripts" / "processer.ps1"
+        self.cleaner = self.repo_dir / "scripts" / "cleaner.ps1"
 
-    reg_games_dir = data_dir / "run/game/reg"
-    # post_games_dir = data_dir / "run/game/post"
-    # as_games_dir = data_dir / "run/game/as"
+        self.sql_dir = self.repo_dir / "sql"
+        self.sql_etld = {
+            "sql_path_drop_fks": self.sql_dir / "__ETL_Retrosheet__DropFKs.sql",
+            "sql_path_truncate_tables": self.sql_dir / "__ETL_Retrosheet__TruncateTables.sql",
+            "sql_path_raw_to_stg": self.sql_dir / "__ETL_Retrosheet__RawToStg.sql",
+            "sql_path_stg_to_dbo": self.sql_dir / "__ETL_Retrosheet__StgToDbo.sql",
+            "sql_path_add_fks": self.sql_dir / "__ETL_Retrosheet__AddFKs.sql",
+        }
 
-    reg_events_dir = data_dir / "run/event/reg"
-    # post_events_dir = data_dir / "run/event/post"
-    # as_events_dir = data_dir / "run/event/as"
+    def load_retro_data(self):
+        game_cols_data = pd.read_csv(self.game_cols_file)
+        event_cols_data = pd.read_csv(self.event_cols_file)
+        game_cols = []
+        for i in game_cols_data["ColumnName"]:
+            game_cols.append(i)
+        event_cols = []
+        for i in event_cols_data["ColumnName"]:
+            event_cols.append(i)
 
-    dfs_game = []
-    game_all_path = data_dir / "game_all.csv"
-    for i in reg_games_dir.glob("game*"):
-        df = pd.read_csv(i, encoding="utf-16", names=game_cols)
-        dfs_game.append(df)
-    df_game = pd.concat(dfs_game)
-    df_game["GameType"] = "Regular Season"
-    df_game.to_csv(game_all_path, index=False)
+        dfs_game = []
+        for i in self.reg_games_dir.glob("game*"):
+            df = pd.read_csv(i, encoding="utf-16", names=game_cols)
+            dfs_game.append(df)
+        df_game = pd.concat(dfs_game)
+        df_game["GameType"] = "Regular Season"
+        df_game.to_csv(self.game_all_path, index=False)
 
-    dfs_event = []
-    event_all_path = data_dir / "event_all.csv"
-    for i in reg_events_dir.glob("event*"):
-        df = pd.read_csv(i, encoding="utf-16", names=event_cols)
-        dfs_event.append(df)
-    df_event = pd.concat(dfs_event)
-    df_event.to_csv(event_all_path, index=False)
+        dfs_event = []
+        for i in self.reg_events_dir.glob("event*"):
+            df = pd.read_csv(i, encoding="utf-16", names=event_cols)
+            dfs_event.append(df)
+        df_event = pd.concat(dfs_event)
+        df_event.to_csv(self.event_all_path, index=False)
 
-    sql_bulk_insert = """
-        truncate table raw.Game;
-        bulk insert raw.Game from "{}" with (
-            format = "csv",
-            firstrow = 2
-        );
-    """.format(
-        game_all_path
-    )
-    db = SessionManager()
-    db.session.execute(text(sql_bulk_insert))
-    db.session.commit()
-    db.session.close()
-
-    sql_bulk_insert = """
-        truncate table raw.Event;
-        bulk insert raw.Event from "{}" with (
-            format = "csv",
-            firstrow = 2
-        );
-    """.format(
-        event_all_path
-    )
-    db = SessionManager()
-    db.session.execute(text(sql_bulk_insert))
-    db.session.commit()
-    db.session.close()
+        exec_bulk_insert("raw", "Game", self.game_all_path)
+        exec_bulk_insert("raw", "Event", self.event_all_path)
 
 
-def update_supp_retro_data():
-    pass
+    def fetch_supp_retro_data(self):
+        response = requests.get(self.url_biofile)
+        with open(self.biofile_path, "w") as f:
+            f.write(response.text)
+            f.close()
+
+        response = requests.get(self.url_teamabbr)
+        with open(self.teamabbr_path, "w") as f:
+            f.write(response.text)
+            f.close()
+
+        response = requests.get(self.url_parkcodes)
+        with open(self.parkcodes_path, "w") as f:
+            f.write(response.text)
+            f.close()
+
+    def load_supp_retro_data(self):
+        df_biofile = pd.read_csv(self.biofile_path)
+        df_teamabbr = pd.read_csv(
+            self.teamabbr_path,
+            keep_default_na=False,
+            names=["TeamAbbr", "League", "City", "Nickname", "Start", "End"],
+        )
+        df_parkcodes = pd.read_csv(self.parkcodes_path)
+        
+        new_biofile_cols = []
+        for i in df_biofile.columns:
+            new_col_name = i.replace(" ", "_")
+            new_biofile_cols.append(new_col_name)
+        df_biofile.columns = new_biofile_cols
+
+        df_biofile.to_csv(self.biofile_path, index=False)
+        df_teamabbr.to_csv(self.teamabbr_path, index=False)
+        df_parkcodes.to_csv(self.parkcodes_path, index=False)
+
+        exec_bulk_insert("raw", "PlayerMaster", self.biofile_path.absolute())
+        exec_bulk_insert("raw", "TeamMaster", self.teamabbr_path.absolute())
+        exec_bulk_insert("raw", "ParkMaster", self.parkcodes_path.absolute())
+        exec_bulk_insert("raw", "FranchiseMaster", self.franchise_path.absolute())
 
 
-def load_supp_retro_data():
-    url_biofile = "https://www.retrosheet.org/BIOFILE.TXT"
-    response = requests.get(url_biofile)
-    supp_data_dir = Path("./data/supplemental")
-    biofile_path = supp_data_dir / "bio_file.csv"
-    with open(biofile_path, "w") as f:
-        f.write(response.text)
-        f.close()
-
-    df_biofile = pd.read_csv(biofile_path)
-    new_cols = []
-    for i in df_biofile.columns:
-        new_col_name = i.replace(" ", "_")
-        new_cols.append(new_col_name)
-    df_biofile.columns = new_cols
-    df_biofile.to_csv(biofile_path, index=False)
-
-    sql_bulk_insert_biofile = """
-        truncate table raw.PlayerMaster;
-        bulk insert raw.PlayerMaster from "{}" with (
-            format = 'csv',
-            firstrow = 2
-        );
-    """.format(
-        biofile_path.absolute()
-    )
-
-    db = SessionManager()
-    db.session.execute(text(sql_bulk_insert_biofile))
-    db.session.commit()
-    db.session.close()
-
-    url_teamabbr = "https://www.retrosheet.org/TEAMABR.TXT"
-    response = requests.get(url_teamabbr)
-    teamabbr_path = supp_data_dir / "team_abbr.csv"
-    with open(teamabbr_path, "w") as f:
-        f.write(response.text)
-        f.close()
-
-    df_teamabbr = pd.read_csv(
-        teamabbr_path,
-        keep_default_na=False,
-        names=["TeamAbbr", "League", "City", "Nickname", "Start", "End"],
-    )
-
-    df_teamabbr.to_csv(teamabbr_path, index=False)
-
-    sql_bulk_insert_teamabbr = """
-        truncate table raw.TeamMaster;
-        bulk insert raw.TeamMaster from "{}" with (
-            format = 'csv',
-            firstrow = 2
-        );
-    """.format(
-        teamabbr_path.absolute()
-    )
-
-    db = SessionManager()
-    db.session.execute(text(sql_bulk_insert_teamabbr))
-    db.session.commit()
-    db.session.close()
-
-    url_parkcodes = "https://www.retrosheet.org/parkcode.txt"
-    response = requests.get(url_parkcodes)
-    parkcodes_path = supp_data_dir / "park_code.csv"
-    with open(parkcodes_path, "w") as f:
-        f.write(response.text)
-        f.close()
-
-    df_parkcodes = pd.read_csv(parkcodes_path)
-    df_parkcodes.to_csv(parkcodes_path, index=False)
-
-    sql_bulk_insert_parkcode = """
-        truncate table raw.ParkMaster;
-        bulk insert raw.ParkMaster from "{}" with (
-            format = 'csv',
-            firstrow = 2
-        );
-    """.format(
-        parkcodes_path.absolute()
-    )
-
-    db = SessionManager()
-    db.session.execute(text(sql_bulk_insert_parkcode))
-    db.session.commit()
-    db.session.close()
-
-    franchise_path = supp_data_dir / "current_name.csv"
-    sql_bulk_insert_franchise = """
-        truncate table raw.FranchiseMaster;
-        bulk insert raw.FranchiseMaster from "{}" with (
-            format = 'csv',
-            firstrow = 2
-        );
-    """.format(
-        franchise_path.absolute()
-    )
-
-    db = SessionManager()
-    db.session.execute(text(sql_bulk_insert_franchise))
-    db.session.commit()
-    db.session.close()
-
-
-def main():
-    sql_dir = Path("./sql")
-    sql_etld = {
-        "sql_path_drop_fks": sql_dir / "__ETL_Retrosheet__DropFKs.sql",
-        "sql_path_truncate_tables": sql_dir / "__ETL_Retrosheet__TruncateTables.sql",
-        "sql_path_raw_to_stg": sql_dir / "__ETL_Retrosheet__RawToStg.sql",
-        "sql_path_stg_to_dbo": sql_dir / "__ETL_Retrosheet__StgToDbo.sql",
-        "sql_path_add_fks": sql_dir / "__ETL_Retrosheet__AddFKs.sql",
-    }
-    _ = exec_sql_file(sql_etld["sql_path_drop_fks"])
-    _ = exec_sql_file(sql_etld["sql_path_truncate_tables"])
-    downloader = subprocess.Popen(
-        [
-            "powershell.exe",
-            r"C:\Users\jonat\source\repos\Retrosheet\scripts\downloader.ps1",
-        ],
-        stdout=sys.stdout,
-    )
-    downloader.communicate()
-    processer = subprocess.Popen(
-        [
-            "powershell.exe",
-            r"C:\Users\jonat\source\repos\Retrosheet\scripts\processer.ps1",
-        ],
-        stdout=sys.stdout,
-    )
-    processer.communicate()
-    _ = load_supp_retro_data()
-    _ = load_retro_data()
-    _ = exec_sql_file(sql_etld["sql_path_raw_to_stg"])
-    _ = exec_sql_file(sql_etld["sql_path_stg_to_dbo"])
-    _ = exec_sql_file(sql_etld["sql_path_add_fks"])
-    processer = subprocess.Popen(
-        [
-            "powershell.exe",
-            r"C:\Users\jonat\source\repos\Retrosheet\scripts\cleaner.ps1",
-        ],
-        stdout=sys.stdout,
-    )
-    _ = processer.communicate()
+    def execute(self, download=False):
+        print("|| MSG @ {} || DROPPING FKs FROM [dbo]".format(dt.now()))
+        _ = exec_sql_file(self.sql_etld["sql_path_drop_fks"])
+        print("|| MSG @ {} || TRUCATING [Retrosheet] TABLES".format(dt.now()))
+        _ = exec_sql_file(self.sql_etld["sql_path_truncate_tables"])
+        if download:
+            print("|| MSG @ {} || DOWNLOADING RETROSHEET DATA".format(dt.now()))
+            downloader = subprocess.Popen(
+                [
+                    "powershell.exe",
+                    self.downloader_script_path,
+                    str(self.data_dir),
+                ],
+                stdout=sys.stdout,
+            )
+            downloader.communicate()
+        print("|| MSG @ {} || PROCESSING DOWNLOADED RETROSHEET DATA".format(dt.now()))
+        processer = subprocess.Popen(
+            [
+                "powershell.exe",
+                self.processer_script_path,
+                str(self.data_dir),
+            ],
+            stdout=sys.stdout,
+        )
+        processer.communicate()
+        _ = self.load_supp_retro_data()
+        print("|| MSG @ {} || LOADING RAW GAME AND EVENT DATA".format(dt.now()))
+        _ = self.load_retro_data()
+        print("|| MSG @ {} || STAGING GAME AND EVENT DATA".format(dt.now()))
+        _ = exec_sql_file(self.sql_etld["sql_path_raw_to_stg"])
+        print("|| MSG @ {} || WRITING GAME AND EVENT DATA TO [dbo]".format(dt.now()))
+        _ = exec_sql_file(self.sql_etld["sql_path_stg_to_dbo"])
+        print("|| MSG @ {} || ADDING FKs TO [dbo]".format(dt.now()))
+        _ = exec_sql_file(self.sql_etld["sql_path_add_fks"])
+        print("|| MSG @ {} || CLEANING UP".format(dt.now()))
+        os.chdir("C:/Data/Retrosheet")
+        processer = subprocess.Popen(
+            [
+                "powershell.exe",
+                Path("C:/repos/Retrosheet/scripts/cleaner.ps1"),
+                str(self.data_dir),
+            ],
+            stdout=sys.stdout,
+        )
+        _ = processer.communicate()
 
 
 if __name__ == "__main__":
-    main()
+    start = time.time()
+    os.chdir(Path("C:/Data/Retrosheet/run"))
+    _retl = RetrosheetEtl()
+    _retl.execute()
+    end = time.time()
+    run_time = round((end - start) / 60, 1)
+    print("|| MSG @ {} || RETROSHEET ETL COMPLETED. RUNTIME: {} min".format(dt.now(), run_time))
