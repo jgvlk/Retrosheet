@@ -54,7 +54,8 @@ class RetrosheetEtl:
             "sql_path_raw_to_stg": self.sql_dir / "__ETL_Retrosheet__RawToStg.sql",
             "sql_path_stg_to_dbo": self.sql_dir / "__ETL_Retrosheet__StgToDbo.sql",
             "sql_path_add_fks": self.sql_dir / "__ETL_Retrosheet__AddFKs.sql",
-            "sql_path_load_game_type": self.sql_dir / "__ETL_Retrosheet__LoadGameType.sql",
+            "sql_path_load_game_type": self.sql_dir
+            / "__ETL_Retrosheet__LoadGameType.sql",
         }
 
         if self.data_dir.exists():
@@ -183,8 +184,9 @@ class RetrosheetEtl:
             )
         )
 
+
 if __name__ == "__main__":
-    _retl = RetrosheetEtl(download=False)
+    _retl = RetrosheetEtl(download=True)
     os.chdir(_retl.run_dir)
     _retl.execute()
     os.chdir(_retl.data_dir)
