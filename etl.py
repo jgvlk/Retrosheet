@@ -54,6 +54,7 @@ class RetrosheetEtl:
             "sql_path_raw_to_stg": self.sql_dir / "__ETL_Retrosheet__RawToStg.sql",
             "sql_path_stg_to_dbo": self.sql_dir / "__ETL_Retrosheet__StgToDbo.sql",
             "sql_path_add_fks": self.sql_dir / "__ETL_Retrosheet__AddFKs.sql",
+            "sql_path_load_game_type": self.sql_dir / "__ETL_Retrosheet__LoadGameType.sql",
         }
 
         if self.data_dir.exists():
@@ -139,35 +140,37 @@ class RetrosheetEtl:
         print("|| MSG @ {} || RETROSHEET ETL PROCESSING STARTED".format(dt.now()))
         print("|| MSG @ {} || DROPPING FKs FROM [dbo]".format(dt.now()))
         _ = exec_sql_file(self.sql_etld["sql_path_drop_fks"])
-        # print("|| MSG @ {} || TRUCATING [Retrosheet] TABLES".format(dt.now()))
-        # _ = exec_sql_file(self.sql_etld["sql_path_truncate_tables"])
-        # if self.download:
-        #     print("|| MSG @ {} || DOWNLOADING RETROSHEET DATA".format(dt.now()))
-        #     downloader = subprocess.Popen(
-        #         [
-        #             "powershell.exe",
-        #             self.downloader_script_path,
-        #             str(self.data_dir),
-        #         ],
-        #         stdout=sys.stdout,
-        #     )
-        #     downloader.communicate()
-        # print("|| MSG @ {} || PROCESSING DOWNLOADED RETROSHEET DATA".format(dt.now()))
-        # processer = subprocess.Popen(
-        #     [
-        #         "powershell.exe",
-        #         self.processer_script_path,
-        #         str(self.data_dir),
-        #         str(self.log_dir),
-        #     ],
-        #     stdout=sys.stdout,
-        # )
-        # processer.communicate()
-        # _ = self.load_supp_retro_data()
-        # print("|| MSG @ {} || LOADING RAW GAME AND EVENT DATA".format(dt.now()))
-        # _ = self.load_retro_data()
-        # print("|| MSG @ {} || STAGING GAME AND EVENT DATA".format(dt.now()))
-        # _ = exec_sql_file(self.sql_etld["sql_path_raw_to_stg"])
+        print("|| MSG @ {} || TRUCATING [Retrosheet] TABLES".format(dt.now()))
+        _ = exec_sql_file(self.sql_etld["sql_path_truncate_tables"])
+        print("|| MSG @ {} || LOADING [dbo].[GameType]".format(dt.now()))
+        _ = exec_sql_file(self.sql_etld["sql_path_load_game_type"])
+        if self.download:
+            print("|| MSG @ {} || DOWNLOADING RETROSHEET DATA".format(dt.now()))
+            downloader = subprocess.Popen(
+                [
+                    "powershell.exe",
+                    self.downloader_script_path,
+                    str(self.data_dir),
+                ],
+                stdout=sys.stdout,
+            )
+            downloader.communicate()
+        print("|| MSG @ {} || PROCESSING DOWNLOADED RETROSHEET DATA".format(dt.now()))
+        processer = subprocess.Popen(
+            [
+                "powershell.exe",
+                self.processer_script_path,
+                str(self.data_dir),
+                str(self.log_dir),
+            ],
+            stdout=sys.stdout,
+        )
+        processer.communicate()
+        _ = self.load_supp_retro_data()
+        print("|| MSG @ {} || LOADING RAW GAME AND EVENT DATA".format(dt.now()))
+        _ = self.load_retro_data()
+        print("|| MSG @ {} || STAGING GAME AND EVENT DATA".format(dt.now()))
+        _ = exec_sql_file(self.sql_etld["sql_path_raw_to_stg"])
         print("|| MSG @ {} || WRITING GAME AND EVENT DATA TO [dbo]".format(dt.now()))
         _ = exec_sql_file(self.sql_etld["sql_path_stg_to_dbo"])
         print("|| MSG @ {} || ADDING FKs TO [dbo]".format(dt.now()))
