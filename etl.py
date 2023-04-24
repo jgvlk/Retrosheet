@@ -26,10 +26,10 @@ class RetrosheetEtl:
         self.supp_data_dir = self.repo_dir / "data" / "supplemental"
         self.reg_games_dir = self.data_dir / "run" / "game" / "reg"
         self.reg_events_dir = self.data_dir / "run" / "event" / "reg"
-        # self.post_games_dir = data_dir / "run/game/post"
-        # self.as_games_dir = data_dir / "run/game/as"
-        # self.post_events_dir = data_dir / "run/event/post"
-        # self.as_events_dir = data_dir / "run/event/as"
+        self.post_games_dir = self.data_dir / "run/game/post"
+        self.as_games_dir = self.data_dir / "run/game/as"
+        self.post_events_dir = self.data_dir / "run/event/post"
+        self.as_events_dir = self.data_dir / "run/event/as"
         self.game_all_path = self.data_dir / "game_all.csv"
         self.event_all_path = self.data_dir / "event_all.csv"
 
@@ -55,6 +55,16 @@ class RetrosheetEtl:
             "sql_path_stg_to_dbo": self.sql_dir / "__ETL_Retrosheet__StgToDbo.sql",
             "sql_path_add_fks": self.sql_dir / "__ETL_Retrosheet__AddFKs.sql",
         }
+
+        if self.data_dir.exists():
+            pass
+        else:
+            os.mkdir(self.data_dir)
+
+        if self.run_dir.exists():
+            pass
+        else:
+            os.mkdir(self.run_dir)
 
     def load_retro_data(self):
         game_cols_data = pd.read_csv(self.game_cols_file)
@@ -125,58 +135,54 @@ class RetrosheetEtl:
         exec_bulk_insert("raw", "FranchiseMaster", self.franchise_path.absolute())
 
     def execute(self):
+        start = time.time()
+        print("|| MSG @ {} || RETROSHEET ETL PROCESSING STARTED".format(dt.now()))
         print("|| MSG @ {} || DROPPING FKs FROM [dbo]".format(dt.now()))
         _ = exec_sql_file(self.sql_etld["sql_path_drop_fks"])
-        print("|| MSG @ {} || TRUCATING [Retrosheet] TABLES".format(dt.now()))
-        _ = exec_sql_file(self.sql_etld["sql_path_truncate_tables"])
-        if self.download:
-            print("|| MSG @ {} || DOWNLOADING RETROSHEET DATA".format(dt.now()))
-            downloader = subprocess.Popen(
-                [
-                    "powershell.exe",
-                    self.downloader_script_path,
-                    str(self.data_dir),
-                ],
-                stdout=sys.stdout,
-            )
-            downloader.communicate()
-        print("|| MSG @ {} || PROCESSING DOWNLOADED RETROSHEET DATA".format(dt.now()))
-        processer = subprocess.Popen(
-            [
-                "powershell.exe",
-                self.processer_script_path,
-                str(self.data_dir),
-                str(self.log_dir),
-                ">",
-                str(self.processer_log_file),
-            ],
-            stdout=sys.stdout,
-        )
-        processer.communicate()
-        _ = self.load_supp_retro_data()
-        print("|| MSG @ {} || LOADING RAW GAME AND EVENT DATA".format(dt.now()))
-        _ = self.load_retro_data()
-        print("|| MSG @ {} || STAGING GAME AND EVENT DATA".format(dt.now()))
-        _ = exec_sql_file(self.sql_etld["sql_path_raw_to_stg"])
+        # print("|| MSG @ {} || TRUCATING [Retrosheet] TABLES".format(dt.now()))
+        # _ = exec_sql_file(self.sql_etld["sql_path_truncate_tables"])
+        # if self.download:
+        #     print("|| MSG @ {} || DOWNLOADING RETROSHEET DATA".format(dt.now()))
+        #     downloader = subprocess.Popen(
+        #         [
+        #             "powershell.exe",
+        #             self.downloader_script_path,
+        #             str(self.data_dir),
+        #         ],
+        #         stdout=sys.stdout,
+        #     )
+        #     downloader.communicate()
+        # print("|| MSG @ {} || PROCESSING DOWNLOADED RETROSHEET DATA".format(dt.now()))
+        # processer = subprocess.Popen(
+        #     [
+        #         "powershell.exe",
+        #         self.processer_script_path,
+        #         str(self.data_dir),
+        #         str(self.log_dir),
+        #     ],
+        #     stdout=sys.stdout,
+        # )
+        # processer.communicate()
+        # _ = self.load_supp_retro_data()
+        # print("|| MSG @ {} || LOADING RAW GAME AND EVENT DATA".format(dt.now()))
+        # _ = self.load_retro_data()
+        # print("|| MSG @ {} || STAGING GAME AND EVENT DATA".format(dt.now()))
+        # _ = exec_sql_file(self.sql_etld["sql_path_raw_to_stg"])
         print("|| MSG @ {} || WRITING GAME AND EVENT DATA TO [dbo]".format(dt.now()))
         _ = exec_sql_file(self.sql_etld["sql_path_stg_to_dbo"])
         print("|| MSG @ {} || ADDING FKs TO [dbo]".format(dt.now()))
         _ = exec_sql_file(self.sql_etld["sql_path_add_fks"])
-
+        end = time.time()
+        run_time = round((end - start) / 60, 1)
+        print(
+            "|| MSG @ {} || RETROSHEET ETL COMPLETED. RUNTIME: {} min".format(
+                dt.now(), run_time
+            )
+        )
 
 if __name__ == "__main__":
-    start = time.time()
-    _retl = RetrosheetEtl()
-    if not _retl.run_dir.exists():
-        os.mkdir(_retl.run_dir)
+    _retl = RetrosheetEtl(download=False)
     os.chdir(_retl.run_dir)
     _retl.execute()
     os.chdir(_retl.data_dir)
     shutil.rmtree(_retl.run_dir)
-    end = time.time()
-    run_time = round((end - start) / 60, 1)
-    print(
-        "|| MSG @ {} || RETROSHEET ETL COMPLETED. RUNTIME: {} min".format(
-            dt.now(), run_time
-        )
-    )
