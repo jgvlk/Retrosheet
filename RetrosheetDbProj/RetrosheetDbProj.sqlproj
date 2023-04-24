@@ -98,7 +98,4 @@
     <Build Include="Security\raw.sql" />
     <Build Include="Security\stg.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="RetrosheetDbProj.publish.xml" />
-  </ItemGroup>
 </Project>

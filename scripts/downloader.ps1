@@ -9,7 +9,6 @@ try {
     Add-Type -AssemblyName System.IO.Compression.FileSystem
 
     $startTime = (Get-Date)
-    Write-Host "|| MSG" $startTime "|| STARTING DOWNLOAD"
 
     $extractDir = "$($rootdir)\extracts"
     $downloadsDir = "$($rootdir)\downloads"
@@ -52,7 +51,6 @@ try {
     #################################
 
     try {
-        Write-Host "|| MSG" $(Get-Date) "|| DOWNLOADING AND EXTRACTING EVENT DATA TO $extractDir"
         # Download and extract to $dataDir
         foreach ($zip in $zips) {
             try {
@@ -70,16 +68,15 @@ try {
             }
             catch {
                 $errMessage = $_.Exception.Message
-                Write-Host "|| MSG" $(Get-Date) "|| $errMessage"
+                Write-Host "|| ERR" $(Get-Date) "|| $errMessage"
             }
         }
     }
     catch {
         $errMessage = $_.Exception.Message
-        Write-Host "|| MSG" $(Get-Date) "|| $errMessage"
+        Write-Host "|| ERR" $(Get-Date) "|| $errMessage"
     }
     try {
-        Write-Host "|| MSG" $(Get-Date) "|| DOWNLOADING AND EXTRACTING ROSTER DATA TO $extractDir"
         # Dowload and extract to $dataDir
         foreach ($zip in $zipsRoster) {
             try {
@@ -97,27 +94,18 @@ try {
             }
             catch {
                 $errMessage = $_.Exception.Message
-                Write-Host "|| MSG" $(Get-Date) "|| $errMessage"
+                Write-Host "|| ERR" $(Get-Date) "|| $errMessage"
             }
         }
     }
     catch {
         $errMessage = $_.Exception.Message
-        Write-Host "|| MSG" $(Get-Date) "|| $errMessage"
+        Write-Host "|| ERR" $(Get-Date) "|| $errMessage"
     }
-
-    $endTime = (Get-Date)
-    $runTimeH = ($endTime - $startTime).Hours
-    $runTimeM = ($endTime - $startTime).Minutes
-    $runTimeS = ($endTime - $startTime).Seconds
-    $runTimeMS = ($endTime - $startTime).Milliseconds
-    Write-Host "|| MSG" $endTime "|| DOWNLOAD COMPLETED"
-    Write-Host "|| MSG" $endTime "|| RUNTIME: $($runTimeH):$($runTimeM):$($runTimeS).$($runTimeMS)"
 }
 catch {
     $errMessage = $_.Exception.Message
     Write-Host "|| ERR" $(Get-Date) "|| $errMessage"
     Write-Host "|| ERR" $(Get-Date) "|| DOWNLOAD COMPLETED WITH ERRORS"
-    Write-Host "|| MSG" $endTime "|| RUNTIME: $($runTimeH):$($runTimeM):$($runTimeS).$($runTimeMS)"
     exit 1
 }

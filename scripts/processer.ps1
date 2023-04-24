@@ -1,7 +1,8 @@
 # SET PARAMS & VARS #
 #####################
 param (
-    [string]$rootDir
+    [string]$rootDir,
+    [string]$logDir
 )
 
 
@@ -25,56 +26,17 @@ try {
         else {
             Remove-Item -Path $outDir -Recurse -Force
         }
-        # $metadataDir = "$($rootDir)\metadata"
-        # if(!(Test-Path $metadataDir)) {
-        #     New-Item -Path $metadataDir -ItemType directory
-        # }
-        # else {
-        #     Remove-Item -Path $metadataDir -Recurse -Force
-        #     New-Item -Path $metadataDir -ItemType directory
-        # }
-        # $supplementalDir = "$($rootDir)\supplemental"
-        # if(!(Test-Path $supplementalDir)) {
-        #     New-Item -Path $supplementalDir -ItemType directory
-        # }
-        # else {
-        #     Remove-Item -Path $supplementalDir -Recurse -Force
-        #     New-Item -Path $supplementalDir -ItemType directory
-        # }
     }
     catch {
         $errMessage = $_.Exception.Message
         Write-Host "|| ERR" $(Get-Date) "|| $errMessage"
     }
 
-    # # COPY STATIC DATA FROM REPO #
-    # ##############################
-    # try {
-    #     Write-Host "||MSG" $(Get-Date) "|| COPYING STATIC DATA FROM LOCAL GIT REPO"
-    #     $staticDataRoot = "C:\repos\Retrosheet\data"
-    #     $staticDataDest = "$($rootDir)\data"
-    #     Get-ChildItem $staticDataRoot |
-    #     ForEach-Object {
-    #         $staticDataDir = "$($staticDataRoot)\$($_)"
-    #         $staticDataDirName = $_
-    #         Get-ChildItem $staticDataDir |
-    #         ForEach-Object {
-    #             $source = "$($staticDataDir)\$($_)"
-    #             $dest = "$($staticDataDest)\$($staticDataDirName)\$($_)"
-    #             Copy-Item -Path $source -Destination $dest -Recurse -Force
-    #         }
-    #     }
-    # }
-    # catch {
-    #     $errMessage = $_.Exception.Message
-    #     Write-Host "||ERR" $(Get-Date) "|| $errMessage"
-    # }
 
     # PROCESS NEWLY DOWNLOADED FILES #
     ##################################
     # COPY EXTRACTED ROSTER DATA #
     try {
-        Write-Host "|| MSG" $(Get-Date) "|| COPYING EXTRACTED ROSTER DATA TO $dataDir"
         Get-ChildItem $extractDir -Filter 'Rosters' |
         ForEach-Object {
             $folder = $_
@@ -91,7 +53,6 @@ try {
 
     # REGULAR SEASON #
     try {
-        Write-Host "|| MSG" $(Get-Date) "|| COPYING EXTRACTED REGULAR SEASON DATA TO $dataDir"
         Get-ChildItem $extractDir -Exclude 'allas', 'allpost' |
         ForEach-Object {
             Get-ChildItem $_\* -Exclude *.ROS |
@@ -99,7 +60,6 @@ try {
                 Copy-Item -Path $_ -Destination $dataDir -Recurse -Force
             }
         }
-        Write-Host "|| MSG" $(Get-Date) "|| PROCESSING REGULAR SEASON .EVA/.EVE/.EVN FILES"
 
         # Process .EVA/.EVE/.EVN files
         $outDirEventReg = "$($dataDir)\event\reg"
@@ -134,7 +94,6 @@ try {
 
     # POSTSEASON #
     try {
-        Write-Host "|| MSG" $(Get-Date) "|| COPYING EXTRACTED POSTSEASON DATA TO $dataDir"
         Get-ChildItem $extractDir -Filter 'allpost' |
         ForEach-Object {
             Get-ChildItem "$($extractDir)\$($_)" -Exclude *.ROS |
@@ -142,7 +101,6 @@ try {
                 Copy-Item -Path $_ -Destination $dataDir -Recurse -Force
             }
         }
-        Write-Host "|| MSG" $(Get-Date) "|| PROCESSING POSTSEASON .EVA/.EVE/.EVN FILES"
 
         # Process .EVA/.EVE/.EVN files
         $outDirEventPost = "$($dataDir)\event\post"
@@ -178,7 +136,6 @@ try {
 
     # ALL-STAR #
     try {
-        Write-Host "|| MSG" $(Get-Date) "|| COPYING EXTRACTED ALL-STAR DATA TO $dataDir"
         Get-ChildItem $extractDir -Filter "allas" |
         ForEach-Object {
             Get-ChildItem "$($extractDir)\$($_)" -Exclude *.ROS |
@@ -186,7 +143,6 @@ try {
                 Copy-Item -Path $_ -Destination $dataDir -Recurse -Force
             }
         }
-        Write-Host "|| MSG" $(Get-Date) "|| PROCESSING ALL-STAR .EVA/.EVE/.EVN FILES"
 
         # Process .EVA/.EVE/.EVN files
         $outDirEventAS = "$($dataDir)\event\as"
@@ -219,19 +175,10 @@ try {
         $errMessage = $_.Exception.Message
         Write-Host "|| ERR" $(Get-Date) "|| $errMessage"
     }
-
-    $endTime = (Get-Date)
-    $runTimeH = ($endTime - $startTime).Hours
-    $runTimeM = ($endTime - $startTime).Minutes
-    $runTimeS = ($endTime - $startTime).Seconds
-    $runTimeMS = ($endTime - $startTime).Milliseconds
-    Write-Host "|| MSG" $endTime "|| DOWNLOAD AND PROCESSING COMPLETED"
-    Write-Host "|| MSG" $endTime "|| RUNTIME: $($runTimeH):$($runTimeM):$($runTimeS).$($runTimeMS)"
 }
 catch {
     $errMessage = $_.Exception.Message
     Write-Host "|| ERR" $(Get-Date) "|| $errMessage"
     Write-Host "|| ERR" $(Get-Date) "|| PROCESSING COMPLETED WITH ERRORS"
-    Write-Host "|| MSG" $endTime "|| RUNTIME: $($runTimeH):$($runTimeM):$($runTimeS).$($runTimeMS)"
     exit 1
 }

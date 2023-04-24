@@ -2,6 +2,7 @@ from datetime import datetime as dt
 import os
 from pathlib import Path
 import requests
+import shutil
 import subprocess
 import sys
 import time
@@ -12,9 +13,13 @@ from db.repository import exec_bulk_insert, exec_sql_file
 
 
 class RetrosheetEtl:
-    def __init__(self):
+    def __init__(self, download=False):
         self.data_dir = Path("C:/Data/Retrosheet")
         self.repo_dir = Path("C:/repos/Retrosheet")
+        self.run_dir = self.data_dir / "run"
+        self.log_dir = self.repo_dir / "logs"
+        self.processer_log_file = self.log_dir / "game_event_processing_log.log"
+        self.download = download
 
         self.game_cols_file = self.repo_dir / "data" / "metadata" / "game_fields.csv"
         self.event_cols_file = self.repo_dir / "data" / "metadata" / "event_fields.csv"
@@ -44,7 +49,8 @@ class RetrosheetEtl:
         self.sql_dir = self.repo_dir / "sql"
         self.sql_etld = {
             "sql_path_drop_fks": self.sql_dir / "__ETL_Retrosheet__DropFKs.sql",
-            "sql_path_truncate_tables": self.sql_dir / "__ETL_Retrosheet__TruncateTables.sql",
+            "sql_path_truncate_tables": self.sql_dir
+            / "__ETL_Retrosheet__TruncateTables.sql",
             "sql_path_raw_to_stg": self.sql_dir / "__ETL_Retrosheet__RawToStg.sql",
             "sql_path_stg_to_dbo": self.sql_dir / "__ETL_Retrosheet__StgToDbo.sql",
             "sql_path_add_fks": self.sql_dir / "__ETL_Retrosheet__AddFKs.sql",
@@ -78,7 +84,6 @@ class RetrosheetEtl:
         exec_bulk_insert("raw", "Game", self.game_all_path)
         exec_bulk_insert("raw", "Event", self.event_all_path)
 
-
     def fetch_supp_retro_data(self):
         response = requests.get(self.url_biofile)
         with open(self.biofile_path, "w") as f:
@@ -103,7 +108,7 @@ class RetrosheetEtl:
             names=["TeamAbbr", "League", "City", "Nickname", "Start", "End"],
         )
         df_parkcodes = pd.read_csv(self.parkcodes_path)
-        
+
         new_biofile_cols = []
         for i in df_biofile.columns:
             new_col_name = i.replace(" ", "_")
@@ -119,13 +124,12 @@ class RetrosheetEtl:
         exec_bulk_insert("raw", "ParkMaster", self.parkcodes_path.absolute())
         exec_bulk_insert("raw", "FranchiseMaster", self.franchise_path.absolute())
 
-
-    def execute(self, download=False):
+    def execute(self):
         print("|| MSG @ {} || DROPPING FKs FROM [dbo]".format(dt.now()))
         _ = exec_sql_file(self.sql_etld["sql_path_drop_fks"])
         print("|| MSG @ {} || TRUCATING [Retrosheet] TABLES".format(dt.now()))
         _ = exec_sql_file(self.sql_etld["sql_path_truncate_tables"])
-        if download:
+        if self.download:
             print("|| MSG @ {} || DOWNLOADING RETROSHEET DATA".format(dt.now()))
             downloader = subprocess.Popen(
                 [
@@ -142,6 +146,9 @@ class RetrosheetEtl:
                 "powershell.exe",
                 self.processer_script_path,
                 str(self.data_dir),
+                str(self.log_dir),
+                ">",
+                str(self.processer_log_file),
             ],
             stdout=sys.stdout,
         )
@@ -155,24 +162,21 @@ class RetrosheetEtl:
         _ = exec_sql_file(self.sql_etld["sql_path_stg_to_dbo"])
         print("|| MSG @ {} || ADDING FKs TO [dbo]".format(dt.now()))
         _ = exec_sql_file(self.sql_etld["sql_path_add_fks"])
-        print("|| MSG @ {} || CLEANING UP".format(dt.now()))
-        os.chdir("C:/Data/Retrosheet")
-        processer = subprocess.Popen(
-            [
-                "powershell.exe",
-                Path("C:/repos/Retrosheet/scripts/cleaner.ps1"),
-                str(self.data_dir),
-            ],
-            stdout=sys.stdout,
-        )
-        _ = processer.communicate()
 
 
 if __name__ == "__main__":
     start = time.time()
-    os.chdir(Path("C:/Data/Retrosheet/run"))
     _retl = RetrosheetEtl()
+    if not _retl.run_dir.exists():
+        os.mkdir(_retl.run_dir)
+    os.chdir(_retl.run_dir)
     _retl.execute()
+    os.chdir(_retl.data_dir)
+    shutil.rmtree(_retl.run_dir)
     end = time.time()
     run_time = round((end - start) / 60, 1)
-    print("|| MSG @ {} || RETROSHEET ETL COMPLETED. RUNTIME: {} min".format(dt.now(), run_time))
+    print(
+        "|| MSG @ {} || RETROSHEET ETL COMPLETED. RUNTIME: {} min".format(
+            dt.now(), run_time
+        )
+    )
