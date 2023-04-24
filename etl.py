@@ -112,25 +112,26 @@ class RetrosheetEtl:
             f.write(response.text)
             f.close()
 
-    def load_supp_retro_data(self):
         df_biofile = pd.read_csv(self.biofile_path)
-        df_teamabbr = pd.read_csv(
-            self.teamabbr_path,
-            keep_default_na=False,
-            names=["TeamAbbr", "League", "City", "Nickname", "Start", "End"],
-        )
-        df_parkcodes = pd.read_csv(self.parkcodes_path)
-
         new_biofile_cols = []
         for i in df_biofile.columns:
             new_col_name = i.replace(" ", "_")
             new_biofile_cols.append(new_col_name)
         df_biofile.columns = new_biofile_cols
 
+        df_teamabbr = pd.read_csv(
+            self.teamabbr_path,
+            keep_default_na=False,
+            names=["TeamAbbr", "League", "City", "Nickname", "Start", "End"],
+        )
+
+        df_parkcodes = pd.read_csv(self.parkcodes_path)
+
         df_biofile.to_csv(self.biofile_path, index=False)
         df_teamabbr.to_csv(self.teamabbr_path, index=False)
         df_parkcodes.to_csv(self.parkcodes_path, index=False)
 
+    def load_supp_retro_data(self):
         exec_bulk_insert("raw", "PlayerMaster", self.biofile_path.absolute())
         exec_bulk_insert("raw", "TeamMaster", self.teamabbr_path.absolute())
         exec_bulk_insert("raw", "ParkMaster", self.parkcodes_path.absolute())

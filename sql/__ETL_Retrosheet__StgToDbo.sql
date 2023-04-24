@@ -165,7 +165,7 @@ INSERT INTO [dbo].[TeamMaster]
 	,[Start]
 	,[End]
 )
-SELECT
+SELECT DISTINCT
 	[RetroTeamID]
 	,[League]
 	,[City]

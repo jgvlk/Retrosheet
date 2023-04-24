@@ -1,7 +1,3 @@
-USE [Retrosheet]
-
-
-
 /* PlayerMaster */
 
 -- Insert Data
