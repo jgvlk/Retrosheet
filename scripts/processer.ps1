@@ -1,8 +1,7 @@
 # SET PARAMS & VARS #
 #####################
 param (
-    [string]$rootDir,
-    [string]$logDir
+    [string]$rootDir
 )
 
 

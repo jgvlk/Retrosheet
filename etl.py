@@ -13,11 +13,16 @@ from db.repository import exec_bulk_insert, exec_sql_file
 
 
 class RetrosheetEtl:
-    def __init__(self, download=False):
-        self.data_dir = Path("C:/Data/Retrosheet")
-        self.repo_dir = Path("C:/repos/Retrosheet")
+    def __init__(
+        self,
+        download=False,
+        process=True,
+        data_dir=Path("C:/Data/Retrosheet"),
+        repo_dir=Path("C:/repos/Retrosheet"),
+    ):
+        self.data_dir = data_dir
+        self.repo_dir = repo_dir
         self.run_dir = self.data_dir / "run"
-        self.log_dir = self.repo_dir / "logs"
         self.processer_log_file = self.log_dir / "game_event_processing_log.log"
         self.download = download
 
@@ -163,7 +168,6 @@ class RetrosheetEtl:
                 "powershell.exe",
                 self.processer_script_path,
                 str(self.data_dir),
-                str(self.log_dir),
             ],
             stdout=sys.stdout,
         )
