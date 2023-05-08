@@ -2,7 +2,7 @@
     [FranchiseID]             INT          IDENTITY (1, 1) NOT NULL,
     [CurrentRetroFranchiseID] CHAR (3)     NOT NULL,
     [RetroFranchiseID]        CHAR (3)     NOT NULL,
-    [League]                  CHAR (2)     NOT NULL,
+    [League]                  CHAR (2)     NULL,
     [Division]                CHAR (1)     NULL,
     [LocationName]            VARCHAR (25) NULL,
     [Nickname]                VARCHAR (50) NULL,
