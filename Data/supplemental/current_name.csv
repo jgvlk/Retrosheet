@@ -5,7 +5,7 @@ ANA,CAL,AL,W,California,Angels,,4/8/1969,9/29/1996,Anaheim,CA
 ANA,ANA,AL,W,Anaheim,Angels,,4/2/1997,10/3/2004,Anaheim,CA
 ANA,ANA,AL,W,Los Angeles,Angels,,4/5/2005,,Anaheim,CA
 ARI,ARI,NL,W,Arizona,Diamondbacks,,3/31/1998,,Phoenix,AZ
-ATL,BS1,NA,,Boston,Red Stockings,,5/5/1871,10/30/1875,Boston,MA
+ATL,BS1,,,Boston,Red Stockings,,5/5/1871,10/30/1875,Boston,MA
 ATL,BSN,NL,,Boston,Red Caps,,4/22/1876,10/2/1882,Boston,MA
 ATL,BSN,NL,,Boston,Beaneaters,,5/1/1883,10/5/1906,Boston,MA
 ATL,BSN,NL,,Boston,Doves,,4/15/1907,10/12/1910,Boston,MA
@@ -27,8 +27,8 @@ BOS,BOS,AL,E,Boston,Red Sox,,4/8/1969,,Boston,MA
 CHA,CHA,AL,,Chicago,White Sox,,4/24/1901,9/29/1968,Chicago,IL
 CHA,CHA,AL,W,Chicago,White Sox,,4/8/1969,10/3/1993,Chicago,IL
 CHA,CHA,AL,C,Chicago,White Sox,,4/4/1994,,Chicago,IL
-CHN,CH1,NA,,Chicago,White Stockings,,5/8/1871,10/30/1871,Chicago,IL
-CHN,CH2,NA,,Chicago,White Stockings,,5/13/1874,10/27/1875,Chicago,IL
+CHN,CH1,,,Chicago,White Stockings,,5/8/1871,10/30/1871,Chicago,IL
+CHN,CH2,,,Chicago,White Stockings,,5/13/1874,10/27/1875,Chicago,IL
 CHN,CHN,NL,,Chicago,White Stockings,,4/25/1876,10/5/1889,Chicago,IL
 CHN,CHN,NL,,Chicago,Colts,,4/19/1890,10/3/1897,Chicago,IL
 CHN,CHN,NL,,Chicago,Orphans,,4/15/1898,10/5/1902,Chicago,IL
