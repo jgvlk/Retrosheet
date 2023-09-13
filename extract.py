@@ -31,7 +31,7 @@ extract_cfg = {
 
 if __name__ == "__main__":
     for i in extract_cfg["tables"]:
-        extract_file = extract_cfg["path"] / "{}-{}.csv".format(
+        extract_file = extract_cfg["path"] / "Retrosheet-{}-{}.csv".format(
             i, extract_cfg["file_name_date_part"]
         )
         print("|| MSG @ {} || EXTRACTING CSV DATA FOR: {}".format(dt.now(), extract_file))
