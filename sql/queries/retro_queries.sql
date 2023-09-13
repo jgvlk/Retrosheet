@@ -1,3 +1,7 @@
+use Retrosheet
+go
+
+
 select top 1000 * from dbo.Game
 select top 1000 * from dbo.Event
 
@@ -31,3 +35,10 @@ from (
 group by
 	team
 	,result
+
+
+select top 1000 *
+from
+	dbo.Event e
+	join dbo.Game g on e.GameID = g.GameID and g.Date >= '2022-01-01'
+order by EventID
