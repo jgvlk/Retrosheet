@@ -1,4 +1,3 @@
-from dateparser import parse as dtparse
 from datetime import datetime as dt
 from pathlib import Path
 
@@ -9,7 +8,8 @@ from db.session_manager import SessionManager
 
 
 sql_franchise_master = """SELECT
-    [CurrentRetroFranchiseID]
+    [FranchiseID]
+    ,[CurrentRetroFranchiseID]
     ,[RetroFranchiseID]
     ,[League]
     ,[Division]
@@ -27,7 +27,7 @@ sql_game_type = """SELECT
     ,[GameType]
 FROM [dbo].[GameType]"""
 
-sql_park_master = """SELECT 
+sql_park_master = """SELECT
     [ParkID]
     ,[RetroParkID]
     ,[Name]
@@ -41,7 +41,8 @@ sql_park_master = """SELECT
 FROM [dbo].[ParkMaster]"""
 
 sql_player_master = """SELECT
-    [RetroPlayerID]
+    [PlayerID]
+    ,[RetroPlayerID]
     ,[FirstName]
     ,[LastName]
     ,[Nickname]
@@ -76,21 +77,19 @@ sql_player_master = """SELECT
     ,[IsHof]
 FROM [dbo].[PlayerMaster]"""
 
-sql_team_master = """SELECT 
-    [ParkID]
-    ,[RetroParkID]
-    ,[Name]
-    ,[AKA]
+sql_team_master = """SELECT
+    [TeamID]
+    ,[RetroTeamID]
+    ,[League]
     ,[City]
-    ,[State]
+    ,[Nickname]
     ,[Start]
     ,[End]
-    ,[League]
-    ,[Notes]
-FROM [dbo].[ParkMaster]"""
+FROM [dbo].[TeamMaster]"""
 
 sql_event = """SELECT
-    b.[RetroGameID]
+    [EventID]
+    ,[GameID]
     ,[EventNum]
     ,[Inning]
     ,[BattingTeam]
@@ -187,13 +186,13 @@ sql_event = """SELECT
     ,[FielderWithFourthAssist]
     ,[FielderWithFifthAssist]
 FROM
-    [dbo].[Event] a
-    JOIN [dbo].[Game] b ON a.[GameID] = b.[GameID]"""
+    [dbo].[Event]"""
 
 sql_game = """SELECT
-    [RetroGameID]
+    [GameID]
     ,[ParkID]
     ,[GameTypeID]
+    ,[RetroGameID]
     ,[Date]
     ,[GameNumber]
     ,[DayOfWeek]
@@ -273,6 +272,7 @@ sql_game = """SELECT
     ,[HomeFinisher]
     ,[OfficialScorer]
 FROM [dbo].[Game]"""
+
 
 if __name__ == "__main__":
     _db = SessionManager()
