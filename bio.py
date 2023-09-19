@@ -23,10 +23,6 @@ for i in df_biofile.columns:
 df_biofile.columns = new_biofile_cols
 
 
-print(df_biofile.head())
-
-
 df_biofile.to_csv(biofile_path, index=False)
 
-biofile_path = Path("/Users/jonathanvlk/dev/Retrosheet/bio_file_test.csv")
 exec_bulk_insert("raw", "PlayerMaster", biofile_path.absolute())
