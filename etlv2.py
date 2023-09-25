@@ -27,8 +27,6 @@ class RetrosheetEtl:
         self.output_dir: Path = self.data_dir / "output"
         self.run_dir: Path = self.data_dir / "run"
 
-        self.all_data_zip: Path = self.download_dir / "alldata.zip"
-
         self.allas_dir: Path = self.extract_dir / "allas"
         self.allpost_dir: Path = self.extract_dir / "allpost"
         self.boxes_dir: Path = self.extract_dir / "boxes"
@@ -40,10 +38,16 @@ class RetrosheetEtl:
         self.rosters_dir: Path = self.extract_dir / "rosters"
         self.schedule_dir: Path = self.extract_dir / "schedule"
         self.teams_dir: Path = self.extract_dir / "teams1871-2022"
+
+        self.all_data_zip: Path = self.download_dir / "alldata.zip"
         self.ballparks_file: Path = self.extract_dir / "ballparks.csv"
         self.bio_file: Path = self.extract_dir / "biofile.csv"
         self.ejections_file: Path = self.extract_dir / "ejections.csv"
         self.teams_file: Path = self.extract_dir / "teams.csv"
+        self.game_cols_file: Path = self.repo_dir / "data" / "game_fields.csv"
+        self.event_cols_file: Path = self.repo_dir / "data" / "event_fields.csv"
+        self.game_all_file: Path = self.output_dir / "game_all.csv"
+        self.event_all_file: Path = self.output_dir / "event_all.csv"
 
         now = dt.now()
         self.game_log_file: Path = self.log_dir / "game_proc_{}.log".format(
@@ -155,8 +159,37 @@ class RetrosheetEtl:
         for i in self.run_dir.glob(r"**/*"):
             if i.suffix in self.file_extensions:
                 _ = self._proc_game_event(i)
+        print(
+            "|| MSG @ {} || CONCATENATING GAME AND EVENT DATA TO SINGLE FILES".format(
+                dt.now()
+            )
+        )
+        game_cols_data = pd.read_csv(self.game_cols_file)
+        event_cols_data = pd.read_csv(self.event_cols_file)
+        game_cols = []
+        for i in game_cols_data["ColumnName"]:
+            game_cols.append(i)
+        event_cols = []
+        for i in event_cols_data["ColumnName"]:
+            event_cols.append(i)
+        dfs_game = []
+        for i in self.game_output_dir.iterdir():
+            df = pd.read_csv(i, names=game_cols)
+            df["SourceFile"] = str(i)
+            dfs_game.append(df)
+        df_game = pd.concat(dfs_game)
+        dfs_event = []
+        for i in self.event_output_dir.iterdir():
+            df = pd.read_csv(i, names=event_cols)
+            df["SourceFile"] = str(i)
+            dfs_event.append(df)
+        df_event = pd.concat(dfs_event)
+        df_game.to_csv(self.game_all_file, index=False)
+        df_event.to_csv(self.event_all_file, index=False)
         os.chdir(self.data_dir)
         _ = self._rmdir(self.run_dir)
+        _ = self._rmdir(self.game_output_dir)
+        _ = self._rmdir(self.event_output_dir)
         return None
 
     def _rmdir(self, path: Path) -> None:
@@ -211,33 +244,3 @@ class RetrosheetEtl:
 if __name__ == "__main__":
     _retl = RetrosheetEtl()
     _ = _retl.execute()
-
-
-
-
-
-game_cols_file = Path(r"./data/metadata/game_fields.csv")
-event_cols_file = Path(r"./data/metadata/event_fields.csv")
-game_output_dir = Path(r"C:\Data\Retrosheet\output\game")
-event_output_dir = Path(r"C:\Data\Retrosheet\output\event")
-game_cols_data = pd.read_csv(game_cols_file)
-event_cols_data = pd.read_csv(event_cols_file)
-game_cols = []
-for i in game_cols_data["ColumnName"]:
-    game_cols.append(i)
-event_cols = []
-for i in event_cols_data["ColumnName"]:
-    event_cols.append(i)
-dfs_game = []
-for i in game_output_dir.iterdir():
-    df = pd.read_csv(i, names=game_cols)
-    df["SourceFile"] = str(i)
-    dfs_game.append(df)
-df_game = pd.concat(dfs_game)
-dfs_event = []
-for i in event_output_dir.iterdir():
-    df = pd.read_csv(i, names=event_cols)
-    df["SourceFile"] = str(i)
-    dfs_event.append(df)
-df_event = pd.concat(dfs_event,)
-len(df_event)
