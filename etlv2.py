@@ -167,13 +167,9 @@ class RetrosheetEtl:
         for i in self.run_dir.glob(r"**/*"):
             if i.suffix in self.file_extensions:
                 _ = self._proc_game_event(i)
-        print(
-            "|| MSG @ {} || LOADING RAW DATA TO DB".format(
-                dt.now()
-            )
-        )
+        print("|| MSG @ {} || LOADING RAW DATA TO DB".format(dt.now()))
         _ = self._to_sql_raw_game()
-        _ = self._to_sql_raw_evnet()
+        _ = self._to_sql_raw_event()
         os.chdir(self.data_dir)
         _ = self._rmdir(self.run_dir)
         return None
@@ -184,14 +180,22 @@ class RetrosheetEtl:
         else:
             pass
         return None
-    
+
     def _to_sql_raw_game(self):
-        for i in self.game_output_dir.iterdir():
-            exec_bulk_insert("raw", "Game", i)
+        try:
+            for i in self.game_output_dir.iterdir():
+                exec_bulk_insert("raw", "Game", i)
+        except Exception as e:
+            print("|| ERR @ {} || ERROR LOADING RAW GAME DATA TO DB".format(dt.now()))
+            print("|| ERR @ {} || {}".format(dt.now(), e))
 
     def _to_sql_raw_event(self):
-        for i in self.event_output_dir.iterdir():
-            exec_bulk_insert("raw", "Game", i)
+        try:
+            for i in self.event_output_dir.iterdir():
+                exec_bulk_insert("raw", "Event", i)
+        except Exception as e:
+            print("|| ERR @ {} || ERROR LOADING RAW EVENT DATA TO DB".format(dt.now()))
+            print("|| ERR @ {} || {}".format(dt.now(), e))
 
     def _unzip(self, zip_file: Path, extract_dest: Path, remove: bool = False) -> None:
         with zipfile.ZipFile(zip_file, "r") as f:
@@ -238,35 +242,3 @@ class RetrosheetEtl:
 if __name__ == "__main__":
     _retl = RetrosheetEtl()
     _ = _retl.execute()
-
-
-_retl = RetrosheetEtl()
-game_cols_file = _retl.game_cols_file
-event_cols_file = _retl.event_cols_file
-game_output_dir = _retl.game_output_dir
-event_output_dir = _retl.event_output_dir
-# game_cols_data = pd.read_csv(game_cols_file)
-# event_cols_data = pd.read_csv(event_cols_file)
-# game_cols = []
-# for i in game_cols_data["ColumnName"]:
-#     game_cols.append(i)
-# event_cols = []
-# for i in event_cols_data["ColumnName"]:
-#     event_cols.append(i)
-# dfs_game = []
-# for i in game_output_dir.iterdir():
-#     df = pd.read_csv(i, names=game_cols)
-#     df["SourceFile"] = str(i)
-#     dfs_game.append(df)
-# df_game = pd.concat(dfs_game)
-# dfs_event = []
-# for i in event_output_dir.iterdir():
-#     df = pd.read_csv(i, names=event_cols)
-#     df["SourceFile"] = str(i)
-#     dfs_event.append(df)
-# df_event = pd.concat(dfs_event)
-
-
-
-for i in game_output_dir.iterdir():
-    exec_bulk_insert("raw", "Game", i)
