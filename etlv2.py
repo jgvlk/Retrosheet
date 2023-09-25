@@ -244,3 +244,31 @@ class RetrosheetEtl:
 if __name__ == "__main__":
     _retl = RetrosheetEtl()
     _ = _retl.execute()
+
+
+
+_retl = RetrosheetEtl()
+game_cols_file = _retl.game_cols_file
+event_cols_file = _retl.event_cols_file
+game_output_dir = _retl.game_output_dir
+event_output_dir = _retl.event_output_dir
+game_cols_data = pd.read_csv(game_cols_file)
+event_cols_data = pd.read_csv(event_cols_file)
+game_cols = []
+for i in game_cols_data["ColumnName"]:
+    game_cols.append(i)
+event_cols = []
+for i in event_cols_data["ColumnName"]:
+    event_cols.append(i)
+dfs_game = []
+for i in game_output_dir.iterdir():
+    df = pd.read_csv(i, names=game_cols)
+    df["SourceFile"] = str(i)
+    dfs_game.append(df)
+df_game = pd.concat(dfs_game)
+dfs_event = []
+for i in event_output_dir.iterdir():
+    df = pd.read_csv(i, names=event_cols)
+    df["SourceFile"] = str(i)
+    dfs_event.append(df)
+df_event = pd.concat(dfs_event)
