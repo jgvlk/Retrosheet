@@ -43,6 +43,7 @@ class RetrosheetEtl:
         self.ballparks_file: Path = self.extract_dir / "ballparks.csv"
         self.bio_file: Path = self.extract_dir / "biofile.csv"
         self.ejections_file: Path = self.extract_dir / "ejections.csv"
+        self.franchise_master_file: Path = self.extract_dir / "franchises.csv"
         self.teams_file: Path = self.extract_dir / "teams.csv"
         self.game_cols_file: Path = self.repo_dir / "data" / "game_fields.csv"
         self.event_cols_file: Path = self.repo_dir / "data" / "event_fields.csv"
@@ -70,11 +71,12 @@ class RetrosheetEtl:
             ".EVR",
         ]
 
-        self.url_all_data: Path = "https://www.retrosheet.org/downloads/alldata.zip"
+        self.url_all_data: str = "https://www.retrosheet.org/downloads/alldata.zip"
+        self.url_currentname: str = "https://www.retrosheet.org/CurrentNames.csv"
 
     def _db_setup(self) -> None:
-        _ = exec_sql_file(r"C:\repos\Retrosheet\sql\ddl\raw.Game.sql")
         _ = exec_sql_file(r"C:\repos\Retrosheet\sql\ddl\raw.Event.sql")
+        _ = exec_sql_file(r"C:\repos\Retrosheet\sql\ddl\raw.Game.sql")
         return None
 
     def _download_source_data(self) -> None:
@@ -88,6 +90,17 @@ class RetrosheetEtl:
             pass
         else:
             os.mkdir(path)
+        return None
+    
+    def _load_retro_other_data(self) -> None:
+        response = requests.get(self.url_currentname)
+        with open(self.franchise_master_file, "w") as f:
+            f.write(response.text)
+        _ = self._to_sql_raw_ejection()
+        _ = self._to_sql_raw_franchise_master()
+        _ = self._to_sql_raw_park_master()
+        _ = self._to_sql_raw_player_master()
+        _ = self._to_sql_raw_park_master()
         return None
 
     def _proc_game_event(self, file: Path) -> None:
@@ -186,23 +199,48 @@ class RetrosheetEtl:
         else:
             pass
         return None
+    
+    def _to_sql_raw_event(self):
+        try:
+            print("|| MSG @ {} || LOADING RAW EVENT DATA TO DB".format(dt.now()))
+            for i in self.event_output_dir.iterdir():
+                _ = exec_bulk_insert("raw", "Event", i)
+        except Exception as e:
+            print("|| ERR @ {} || ERROR LOADING RAW EVENT DATA TO DB".format(dt.now()))
+            print("|| ERR @ {} || {}".format(dt.now(), e))
 
     def _to_sql_raw_game(self):
         try:
             print("|| MSG @ {} || LOADING RAW GAME DATA TO DB".format(dt.now()))
             for i in self.game_output_dir.iterdir():
-                exec_bulk_insert("raw", "Game", i)
+                _ = exec_bulk_insert("raw", "Game", i)
         except Exception as e:
             print("|| ERR @ {} || {}".format(dt.now(), e))
 
-    def _to_sql_raw_event(self):
-        try:
-            print("|| MSG @ {} || LOADING RAW EVENT DATA TO DB".format(dt.now()))
-            for i in self.event_output_dir.iterdir():
-                exec_bulk_insert("raw", "Event", i)
-        except Exception as e:
-            print("|| ERR @ {} || ERROR LOADING RAW EVENT DATA TO DB".format(dt.now()))
-            print("|| ERR @ {} || {}".format(dt.now(), e))
+    def _to_sql_raw_park_master(self) -> None:
+        print("|| MSG @ {} || LOADING RAW BALLPARK DATA TO DB".format(dt.now()))
+        _ = exec_bulk_insert("raw", "ParkMaster", self.ballparks_file)
+        return None
+
+    def _to_sql_raw_player_master(self) -> None:
+        print("|| MSG @ {} || LOADING RAW PLAYER DATA TO DB".format(dt.now()))
+        _ = exec_bulk_insert("raw", "PlayerMaster", self.bio_file)
+        return None
+
+    def _to_sql_raw_ejection(self) -> None:
+        print("|| MSG @ {} || LOADING RAW EJECTION DATA TO DB".format(dt.now()))
+        _ = exec_bulk_insert("raw", "Ejection", self.ejections_file)
+        return None
+
+    def _to_sql_raw_team_master(self) -> None:
+        print("|| MSG @ {} || LOADING RAW TEAM DATA TO DB".format(dt.now()))
+        _ = exec_bulk_insert("raw", "TeamMaster", self.bio_file)
+        return None
+
+    def _to_sql_raw_franchise_master(self) -> None:
+        print("|| MSG @ {} || LOADING RAW TEAM DATA TO DB".format(dt.now()))
+        _ = exec_bulk_insert("raw", "FranchiseMaster", self.bio_file)
+        return None
 
     def _unzip(self, zip_file: Path, extract_dest: Path, remove: bool = False) -> None:
         with zipfile.ZipFile(zip_file, "r") as f:
