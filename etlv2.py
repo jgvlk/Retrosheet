@@ -72,6 +72,11 @@ class RetrosheetEtl:
 
         self.url_all_data: Path = "https://www.retrosheet.org/downloads/alldata.zip"
 
+    def _db_setup(self) -> None:
+        _ = exec_sql_file(r"C:\repos\Retrosheet\sql\ddl\raw.Game.sql")
+        _ = exec_sql_file(r"C:\repos\Retrosheet\sql\ddl\raw.Event.sql")
+        return None
+
     def _download_source_data(self) -> None:
         all_data = requests.get(self.url_all_data)
         with open(self.all_data_zip, "wb") as f:
@@ -172,6 +177,7 @@ class RetrosheetEtl:
         _ = self._to_sql_raw_event()
         os.chdir(self.data_dir)
         _ = self._rmdir(self.run_dir)
+        _ = self._rmdir(self.output_dir)
         return None
 
     def _rmdir(self, path: Path) -> None:
@@ -183,14 +189,15 @@ class RetrosheetEtl:
 
     def _to_sql_raw_game(self):
         try:
+            print("|| MSG @ {} || LOADING RAW GAME DATA TO DB".format(dt.now()))
             for i in self.game_output_dir.iterdir():
                 exec_bulk_insert("raw", "Game", i)
         except Exception as e:
-            print("|| ERR @ {} || ERROR LOADING RAW GAME DATA TO DB".format(dt.now()))
             print("|| ERR @ {} || {}".format(dt.now(), e))
 
     def _to_sql_raw_event(self):
         try:
+            print("|| MSG @ {} || LOADING RAW EVENT DATA TO DB".format(dt.now()))
             for i in self.event_output_dir.iterdir():
                 exec_bulk_insert("raw", "Event", i)
         except Exception as e:
@@ -216,6 +223,7 @@ class RetrosheetEtl:
         _ = self._mkdir(self.output_dir)
         _ = self._mkdir(self.game_output_dir)
         _ = self._mkdir(self.event_output_dir)
+        _ = self._db_setup()
         print(
             "|| MSG @ {} || DOWNLOADING AND EXTRACTING SOURE DATA FROM https://www.retrosheet.org/".format(
                 dt.now()

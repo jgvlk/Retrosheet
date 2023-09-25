@@ -1,15 +1,9 @@
-USE [Retrosheet]
-GO
-
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[Game]') AND type in (N'U'))
 DROP TABLE [raw].[Game]
-GO
 
 SET ANSI_NULLS ON
-GO
 
 SET QUOTED_IDENTIFIER ON
-GO
 
 CREATE TABLE [raw].[Game](
 	[GameID] [nvarchar](500) NOT NULL,
@@ -97,9 +91,7 @@ CREATE TABLE [raw].[Game](
 	[VisitingFinisher] [nvarchar](500) NULL,
 	[HomeFinisher] [nvarchar](500) NULL,
 	[OfficialScorer] [nvarchar](500) NULL,
-	[GameType] [nvarchar](500) NULL,
-	[SourceFileName] [nvarchar](500) NULL
+	[GameType] [nvarchar](500) NULL
 ) ON [PRIMARY]
-GO
 
 

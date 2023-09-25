@@ -1,15 +1,9 @@
-USE [Retrosheet]
-GO
-
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[Event]') AND type in (N'U'))
 DROP TABLE [raw].[Event]
-GO
 
 SET ANSI_NULLS ON
-GO
 
 SET QUOTED_IDENTIFIER ON
-GO
 
 CREATE TABLE [raw].[Event](
 	[GameID] [nvarchar](500) NOT NULL,
@@ -108,9 +102,7 @@ CREATE TABLE [raw].[Event](
 	[FielderWithThirdAssist] [nvarchar](500) NULL,
 	[FielderWithFourthAssist] [nvarchar](500) NULL,
 	[FielderWithFifthAssist] [nvarchar](500) NULL,
-	[EventNum] [nvarchar](500) NULL,
-	[SourceFileName] [nvarchar](500) NULL
+	[EventNum] [nvarchar](500) NULL
 ) ON [PRIMARY]
-GO
 
 
