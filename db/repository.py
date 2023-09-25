@@ -8,14 +8,11 @@ from db.session_manager import SessionManager
 def exec_bulk_insert(db_schema: str, db_table: str, data_file_path: Path):
     _db = SessionManager()
     sql_bulk_insert = """
-        truncate table {}.{};
         bulk insert {}.{} from "{}" with (
             format = 'csv',
-            firstrow = 2
+            firstrow = 1
         );
     """.format(
-        db_schema,
-        db_table,
         db_schema,
         db_table,
         data_file_path,
