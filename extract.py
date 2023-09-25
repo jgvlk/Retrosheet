@@ -296,6 +296,8 @@ if __name__ == "__main__":
         extract_file = extract_cfg["path"] / "Retrosheet-{}-{}.csv".format(
             i, extract_cfg["file_name_date_part"]
         )
-        print("|| MSG @ {} || EXTRACTING CSV DATA FOR: {}".format(dt.now(), extract_file))
+        print(
+            "|| MSG @ {} || EXTRACTING CSV DATA FOR: {}".format(dt.now(), extract_file)
+        )
         df = pd.read_sql_query(extract_cfg["queries"][i], _db_conn)
         df.to_csv(extract_file, index=False)

@@ -60,7 +60,15 @@ class RetrosheetEtl:
         self.game_output_dir: Path = self.output_dir / "game"
         self.event_output_dir: Path = self.output_dir / "event"
 
-        self.file_extensions: list = [".EDA", ".EDN", ".EVA", ".EVE", ".EVF", ".EVN", ".EVR"]
+        self.file_extensions: list = [
+            ".EDA",
+            ".EDN",
+            ".EVA",
+            ".EVE",
+            ".EVF",
+            ".EVN",
+            ".EVR",
+        ]
 
         self.url_all_data: Path = "https://www.retrosheet.org/downloads/alldata.zip"
 
@@ -244,7 +252,6 @@ class RetrosheetEtl:
 if __name__ == "__main__":
     _retl = RetrosheetEtl()
     _ = _retl.execute()
-
 
 
 _retl = RetrosheetEtl()
