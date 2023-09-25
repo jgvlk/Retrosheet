@@ -1,2 +1,0 @@
-Issue with files:
-- C:\Data\Retrosheet\output\event\event_2021AS_EVE.csv
