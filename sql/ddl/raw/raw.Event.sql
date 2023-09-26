@@ -98,5 +98,6 @@ CREATE TABLE [raw].[Event](
 	[FielderWithThirdAssist] [nvarchar](500) NULL,
 	[FielderWithFourthAssist] [nvarchar](500) NULL,
 	[FielderWithFifthAssist] [nvarchar](500) NULL,
-	[EventNum] [nvarchar](500) NULL
+	[EventNum] [nvarchar](500) NULL,
+	[SourceFile] [nvarchar](500) NULL
 )

@@ -5,7 +5,7 @@ CREATE TABLE [dbo].[ParkMaster](
 	[ParkID] [int] IDENTITY(1,1) NOT NULL,
 	[RetroParkID] [char](5) NOT NULL,
 	[Name] [varchar](50) NULL,
-	[AKA] [varchar](50) NULL,
+	[AKA] [varchar](100) NULL,
 	[City] [varchar](25) NULL,
 	[State] [varchar](10) NULL,
 	[Start] [date] NULL,

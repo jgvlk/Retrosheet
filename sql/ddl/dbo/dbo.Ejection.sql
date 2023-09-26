@@ -3,15 +3,13 @@ DROP TABLE [dbo].[Ejection]
 
 CREATE TABLE [dbo].[Ejection](
 	[EjectionID] [int] IDENTITY(1,1) NOT NULL,
-	[GameID] [nvarchar](500) NULL,
-	[Date] [nvarchar](500) NULL,
-	[DH] [nvarchar](500) NULL,
-	[Ejectee] [nvarchar](500) NULL,
-	[EjecteeName] [nvarchar](500) NULL,
-	[Team] [nvarchar](500) NULL,
-	[Job] [nvarchar](500) NULL,
-	[Umpire] [nvarchar](500) NULL,
-	[UmpireName] [nvarchar](500) NULL,
-    [Inning] [nvarchar](500) NULL,
-    [Reason] [nvarchar](500) NULL
+	[GameID] [int] NULL,
+	[TeamID] [int] NULL,
+	[EjecteePlayerID] [int] NULL,
+	[UmpirePlayerID] [int] NULL,
+	[Date] [date] NULL,
+	[DH] [int] NULL,
+	[Job] [char](1) NULL,
+    [Inning] [int] NULL,
+    [Reason] [varchar](500) NULL
 )

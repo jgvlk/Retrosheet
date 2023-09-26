@@ -77,7 +77,6 @@ class RetrosheetEtl:
 
         self.sql_d: dict = {
             "ddl": {
-                "cd_retrosheet": self.sql_dir / "ddl" / "Retrosheet.sql",
                 "cs_raw": self.sql_dir / "ddl" / "raw" / "raw.sql",
                 "ct_raw_ejection": self.sql_dir / "ddl" / "raw" / "raw.Ejection.sql",
                 "ct_raw_event": self.sql_dir / "ddl" / "raw" / "raw.Event.sql",
@@ -127,6 +126,44 @@ class RetrosheetEtl:
                 "etl_04_add_fks": self.sql_dir / "etl" / "__ETL_04__AddFKs.sql",
             },
         }
+
+    def _concat_event_data(self) -> None:
+        print(
+            "|| MSG @ {} || CONCATENATING EVENT DATA TO SINGLE FILE".format(
+                dt.now()
+            )
+        )
+        dfs_event = []
+        for i in self.event_output_dir.glob("event*"):
+            try:
+                df = pd.read_csv(i, encoding="ascii", header=None, dtype={i: str for i in range(0,97)})
+                df["SourceFile"] = str(i.name)
+                dfs_event.append(df)
+            except Exception as e:
+                print(f"ERROR: {i}")
+        df_event = pd.concat(dfs_event)
+        df_event = df_event.drop_duplicates()
+        df_event.to_csv(self.event_all_file, index=False, header=None)
+        return None
+
+    def _concat_game_data(self) -> None:
+        print(
+            "|| MSG @ {} || CONCATENATING GAME DATA TO SINGLE FILE".format(
+                dt.now()
+            )
+        )
+        dfs_game = []
+        for i in self.game_output_dir.glob("game*"):
+            try:
+                df = pd.read_csv(i, encoding="ascii", header=None, dtype={i: str for i in range(0,86)})
+                df["SourceFile"] = str(i.name)
+                dfs_game.append(df)
+            except Exception as e:
+                print(f"ERROR: {i}")
+        df_game = pd.concat(dfs_game)
+        df_game = df_game.drop_duplicates()
+        df_game.to_csv(self.game_all_file, index=False, header=None)
+        return None
 
     def _db_setup(self) -> None:
         for i in self.sql_d["ddl"]:
@@ -208,6 +245,8 @@ class RetrosheetEtl:
                 _ = self._proc_retro_event_file(i)
         os.chdir(self.data_dir)
         _ = self._rmdir(self.run_dir)
+        _ = self._concat_game_data()
+        _ = self._concat_event_data()
         _ = self._to_sql_raw_game()
         _ = self._to_sql_raw_event()
         return None
@@ -278,26 +317,19 @@ class RetrosheetEtl:
         return None
 
     def _to_sql_raw_event(self):
-        try:
-            print("|| MSG @ {} || LOADING RAW EVENT DATA TO DB".format(dt.now()))
-            for i in self.event_output_dir.iterdir():
-                _ = exec_bulk_insert("raw", "Event", i, 1)
-        except Exception as e:
-            print("|| ERR @ {} || ERROR LOADING RAW EVENT DATA TO DB".format(dt.now()))
-            print("|| ERR @ {} || {}".format(dt.now(), e))
+        print("|| MSG @ {} || LOADING RAW EVENT DATA TO DB".format(dt.now()))
+        _ = exec_bulk_insert("raw", "Event", self.event_all_file, 1)
+        return None
 
     def _to_sql_raw_franchise_master(self) -> None:
         print("|| MSG @ {} || LOADING RAW TEAM DATA TO DB".format(dt.now()))
         _ = exec_bulk_insert("raw", "FranchiseMaster", self.franchise_master_file, 1)
         return None
 
-    def _to_sql_raw_game(self):
-        try:
-            print("|| MSG @ {} || LOADING RAW GAME DATA TO DB".format(dt.now()))
-            for i in self.game_output_dir.iterdir():
-                _ = exec_bulk_insert("raw", "Game", i, 1)
-        except Exception as e:
-            print("|| ERR @ {} || {}".format(dt.now(), e))
+    def _to_sql_raw_game(self) -> None:
+        print("|| MSG @ {} || LOADING RAW GAME DATA TO DB".format(dt.now()))
+        _ = exec_bulk_insert("raw", "Game", self.game_all_file, 1)
+        return None
 
     def _to_sql_raw_park_master(self) -> None:
         print("|| MSG @ {} || LOADING RAW BALLPARK DATA TO DB".format(dt.now()))

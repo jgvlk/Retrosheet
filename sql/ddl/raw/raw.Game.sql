@@ -87,5 +87,6 @@ CREATE TABLE [raw].[Game](
 	[VisitingFinisher] [nvarchar](500) NULL,
 	[HomeFinisher] [nvarchar](500) NULL,
 	[OfficialScorer] [nvarchar](500) NULL,
-	[GameType] [nvarchar](500) NULL
+	[GameType] [nvarchar](500) NULL,
+	[SourceFile] [nvarchar](500) NULL
 )

@@ -3,9 +3,9 @@ DROP TABLE [dbo].[Game]
 
 CREATE TABLE [dbo].[Game](
 	[GameID] [bigint] IDENTITY(1,1) NOT NULL,
-	[ParkID] [int] NULL,
-	[GameTypeID] [int] NOT NULL,
 	[RetroGameID] [char](12) NULL,
+	[ParkID] [int] NULL,
+	[GameType] [varchar](50) NULL,
 	[Date] [date] NULL,
 	[GameNumber] [int] NULL,
 	[DayOfWeek] [varchar](10) NULL,
@@ -83,14 +83,13 @@ CREATE TABLE [dbo].[Game](
 	[HomePosition9] [int] NULL,
 	[VisitingFinisher] [int] NULL,
 	[HomeFinisher] [int] NULL,
-	[OfficialScorer] [int] NULL,
-	[GameType] [varchar](50) NULL
+	[OfficialScorer] [int] NULL
  CONSTRAINT [pk_Game] PRIMARY KEY CLUSTERED 
 (
 	[GameID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
- CONSTRAINT [ak_Game_RetroGameID] UNIQUE NONCLUSTERED 
-(
-	[RetroGameID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+--  CONSTRAINT [ak_Game_RetroGameID] UNIQUE NONCLUSTERED 
+-- (
+-- 	[RetroGameID] ASC
+-- )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 )
