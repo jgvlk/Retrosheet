@@ -231,6 +231,7 @@ class RetrosheetEtl:
         return None
 
     def _load_dbo(self):
+        print("|| MSG @ {} || LOADING RAW DATA TO [dbo]".format(dt.now()))
         for i in self.sql_d["etl"]:
             _ = exec_sql_file(self.sql_d["ddl"][i])
         return None
