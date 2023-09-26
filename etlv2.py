@@ -77,46 +77,28 @@ class RetrosheetEtl:
 
         self.sql_d: dict = {
             "ddl": {
+                "cd_retrosheet": self.sql_dir / "ddl" / "Retrosheet.sql",
                 "cs_raw": self.sql_dir / "ddl" / "raw" / "raw.sql",
                 "ct_raw_ejection": self.sql_dir / "ddl" / "raw" / "raw.Ejection.sql",
                 "ct_raw_event": self.sql_dir / "ddl" / "raw" / "raw.Event.sql",
-                "ct_raw_franchise_master": self.sql_dir
-                / "ddl"
-                / "raw"
-                / "raw.FranchiseMaster.sql",
+                "ct_raw_franchise_master": self.sql_dir / "ddl" / "raw" / "raw.FranchiseMaster.sql",
                 "ct_raw_game": self.sql_dir / "ddl" / "raw" / "raw.Game.sql",
-                "ct_raw_park_master": self.sql_dir
-                / "ddl"
-                / "raw"
-                / "raw.ParkMaster.sql",
-                "ct_raw_player_master": self.sql_dir
-                / "ddl"
-                / "raw"
-                / "raw.PlayerMaster.sql",
-                "ct_raw_team_master": self.sql_dir
-                / "ddl"
-                / "raw"
-                / "raw.TeamMaster.sql",
+                "ct_raw_park_master": self.sql_dir / "ddl" / "raw" / "raw.ParkMaster.sql",
+                "ct_raw_player_master": self.sql_dir / "ddl" / "raw" / "raw.PlayerMaster.sql",
+                "ct_raw_team_master": self.sql_dir / "ddl" / "raw" / "raw.TeamMaster.sql",
+                "ct_dbo_ejection": self.sql_dir / "ddl" / "dbo" / "dbo.Ejection.sql",
+                "ct_dbo_event": self.sql_dir / "ddl" / "dbo" / "dbo.Event.sql",
+                "ct_dbo_franchise_master": self.sql_dir / "ddl" / "dbo" / "dbo.FranchiseMaster.sql",
+                "ct_dbo_game": self.sql_dir / "ddl" / "dbo" / "dbo.Game.sql",
+                "ct_dbo_park_master": self.sql_dir / "ddl" / "dbo" / "dbo.ParkMaster.sql",
+                "ct_dbo_player_master": self.sql_dir / "ddl" / "dbo" / "dbo.PlayerMaster.sql",
+                "ct_dbo_team_master": self.sql_dir / "ddl" / "dbo" / "dbo.TeamMaster.sql",
             },
-            "dml": {
-                "sql_path_drop_fks": self.sql_dir
-                / "dml"
-                / "__ETL_Retrosheet__DropFKs.sql",
-                "sql_path_truncate_tables": self.sql_dir
-                / "dml"
-                / "__ETL_Retrosheet__TruncateTables.sql",
-                "sql_path_raw_to_stg": self.sql_dir
-                / "dml"
-                / "__ETL_Retrosheet__RawToStg.sql",
-                "sql_path_stg_to_dbo": self.sql_dir
-                / "dml"
-                / "__ETL_Retrosheet__StgToDbo.sql",
-                "sql_path_add_fks": self.sql_dir
-                / "dml"
-                / "__ETL_Retrosheet__AddFKs.sql",
-                "sql_path_load_game_type": self.sql_dir
-                / "dml"
-                / "__ETL_Retrosheet__LoadGameType.sql",
+            "etl": {
+                "etl_01_drop_fks": self.sql_dir / "etl" / "__ETL_01__DropFKs.sql",
+                "etl_02_truncate": self.sql_dir / "etl" / "__ETL_02__TruncateTables.sql",
+                "etl_03_load_dbo": self.sql_dir / "etl" / "__ETL_03__StgToDbo.sql",
+                "etl_04_add_fks": self.sql_dir / "etl" / "__ETL_04__AddFKs.sql",
             },
         }
 
@@ -170,7 +152,7 @@ class RetrosheetEtl:
             shutil.copy(i, dest_file)
         for i in self.run_dir.glob(r"**/*"):
             if i.suffix in self.file_extensions:
-                _ = self._(i)
+                _ = self._proc_retro_event_file(i)
         os.chdir(self.data_dir)
         _ = self._rmdir(self.run_dir)
         _ = self._mkdir(self.run_dir)
