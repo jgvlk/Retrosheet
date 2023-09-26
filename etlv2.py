@@ -128,40 +128,50 @@ class RetrosheetEtl:
         }
 
     def _concat_event_data(self) -> None:
-        print(
-            "|| MSG @ {} || CONCATENATING EVENT DATA TO SINGLE FILE".format(
-                dt.now()
-            )
-        )
+        print("|| MSG @ {} || CONCATENATING EVENT DATA TO SINGLE FILE".format(dt.now()))
         dfs_event = []
         for i in self.event_output_dir.glob("event*"):
             try:
-                df = pd.read_csv(i, encoding="ascii", header=None, dtype={i: str for i in range(0,97)})
+                df = pd.read_csv(
+                    i,
+                    encoding="ascii",
+                    header=None,
+                    dtype={i: str for i in range(0, 97)},
+                )
                 df["SourceFile"] = str(i.name)
                 dfs_event.append(df)
             except Exception as e:
-                print(f"ERROR: {i}")
+                print(
+                    "|| ERR @ {} || ERROR CONCATENATING EVENT DATA: {}".format(
+                        dt.now(), i
+                    )
+                )
+                print("|| ERR @ {} || {}".format(dt.now(), e))
         df_event = pd.concat(dfs_event)
-        df_event = df_event.drop_duplicates()
         df_event.to_csv(self.event_all_file, index=False, header=None)
         return None
 
     def _concat_game_data(self) -> None:
-        print(
-            "|| MSG @ {} || CONCATENATING GAME DATA TO SINGLE FILE".format(
-                dt.now()
-            )
-        )
+        print("|| MSG @ {} || CONCATENATING GAME DATA TO SINGLE FILE".format(dt.now()))
         dfs_game = []
         for i in self.game_output_dir.glob("game*"):
             try:
-                df = pd.read_csv(i, encoding="ascii", header=None, dtype={i: str for i in range(0,86)})
+                df = pd.read_csv(
+                    i,
+                    encoding="ascii",
+                    header=None,
+                    dtype={i: str for i in range(0, 86)},
+                )
                 df["SourceFile"] = str(i.name)
                 dfs_game.append(df)
             except Exception as e:
-                print(f"ERROR: {i}")
+                print(
+                    "|| ERR @ {} || ERROR CONCATENATING EVENT DATA: {}".format(
+                        dt.now(), i
+                    )
+                )
+                print("|| ERR @ {} || {}".format(dt.now(), e))
         df_game = pd.concat(dfs_game)
-        df_game = df_game.drop_duplicates()
         df_game.to_csv(self.game_all_file, index=False, header=None)
         return None
 
