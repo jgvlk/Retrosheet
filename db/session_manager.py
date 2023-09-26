@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 
 
-db_conn_str_raw_retro = "DRIVER={SQL Server};SERVER=.\MSSQLDEV;DATABASE=Retrosheet;"
+db_conn_str_raw_retro = "DRIVER={SQL Server};SERVER=.;DATABASE=Retrosheet;"
 db_conn_str_retro = quote_plus(db_conn_str_raw_retro)
 db_conn_str_retro = f"mssql+pyodbc:///?odbc_connect={db_conn_str_retro}"
 engine_retro = create_engine(db_conn_str_retro)

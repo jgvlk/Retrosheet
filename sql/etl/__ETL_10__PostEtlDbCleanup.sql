@@ -1,0 +1,7 @@
+DROP TABLE [raw].[Ejection]
+DROP TABLE [raw].[FranchiseMaster]
+DROP TABLE [raw].[ParkMaster]
+DROP TABLE [raw].[PlayerMaster]
+DROP TABLE [raw].[TeamMaster]
+DROP TABLE [raw].[Game]
+DROP TABLE [raw].[Event]

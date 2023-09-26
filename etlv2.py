@@ -118,12 +118,26 @@ class RetrosheetEtl:
                 / "dbo.TeamMaster.sql",
             },
             "etl": {
-                "etl_01_drop_fks": self.sql_dir / "etl" / "__ETL_01__DropFKs.sql",
-                "etl_02_truncate": self.sql_dir
+                # "etl_01_drop_fks": self.sql_dir / "etl" / "__ETL_01__DropFKs.sql",
+                "etl_02_load_franchise_master": self.sql_dir
                 / "etl"
-                / "__ETL_02__TruncateTables.sql",
-                "etl_03_load_dbo": self.sql_dir / "etl" / "__ETL_03__StgToDbo.sql",
-                "etl_04_add_fks": self.sql_dir / "etl" / "__ETL_04__AddFKs.sql",
+                / "__ETL_02__LoadFranchiseMaster.sql",
+                "etl_03_load_park_master": self.sql_dir
+                / "etl"
+                / "__ETL_03__LoadParkMaster.sql",
+                "etl_04_load_player_master": self.sql_dir
+                / "etl"
+                / "__ETL_04__LoadPlayerMaster.sql",
+                "etl_05_load_team_master": self.sql_dir
+                / "etl"
+                / "__ETL_05__LoadTeamMaster.sql",
+                "etl_06_load_game": self.sql_dir / "etl" / "__ETL_06__LoadGame.sql",
+                "etl_07_load_event": self.sql_dir / "etl" / "__ETL_07__LoadEvent.sql",
+                "etl_08_load_ejection": self.sql_dir
+                / "etl"
+                / "__ETL_08__LoadEjection.sql",
+                # "etl_09_add_fks": self.sql_dir / "etl" / "__ETL_09__AddFKs.sql",
+                # "etl_10_db_cleanup": self.sql_dir / "etl" / "__ETL_10__PostEtlDbCleanup.sql",
             },
         }
 
@@ -214,6 +228,11 @@ class RetrosheetEtl:
             pass
         else:
             os.mkdir(path)
+        return None
+
+    def _load_dbo(self):
+        for i in self.sql_d["etl"]:
+            _ = exec_sql_file(self.sql_d["ddl"][i])
         return None
 
     def _load_retro_game_event_data(self) -> None:
@@ -384,6 +403,7 @@ class RetrosheetEtl:
         _ = self._extract_source_data()
         _ = self._load_retro_game_event_data()
         _ = self._load_retro_lookup_data()
+        _ = self._load_dbo()
         end = time.time()
         run_time = round((end - start) / 60, 1)
         print(

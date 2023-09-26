@@ -4,7 +4,7 @@ DROP TABLE [dbo].[TeamMaster]
 CREATE TABLE [dbo].[TeamMaster](
 	[TeamID] [int] IDENTITY(1,1) NOT NULL,
 	[RetroTeamID] [char](3) NOT NULL,
-	[League] [char](2) NOT NULL,
+	[League] [char](2) NULL,
 	[City] [varchar](25) NOT NULL,
 	[Nickname] [varchar](25) NOT NULL,
 	[Start] [int] NULL,

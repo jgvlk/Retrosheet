@@ -2,14 +2,15 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Eject
 DROP TABLE [dbo].[Ejection]
 
 CREATE TABLE [dbo].[Ejection](
-	[EjectionID] [int] IDENTITY(1,1) NOT NULL,
-	[GameID] [int] NULL,
-	[TeamID] [int] NULL,
-	[EjecteePlayerID] [int] NULL,
-	[UmpirePlayerID] [int] NULL,
-	[Date] [date] NULL,
-	[DH] [int] NULL,
-	[Job] [char](1) NULL,
+    [EjectionID] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    [RetroGameID] [char](12) NULL,
+    [GameID] [int] NULL,
+    [RetroTeamID] [char](3) NULL,
+    [TeamID] [int] NULL,
+    [EjecteePlayerID] [int] NULL,
+    [UmpirePlayerID] [int] NULL,
+    [DH] [int] NULL,
+    [Job] [char](1) NULL,
     [Inning] [int] NULL,
     [Reason] [varchar](500) NULL
 )
