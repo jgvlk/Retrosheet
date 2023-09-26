@@ -1,6 +1,5 @@
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Game]') AND type in (N'U'))
 DROP TABLE [dbo].[Game]
-GO
 
 CREATE TABLE [dbo].[Game](
 	[GameID] [bigint] IDENTITY(1,1) NOT NULL,
