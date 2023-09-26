@@ -2,7 +2,7 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[Eject
 DROP TABLE [raw].[Ejection]
 
 CREATE TABLE [raw].[Ejection](
-	[GameID] [nvarchar](500) NOT NULL,
+	[GameID] [nvarchar](500) NULL,
 	[Date] [nvarchar](500) NULL,
 	[DH] [nvarchar](500) NULL,
 	[Ejectee] [nvarchar](500) NULL,

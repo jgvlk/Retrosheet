@@ -2,7 +2,7 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[Playe
 DROP TABLE [raw].[PlayerMaster]
 
 CREATE TABLE [raw].[PlayerMaster](
-	[PlayerID] [nvarchar](500) NOT NULL,
+	[PlayerID] [nvarchar](500) NULL,
 	[Last] [nvarchar](500) NULL,
 	[First] [nvarchar](500) NULL,
 	[Nickname] [nvarchar](500) NULL,

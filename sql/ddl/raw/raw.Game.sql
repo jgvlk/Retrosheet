@@ -2,7 +2,7 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[Game]
 DROP TABLE [raw].[Game]
 
 CREATE TABLE [raw].[Game](
-	[GameID] [nvarchar](500) NOT NULL,
+	[GameID] [nvarchar](500) NULL,
 	[Date] [nvarchar](500) NULL,
 	[GameNumber] [nvarchar](500) NULL,
 	[DayOfWeek] [nvarchar](500) NULL,
