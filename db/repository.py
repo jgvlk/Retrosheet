@@ -5,17 +5,20 @@ from sqlalchemy import text
 from db.session_manager import SessionManager
 
 
-def exec_bulk_insert(db_schema: str, db_table: str, data_file_path: Path):
+def exec_bulk_insert(
+    db_schema: str, db_table: str, data_file_path: Path, first_row: int
+):
     _db = SessionManager()
     sql_bulk_insert = """
         bulk insert {}.{} from "{}" with (
             format = 'csv',
-            firstrow = 1
+            firstrow = {}
         );
     """.format(
         db_schema,
         db_table,
         data_file_path,
+        first_row,
     )
     _db.session.execute(text(sql_bulk_insert))
     _db.session.commit()

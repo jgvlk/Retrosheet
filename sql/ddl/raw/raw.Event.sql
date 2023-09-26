@@ -1,10 +1,6 @@
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[Event]') AND type in (N'U'))
 DROP TABLE [raw].[Event]
 
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
 CREATE TABLE [raw].[Event](
 	[GameID] [nvarchar](500) NOT NULL,
 	[VisitingTeam] [nvarchar](500) NULL,
@@ -103,6 +99,4 @@ CREATE TABLE [raw].[Event](
 	[FielderWithFourthAssist] [nvarchar](500) NULL,
 	[FielderWithFifthAssist] [nvarchar](500) NULL,
 	[EventNum] [nvarchar](500) NULL
-) ON [PRIMARY]
-
-
+)

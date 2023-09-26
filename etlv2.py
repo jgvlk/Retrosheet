@@ -4,7 +4,6 @@ from pathlib import Path
 import requests
 import shutil
 import subprocess
-import sys
 import time
 import zipfile
 
@@ -40,10 +39,10 @@ class RetrosheetEtl:
         self.teams_dir: Path = self.extract_dir / "teams1871-2022"
 
         self.all_data_zip: Path = self.download_dir / "alldata.zip"
+        self.franchise_master_file: Path = self.download_dir / "franchises.csv"
         self.ballparks_file: Path = self.extract_dir / "ballparks.csv"
         self.bio_file: Path = self.extract_dir / "biofile.csv"
         self.ejections_file: Path = self.extract_dir / "ejections.csv"
-        self.franchise_master_file: Path = self.extract_dir / "franchises.csv"
         self.teams_file: Path = self.extract_dir / "teams.csv"
         self.game_cols_file: Path = self.repo_dir / "data" / "game_fields.csv"
         self.event_cols_file: Path = self.repo_dir / "data" / "event_fields.csv"
@@ -74,15 +73,85 @@ class RetrosheetEtl:
         self.url_all_data: str = "https://www.retrosheet.org/downloads/alldata.zip"
         self.url_currentname: str = "https://www.retrosheet.org/CurrentNames.csv"
 
+        self.sql_dir: Path = self.repo_dir / "sql"
+
+        self.sql_d: dict = {
+            "ddl": {
+                "cs_raw": self.sql_dir / "ddl" / "raw" / "raw.sql",
+                "ct_raw_ejection": self.sql_dir / "ddl" / "raw" / "raw.Ejection.sql",
+                "ct_raw_event": self.sql_dir / "ddl" / "raw" / "raw.Event.sql",
+                "ct_raw_franchise_master": self.sql_dir
+                / "ddl"
+                / "raw"
+                / "raw.FranchiseMaster.sql",
+                "ct_raw_game": self.sql_dir / "ddl" / "raw" / "raw.Game.sql",
+                "ct_raw_park_master": self.sql_dir
+                / "ddl"
+                / "raw"
+                / "raw.ParkMaster.sql",
+                "ct_raw_player_master": self.sql_dir
+                / "ddl"
+                / "raw"
+                / "raw.PlayerMaster.sql",
+                "ct_raw_team_master": self.sql_dir
+                / "ddl"
+                / "raw"
+                / "raw.TeamMaster.sql",
+            },
+            "dml": {
+                "sql_path_drop_fks": self.sql_dir
+                / "dml"
+                / "__ETL_Retrosheet__DropFKs.sql",
+                "sql_path_truncate_tables": self.sql_dir
+                / "dml"
+                / "__ETL_Retrosheet__TruncateTables.sql",
+                "sql_path_raw_to_stg": self.sql_dir
+                / "dml"
+                / "__ETL_Retrosheet__RawToStg.sql",
+                "sql_path_stg_to_dbo": self.sql_dir
+                / "dml"
+                / "__ETL_Retrosheet__StgToDbo.sql",
+                "sql_path_add_fks": self.sql_dir
+                / "dml"
+                / "__ETL_Retrosheet__AddFKs.sql",
+                "sql_path_load_game_type": self.sql_dir
+                / "dml"
+                / "__ETL_Retrosheet__LoadGameType.sql",
+            },
+        }
+
     def _db_setup(self) -> None:
-        _ = exec_sql_file(r"C:\repos\Retrosheet\sql\ddl\raw.Event.sql")
-        _ = exec_sql_file(r"C:\repos\Retrosheet\sql\ddl\raw.Game.sql")
+        for i in self.sql_d["ddl"]:
+            _ = exec_sql_file(self.sql_d["ddl"][i])
         return None
 
     def _download_source_data(self) -> None:
+        print(
+            "|| MSG @ {} || DOWNLOADING SOURE DATA FROM https://www.retrosheet.org/".format(
+                dt.now()
+            )
+        )
         all_data = requests.get(self.url_all_data)
         with open(self.all_data_zip, "wb") as f:
             f.write(all_data.content)
+        franchise_master_data = requests.get(self.url_currentname)
+        with open(self.franchise_master_file, "w") as f:
+            f.write(franchise_master_data.text)
+        return None
+
+    def _extract_source_data(self) -> None:
+        print(
+            "|| MSG @ {} || EXTRACTING SOURE DATA FROM https://www.retrosheet.org/".format(
+                dt.now()
+            )
+        )
+        _ = self._unzip(self.all_data_zip, self.extract_dir)
+        for i in self.extract_dir.glob("*.zip"):
+            extract_dir = self.extract_dir / i.name.replace(".zip", "")
+            _ = _retl._unzip(i, extract_dir, remove=True)
+        for i in self.ngldata_dir.glob("*.zip"):
+            extract_dir = self.ngldata_dir / i.name.replace(".zip", "")
+            _ = _retl._unzip(i, extract_dir, remove=True)
         return None
 
     def _mkdir(self, path: Path) -> None:
@@ -91,16 +160,14 @@ class RetrosheetEtl:
         else:
             os.mkdir(path)
         return None
-    
-    def _load_retro_other_data(self) -> None:
-        response = requests.get(self.url_currentname)
-        with open(self.franchise_master_file, "w") as f:
-            f.write(response.text)
+
+    def _load_retro_lookup_data(self) -> None:
+        print("|| MSG @ {} || LOADING RAW LOOKUP DATA TO DB".format(dt.now()))
         _ = self._to_sql_raw_ejection()
         _ = self._to_sql_raw_franchise_master()
         _ = self._to_sql_raw_park_master()
         _ = self._to_sql_raw_player_master()
-        _ = self._to_sql_raw_park_master()
+        _ = self._to_sql_raw_team_master()
         return None
 
     def _proc_game_event(self, file: Path) -> None:
@@ -190,7 +257,6 @@ class RetrosheetEtl:
         _ = self._to_sql_raw_event()
         os.chdir(self.data_dir)
         _ = self._rmdir(self.run_dir)
-        _ = self._rmdir(self.output_dir)
         return None
 
     def _rmdir(self, path: Path) -> None:
@@ -199,12 +265,12 @@ class RetrosheetEtl:
         else:
             pass
         return None
-    
+
     def _to_sql_raw_event(self):
         try:
             print("|| MSG @ {} || LOADING RAW EVENT DATA TO DB".format(dt.now()))
             for i in self.event_output_dir.iterdir():
-                _ = exec_bulk_insert("raw", "Event", i)
+                _ = exec_bulk_insert("raw", "Event", i, 1)
         except Exception as e:
             print("|| ERR @ {} || ERROR LOADING RAW EVENT DATA TO DB".format(dt.now()))
             print("|| ERR @ {} || {}".format(dt.now(), e))
@@ -213,33 +279,37 @@ class RetrosheetEtl:
         try:
             print("|| MSG @ {} || LOADING RAW GAME DATA TO DB".format(dt.now()))
             for i in self.game_output_dir.iterdir():
-                _ = exec_bulk_insert("raw", "Game", i)
+                _ = exec_bulk_insert("raw", "Game", i, 1)
         except Exception as e:
             print("|| ERR @ {} || {}".format(dt.now(), e))
 
     def _to_sql_raw_park_master(self) -> None:
         print("|| MSG @ {} || LOADING RAW BALLPARK DATA TO DB".format(dt.now()))
-        _ = exec_bulk_insert("raw", "ParkMaster", self.ballparks_file)
+        df = pd.read_csv(self.ballparks_file)
+        df.to_csv(self.ballparks_file, index=False)
+        _ = exec_bulk_insert("raw", "ParkMaster", self.ballparks_file, 2)
         return None
 
     def _to_sql_raw_player_master(self) -> None:
         print("|| MSG @ {} || LOADING RAW PLAYER DATA TO DB".format(dt.now()))
-        _ = exec_bulk_insert("raw", "PlayerMaster", self.bio_file)
+        _ = exec_bulk_insert("raw", "PlayerMaster", self.bio_file, 2)
         return None
 
     def _to_sql_raw_ejection(self) -> None:
         print("|| MSG @ {} || LOADING RAW EJECTION DATA TO DB".format(dt.now()))
-        _ = exec_bulk_insert("raw", "Ejection", self.ejections_file)
+        _ = exec_bulk_insert("raw", "Ejection", self.ejections_file, 2)
         return None
 
     def _to_sql_raw_team_master(self) -> None:
         print("|| MSG @ {} || LOADING RAW TEAM DATA TO DB".format(dt.now()))
-        _ = exec_bulk_insert("raw", "TeamMaster", self.bio_file)
+        df = pd.read_csv(self.teams_file)
+        df.to_csv(self.teams_file, index=False)
+        _ = exec_bulk_insert("raw", "TeamMaster", self.teams_file, 2)
         return None
 
     def _to_sql_raw_franchise_master(self) -> None:
         print("|| MSG @ {} || LOADING RAW TEAM DATA TO DB".format(dt.now()))
-        _ = exec_bulk_insert("raw", "FranchiseMaster", self.bio_file)
+        _ = exec_bulk_insert("raw", "FranchiseMaster", self.franchise_master_file, 1)
         return None
 
     def _unzip(self, zip_file: Path, extract_dest: Path, remove: bool = False) -> None:
@@ -262,20 +332,10 @@ class RetrosheetEtl:
         _ = self._mkdir(self.game_output_dir)
         _ = self._mkdir(self.event_output_dir)
         _ = self._db_setup()
-        print(
-            "|| MSG @ {} || DOWNLOADING AND EXTRACTING SOURE DATA FROM https://www.retrosheet.org/".format(
-                dt.now()
-            )
-        )
         _ = self._download_source_data()
-        _ = self._unzip(self.all_data_zip, self.extract_dir)
-        for i in self.extract_dir.glob("*.zip"):
-            extract_dir = self.extract_dir / i.name.replace(".zip", "")
-            _ = _retl._unzip(i, extract_dir, remove=True)
-        for i in self.ngldata_dir.glob("*.zip"):
-            extract_dir = self.ngldata_dir / i.name.replace(".zip", "")
-            _ = _retl._unzip(i, extract_dir, remove=True)
+        _ = self._extract_source_data()
         _ = self._process_retro_event_files()
+        _ = self._load_retro_lookup_data()
         end = time.time()
         run_time = round((end - start) / 60, 1)
         print(
