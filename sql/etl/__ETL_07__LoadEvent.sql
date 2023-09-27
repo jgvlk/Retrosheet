@@ -195,7 +195,7 @@ SELECT
     ,[FielderWithFifthAssist]
 FROM
     [raw].[Event] e
-    LEFT JOIN [dbo].[Game] g ON e.[GameID] = g.[RetroGameID]
+    JOIN [dbo].[Game] g ON e.[GameID] = g.[RetroGameID]
     LEFT JOIN [dbo].[PlayerMaster] b ON e.[Batter] = b.[RetroPlayerID]
     LEFT JOIN [dbo].[PlayerMaster] rb ON e.[ResBatter] = rb.[RetroPlayerID]
     LEFT JOIN [dbo].[PlayerMaster] p ON e.[Pitcher] = p.[RetroPlayerID]
@@ -221,4 +221,4 @@ FROM
 ORDER BY
 	SUBSTRING(e.[GameID], 4, 4) + '-' + SUBSTRING(e.[GameID], 8, 2) + '-' + SUBSTRING(e.[GameID], 10, 2)
 	,e.[GameID]
-	,CONVERT(INT, [EventNum])
+	,CONVERT(INT, e.[EventNum])

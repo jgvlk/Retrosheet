@@ -118,6 +118,7 @@ class RetrosheetEtl:
                 / "dbo.TeamMaster.sql",
             },
             "etl": {
+                "etl_00_raw_data_corrections": self.sql_dir / "etl" / "__ETL_00__RawDataCorrections.sql",
                 # "etl_01_drop_fks": self.sql_dir / "etl" / "__ETL_01__DropFKs.sql",
                 "etl_02_load_franchise_master": self.sql_dir
                 / "etl"

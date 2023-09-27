@@ -204,7 +204,9 @@ FROM
     LEFT JOIN [dbo].[PlayerMaster] vif ON g.[VisitingFinisher] = vif.[RetroPlayerID]
     LEFT JOIN [dbo].[PlayerMaster] hmf ON g.[HomeFinisher] = hmf.[RetroPlayerID]
     LEFT JOIN [dbo].[PlayerMaster] sco ON g.[OfficialScorer] = sco.[RetroPlayerID]
+WHERE
+    RIGHT(g.[SourceFile], 7) <> 'EVR.csv'
 ORDER BY
-    TRY_CAST(SUBSTRING([GameID], 4, 4) + '-' + SUBSTRING([GameID], 8, 2) + '-' + SUBSTRING([GameID], 10, 2) AS DATE)
+    TRY_CAST(SUBSTRING(g.[GameID], 4, 4) + '-' + SUBSTRING(g.[GameID], 8, 2) + '-' + SUBSTRING(g.[GameID], 10, 2) AS DATE)
     ,g.[GameID]
     ,CONVERT(INT, g.[GameNumber])
