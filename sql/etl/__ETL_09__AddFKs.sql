@@ -165,3 +165,18 @@ IF OBJECT_ID('[fk_Event_PlayerMaster21]') IS NULL
 
 IF OBJECT_ID('[fk_Event_PlayerMaster22]') IS NULL
 	ALTER TABLE [dbo].[Event] ADD CONSTRAINT [fk_Event_PlayerMaster22] FOREIGN KEY ([BatterRemovedForPinchHitter]) REFERENCES [dbo].[PlayerMaster]([PlayerID])
+
+IF OBJECT_ID('[fk_Ejection_Game]') IS NULL
+	ALTER TABLE [dbo].[Ejection] ADD CONSTRAINT [fk_Ejection_Game] FOREIGN KEY ([GameID]) REFERENCES [dbo].[Game]([GameID])
+
+IF OBJECT_ID('[fk_Ejection_TeamMaster]') IS NULL
+	ALTER TABLE [dbo].[Ejection] ADD CONSTRAINT [fk_Ejection_TeamMaster] FOREIGN KEY ([TeamID]) REFERENCES [dbo].[TeamMaster]([TeamID])
+
+IF OBJECT_ID('[fk_Ejection_TeamMaster]') IS NULL
+	ALTER TABLE [dbo].[Ejection] ADD CONSTRAINT [fk_Ejection_TeamMaster] FOREIGN KEY ([TeamID]) REFERENCES [dbo].[TeamMaster]([TeamID])
+
+IF OBJECT_ID('[fk_Ejection_PlayerMaster01]') IS NULL
+	ALTER TABLE [dbo].[Ejection] ADD CONSTRAINT [fk_Ejection_PlayerMaster01] FOREIGN KEY ([EjecteePlayerID]) REFERENCES [dbo].[PlayerMaster]([PlayerID])
+
+IF OBJECT_ID('[fk_Ejection_PlayerMaster02]') IS NULL
+	ALTER TABLE [dbo].[Ejection] ADD CONSTRAINT [fk_Ejection_PlayerMaster02] FOREIGN KEY ([UmpirePlayerID]) REFERENCES [dbo].[PlayerMaster]([PlayerID])

@@ -165,3 +165,15 @@ IF OBJECT_ID('[fk_Event_PlayerMaster21]') IS NOT NULL
 
 IF OBJECT_ID('[fk_Event_PlayerMaster22]') IS NOT NULL
 	ALTER TABLE [dbo].[Event] DROP CONSTRAINT [fk_Event_PlayerMaster22]
+
+IF OBJECT_ID('[fk_Ejection_TeamMaster]') IS NOT NULL
+	ALTER TABLE [dbo].[Ejection] DROP CONSTRAINT [fk_Ejection_TeamMaster]
+
+IF OBJECT_ID('[fk_Ejection_TeamMaster]') IS NOT NULL
+	ALTER TABLE [dbo].[Ejection] DROP CONSTRAINT [fk_Ejection_TeamMaster]
+
+IF OBJECT_ID('[fk_Ejection_PlayerMaster01]') IS NOT NULL
+	ALTER TABLE [dbo].[Ejection] DROP CONSTRAINT [fk_Ejection_PlayerMaster01]
+
+IF OBJECT_ID('[fk_Ejection_PlayerMaster02]') IS NOT NULL
+	ALTER TABLE [dbo].[Ejection] DROP CONSTRAINT [fk_Ejection_PlayerMaster02]

@@ -1,5 +1,6 @@
 INSERT INTO [dbo].[Ejection] (
-	[RetroGameID]
+	[Date]
+	,[RetroGameID]
     ,[GameID]
     ,[RetroTeamID]
 	,[TeamID]
@@ -13,7 +14,8 @@ INSERT INTO [dbo].[Ejection] (
     ,[Reason]
 )
 SELECT
-    [RetroGameID] = a.[GameID]
+    [Date] = TRY_CAST(a.[Date] AS DATE)
+	,[RetroGameID] = a.[GameID]
 	,[GameID] = b.[GameID]
 	,[RetroTeamID] = a.[Team]
     ,[TeamID] = c.[TeamID]
@@ -31,3 +33,6 @@ FROM
     LEFT JOIN [dbo].[TeamMaster] c ON a.[Team] = c.[RetroTeamID]
     LEFT JOIN [dbo].[PlayerMaster] d ON a.[Ejectee] = d.[RetroPlayerID]
     LEFT JOIN [dbo].[PlayerMaster] e ON a.[Umpire] = e.[RetroPlayerID]
+ORDER BY
+    TRY_CAST(a.[Date] AS DATE)
+    ,a.[GameID]

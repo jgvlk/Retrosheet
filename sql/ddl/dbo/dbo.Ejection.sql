@@ -3,8 +3,9 @@ DROP TABLE [dbo].[Ejection]
 
 CREATE TABLE [dbo].[Ejection](
     [EjectionID] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    [Date] [date] NULL,
     [RetroGameID] [char](12) NULL,
-    [GameID] [int] NULL,
+    [GameID] [bigint] NULL,
     [RetroTeamID] [char](3) NULL,
     [TeamID] [int] NULL,
     [Ejectee] [varchar](50) NULL,
