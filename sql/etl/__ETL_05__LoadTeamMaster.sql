@@ -8,7 +8,7 @@ INSERT INTO [dbo].[TeamMaster] (
 )
 SELECT DISTINCT
     [RetroTeamID] = [TeamID]
-    ,[League]
+    ,[League] = CAST([League] AS CHAR(2))
     ,[City]
     ,[Nickname]
     ,[Start] = [First]

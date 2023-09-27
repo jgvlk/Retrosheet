@@ -1,9 +1,6 @@
 IF OBJECT_ID('[fk_Game_ParkMaster]') IS NULL
 	ALTER TABLE [dbo].[Game] ADD CONSTRAINT [fk_Game_ParkMaster] FOREIGN KEY ([ParkID]) REFERENCES [dbo].[ParkMaster] ([ParkID])
 
-IF OBJECT_ID('[fk_Game_GameTypeID]') IS NULL
-	ALTER TABLE [dbo].[Game] ADD CONSTRAINT [fk_Game_GameTypeID] FOREIGN KEY ([GameTypeID]) REFERENCES [dbo].[GameType]([GameTypeID])
-
 IF OBJECT_ID('[fk_Game_PlayerMaster01]') IS NULL
 	ALTER TABLE [dbo].[Game] ADD CONSTRAINT [fk_Game_PlayerMaster01] FOREIGN KEY ([VisitorStartingPitcher]) REFERENCES [dbo].[PlayerMaster]([PlayerID])
 

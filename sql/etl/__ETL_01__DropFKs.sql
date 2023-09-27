@@ -1,9 +1,6 @@
 IF OBJECT_ID('[fk_Game_ParkMaster]') IS NOT NULL
 	ALTER TABLE [dbo].[Game] DROP CONSTRAINT [fk_Game_ParkMaster]
 
-IF OBJECT_ID('[fk_Game_GameTypeID]') IS NOT NULL
-	ALTER TABLE [dbo].[Game] DROP CONSTRAINT [fk_Game_GameTypeID]
-
 IF OBJECT_ID('[fk_Game_PlayerMaster01]') IS NOT NULL
 	ALTER TABLE [dbo].[Game] DROP CONSTRAINT [fk_Game_PlayerMaster01]
 

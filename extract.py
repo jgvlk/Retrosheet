@@ -22,11 +22,6 @@ sql_franchise_master = """SELECT
     ,[State]
 FROM [dbo].[FranchiseMaster]"""
 
-sql_game_type = """SELECT
-    [GameTypeID]
-    ,[GameType]
-FROM [dbo].[GameType]"""
-
 sql_park_master = """SELECT
     [ParkID]
     ,[RetroParkID]
@@ -273,6 +268,21 @@ sql_game = """SELECT
     ,[OfficialScorer]
 FROM [dbo].[Game]"""
 
+sql_ejection = """SELECT
+    [EjectionID]
+    ,[RetroGameID]
+    ,[GameID]
+    ,[RetroTeamID]
+    ,[TeamID]
+    ,[EjecteePlayerID]
+    ,[UmpirePlayerID]
+    ,[DH]
+    ,[Job]
+    ,[Inning]
+    ,[Reason]
+FROM [dbo].[Ejection]
+"""
+
 
 if __name__ == "__main__":
     _db = SessionManager()
@@ -283,12 +293,12 @@ if __name__ == "__main__":
         "path": Path("/Users/jonathanvlk/Google Drive/Retrosheet"),
         "queries": {
             "FranchiseMaster": sql_franchise_master,
-            "GameType": sql_game_type,
             "ParkMaster": sql_park_master,
             "PlayerMaster": sql_player_master,
             "TeamMaster": sql_team_master,
             "Game": sql_game,
             "Event": sql_event,
+            "Ejection": sql_ejection,
         },
         "file_name_date_part": "{}000000".format(max_dt.strftime(r"%Y%m%d")),
     }
