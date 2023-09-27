@@ -185,9 +185,9 @@ FROM
 
 sql_game = """SELECT
     [GameID]
-    ,[ParkID]
-    ,[GameTypeID]
     ,[RetroGameID]
+    ,[ParkID]
+    ,[GameType]
     ,[Date]
     ,[GameNumber]
     ,[DayOfWeek]
@@ -288,7 +288,7 @@ def extract_retro_data() -> None:
     _db = SessionManager()
     _db_conn = _db.session.connection()
     sql_max_dt = "select max(Date) as max_dt from dbo.Game"
-    max_dt = _db.session.execute(text(sql_max_dt)).one()[0]
+    max_dt = dt.strptime(_db.session.execute(text(sql_max_dt)).one()[0], r"%Y-%m-%d")
     extract_cfg = {
         "path": Path(r"C:\Data\RetrosheetExtract"),
         "queries": {
