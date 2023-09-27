@@ -9,6 +9,7 @@ import zipfile
 
 import pandas as pd
 
+from extract import extract_retro_data
 from db.repository import exec_bulk_insert, exec_sql_file
 
 
@@ -419,3 +420,4 @@ class RetrosheetEtl:
 if __name__ == "__main__":
     _retl = RetrosheetEtl()
     _ = _retl.execute()
+    _ = extract_retro_data()

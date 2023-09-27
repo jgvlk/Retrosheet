@@ -284,13 +284,13 @@ FROM [dbo].[Ejection]
 """
 
 
-if __name__ == "__main__":
+def extract_retro_data() -> None:
     _db = SessionManager()
     _db_conn = _db.session.connection()
     sql_max_dt = "select max(Date) as max_dt from dbo.Game"
     max_dt = _db.session.execute(text(sql_max_dt)).one()[0]
     extract_cfg = {
-        "path": Path("/Users/jonathanvlk/Google Drive/Retrosheet"),
+        "path": Path(r"C:\Data\RetrosheetExtract"),
         "queries": {
             "FranchiseMaster": sql_franchise_master,
             "ParkMaster": sql_park_master,
@@ -311,3 +311,8 @@ if __name__ == "__main__":
         )
         df = pd.read_sql_query(extract_cfg["queries"][i], _db_conn)
         df.to_csv(extract_file, index=False)
+    return None
+
+
+if __name__ == "__main__":
+    _ = extract_retro_data()
