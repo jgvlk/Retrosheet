@@ -420,4 +420,3 @@ class RetrosheetEtl:
 if __name__ == "__main__":
     _retl = RetrosheetEtl()
     _ = _retl.execute()
-    _ = extract_retro_data()

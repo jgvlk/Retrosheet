@@ -1,5 +1,3 @@
-USE [Retrosheet]
-GO
 CREATE SCHEMA [raw]
 GO
 CREATE TABLE [dbo].[Ejection](
