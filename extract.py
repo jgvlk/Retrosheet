@@ -1,3 +1,4 @@
+import datetime
 from datetime import datetime as dt
 from pathlib import Path
 
@@ -289,10 +290,10 @@ def extract_retro_data() -> None:
     _db_conn = _db.session.connection()
     sql_max_dt = "SELECT MAX([Date]) [max_dt] FROM [dbo].[Game]"
     max_dt = _db.session.execute(text(sql_max_dt)).one()[0]
-    if not isinstance(max_dt, dt):
+    if not isinstance(max_dt, datetime.date):
         max_dt = dt.strptime(max_dt, r"%Y-%m-%d")
     extract_cfg = {
-        "path": Path(r"C:\Data\RetrosheetExtract"),
+        "path": Path("/Users/jonathanvlk/Google Drive/Retrosheet"),
         "queries": {
             "FranchiseMaster": sql_franchise_master,
             "ParkMaster": sql_park_master,
