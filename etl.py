@@ -286,6 +286,15 @@ class RetrosheetEtl:
         _ = self._to_sql_raw_game()
         _ = self._to_sql_raw_event()
         return None
+    
+    def _load_retro_gamelog_data(self) -> None:
+        print("|| MSG @ {} || LOADING GAMELOG DATA".format(dt.now()))
+        for i in self.gamelogs_dir.iterdir():
+            df = pd.read_csv(i, encoding="ascii", header=None)
+            df["SourceFile"] = i.name
+            df.to_csv(i, index=False, header=None)
+            _ = exec_bulk_insert("raw", "GameLog", i, 1)
+        return None
 
     def _load_retro_lookup_data(self) -> None:
         _ = self._to_sql_raw_ejection()
@@ -420,6 +429,7 @@ class RetrosheetEtl:
         _ = self._load_retro_game_event_data()
         _ = self._load_retro_lookup_data()
         _ = self._load_retro_schedule_data()
+        _ = self._load_retro_gamelog_data()
         _ = self._load_dbo()
         end = time.time()
         run_time = round((end - start) / 60, 1)
@@ -430,10 +440,6 @@ class RetrosheetEtl:
         )
 
 
-# if __name__ == "__main__":
-#     _retl = RetrosheetEtl()
-#     _ = _retl.execute()
-
-
-_retl = RetrosheetEtl()
-_retl._load_retro_schedule_data()
+if __name__ == "__main__":
+    _retl = RetrosheetEtl()
+    _ = _retl.execute()
