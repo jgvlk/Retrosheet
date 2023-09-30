@@ -12,3 +12,6 @@ select top 1000 * from raw.Event
 
 --truncate table raw.Game
 --truncate table raw.Event
+
+
+select * from raw.Schedule

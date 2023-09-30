@@ -9,7 +9,6 @@ import zipfile
 
 import pandas as pd
 
-from extract import extract_retro_data
 from db.repository import exec_bulk_insert, exec_sql_file
 
 
@@ -119,7 +118,9 @@ class RetrosheetEtl:
                 / "dbo.TeamMaster.sql",
             },
             "etl": {
-                "etl_00_raw_data_corrections": self.sql_dir / "etl" / "__ETL_00__RawDataCorrections.sql",
+                "etl_00_raw_data_corrections": self.sql_dir
+                / "etl"
+                / "__ETL_00__RawDataCorrections.sql",
                 "etl_01_drop_fks": self.sql_dir / "etl" / "__ETL_01__DropFKs.sql",
                 "etl_02_load_franchise_master": self.sql_dir
                 / "etl"
@@ -139,7 +140,9 @@ class RetrosheetEtl:
                 / "etl"
                 / "__ETL_08__LoadEjection.sql",
                 "etl_09_add_fks": self.sql_dir / "etl" / "__ETL_09__AddFKs.sql",
-                "etl_10_db_cleanup": self.sql_dir / "etl" / "__ETL_10__PostEtlDbCleanup.sql",
+                "etl_10_db_cleanup": self.sql_dir
+                / "etl"
+                / "__ETL_10__PostEtlDbCleanup.sql",
             },
         }
 
@@ -292,6 +295,15 @@ class RetrosheetEtl:
         _ = self._to_sql_raw_team_master()
         return None
 
+    def _load_retro_schedule_data(self) -> None:
+        print("|| MSG @ {} || LOADING SCHEDULE DATA".format(dt.now()))
+        for i in self.schedule_dir.iterdir():
+            df = pd.read_csv(i, encoding="ascii", header=None)
+            df["SourceFile"] = i.name
+            df.to_csv(i, index=False, header=None)
+            _ = exec_bulk_insert("raw", "Schedule", i, 1)
+        return None
+
     def _proc_retro_event_file(self, file: Path) -> None:
         file_name = file.name.replace(".", "_")
         file_year = file_name[0:4]
@@ -407,6 +419,7 @@ class RetrosheetEtl:
         _ = self._extract_source_data()
         _ = self._load_retro_game_event_data()
         _ = self._load_retro_lookup_data()
+        _ = self._load_retro_schedule_data()
         _ = self._load_dbo()
         end = time.time()
         run_time = round((end - start) / 60, 1)
@@ -417,6 +430,10 @@ class RetrosheetEtl:
         )
 
 
-if __name__ == "__main__":
-    _retl = RetrosheetEtl()
-    _ = _retl.execute()
+# if __name__ == "__main__":
+#     _retl = RetrosheetEtl()
+#     _ = _retl.execute()
+
+
+_retl = RetrosheetEtl()
+_retl._load_retro_schedule_data()

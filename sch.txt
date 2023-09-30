@@ -1,0 +1,76 @@
+Fields and their descriptions
+
+Field(s)      Meaning
+   1          Date in the form "yyyymmdd"
+   2          Number of game:
+                     "0" - a single game
+                     "1" - the first game of a double header including separate admission doubleheaders
+                     "2" - the second game of a double header including separate admission doubleheaders
+   3          Day of week("Sun","Mon","Tue","Wed","Thu","Fri","Sat")
+   4-5        Visiting team and league
+   6          Season game number for visiting team
+   7-8        Home team and league
+   9          Season game number for home team
+   10         Day (D), Night (N), Afternoon (A), Evening (E for twinight)
+   11         Postponement/cancellation indicator (more detail below)
+   12         Date of makeup if played in the form "yyyymmdd" (more detail below)
+
+Field 11 explanation
+
+This field will contain one or more phrases related to the game if it was
+not played as scheduled. If there is more than one phrase, they are separated
+by a semi-colon (";"). There are three possible outcomes for games not played
+on the originally scheduled date:
+
+The game was played on another date
+The game was played on the original date but at another site
+The game was not played
+This field can contain one or more standard phrases:
+No Makeup played
+Site Change
+Played at XXX (where XXX is team/city code)
+Rain
+Cold
+Snow
+Threatening weather
+Inclement weather
+Hurricane XXX (where XXX is the name of the hurricane)
+Wet grounds
+Darkness
+Power failure
+Lighting failure
+Schedule change
+World War I
+9/11 attack
+Stadium ... (damage or others words follow)
+Strike
+Sunday game stopped
+Sunday curfew
+Accommodate large crowd
+XXX folded (where XXX is team code)
+XXX played as YYY (where XXX & YYY are team codes)
+XXX home team (where XXX is team code; used for games at alternate site)
+Death of ...
+Funeral of ...
+Unknown reason
+
+
+Field 12 explanation
+
+This field will contain a makeup date if the postponed game was played at
+another time or place. If an attempt was known to have been made on a date but
+postponed again, that date will be listed. In that case, there will be a second
+date for the date when the game was actually played, in this form: "20150428;
+20150528" For the note about a team folding, the team code is one of the
+standard Retrosheet team IDs. The same is true for the team played as note.
+Often, the two of these are combined in one field. The teams that folded are:
+
+   Team/Lg       Last Game
+   SR1 NL        9/10/1879
+   TRN NL        9/20/1879
+   ALT UA        5/31/1884 [moved to KCU 6/07]
+   CHU UA        9/18/1884 [moved to MLU 9/27]
+   PHU UA        8/07/1884 [moved to WIL 8/18 to 9/12; moved to SPU 9/27]
+   WS7 AA        8/02/1884 [moved to RIC 8/05]
+   BR4 AA        8/25/1890 [moved to BL3 8/27]
+   CN3 AA        8/16/1891 [moved to ML3 8/18]
