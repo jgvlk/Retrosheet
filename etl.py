@@ -139,10 +139,16 @@ class RetrosheetEtl:
                 "etl_08_load_ejection": self.sql_dir
                 / "etl"
                 / "__ETL_08__LoadEjection.sql",
-                "etl_09_add_fks": self.sql_dir / "etl" / "__ETL_09__AddFKs.sql",
-                "etl_10_db_cleanup": self.sql_dir
+                "etl_09_load_schedule": self.sql_dir
                 / "etl"
-                / "__ETL_10__PostEtlDbCleanup.sql",
+                / "__ETL_09__LoadSchedule.sql",
+                "etl_10_load_gamelog": self.sql_dir
+                / "etl"
+                / "__ETL_10__LoadGameLog.sql",
+                "etl_11_add_fks": self.sql_dir / "etl" / "__ETL_11__AddFKs.sql",
+                "etl_12_db_cleanup": self.sql_dir
+                / "etl"
+                / "__ETL_12__PostEtlDbCleanup.sql",
             },
         }
 
@@ -286,7 +292,7 @@ class RetrosheetEtl:
         _ = self._to_sql_raw_game()
         _ = self._to_sql_raw_event()
         return None
-    
+
     def _load_retro_gamelog_data(self) -> None:
         print("|| MSG @ {} || LOADING GAMELOG DATA".format(dt.now()))
         for i in self.gamelogs_dir.iterdir():

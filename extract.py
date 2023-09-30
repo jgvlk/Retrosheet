@@ -284,6 +284,12 @@ sql_ejection = """SELECT
 FROM [dbo].[Ejection]
 """
 
+sql_schedule = """
+"""
+
+sql_gamelog = """
+"""
+
 
 def extract_retro_data() -> None:
     _db = SessionManager()
@@ -302,6 +308,8 @@ def extract_retro_data() -> None:
             "Game": sql_game,
             "Event": sql_event,
             "Ejection": sql_ejection,
+            "Schedule": sql_schedule,
+            "GameLog": sql_gamelog,
         },
         "file_name_date_part": "{}000000".format(max_dt.strftime(r"%Y%m%d")),
     }
