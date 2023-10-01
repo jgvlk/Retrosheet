@@ -255,7 +255,6 @@ class RetrosheetEtl:
         print("|| MSG @ {} || LOADING DISCREPANCY DATA".format(dt.now()))
         for i in self.discrepancies_dir.iterdir():
             try:
-                print(i)
                 df = pd.read_csv(i)
                 df = df.drop("Unnamed: 12", axis=1)
                 df["SourceFile"] = i.name
