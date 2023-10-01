@@ -14,5 +14,8 @@ select top 1000 * from raw.Event
 --truncate table raw.Event
 
 
-select count(*) from raw.Schedule
-select count(*) from raw.GameLog
+select top 100 * from raw.Schedule
+select top 100 * from raw.GameLog
+select top 100 * from raw.Discrepancy
+
+select * from dbo.Schedule

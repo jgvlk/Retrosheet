@@ -12,7 +12,7 @@ CREATE TABLE [raw].[Schedule](
     [HomeTeamLeague] [nvarchar](500) NULL,
     [HomeTeamSeasonGameNum] [nvarchar](500) NULL,
     [GameStartDuring] [nvarchar](500) NULL,
-    [PostponmentIndicator] [nvarchar](500) NULL,
+    [PostponementIndicator] [nvarchar](500) NULL,
     [DateOfMakeup] [nvarchar](500) NULL,
     [SourceFile] [nvarchar](500) NULL
 )

@@ -145,10 +145,11 @@ class RetrosheetEtl:
                 "etl_10_load_gamelog": self.sql_dir
                 / "etl"
                 / "__ETL_10__LoadGameLog.sql",
-                "etl_11_add_fks": self.sql_dir / "etl" / "__ETL_11__AddFKs.sql",
-                "etl_12_db_cleanup": self.sql_dir
+                "etl_11_load_discrepancy": self.sql_dir / "etl" / "__ETL_11__LoadDiscrepancy.sql",
+                "etl_12_add_fks": self.sql_dir / "etl" / "__ETL_12__AddFKs.sql",
+                "etl_13_db_cleanup": self.sql_dir
                 / "etl"
-                / "__ETL_12__PostEtlDbCleanup.sql",
+                / "__ETL_13__PostEtlDbCleanup.sql",
             },
         }
 
@@ -228,10 +229,10 @@ class RetrosheetEtl:
         _ = self._unzip(self.all_data_zip, self.extract_dir)
         for i in self.extract_dir.glob("*.zip"):
             extract_dir = self.extract_dir / i.name.replace(".zip", "")
-            _ = _retl._unzip(i, extract_dir, remove=True)
+            _ = self._unzip(i, extract_dir, remove=True)
         for i in self.ngldata_dir.glob("*.zip"):
             extract_dir = self.ngldata_dir / i.name.replace(".zip", "")
-            _ = _retl._unzip(i, extract_dir, remove=True)
+            _ = self._unzip(i, extract_dir, remove=True)
         return None
 
     def _mkdir(self, path: Path) -> None:
@@ -246,6 +247,21 @@ class RetrosheetEtl:
         for i in self.sql_d["etl"]:
             print("|| MSG @ {} || RUNNING {}".format(dt.now(), self.sql_d["etl"][i]))
             _ = exec_sql_file(self.sql_d["etl"][i])
+        return None
+    
+    def _load_retro_discrepancy_data(self) -> None:
+        print("|| MSG @ {} || LOADING DISCREPANCY DATA".format(dt.now()))
+        for i in self.discrepancies_dir.iterdir():
+            try:
+                print(i)
+                df = pd.read_csv(i)
+                df = df.drop("Unnamed: 12", axis=1)
+                df["SourceFile"] = i.name
+                df.to_csv(i, index=False)
+                _ = exec_bulk_insert("raw", "Discrepancy", i, 2)
+            except Exception as e:
+                print("|| ERR @ {} || ERROR LOADING DISCREPANCY DATA: {}".format(dt.now(), i))
+                print("|| ERR @ {} || {}".format(dt.now(), e))
         return None
 
     def _load_retro_game_event_data(self) -> None:
@@ -436,6 +452,7 @@ class RetrosheetEtl:
         _ = self._load_retro_lookup_data()
         _ = self._load_retro_schedule_data()
         _ = self._load_retro_gamelog_data()
+        _ = self._load_retro_discrepancy_data()
         _ = self._load_dbo()
         end = time.time()
         run_time = round((end - start) / 60, 1)
