@@ -145,7 +145,9 @@ class RetrosheetEtl:
                 "etl_10_load_gamelog": self.sql_dir
                 / "etl"
                 / "__ETL_10__LoadGameLog.sql",
-                "etl_11_load_discrepancy": self.sql_dir / "etl" / "__ETL_11__LoadDiscrepancy.sql",
+                "etl_11_load_discrepancy": self.sql_dir
+                / "etl"
+                / "__ETL_11__LoadDiscrepancy.sql",
                 "etl_12_add_fks": self.sql_dir / "etl" / "__ETL_12__AddFKs.sql",
                 "etl_13_db_cleanup": self.sql_dir
                 / "etl"
@@ -248,7 +250,7 @@ class RetrosheetEtl:
             print("|| MSG @ {} || RUNNING {}".format(dt.now(), self.sql_d["etl"][i]))
             _ = exec_sql_file(self.sql_d["etl"][i])
         return None
-    
+
     def _load_retro_discrepancy_data(self) -> None:
         print("|| MSG @ {} || LOADING DISCREPANCY DATA".format(dt.now()))
         for i in self.discrepancies_dir.iterdir():
@@ -260,7 +262,11 @@ class RetrosheetEtl:
                 df.to_csv(i, index=False)
                 _ = exec_bulk_insert("raw", "Discrepancy", i, 2)
             except Exception as e:
-                print("|| ERR @ {} || ERROR LOADING DISCREPANCY DATA: {}".format(dt.now(), i))
+                print(
+                    "|| ERR @ {} || ERROR LOADING DISCREPANCY DATA: {}".format(
+                        dt.now(), i
+                    )
+                )
                 print("|| ERR @ {} || {}".format(dt.now(), e))
         return None
 

@@ -18,3 +18,12 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[Game]
 
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[Event]') AND type in (N'U'))
     DROP TABLE [raw].[Event]
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[Schedule]') AND type in (N'U'))
+    DROP TABLE [raw].[Schedule]
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[GameLog]') AND type in (N'U'))
+    DROP TABLE [raw].[GameLog]
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[raw].[Discrepancy]') AND type in (N'U'))
+    DROP TABLE [raw].[Discrepancy]
