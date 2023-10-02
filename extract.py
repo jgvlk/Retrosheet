@@ -290,6 +290,9 @@ sql_schedule = """
 sql_gamelog = """
 """
 
+sql_discrepancy = """
+"""
+
 
 def extract_retro_data() -> None:
     _db = SessionManager()
@@ -310,6 +313,7 @@ def extract_retro_data() -> None:
             "Ejection": sql_ejection,
             "Schedule": sql_schedule,
             "GameLog": sql_gamelog,
+            "Discrepancy": sql_discrepancy,
         },
         "file_name_date_part": "{}000000".format(max_dt.strftime(r"%Y%m%d")),
     }

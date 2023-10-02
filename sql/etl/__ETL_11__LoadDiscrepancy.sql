@@ -13,12 +13,11 @@ INSERT INTO [dbo].[Discrepancy] (
     ,[Code]
     ,[Notes]
     ,[Accepted]
-    ,[SourceFile]
 )
 SELECT
-    [ID]
+    [ID] = REPLACE(REPLACE([ID], 'e"', ''), '"', '')
     ,[Player]
-    ,[Year]
+    ,[Year] = REPLACE([Year], '.0', '')
     ,[Team]
     ,[Type]
     ,[Pos]
@@ -30,5 +29,4 @@ SELECT
     ,[Code]
     ,[Notes]
     ,[Accepted]
-    ,[SourceFile]
 FROM [raw].[Discrepancy]

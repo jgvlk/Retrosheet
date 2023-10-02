@@ -78,6 +78,10 @@ class RetrosheetEtl:
         self.sql_d: dict = {
             "ddl": {
                 "cs_raw": self.sql_dir / "ddl" / "raw" / "raw.sql",
+                "ct_raw_discrepancy": self.sql_dir
+                / "ddl"
+                / "raw"
+                / "raw.Discrepancy.sql",
                 "ct_raw_ejection": self.sql_dir / "ddl" / "raw" / "raw.Ejection.sql",
                 "ct_raw_event": self.sql_dir / "ddl" / "raw" / "raw.Event.sql",
                 "ct_raw_franchise_master": self.sql_dir
@@ -85,6 +89,7 @@ class RetrosheetEtl:
                 / "raw"
                 / "raw.FranchiseMaster.sql",
                 "ct_raw_game": self.sql_dir / "ddl" / "raw" / "raw.Game.sql",
+                "ct_raw_gamelog": self.sql_dir / "ddl" / "raw" / "raw.GameLog.sql",
                 "ct_raw_park_master": self.sql_dir
                 / "ddl"
                 / "raw"
@@ -93,10 +98,15 @@ class RetrosheetEtl:
                 / "ddl"
                 / "raw"
                 / "raw.PlayerMaster.sql",
+                "ct_raw_schedule": self.sql_dir / "ddl" / "raw" / "raw.Schedule.sql",
                 "ct_raw_team_master": self.sql_dir
                 / "ddl"
                 / "raw"
                 / "raw.TeamMaster.sql",
+                "ct_dbo_discrepancy": self.sql_dir
+                / "ddl"
+                / "dbo"
+                / "dbo.Discrepancy.sql",
                 "ct_dbo_ejection": self.sql_dir / "ddl" / "dbo" / "dbo.Ejection.sql",
                 "ct_dbo_event": self.sql_dir / "ddl" / "dbo" / "dbo.Event.sql",
                 "ct_dbo_franchise_master": self.sql_dir
@@ -104,6 +114,7 @@ class RetrosheetEtl:
                 / "dbo"
                 / "dbo.FranchiseMaster.sql",
                 "ct_dbo_game": self.sql_dir / "ddl" / "dbo" / "dbo.Game.sql",
+                "ct_dbo_gamelog": self.sql_dir / "ddl" / "dbo" / "dbo.GameLog.sql",
                 "ct_dbo_park_master": self.sql_dir
                 / "ddl"
                 / "dbo"
@@ -112,6 +123,7 @@ class RetrosheetEtl:
                 / "ddl"
                 / "dbo"
                 / "dbo.PlayerMaster.sql",
+                "ct_dbo_schedule": self.sql_dir / "ddl" / "dbo" / "dbo.Schedule.sql",
                 "ct_dbo_team_master": self.sql_dir
                 / "ddl"
                 / "dbo"
