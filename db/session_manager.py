@@ -5,9 +5,10 @@ from sqlalchemy.orm import Session
 
 
 db_conn_str_raw = (
-    "DRIVER={SQL Server};SERVER=.;DATABASE=Retrosheet;"
+    "DRIVER={SQL Server};Server=.;Database=Retrosheet;Trusted_Connection=True;"
 )
-db_conn_str = f"mssql+pyodbc:///?odbc_connect={quote_plus(db_conn_str_raw)}"
+db_conn_str = quote_plus(db_conn_str_raw)
+db_conn_str = f"mssql+pyodbc:///?odbc_connect={db_conn_str}"
 engine = create_engine(db_conn_str)
 
 
