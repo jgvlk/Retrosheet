@@ -1,7 +1,10 @@
 # Retrosheet
 
 ## Setup
-1. Run "python -m etl" from project directory
+1. Create database "Retrosheet" on local MSSQL instance
+2. Create local data directory - "C:\Data\Retrosheet"
+3. Install Python requirements - `pip install -r requirements.txt`
+4. Run `python -m etl` from project directory
 
 ## RETROSHEET: HOW TO USE OUR EVENT FILES
 The ".zip" file archives you can download contain several files

@@ -1,0 +1,4 @@
+IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name = 'raw')
+BEGIN
+EXEC('CREATE SCHEMA [raw]')
+END

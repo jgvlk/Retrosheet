@@ -1,0 +1,32 @@
+INSERT INTO [dbo].[Discrepancy] (
+    [ID]
+    ,[Player]
+    ,[Year]
+    ,[Team]
+    ,[Type]
+    ,[Pos]
+    ,[Cat]
+    ,[GameID]
+    ,[Retro]
+    ,[Official]
+    ,[Cross]
+    ,[Code]
+    ,[Notes]
+    ,[Accepted]
+)
+SELECT
+    [ID] = REPLACE(REPLACE([ID], 'e"', ''), '"', '')
+    ,[Player]
+    ,[Year] = REPLACE([Year], '.0', '')
+    ,[Team]
+    ,[Type]
+    ,[Pos]
+    ,[Cat]
+    ,[GameID]
+    ,[Retro]
+    ,[Official]
+    ,[Cross]
+    ,[Code]
+    ,[Notes]
+    ,[Accepted]
+FROM [raw].[Discrepancy]

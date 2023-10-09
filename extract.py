@@ -1,3 +1,4 @@
+import datetime
 from datetime import datetime as dt
 from pathlib import Path
 
@@ -21,11 +22,6 @@ sql_franchise_master = """SELECT
     ,[City]
     ,[State]
 FROM [dbo].[FranchiseMaster]"""
-
-sql_game_type = """SELECT
-    [GameTypeID]
-    ,[GameType]
-FROM [dbo].[GameType]"""
 
 sql_park_master = """SELECT
     [ParkID]
@@ -190,9 +186,9 @@ FROM
 
 sql_game = """SELECT
     [GameID]
-    ,[ParkID]
-    ,[GameTypeID]
     ,[RetroGameID]
+    ,[ParkID]
+    ,[GameType]
     ,[Date]
     ,[GameNumber]
     ,[DayOfWeek]
@@ -273,22 +269,51 @@ sql_game = """SELECT
     ,[OfficialScorer]
 FROM [dbo].[Game]"""
 
+sql_ejection = """SELECT
+    [EjectionID]
+    ,[RetroGameID]
+    ,[GameID]
+    ,[RetroTeamID]
+    ,[TeamID]
+    ,[EjecteePlayerID]
+    ,[UmpirePlayerID]
+    ,[DH]
+    ,[Job]
+    ,[Inning]
+    ,[Reason]
+FROM [dbo].[Ejection]
+"""
 
-if __name__ == "__main__":
+sql_schedule = """
+"""
+
+sql_gamelog = """
+"""
+
+sql_discrepancy = """
+"""
+
+
+def extract_retro_data() -> None:
     _db = SessionManager()
     _db_conn = _db.session.connection()
-    sql_max_dt = "select max(Date) as max_dt from dbo.Game"
+    sql_max_dt = "SELECT MAX([Date]) [max_dt] FROM [dbo].[Game]"
     max_dt = _db.session.execute(text(sql_max_dt)).one()[0]
+    if not isinstance(max_dt, datetime.date):
+        max_dt = dt.strptime(max_dt, r"%Y-%m-%d")
     extract_cfg = {
         "path": Path("/Users/jonathanvlk/Google Drive/Retrosheet"),
         "queries": {
             "FranchiseMaster": sql_franchise_master,
-            "GameType": sql_game_type,
             "ParkMaster": sql_park_master,
             "PlayerMaster": sql_player_master,
             "TeamMaster": sql_team_master,
             "Game": sql_game,
             "Event": sql_event,
+            "Ejection": sql_ejection,
+            "Schedule": sql_schedule,
+            "GameLog": sql_gamelog,
+            "Discrepancy": sql_discrepancy,
         },
         "file_name_date_part": "{}000000".format(max_dt.strftime(r"%Y%m%d")),
     }
@@ -296,6 +321,13 @@ if __name__ == "__main__":
         extract_file = extract_cfg["path"] / "Retrosheet-{}-{}.csv".format(
             i, extract_cfg["file_name_date_part"]
         )
-        print("|| MSG @ {} || EXTRACTING CSV DATA FOR: {}".format(dt.now(), extract_file))
+        print(
+            "|| MSG @ {} || EXTRACTING CSV DATA FOR: {}".format(dt.now(), extract_file)
+        )
         df = pd.read_sql_query(extract_cfg["queries"][i], _db_conn)
         df.to_csv(extract_file, index=False)
+    return None
+
+
+if __name__ == "__main__":
+    _ = extract_retro_data()
