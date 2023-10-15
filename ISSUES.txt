@@ -1,4 +1,7 @@
 1. Game / event processing for "2021AS.EVE"
-2. Ejection data - `select * from raw.Ejection where GameID = 'WAS202208013'`
+2. Ejection data:
+    SQL Query: `select * from raw.Ejection where GameID = 'WAS202208013'`
+    SQL Query: `select * from dbo.Ejection where RetroGameID = 'BLF191409281'`
+    SQL Query: `select * from dbo.Ejection where RetroGameID = 'BSN192204250'`
 3. Duplicate GameIDs
 4. Incorrect gamelog data - `select * from raw.GameLog where VisitingTeamBatting1Pos = 'Johnny Bates'`
