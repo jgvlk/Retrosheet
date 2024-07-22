@@ -7,38 +7,41 @@ declare @start_year int;
 set @team = 'CHN';
 set @start_year = 2015;
 
-with cte_win_loss_by_year_month as (
-	select
-		team
-		,year(Date) as year
-		,month(Date) as month
-		,result
-		,count(*) as ct
-	from (
+with
+	cte_win_loss_by_year_month
+	as
+	(
 		select
-			@team as team
-			,Date
-			,case
+			team
+		, year(Date) as year
+		, month(Date) as month
+		, result
+		, count(*) as ct
+		from (
+		select
+				@team as team
+			, Date
+			, case
 				when HomeTeam = @team and HomeFinalScore > VisitorFinalScore then 'W'
 				when HomeTeam = @team and HomeFinalScore < VisitorFinalScore then 'L'
 				when VisitingTeam = @team and VisitorFinalScore > HomeFinalScore then 'W'
 				when VisitingTeam = @team and VisitorFinalScore < HomeFinalScore then 'L'
 				else null
 			end as result
-		from
-			dbo.Game
-		where
+			from
+				dbo.Game
+			where
 			( VisitingTeam = @team or HomeTeam = @team )
-			and year([Date]) >= @start_year
+				and year([Date]) >= @start_year
 	) x
-	where
+		where
 		result is not null
-	group by
+		group by
 		team
 		,year(Date)
 		,month(Date)
 		,result
-)
+	)
 select
 	*
 from
@@ -48,8 +51,3 @@ order by
 	year
 	,month
 	,case when result = 'W' then 1 else 2 end
-
-
-
-
-select max(Date) from dbo.Game
