@@ -15,7 +15,7 @@ from db.repository import exec_bulk_insert, exec_sql_file
 class RetrosheetEtl:
     def __init__(
         self,
-        data_dir: Path = Path("C:/Data/Retrosheet"),
+        data_dir: Path = Path("C:/Data/Retrosheet_2023"),
         repo_dir: Path = Path("C:/repos/Retrosheet"),
     ) -> None:
         self.data_dir: Path = data_dir
@@ -26,23 +26,25 @@ class RetrosheetEtl:
         self.output_dir: Path = self.data_dir / "output"
         self.run_dir: Path = self.data_dir / "run"
 
-        self.allas_dir: Path = self.extract_dir / "allas"
-        self.allpost_dir: Path = self.extract_dir / "allpost"
+        self.allas_dir: Path = self.extract_dir / "allstar"
         self.boxes_dir: Path = self.extract_dir / "boxes"
         self.discrepancies_dir: Path = self.extract_dir / "discrepancies"
         self.events_dir: Path = self.extract_dir / "events"
         self.gamelogs_dir: Path = self.extract_dir / "gamelogs"
-        self.ngldata_dir: Path = self.extract_dir / "ngldata"
-        self.ngldata_events_dir: Path = self.ngldata_dir / "ngl-events"
+        self.ngldata_dir: Path = self.extract_dir / "Negro Leagues"
+        self.allpost_dir: Path = self.extract_dir / "postseason"
         self.rosters_dir: Path = self.extract_dir / "rosters"
-        self.schedule_dir: Path = self.extract_dir / "schedule"
-        self.teams_dir: Path = self.extract_dir / "teams1871-2022"
+        self.schedule_dir: Path = self.extract_dir / "schedules"
+        self.teams_dir: Path = self.extract_dir / "teams"
+        self.ngldata_events_dir: Path = self.ngldata_dir / "events"
 
         self.all_data_zip: Path = self.download_dir / "alldata.zip"
         self.franchise_master_file: Path = self.download_dir / "franchises.csv"
         self.ballparks_file: Path = self.extract_dir / "ballparks.csv"
         self.bio_file: Path = self.extract_dir / "biofile.csv"
+        self.coaches_file: Path = self.extract_dir / "coaches.csv"
         self.ejections_file: Path = self.extract_dir / "ejections.csv"
+        self.relatives_file: Path = self.extract_dir / "relatives.csv"
         self.teams_file: Path = self.extract_dir / "teams.csv"
         self.game_cols_file: Path = self.repo_dir / "data" / "game_fields.csv"
         self.event_cols_file: Path = self.repo_dir / "data" / "event_fields.csv"
@@ -284,7 +286,7 @@ class RetrosheetEtl:
     def _load_retro_game_event_data(self) -> None:
         _ = self._mkdir(self.run_dir)
         os.chdir(self.run_dir)
-        print("|| MSG @ {} || PROCESSING RETROSHEET 'allas' DATA".format(dt.now()))
+        print("|| MSG @ {} || PROCESSING RETROSHEET 'allstar' DATA".format(dt.now()))
         for i in self.allas_dir.iterdir():
             dest_file = self.run_dir / i.name
             shutil.copy(i, dest_file)
@@ -296,7 +298,7 @@ class RetrosheetEtl:
         _ = self._mkdir(self.run_dir)
         _ = os.chdir(self.run_dir)
         print(
-            "|| MSG @ {} || PROCESSING RETROSHEET 'allpost', 'events' DATA".format(
+            "|| MSG @ {} || PROCESSING RETROSHEET 'postseason', 'events' DATA".format(
                 dt.now()
             )
         )
@@ -449,6 +451,19 @@ class RetrosheetEtl:
         if remove:
             os.remove(zip_file)
         return None
+    
+    def download_and_extract(self):
+        _ = self._rmdir(self.data_dir)
+        _ = self._mkdir(self.data_dir)
+        _ = os.chdir(self.data_dir)
+        _ = self._mkdir(self.extract_dir)
+        _ = self._mkdir(self.download_dir)
+        _ = self._mkdir(self.log_dir)
+        _ = self._mkdir(self.output_dir)
+        _ = self._mkdir(self.game_output_dir)
+        _ = self._mkdir(self.event_output_dir)
+        _ = self._download_source_data()
+        _ = self._extract_source_data()
 
     def execute(self):
         start = time.time()
