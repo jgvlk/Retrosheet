@@ -208,7 +208,7 @@ class RetrosheetEtl:
                 dfs_game.append(df)
             except Exception as e:
                 print(
-                    "|| ERR @ {} || ERROR CONCATENATING EVENT DATA: {}".format(
+                    "|| ERR @ {} || ERROR CONCATENATING GAME DATA: {}".format(
                         dt.now(), i
                     )
                 )
@@ -286,22 +286,10 @@ class RetrosheetEtl:
     def _load_retro_game_event_data(self) -> None:
         _ = self._mkdir(self.run_dir)
         os.chdir(self.run_dir)
-        print("|| MSG @ {} || PROCESSING RETROSHEET 'allstar' DATA".format(dt.now()))
+        print("|| MSG @ {} || PROCESSING RETROSHEET 'allstar', 'postseason', 'events' DATA".format(dt.now()))
         for i in self.allas_dir.iterdir():
             dest_file = self.run_dir / i.name
             shutil.copy(i, dest_file)
-        for i in self.run_dir.glob(r"**/*"):
-            if i.suffix in self.file_extensions:
-                _ = self._proc_retro_event_file(i)
-        os.chdir(self.data_dir)
-        _ = self._rmdir(self.run_dir)
-        _ = self._mkdir(self.run_dir)
-        _ = os.chdir(self.run_dir)
-        print(
-            "|| MSG @ {} || PROCESSING RETROSHEET 'postseason', 'events' DATA".format(
-                dt.now()
-            )
-        )
         for i in self.allpost_dir.iterdir():
             dest_file = self.run_dir / i.name
             shutil.copy(i, dest_file)
