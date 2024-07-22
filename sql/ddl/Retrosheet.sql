@@ -4,7 +4,7 @@ EXEC msdb.dbo.sp_delete_database_backuphistory @database_name = N'Retrosheet'
 GO
 ALTER DATABASE [Retrosheet] SET SINGLE_USER WITH ROLLBACK IMMEDIATE
 GO
-DROP DATABASE [Retrosheet]
+DROP DATABASE IF EXISTS [Retrosheet]
 GO
 CREATE DATABASE [Retrosheet]
 GO
