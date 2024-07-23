@@ -492,3 +492,4 @@ dmypy.json
 .pyre/
 
 scratch.py
+log
