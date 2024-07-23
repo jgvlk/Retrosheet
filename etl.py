@@ -80,10 +80,7 @@ class RetrosheetEtl:
         self.sql_d: dict = {
             "ddl": {
                 "cs_raw": self.sql_dir / "ddl" / "raw" / "raw.sql",
-                "ct_raw_discrepancy": self.sql_dir
-                / "ddl"
-                / "raw"
-                / "raw.Discrepancy.sql",
+                "ct_raw_discrepancy": self.sql_dir / "ddl" / "raw" / "raw.Discrepancy.sql",
                 "ct_raw_ejection": self.sql_dir / "ddl" / "raw" / "raw.Ejection.sql",
                 "ct_raw_event": self.sql_dir / "ddl" / "raw" / "raw.Event.sql",
                 "ct_raw_franchise_master": self.sql_dir
@@ -159,9 +156,7 @@ class RetrosheetEtl:
                 "etl_10_load_gamelog": self.sql_dir
                 / "etl"
                 / "__ETL_10__LoadGameLog.sql",
-                "etl_11_load_discrepancy": self.sql_dir
-                / "etl"
-                / "__ETL_11__LoadDiscrepancy.sql",
+                # "etl_11_load_discrepancy": self.sql_dir / "etl" / "__ETL_11__LoadDiscrepancy.sql",
                 "etl_12_add_fks": self.sql_dir / "etl" / "__ETL_12__AddFKs.sql",
                 "etl_13_db_cleanup": self.sql_dir
                 / "etl"
@@ -336,10 +331,10 @@ class RetrosheetEtl:
     def _load_retro_schedule_data(self) -> None:
         print("|| MSG @ {} || LOADING SCHEDULE DATA".format(dt.now()))
         for i in self.schedule_dir.iterdir():
-            df = pd.read_csv(i, encoding="ascii", header=None)
+            df = pd.read_csv(i, encoding="ascii")
             df["SourceFile"] = i.name
-            df.to_csv(i, index=False, header=None)
-            _ = exec_bulk_insert("raw", "Schedule", i, 1)
+            df.to_csv(i, index=False)
+            _ = exec_bulk_insert("raw", "Schedule", i, 2)
         return None
 
     def _proc_retro_event_file(self, file: Path) -> None:
@@ -472,7 +467,7 @@ class RetrosheetEtl:
         _ = self._load_retro_lookup_data()
         _ = self._load_retro_schedule_data()
         _ = self._load_retro_gamelog_data()
-        _ = self._load_retro_discrepancy_data()
+        # _ = self._load_retro_discrepancy_data()
         _ = self._load_dbo()
         end = time.time()
         run_time = round((end - start) / 60, 1)

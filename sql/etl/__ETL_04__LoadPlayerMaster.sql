@@ -57,7 +57,7 @@ SELECT
     ,[Bats] AS [Bats]
     ,[Throws] AS [Throws]
     ,[Height] AS [Height]
-    ,[Weight] AS [Weight]
+    ,CONVERT(INT, (CONVERT(DECIMAL, [Weight]))) AS [Weight]
     ,[Cemetery] AS [Cemetery]
     ,[CemeCity] AS [CemeteryCity]
     ,[CemeState] AS [CemeteryState]

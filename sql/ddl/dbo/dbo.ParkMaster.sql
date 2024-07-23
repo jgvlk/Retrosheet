@@ -7,7 +7,7 @@ CREATE TABLE [dbo].[ParkMaster](
 	[Name] [varchar](50) NULL,
 	[AKA] [varchar](100) NULL,
 	[City] [varchar](25) NULL,
-	[State] [varchar](10) NULL,
+	[State] [varchar](50) NULL,
 	[Start] [date] NULL,
 	[End] [date] NULL,
 	[League] [char](2) NULL,
