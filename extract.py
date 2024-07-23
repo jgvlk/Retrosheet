@@ -495,7 +495,7 @@ def extract_retro_data() -> None:
     if not isinstance(max_dt, datetime.date):
         max_dt = dt.strptime(max_dt, r"%Y-%m-%d")
     extract_cfg = {
-        "path": Path("/Users/jonathanvlk/Google Drive/Retrosheet"),
+        "path": Path("C:/Data/RetrosheetExtract/2023"),
         "queries": {
             "FranchiseMaster": sql_franchise_master,
             "ParkMaster": sql_park_master,
