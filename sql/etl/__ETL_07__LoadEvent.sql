@@ -218,6 +218,8 @@ FROM
     LEFT JOIN [dbo].[PlayerMaster] rrpro12 ON e.[RunnerRemovedForPinchRunnerOn1st2nd] = rrpro12.[RetroPlayerID]
     LEFT JOIN [dbo].[PlayerMaster] rrpro13 ON e.[RunnerRemovedForPinchRunnerOn1st3rd] = rrpro13.[RetroPlayerID]
     LEFT JOIN [dbo].[PlayerMaster] brph ON e.[BatterRemovedForPinchHitter] = brph.[RetroPlayerID]
+WHERE
+    RIGHT(e.[SourceFile], 7) <> 'EVR.csv'
 ORDER BY
 	SUBSTRING(e.[GameID], 4, 4) + '-' + SUBSTRING(e.[GameID], 8, 2) + '-' + SUBSTRING(e.[GameID], 10, 2)
 	,e.[GameID]
